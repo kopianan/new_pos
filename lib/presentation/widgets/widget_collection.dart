@@ -71,3 +71,49 @@ class PosDefaultButton extends StatelessWidget {
         ));
   }
 }
+
+class SectionTitle extends StatelessWidget {
+  const SectionTitle({Key? key, required this.title}) : super(key: key);
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+class TransactionInfoDetail extends StatelessWidget {
+  const TransactionInfoDetail(
+      {Key? key, required this.title, required this.value})
+      : super(key: key);
+
+  final String title;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    var textStyle = const TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        children: [
+          Expanded(
+              flex: 2,
+              child: Text(
+                title,
+                style: textStyle,
+              )),
+          Text(":  ", style: textStyle),
+          Expanded(
+              flex: 3,
+              child: Text(
+                value,
+                style: textStyle,
+              ))
+        ],
+      ),
+    );
+  }
+}

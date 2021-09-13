@@ -88,11 +88,9 @@ class _ChooseCustomerPageState extends State<ChooseCustomerPage> {
           borderRadius: BorderRadius.circular(10),
         ),
         child: TypeAheadField<CustomerDataModel>(
-          
           hideSuggestionsOnKeyboardHide: true,
           textFieldConfiguration: TextFieldConfiguration(
             autofocus: true,
-
             onTap: () {},
             decoration: InputDecoration(
                 suffixIcon: IconButton(

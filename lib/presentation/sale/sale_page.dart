@@ -83,6 +83,20 @@ class _SalePageState extends State<SalePage> {
     );
   }
 
+  String generateTransactionId() {
+    var _user = PrefStorage().getUserLogin();
+
+    var _transType = PrefStorage().getTransactionType();
+    var _location = _user.locationCode;
+    var _uniqueCode = _user.employeeId!.substring(_user.employeeId!.length - 3);
+    String monthYear = CustomDate.getMonthYear();
+    String dateOnly = CustomDate.getDateOnly();
+
+    String fullId =
+        "${_transType}M-${_location}/${monthYear}/${dateOnly}001";
+    return fullId;
+  }
+
   Column informationSection() {
     return Column(
       children: [
@@ -96,7 +110,7 @@ class _SalePageState extends State<SalePage> {
                 children: [
                   TransactionInfoDetail(
                     title: "Nomor Transaksi",
-                    value: "MDNsdfsdf",
+                    value: generateTransactionId(),
                   ),
                   TransactionInfoDetail(
                     title: "Kode Lokasi",
