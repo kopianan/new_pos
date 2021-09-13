@@ -9,4 +9,6 @@ abstract class AuthState with _$AuthState {
       _OnGetLocation;
   const factory AuthState.onValidateLocation(List<String> location) =
       _OnValidateLocation;
+  const factory AuthState.onAuthenticate(LocationDataModel user) =
+      _OnAuthenticate;
 }

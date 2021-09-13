@@ -54,8 +54,6 @@ class _LocationPageState extends State<LocationPage> {
                                             location: val,
                                             onTap: () async {
                                               try {
-                                                await PrefStorage()
-                                                    .setBaseLocation(val);
                                                 Get.back(closeOverlays: true);
                                                 showDefaultSnackbar(context,
                                                     message:

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pos/presentation/auth/auth_page.dart';
 import 'package:pos/presentation/menu/menu_page.dart';
+import 'package:pos/presentation/splash_screen_page.dart';
 import 'package:pos/routes/routes.dart';
 
 class AppWidget extends StatefulWidget {
@@ -22,7 +23,7 @@ class _AppWidgetState extends State<AppWidget> {
         textTheme: GoogleFonts.nunitoTextTheme(),
         primarySwatch: Colors.blue,
       ),
-      initialRoute: MenuPage.TAG,
+      initialRoute: SplashScreenPage.TAG,
     );
   }
 }

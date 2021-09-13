@@ -7,10 +7,6 @@ class PrefStorage {
   final box = GetStorage();
 
   String get getToken => '0105';
-  LocationDataModel getBaseLocation() {
-    var _json = box.read<dynamic>('baseLocation');
-    return LocationDataModel.fromJson(_json);
-  }
 
   Future<void> setBaseUrl(String url) async {
     try {
@@ -28,13 +24,18 @@ class PrefStorage {
     }
   }
 
-  Future<void> setBaseLocation(LocationDataModel location) async {
+  Future<void> setUserLogin(LocationDataModel location) async {
     try {
-      await box.write('baseLocation', location.toJson());
+      await box.write('userLoginData', location.toJson());
     } catch (e) {
       print(e);
       throw Exception(e);
     }
+  }
+
+  LocationDataModel getUserLogin() {
+    var _json = box.read<dynamic>('userLoginData');
+    return LocationDataModel.fromJson(_json);
   }
 
   String getBaseUrl() {

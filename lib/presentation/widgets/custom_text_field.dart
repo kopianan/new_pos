@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({
-    Key? key,
-    required this.controller,
-    required this.hintText,
-    required this.label,
-    this.validator,
-  }) : super(key: key);
+  const CustomTextField(
+      {Key? key,
+      required this.controller,
+      required this.hintText,
+      required this.label,
+      this.suffixIcon,
+      this.validator,
+      this.readOnly = false,
+      this.onTap})
+      : super(key: key);
 
   final String hintText;
   final TextEditingController controller;
   final String label;
   final FormFieldValidator<String>? validator;
+  final Widget? suffixIcon;
+  final bool? readOnly;
+  final GestureTapCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,12 +42,15 @@ class CustomTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: TextFormField(
+            readOnly: readOnly!,
+            onTap: onTap,
             controller: controller,
             validator: (e) {
               return validator!(e);
             },
             style: const TextStyle(fontSize: 18),
             decoration: InputDecoration(
+                suffixIcon: suffixIcon,
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 hintText: hintText,

@@ -18,22 +18,22 @@ class AuthCubit extends Cubit<AuthState> {
       _data.fold(
         (l) => emit(AuthState.onError(l.toString())),
         (r) {
-          final _currList = <LocationDataModel>[];
+          // final _currList = <LocationDataModel>[];
 
-          for (var element in r) {
-            if (_currList.isEmpty) {
-              _currList.add(element);
-            }
-            try {
-              _currList.firstWhere(
-                  (val) => val.locationCode == element.locationCode);
-            } catch (e) {
-              _currList.add(element);
-            }
-          }
+          // for (var element in r) {
+          //   if (_currList.isEmpty) {
+          //     _currList.add(element);
+          //   }
+          //   try {
+          //     _currList.firstWhere(
+          //         (val) => val.locationCode == element.locationCode);
+          //   } catch (e) {
+          //     _currList.add(element);
+          //   }
+          // }
 
-          _currList.removeWhere((element) => element.locationCode == 'null');
-          emit(AuthState.onGetLocation(_currList));
+          // _currList.removeWhere((element) => element.locationCode == 'null');
+          emit(AuthState.onGetLocation(r));
         },
       );
     } catch (e) {
@@ -49,6 +49,21 @@ class AuthCubit extends Cubit<AuthState> {
         (l) => emit(AuthState.onError(l.toString())),
         (r) {
           emit(AuthState.onValidateLocation(r));
+        },
+      );
+    } catch (e) {
+      emit(AuthState.onError(e.toString()));
+    }
+  }
+
+  void authenticateUser() async {
+    emit(const AuthState.onLoading());
+    try {
+      final _data = await iAuth.authentication();
+      _data.fold(
+        (l) => emit(AuthState.onError(l.toString())),
+        (r) {
+          emit(AuthState.onAuthenticate(r));
         },
       );
     } catch (e) {

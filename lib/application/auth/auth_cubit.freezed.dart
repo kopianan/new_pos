@@ -42,6 +42,12 @@ class _$AuthStateTearOff {
       location,
     );
   }
+
+  _OnAuthenticate onAuthenticate(LocationDataModel user) {
+    return _OnAuthenticate(
+      user,
+    );
+  }
 }
 
 /// @nodoc
@@ -56,6 +62,7 @@ mixin _$AuthState {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(LocationDataModel user) onAuthenticate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +72,7 @@ mixin _$AuthState {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +82,7 @@ mixin _$AuthState {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -84,6 +93,7 @@ mixin _$AuthState {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +103,7 @@ mixin _$AuthState {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -102,6 +113,7 @@ mixin _$AuthState {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -164,6 +176,7 @@ class _$_Initial implements _Initial {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(LocationDataModel user) onAuthenticate,
   }) {
     return initial();
   }
@@ -176,6 +189,7 @@ class _$_Initial implements _Initial {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
   }) {
     return initial?.call();
   }
@@ -188,6 +202,7 @@ class _$_Initial implements _Initial {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -204,6 +219,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) {
     return initial(this);
   }
@@ -216,6 +232,7 @@ class _$_Initial implements _Initial {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) {
     return initial?.call(this);
   }
@@ -228,6 +245,7 @@ class _$_Initial implements _Initial {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -284,6 +302,7 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(LocationDataModel user) onAuthenticate,
   }) {
     return onLoading();
   }
@@ -296,6 +315,7 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
   }) {
     return onLoading?.call();
   }
@@ -308,6 +328,7 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) {
     if (onLoading != null) {
@@ -324,6 +345,7 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) {
     return onLoading(this);
   }
@@ -336,6 +358,7 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) {
     return onLoading?.call(this);
   }
@@ -348,6 +371,7 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) {
     if (onLoading != null) {
@@ -429,6 +453,7 @@ class _$_OnError implements _OnError {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(LocationDataModel user) onAuthenticate,
   }) {
     return onError(errorMessage);
   }
@@ -441,6 +466,7 @@ class _$_OnError implements _OnError {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
   }) {
     return onError?.call(errorMessage);
   }
@@ -453,6 +479,7 @@ class _$_OnError implements _OnError {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -469,6 +496,7 @@ class _$_OnError implements _OnError {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) {
     return onError(this);
   }
@@ -481,6 +509,7 @@ class _$_OnError implements _OnError {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) {
     return onError?.call(this);
   }
@@ -493,6 +522,7 @@ class _$_OnError implements _OnError {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -581,6 +611,7 @@ class _$_OnGetLocation implements _OnGetLocation {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(LocationDataModel user) onAuthenticate,
   }) {
     return onGetLocation(locations);
   }
@@ -593,6 +624,7 @@ class _$_OnGetLocation implements _OnGetLocation {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
   }) {
     return onGetLocation?.call(locations);
   }
@@ -605,6 +637,7 @@ class _$_OnGetLocation implements _OnGetLocation {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) {
     if (onGetLocation != null) {
@@ -621,6 +654,7 @@ class _$_OnGetLocation implements _OnGetLocation {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) {
     return onGetLocation(this);
   }
@@ -633,6 +667,7 @@ class _$_OnGetLocation implements _OnGetLocation {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) {
     return onGetLocation?.call(this);
   }
@@ -645,6 +680,7 @@ class _$_OnGetLocation implements _OnGetLocation {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) {
     if (onGetLocation != null) {
@@ -735,6 +771,7 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(LocationDataModel user) onAuthenticate,
   }) {
     return onValidateLocation(location);
   }
@@ -747,6 +784,7 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
   }) {
     return onValidateLocation?.call(location);
   }
@@ -759,6 +797,7 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) {
     if (onValidateLocation != null) {
@@ -775,6 +814,7 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) {
     return onValidateLocation(this);
   }
@@ -787,6 +827,7 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) {
     return onValidateLocation?.call(this);
   }
@@ -799,6 +840,7 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) {
     if (onValidateLocation != null) {
@@ -815,5 +857,171 @@ abstract class _OnValidateLocation implements AuthState {
   List<String> get location => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$OnValidateLocationCopyWith<_OnValidateLocation> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnAuthenticateCopyWith<$Res> {
+  factory _$OnAuthenticateCopyWith(
+          _OnAuthenticate value, $Res Function(_OnAuthenticate) then) =
+      __$OnAuthenticateCopyWithImpl<$Res>;
+  $Res call({LocationDataModel user});
+
+  $LocationDataModelCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$OnAuthenticateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$OnAuthenticateCopyWith<$Res> {
+  __$OnAuthenticateCopyWithImpl(
+      _OnAuthenticate _value, $Res Function(_OnAuthenticate) _then)
+      : super(_value, (v) => _then(v as _OnAuthenticate));
+
+  @override
+  _OnAuthenticate get _value => super._value as _OnAuthenticate;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(_OnAuthenticate(
+      user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as LocationDataModel,
+    ));
+  }
+
+  @override
+  $LocationDataModelCopyWith<$Res> get user {
+    return $LocationDataModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_OnAuthenticate implements _OnAuthenticate {
+  const _$_OnAuthenticate(this.user);
+
+  @override
+  final LocationDataModel user;
+
+  @override
+  String toString() {
+    return 'AuthState.onAuthenticate(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnAuthenticate &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnAuthenticateCopyWith<_OnAuthenticate> get copyWith =>
+      __$OnAuthenticateCopyWithImpl<_OnAuthenticate>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function(String errorMessage) onError,
+    required TResult Function(List<LocationDataModel> locations) onGetLocation,
+    required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(LocationDataModel user) onAuthenticate,
+  }) {
+    return onAuthenticate(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String errorMessage)? onError,
+    TResult Function(List<LocationDataModel> locations)? onGetLocation,
+    TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
+  }) {
+    return onAuthenticate?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String errorMessage)? onError,
+    TResult Function(List<LocationDataModel> locations)? onGetLocation,
+    TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(LocationDataModel user)? onAuthenticate,
+    required TResult orElse(),
+  }) {
+    if (onAuthenticate != null) {
+      return onAuthenticate(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnGetLocation value) onGetLocation,
+    required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnAuthenticate value) onAuthenticate,
+  }) {
+    return onAuthenticate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnGetLocation value)? onGetLocation,
+    TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
+  }) {
+    return onAuthenticate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnGetLocation value)? onGetLocation,
+    TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
+    required TResult orElse(),
+  }) {
+    if (onAuthenticate != null) {
+      return onAuthenticate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnAuthenticate implements AuthState {
+  const factory _OnAuthenticate(LocationDataModel user) = _$_OnAuthenticate;
+
+  LocationDataModel get user => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnAuthenticateCopyWith<_OnAuthenticate> get copyWith =>
       throw _privateConstructorUsedError;
 }

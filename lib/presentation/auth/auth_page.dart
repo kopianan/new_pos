@@ -5,6 +5,7 @@ import 'package:pos/application/auth/auth_cubit.dart';
 import 'package:pos/domain/location/location_data_model.dart';
 import 'package:pos/infrastructure/function/custom_snackbar.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
+import 'package:pos/presentation/dashboard/dashboard_page.dart';
 import 'package:pos/presentation/widgets/custom_dropdown.dart';
 import 'package:pos/presentation/widgets/custom_text_field.dart';
 import 'package:pos/presentation/widgets/widget_collection.dart';
@@ -26,6 +27,8 @@ class _AuthPageState extends State<AuthPage> {
   final _formKey = GlobalKey<FormState>();
   LocationDataModel? _selected;
   String? location = null;
+  List<String> _validatedLocation = [];
+  List<LocationDataModel> _allUsers = <LocationDataModel>[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,13 +39,14 @@ class _AuthPageState extends State<AuthPage> {
             child: Column(
               children: [
                 BlocProvider(
-                  create: (context) => getIt<AuthCubit>(),
+                  create: (context) => getIt<AuthCubit>()..getLocationList(),
                   child: BlocConsumer<AuthCubit, AuthState>(
                     listener: (context, state) {
                       state.maybeMap(
                         orElse: () {},
-                        onValidateLocation: (e) {},
-                        onGetLocation: (e) {},
+                        onGetLocation: (e) {
+                          _allUsers.assignAll(e.locations);
+                        },
                       );
                     },
                     builder: (context, state) {
@@ -86,31 +90,49 @@ class _AuthPageState extends State<AuthPage> {
                               create: (context) =>
                                   getIt<AuthCubit>()..validateLocation(),
                               child: BlocConsumer<AuthCubit, AuthState>(
-                                listener: (context, state) {},
+                                listener: (context, state) {
+                                  state.maybeMap(
+                                    orElse: () {},
+                                    onValidateLocation: (e) {
+                                      _validatedLocation.assignAll(e.location);
+                                    },
+                                  );
+                                },
                                 builder: (context, state) {
-                                  return state.maybeMap(orElse: () {
-                                    return Container();
-                                  }, onError: (e) {
-                                    return const Center(
-                                      child: CircularProgressIndicator(),
-                                    );
-                                  }, onValidateLocation: (e) {
-                                    return Container(
+                                  return state.maybeMap(
+                                    orElse: () {
+                                      return Container();
+                                    },
+                                    onLoading: (e) {
+                                      return const CustomDropdownLoading(
+                                        label: "Pilih Lokasi",
+                                      );
+                                    },
+                                    onError: (e) {
+                                      return const CustomDropdownLoading(
+                                        label: "Atur Config Dulu",
+                                      );
+                                    },
+                                    onValidateLocation: (e) {
+                                      return SizedBox(
                                         width: double.infinity,
                                         child: CustomDropdown(
-                                            validator: (e) {
-                                              if (e == null) {
-                                                return "Pilih lokasi";
-                                              }
-                                              return null;
-                                            },
-                                            hintText: "Pilih lokasi",
-                                            label: "Lokasi",
-                                            onChanged: (e) {
-                                              print(e);
-                                            },
-                                            list: e.location));
-                                  });
+                                          validator: (e) {
+                                            if (e == null) {
+                                              return "Pilih lokasi";
+                                            }
+                                            return null;
+                                          },
+                                          hintText: "Pilih lokasi",
+                                          label: "Lokasi",
+                                          onChanged: (e) {
+                                            location = e;
+                                          },
+                                          list: e.location,
+                                        ),
+                                      );
+                                    },
+                                  );
                                 },
                               ),
                             ),
@@ -118,7 +140,7 @@ class _AuthPageState extends State<AuthPage> {
                             PosDefaultButton(
                               text: "Login",
                               onPressed: () {
-                                if (_formKey.currentState!.validate()) {}
+                                onLoginButtonClicked();
                               },
                             )
                           ],
@@ -133,5 +155,33 @@ class _AuthPageState extends State<AuthPage> {
         ),
       ),
     );
+  }
+
+  void onLoginButtonClicked() {
+    if (_formKey.currentState!.validate()) {
+      final _user = _usernameController.text;
+      final _pass = _passwordController.text;
+
+      try {
+        final _data =
+            _allUsers.firstWhere((element) => element.userName == _user);
+
+        if (_data.passwordValue != _pass) {
+          showDefaultSnackbar(context, message: "Password salah");
+        } else {
+          //cek location
+
+          if (_data.locationCode!.toLowerCase() == location!.toLowerCase()) {
+            //Terdaftar
+            PrefStorage().setUserLogin(_data);
+            Get.toNamed(DashboardPage.TAG);
+          } else {
+            showDefaultSnackbar(context, message: "Lokasi tidak ditemukan");
+          }
+        }
+      } catch (e) {
+        showDefaultSnackbar(context, message: "User tidak ditemukan ");
+      }
+    }
   }
 }

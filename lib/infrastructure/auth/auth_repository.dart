@@ -51,4 +51,17 @@ class AuthRepository extends IAuth {
       return left(e.toString());
     }
   }
+
+  @override
+  Future<Either<String, LocationDataModel>> authentication() async {
+    try {
+      var _login = box.getUserLogin();
+
+      return right(_login);
+    } on DioError catch (e) {
+      return left(e.toString());
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
 }

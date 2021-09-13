@@ -22,6 +22,7 @@ class _MenuPageState extends State<MenuPage> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const RoundedLogo(),
               const SizedBox(height: 50),
@@ -32,13 +33,13 @@ class _MenuPageState extends State<MenuPage> {
                 text: "Set Config",
               ),
               const SizedBox(height: 20),
-              _CustomButton(
-                onTap: () {
-                  Get.toNamed(LocationPage.TAG);
-                },
-                text: "Set Location",
-              ),
-              const SizedBox(height: 20),
+              // _CustomButton(
+              //   onTap: () {
+              //     Get.toNamed(LocationPage.TAG);
+              //   },
+              //   text: "Set Location",
+              // ),
+              // const SizedBox(height: 20),
               _CustomOutlineButton(
                 onTap: () {
                   Get.toNamed(AuthPage.TAG);
