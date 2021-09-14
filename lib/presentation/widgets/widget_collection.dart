@@ -73,13 +73,40 @@ class PosDefaultButton extends StatelessWidget {
 }
 
 class SectionTitle extends StatelessWidget {
-  const SectionTitle({Key? key, required this.title}) : super(key: key);
+  const SectionTitle({
+    Key? key,
+    required this.title,
+    this.textButton,
+    this.onTap,
+  }) : super(key: key);
   final String title;
+  final String? textButton;
+  final Function? onTap;
+
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        (textButton == null)
+            ? SizedBox()
+            : InkWell(
+                onTap: () {
+                  onTap!();
+                },
+                child: Text(
+                  textButton!,
+                  style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                ),
+              )
+      ],
     );
   }
 }

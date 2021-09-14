@@ -6,6 +6,7 @@ import 'package:pos/application/sale/sale_cubit.dart';
 import 'package:pos/domain/customer_data_model.dart';
 import 'package:pos/infrastructure/function/custom_date.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
+import 'package:pos/presentation/sale/add_item_page.dart';
 import 'package:pos/presentation/sale/choose_customer_page.dart';
 import 'package:pos/presentation/widgets/widget_collection.dart';
 
@@ -72,7 +73,13 @@ class _SalePageState extends State<SalePage> {
                 informationSection(),
                 Column(
                   children: [
-                    const SectionTitle(title: "Transaction Detail"),
+                    SectionTitle(
+                      title: "Transaction Detail",
+                      textButton: "Tambah",
+                      onTap: () {
+                        Get.toNamed(AddItemPage.TAG);
+                      },
+                    ),
                   ],
                 )
               ],
@@ -92,8 +99,7 @@ class _SalePageState extends State<SalePage> {
     String monthYear = CustomDate.getMonthYear();
     String dateOnly = CustomDate.getDateOnly();
 
-    String fullId =
-        "${_transType}M-${_location}/${monthYear}/${dateOnly}001";
+    String fullId = "${_transType}M-${_location}/${monthYear}/${dateOnly}001";
     return fullId;
   }
 

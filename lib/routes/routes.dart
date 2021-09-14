@@ -5,6 +5,7 @@ import 'package:pos/presentation/config/config_page.dart';
 import 'package:pos/presentation/config/location_page.dart';
 import 'package:pos/presentation/dashboard/dashboard_page.dart';
 import 'package:pos/presentation/menu/menu_page.dart';
+import 'package:pos/presentation/sale/add_item_page.dart';
 import 'package:pos/presentation/sale/choose_customer_page.dart';
 import 'package:pos/presentation/sale/sale_page.dart';
 import 'package:pos/presentation/splash_screen_page.dart';
@@ -25,6 +26,10 @@ class Routes {
         name: ChooseCustomerPage.TAG,
         page: () => const ChooseCustomerPage(),
         binding: SaleBinding()),
+    GetPage(
+      name: AddItemPage.TAG,
+      page: () => const AddItemPage(),
+    ),
   ];
 
   static List<GetPage> get getPages => _pages;
