@@ -16,7 +16,10 @@ class Routes {
     GetPage(name: ConfigPage.TAG, page: () => const ConfigPage()),
     GetPage(name: MenuPage.TAG, page: () => const MenuPage()),
     GetPage(name: LocationPage.TAG, page: () => const LocationPage()),
-    GetPage(name: DashboardPage.TAG, page: () => const DashboardPage()),
+    GetPage(
+        name: DashboardPage.TAG,
+        page: () => const DashboardPage(),
+        binding: SaleBinding()),
     GetPage(name: SplashScreenPage.TAG, page: () => const SplashScreenPage()),
     GetPage(
         name: SalePage.TAG,
