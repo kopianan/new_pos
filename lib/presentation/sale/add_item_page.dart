@@ -5,6 +5,8 @@ import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/domain/product_data_model.dart';
 import 'package:collection/collection.dart';
 
+import 'widget/product_list_item.dart';
+
 class AddItemPage extends StatefulWidget {
   static const String TAG = '/add-item-page';
   const AddItemPage({Key? key}) : super(key: key);
@@ -24,6 +26,7 @@ class _AddItemPageState extends State<AddItemPage> {
 
   void setupListData() {
     var _list = _saleController.getProductList;
+
     var _data = _list.toSet().groupListsBy((element) => element.itemSku);
     _filteredList = _data;
   }
@@ -116,8 +119,11 @@ class _AddItemPageState extends State<AddItemPage> {
                   var _currentItemSku = _filteredList.keys.toList()[index];
                   var _currItem = _saleController.getProductList.firstWhere(
                       (element) => element.itemSku == _currentItemSku);
-                  return ListTile(
-                    title: Text(_currItem.itemName!),
+                  return ProductListItem(
+                    item: _currItem,
+                    onTap: () {
+                      onListClick(context, _currentItemSku!);
+                    },
                   );
                 },
               ),
@@ -126,5 +132,53 @@ class _AddItemPageState extends State<AddItemPage> {
         ),
       ),
     );
+  }
+
+  void onListClick(BuildContext context, String sku) {
+    _saleController.setSelectedList(_filteredList[sku]!);
+
+    Get.bottomSheet(
+        Container(
+          constraints: BoxConstraints(minHeight: Get.size.height / 2),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  Text("Pilih Item"),
+                  TextButton(
+                    onPressed: () async {
+                      _saleController.onSaveSelectList();
+                      Get.back();
+                    },
+                    child: Text("Save"),
+                  )
+                ],
+              ),
+              Obx(
+                () => Container(
+                  child: ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: _saleController.getSElectedList.length,
+                      itemBuilder: (context, index) {
+                        return CheckboxListTile(
+                          value:
+                              _saleController.getSElectedList[index].isChecked,
+                          onChanged: (value) {
+                            _saleController.updateSelectedList(
+                                _saleController.getSElectedList[index], value!);
+                          },
+                          title: Text(
+                              _saleController.getSElectedList[index].itemName!),
+                        );
+                      }),
+                ),
+              )
+            ],
+          ),
+        ),
+        backgroundColor: Colors.white,
+        isScrollControlled: true);
   }
 }

@@ -28,6 +28,8 @@ class ProductDataModel with _$ProductDataModel {
     @JsonKey(name: 'display_store') String? displayStore,
     @JsonKey(name: 'weight') String? weight,
     @JsonKey(name: 'in_order') String? inOrder,
+    @Default(false) @JsonKey(name: 'isChecked') bool? isChecked,
+    @Default(0) @JsonKey(name: 'total_buy') int totalBuy,
   }) = _ProductDataModel;
 
   factory ProductDataModel.fromJson(Map<String, dynamic> json) =>

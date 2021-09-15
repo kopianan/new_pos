@@ -43,7 +43,9 @@ class _$ProductDataModelTearOff {
       @JsonKey(name: 'pic') String? pic,
       @JsonKey(name: 'display_store') String? displayStore,
       @JsonKey(name: 'weight') String? weight,
-      @JsonKey(name: 'in_order') String? inOrder}) {
+      @JsonKey(name: 'in_order') String? inOrder,
+      @JsonKey(name: 'isChecked') bool? isChecked = false,
+      @JsonKey(name: 'total_buy') int totalBuy = 0}) {
     return _ProductDataModel(
       itemId: itemId,
       itemCode: itemCode,
@@ -67,6 +69,8 @@ class _$ProductDataModelTearOff {
       displayStore: displayStore,
       weight: weight,
       inOrder: inOrder,
+      isChecked: isChecked,
+      totalBuy: totalBuy,
     );
   }
 
@@ -124,6 +128,10 @@ mixin _$ProductDataModel {
   String? get weight => throw _privateConstructorUsedError;
   @JsonKey(name: 'in_order')
   String? get inOrder => throw _privateConstructorUsedError;
+  @JsonKey(name: 'isChecked')
+  bool? get isChecked => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_buy')
+  int get totalBuy => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -158,7 +166,9 @@ abstract class $ProductDataModelCopyWith<$Res> {
       @JsonKey(name: 'pic') String? pic,
       @JsonKey(name: 'display_store') String? displayStore,
       @JsonKey(name: 'weight') String? weight,
-      @JsonKey(name: 'in_order') String? inOrder});
+      @JsonKey(name: 'in_order') String? inOrder,
+      @JsonKey(name: 'isChecked') bool? isChecked,
+      @JsonKey(name: 'total_buy') int totalBuy});
 }
 
 /// @nodoc
@@ -194,6 +204,8 @@ class _$ProductDataModelCopyWithImpl<$Res>
     Object? displayStore = freezed,
     Object? weight = freezed,
     Object? inOrder = freezed,
+    Object? isChecked = freezed,
+    Object? totalBuy = freezed,
   }) {
     return _then(_value.copyWith(
       itemId: itemId == freezed
@@ -284,6 +296,14 @@ class _$ProductDataModelCopyWithImpl<$Res>
           ? _value.inOrder
           : inOrder // ignore: cast_nullable_to_non_nullable
               as String?,
+      isChecked: isChecked == freezed
+          ? _value.isChecked
+          : isChecked // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      totalBuy: totalBuy == freezed
+          ? _value.totalBuy
+          : totalBuy // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -317,7 +337,9 @@ abstract class _$ProductDataModelCopyWith<$Res>
       @JsonKey(name: 'pic') String? pic,
       @JsonKey(name: 'display_store') String? displayStore,
       @JsonKey(name: 'weight') String? weight,
-      @JsonKey(name: 'in_order') String? inOrder});
+      @JsonKey(name: 'in_order') String? inOrder,
+      @JsonKey(name: 'isChecked') bool? isChecked,
+      @JsonKey(name: 'total_buy') int totalBuy});
 }
 
 /// @nodoc
@@ -355,6 +377,8 @@ class __$ProductDataModelCopyWithImpl<$Res>
     Object? displayStore = freezed,
     Object? weight = freezed,
     Object? inOrder = freezed,
+    Object? isChecked = freezed,
+    Object? totalBuy = freezed,
   }) {
     return _then(_ProductDataModel(
       itemId: itemId == freezed
@@ -445,6 +469,14 @@ class __$ProductDataModelCopyWithImpl<$Res>
           ? _value.inOrder
           : inOrder // ignore: cast_nullable_to_non_nullable
               as String?,
+      isChecked: isChecked == freezed
+          ? _value.isChecked
+          : isChecked // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      totalBuy: totalBuy == freezed
+          ? _value.totalBuy
+          : totalBuy // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -474,7 +506,9 @@ class _$_ProductDataModel implements _ProductDataModel {
       @JsonKey(name: 'pic') this.pic,
       @JsonKey(name: 'display_store') this.displayStore,
       @JsonKey(name: 'weight') this.weight,
-      @JsonKey(name: 'in_order') this.inOrder});
+      @JsonKey(name: 'in_order') this.inOrder,
+      @JsonKey(name: 'isChecked') this.isChecked = false,
+      @JsonKey(name: 'total_buy') this.totalBuy = 0});
 
   factory _$_ProductDataModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProductDataModelFromJson(json);
@@ -545,10 +579,16 @@ class _$_ProductDataModel implements _ProductDataModel {
   @override
   @JsonKey(name: 'in_order')
   final String? inOrder;
+  @override
+  @JsonKey(name: 'isChecked')
+  final bool? isChecked;
+  @override
+  @JsonKey(name: 'total_buy')
+  final int totalBuy;
 
   @override
   String toString() {
-    return 'ProductDataModel(itemId: $itemId, itemCode: $itemCode, barcode: $barcode, itemSku: $itemSku, updateDate: $updateDate, kategoriId: $kategoriId, internalCode: $internalCode, kategoriCode: $kategoriCode, kategori: $kategori, katPicture: $katPicture, itemName: $itemName, description: $description, itemPrice: $itemPrice, itmPriceFmt: $itmPriceFmt, isFixedPrice: $isFixedPrice, qty: $qty, unitCode: $unitCode, taxCode: $taxCode, pic: $pic, displayStore: $displayStore, weight: $weight, inOrder: $inOrder)';
+    return 'ProductDataModel(itemId: $itemId, itemCode: $itemCode, barcode: $barcode, itemSku: $itemSku, updateDate: $updateDate, kategoriId: $kategoriId, internalCode: $internalCode, kategoriCode: $kategoriCode, kategori: $kategori, katPicture: $katPicture, itemName: $itemName, description: $description, itemPrice: $itemPrice, itmPriceFmt: $itmPriceFmt, isFixedPrice: $isFixedPrice, qty: $qty, unitCode: $unitCode, taxCode: $taxCode, pic: $pic, displayStore: $displayStore, weight: $weight, inOrder: $inOrder, isChecked: $isChecked, totalBuy: $totalBuy)';
   }
 
   @override
@@ -615,7 +655,13 @@ class _$_ProductDataModel implements _ProductDataModel {
             (identical(other.weight, weight) ||
                 const DeepCollectionEquality().equals(other.weight, weight)) &&
             (identical(other.inOrder, inOrder) ||
-                const DeepCollectionEquality().equals(other.inOrder, inOrder)));
+                const DeepCollectionEquality()
+                    .equals(other.inOrder, inOrder)) &&
+            (identical(other.isChecked, isChecked) ||
+                const DeepCollectionEquality()
+                    .equals(other.isChecked, isChecked)) &&
+            (identical(other.totalBuy, totalBuy) ||
+                const DeepCollectionEquality().equals(other.totalBuy, totalBuy)));
   }
 
   @override
@@ -642,7 +688,9 @@ class _$_ProductDataModel implements _ProductDataModel {
       const DeepCollectionEquality().hash(pic) ^
       const DeepCollectionEquality().hash(displayStore) ^
       const DeepCollectionEquality().hash(weight) ^
-      const DeepCollectionEquality().hash(inOrder);
+      const DeepCollectionEquality().hash(inOrder) ^
+      const DeepCollectionEquality().hash(isChecked) ^
+      const DeepCollectionEquality().hash(totalBuy);
 
   @JsonKey(ignore: true)
   @override
@@ -678,7 +726,9 @@ abstract class _ProductDataModel implements ProductDataModel {
       @JsonKey(name: 'pic') String? pic,
       @JsonKey(name: 'display_store') String? displayStore,
       @JsonKey(name: 'weight') String? weight,
-      @JsonKey(name: 'in_order') String? inOrder}) = _$_ProductDataModel;
+      @JsonKey(name: 'in_order') String? inOrder,
+      @JsonKey(name: 'isChecked') bool? isChecked,
+      @JsonKey(name: 'total_buy') int totalBuy}) = _$_ProductDataModel;
 
   factory _ProductDataModel.fromJson(Map<String, dynamic> json) =
       _$_ProductDataModel.fromJson;
@@ -749,6 +799,12 @@ abstract class _ProductDataModel implements ProductDataModel {
   @override
   @JsonKey(name: 'in_order')
   String? get inOrder => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'isChecked')
+  bool? get isChecked => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'total_buy')
+  int get totalBuy => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductDataModelCopyWith<_ProductDataModel> get copyWith =>

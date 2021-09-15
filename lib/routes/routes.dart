@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:pos/application/sale/sale_binding.dart';
+import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/presentation/auth/auth_page.dart';
 import 'package:pos/presentation/config/config_page.dart';
 import 'package:pos/presentation/config/location_page.dart';
@@ -30,9 +31,9 @@ class Routes {
         page: () => const ChooseCustomerPage(),
         binding: SaleBinding()),
     GetPage(
-      name: AddItemPage.TAG,
-      page: () => const AddItemPage(),
-    ),
+        name: AddItemPage.TAG,
+        page: () => const AddItemPage(),
+        binding: SaleBinding()),
   ];
 
   static List<GetPage> get getPages => _pages;
