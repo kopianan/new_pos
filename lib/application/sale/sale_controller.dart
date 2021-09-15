@@ -1,3 +1,4 @@
+import 'package:collection/src/iterable_extensions.dart';
 import 'package:get/get.dart';
 import 'package:pos/domain/customer_data_model.dart';
 import 'package:pos/domain/product_data_model.dart';

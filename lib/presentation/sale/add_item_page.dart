@@ -15,6 +15,19 @@ class AddItemPage extends StatefulWidget {
 
 class _AddItemPageState extends State<AddItemPage> {
   final _saleController = Get.find<SaleController>();
+  late Map<String?, List<ProductDataModel>> _filteredList;
+  @override
+  void initState() {
+    setupListData();
+    super.initState();
+  }
+
+  void setupListData() {
+    var _list = _saleController.getProductList;
+    var _data = _list.toSet().groupListsBy((element) => element.itemSku);
+    _filteredList = _data;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,12 +35,13 @@ class _AddItemPageState extends State<AddItemPage> {
         actions: [
           IconButton(
             onPressed: () {
-              var _list = _saleController.getProductList;
-              print(_list.length);
-              var _data =
-                  _list.toSet().groupListsBy((element) => element.itemSku);
-              print(_data['645.22.06.90']);
-              print(_data['645.22.06.90']!.length);
+              var _list = _filteredList.keys.toList();
+              // var _list = _saleController.getProductList;
+              // print(_list.length);
+              // var _data =
+              //     _list.toSet().groupListsBy((element) => element.itemSku);
+              // print(_data['645.22.06.90']);
+              // print(_data['645.22.06.90']!.length);
             },
             icon: Icon(Icons.ten_k),
           )
@@ -97,11 +111,13 @@ class _AddItemPageState extends State<AddItemPage> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: _saleController.getProductList.length,
+                itemCount: _filteredList.keys.length,
                 itemBuilder: (context, index) {
+                  var _currentItemSku = _filteredList.keys.toList()[index];
+                  var _currItem = _saleController.getProductList.firstWhere(
+                      (element) => element.itemSku == _currentItemSku);
                   return ListTile(
-                    title:
-                        Text(_saleController.getProductList[index].itemName!),
+                    title: Text(_currItem.itemName!),
                   );
                 },
               ),
