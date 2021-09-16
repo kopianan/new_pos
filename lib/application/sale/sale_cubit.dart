@@ -17,7 +17,10 @@ class SaleCubit extends Cubit<SaleState> {
     final _data = await iSale.getAllProduct();
     _data.fold(
       (l) => emit(SaleState.isError(l.toString())),
-      (r) => emit(SaleState.onGetAllProducts(r)),
+      (r) {
+        emit(SaleState.onGetAllProducts(r));
+        getAllCustomer();
+      },
     );
   }
 

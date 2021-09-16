@@ -48,7 +48,7 @@ class ProductCartItem extends StatelessWidget {
                     child: Text(
                       item.totalBuy.toString(),
                       style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                   ),
                   InkWell(

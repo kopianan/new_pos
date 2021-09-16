@@ -3,10 +3,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/application/sale/sale_cubit.dart';
 import 'package:pos/domain/customer_data_model.dart';
+import 'package:pos/domain/sale_transaction_data_model.dart';
+import 'package:pos/infrastructure/function/custom_data.dart';
 import 'package:pos/infrastructure/function/custom_date.dart';
+import 'package:pos/infrastructure/function/custom_snackbar.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/presentation/sale/add_item_page.dart';
 import 'package:pos/presentation/sale/choose_customer_page.dart';
@@ -27,6 +31,50 @@ class SalePage extends StatefulWidget {
 class _SalePageState extends State<SalePage> {
   final saleCubit = getIt<SaleCubit>();
   final _saleController = Get.find<SaleController>();
+
+  CustomData _customData = CustomData();
+  PrefStorage _box = PrefStorage();
+
+  @override
+  void initState() {
+    _loadProductList();
+
+    super.initState();
+  }
+
+  void _loadProductList() {
+    var _list = _box.loadProductList();
+    _saleController.setProductList(_list);
+  }
+
+  Future<void> saveTransactionData() async {
+    var _transaction = SaleTransactionDataModel(
+        date: CustomDate.getNowDate(),
+        selectedCustomer: _saleController.getSelectedCustomer,
+        selectedLocation: _saleController.getSelectedLocation,
+        transactionNumber: _saleController.getTransactionNumber,
+        listProduct: _saleController.getCartList,
+        total: _saleController.calculateGrandTotal());
+    var _savedList = _box.getSavedTransactionDarta();
+
+    //check the data if there is duplicate just update
+    try {
+      var _duplicate = _savedList.firstWhere((element) =>
+          element.transactionNumber == _transaction.transactionNumber);
+      //remove duplicate
+      _savedList.removeWhere((element) =>
+          element.transactionNumber == _duplicate.transactionNumber);
+
+      //Saving
+      _savedList.add(_transaction);
+      _box.saveTransactionData(_savedList);
+    } catch (e) {
+      //no duplicate data
+      //just add as new data
+      _savedList.add(_transaction);
+      _box.saveTransactionData(_savedList);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -188,7 +236,20 @@ class _SalePageState extends State<SalePage> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () async {
+                            try {
+                              await saveTransactionData();
+                              showDefaultSnackbar(context,
+                                  message: "Berhasil menyimpan data",
+                                  duration: Duration(seconds: 3));
+                            } catch (e) {
+                              showDefaultSnackbar(
+                                context,
+                                message: e.toString(),
+                                duration: Duration(seconds: 3),
+                              );
+                            }
+                          },
                         ),
                       ),
                       SizedBox(width: 10),
@@ -206,7 +267,9 @@ class _SalePageState extends State<SalePage> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            print(_box.getSavedTransactionDarta());
+                          },
                         ),
                       ),
                     ],
@@ -233,19 +296,6 @@ class _SalePageState extends State<SalePage> {
     );
   }
 
-  String generateTransactionId() {
-    var _user = PrefStorage().getUserLogin();
-
-    var _transType = PrefStorage().getTransactionType();
-    var _location = _user.locationCode;
-    var _uniqueCode = _user.employeeId!.substring(_user.employeeId!.length - 3);
-    String monthYear = CustomDate.getMonthYear();
-    String dateOnly = CustomDate.getDateOnly();
-
-    String fullId = "${_transType}M-${_location}/${monthYear}/${dateOnly}001";
-    return fullId;
-  }
-
   Column informationSection() {
     return Column(
       children: [
@@ -261,15 +311,16 @@ class _SalePageState extends State<SalePage> {
                 children: [
                   TransactionInfoDetail(
                     title: "Nomor Transaksi",
-                    value: generateTransactionId(),
+                    value: _saleController.getTransactionNumber,
                   ),
                   TransactionInfoDetail(
                     title: "Kode Lokasi",
-                    value: PrefStorage().getUserLogin().locationCode!,
+                    value: _saleController.getSelectedLocation.locationCode!,
                   ),
                   TransactionInfoDetail(
                     title: "Tanggal",
-                    value: CustomDate.getNowDate(),
+                    value: CustomDate.convertDate(
+                        _saleController.getTransactionDate),
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 4),
@@ -281,11 +332,11 @@ class _SalePageState extends State<SalePage> {
                             child: Text(
                               "Nama Customer",
                               style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
+                                  fontSize: 14, fontWeight: FontWeight.bold),
                             )),
                         Text(":  ",
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold)),
+                                fontSize: 14, fontWeight: FontWeight.bold)),
                         Expanded(
                             flex: 3,
                             child: InkWell(
@@ -305,7 +356,7 @@ class _SalePageState extends State<SalePage> {
                                               "Pilih Customer / Tap Disini",
                                               overflow: TextOverflow.clip,
                                               style: TextStyle(
-                                                  fontSize: 15,
+                                                  fontSize: 14,
                                                   color: Colors.red,
                                                   fontWeight: FontWeight.bold),
                                             )
@@ -315,7 +366,7 @@ class _SalePageState extends State<SalePage> {
                                                   .customerName!,
                                               overflow: TextOverflow.clip,
                                               style: TextStyle(
-                                                  fontSize: 15,
+                                                  fontSize: 14,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                     ),

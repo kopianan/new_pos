@@ -8,11 +8,11 @@ part of 'location_data_model.dart';
 
 _$_LocationDataModel _$$_LocationDataModelFromJson(Map<String, dynamic> json) =>
     _$_LocationDataModel(
-      employeeId: json['employee_id'] as String?,
-      employeeName: json['employee_name'] as String?,
-      locationCode: json['location_code'] as String?,
-      userName: json['user_name'] as String?,
-      passwordValue: json['password_value'] as String?,
+      employeeId: json['employee_id'] as String? ?? "",
+      employeeName: json['employee_name'] as String? ?? "",
+      locationCode: json['location_code'] as String? ?? "",
+      userName: json['user_name'] as String? ?? "",
+      passwordValue: json['password_value'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$_LocationDataModelToJson(

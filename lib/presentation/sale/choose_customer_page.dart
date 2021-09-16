@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/application/sale/sale_cubit.dart';
 import 'package:pos/domain/customer_data_model.dart';
+import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/injectable.dart';
 
 class ChooseCustomerPage extends StatefulWidget {
@@ -17,7 +18,7 @@ class ChooseCustomerPage extends StatefulWidget {
 
 class _ChooseCustomerPageState extends State<ChooseCustomerPage> {
   final _saleController = Get.find<SaleController>();
-  final _saleCubit = getIt<SaleCubit>();
+  PrefStorage _box = PrefStorage();
   List<CustomerDataModel> _listCustomer = [];
   @override
   void initState() {
@@ -26,11 +27,9 @@ class _ChooseCustomerPageState extends State<ChooseCustomerPage> {
   }
 
   void checkData() {
-    if (_saleController.getCustomerList.isEmpty) {
-      _saleCubit.getAllCustomer();
-    } else {
-      _listCustomer = _saleController.getCustomerList;
-    }
+    //load data from storage
+    _listCustomer = _box.loadCustomerList();
+    _saleController.setCustomerList(_listCustomer);
   }
 
   @override
@@ -39,37 +38,7 @@ class _ChooseCustomerPageState extends State<ChooseCustomerPage> {
       appBar: AppBar(
         title: Text("Pilih Customer"),
       ),
-      body: SafeArea(
-        child: BlocProvider(
-          create: (context) => _saleCubit,
-          child: BlocListener<SaleCubit, SaleState>(
-            listener: (context, state) {
-              state.maybeMap(
-                orElse: () {},
-                onGetCustomer: (e) {
-                  _saleController.setCustomerList(e.list!);
-                  _listCustomer = e.list!;
-                },
-              );
-            },
-            child: BlocBuilder<SaleCubit, SaleState>(
-              builder: (context, state) {
-                return state.maybeMap(orElse: () {
-                  return customerTextField();
-                }, isLoading: (e) {
-                  return Container(
-                      height: 50,
-                      child: const Center(
-                        child: CircularProgressIndicator(),
-                      ));
-                }, onGetCustomer: (e) {
-                  return customerTextField();
-                });
-              },
-            ),
-          ),
-        ),
-      ),
+      body: SafeArea(child: customerTextField()),
     );
   }
 

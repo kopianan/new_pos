@@ -31,6 +31,7 @@ class SaleRepository extends ISale {
 
       final _listProduct =
           _data.map((e) => ProductDataModel.fromJson(e)).toList();
+      await box.saveProductList(_listProduct);
       return right(_listProduct);
     } on DioError catch (e) {
       return left(e.toString());
@@ -53,6 +54,7 @@ class SaleRepository extends ISale {
 
       final _listProduct =
           _data.map((e) => CustomerDataModel.fromJson(e)).toList();
+      await box.saveCustomerList(_listProduct);
       return right(_listProduct);
     } on DioError catch (e) {
       return left(e.toString());

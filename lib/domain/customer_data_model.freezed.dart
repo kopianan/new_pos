@@ -22,18 +22,30 @@ class _$CustomerDataModelTearOff {
   const _$CustomerDataModelTearOff();
 
   _CustomerDataModel call(
-      {@JsonKey(name: '_id') String? sId = "",
-      @JsonKey(name: 'customer_id') String? customerId = "",
-      @JsonKey(name: 'customer_code') String? customerCode = "",
-      @JsonKey(name: 'customer_name') String? customerName = "",
-      @JsonKey(name: 'default_location_id') String? defaultLocationId = "",
-      @JsonKey(name: 'phone1') String? phone1 = "",
-      @JsonKey(name: 'address') String? address = "",
-      @JsonKey(name: 'is_default') String? isDefault = "",
-      @JsonKey(name: 'code') String? code = "",
-      @JsonKey(name: 'point_reward') String? pointReward = "",
-      @JsonKey(name: 'default_type_id') String? defaultTypeId = "",
-      @JsonKey(name: 'default_term_id') String? defaultTermId = ""}) {
+      {@JsonKey(name: '_id', includeIfNull: true)
+          String? sId = "",
+      @JsonKey(name: 'customer_id', includeIfNull: true)
+          String? customerId = "",
+      @JsonKey(name: 'customer_code', includeIfNull: true)
+          String? customerCode = "",
+      @JsonKey(name: 'customer_name', includeIfNull: true)
+          String? customerName = "",
+      @JsonKey(name: 'default_location_id', includeIfNull: true)
+          String? defaultLocationId = "",
+      @JsonKey(name: 'phone1', includeIfNull: true)
+          String? phone1 = "",
+      @JsonKey(name: 'address', includeIfNull: true)
+          String? address = "",
+      @JsonKey(name: 'is_default', includeIfNull: true)
+          String? isDefault = "",
+      @JsonKey(name: 'code', includeIfNull: true)
+          String? code = "",
+      @JsonKey(name: 'point_reward', includeIfNull: true)
+          String? pointReward = "",
+      @JsonKey(name: 'default_type_id', includeIfNull: true)
+          String? defaultTypeId = "",
+      @JsonKey(name: 'default_term_id', includeIfNull: true)
+          String? defaultTermId = ""}) {
     return _CustomerDataModel(
       sId: sId,
       customerId: customerId,
@@ -60,29 +72,29 @@ const $CustomerDataModel = _$CustomerDataModelTearOff();
 
 /// @nodoc
 mixin _$CustomerDataModel {
-  @JsonKey(name: '_id')
+  @JsonKey(name: '_id', includeIfNull: true)
   String? get sId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'customer_id')
+  @JsonKey(name: 'customer_id', includeIfNull: true)
   String? get customerId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'customer_code')
+  @JsonKey(name: 'customer_code', includeIfNull: true)
   String? get customerCode => throw _privateConstructorUsedError;
-  @JsonKey(name: 'customer_name')
+  @JsonKey(name: 'customer_name', includeIfNull: true)
   String? get customerName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'default_location_id')
+  @JsonKey(name: 'default_location_id', includeIfNull: true)
   String? get defaultLocationId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'phone1')
+  @JsonKey(name: 'phone1', includeIfNull: true)
   String? get phone1 => throw _privateConstructorUsedError;
-  @JsonKey(name: 'address')
+  @JsonKey(name: 'address', includeIfNull: true)
   String? get address => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_default')
+  @JsonKey(name: 'is_default', includeIfNull: true)
   String? get isDefault => throw _privateConstructorUsedError;
-  @JsonKey(name: 'code')
+  @JsonKey(name: 'code', includeIfNull: true)
   String? get code => throw _privateConstructorUsedError;
-  @JsonKey(name: 'point_reward')
+  @JsonKey(name: 'point_reward', includeIfNull: true)
   String? get pointReward => throw _privateConstructorUsedError;
-  @JsonKey(name: 'default_type_id')
+  @JsonKey(name: 'default_type_id', includeIfNull: true)
   String? get defaultTypeId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'default_term_id')
+  @JsonKey(name: 'default_term_id', includeIfNull: true)
   String? get defaultTermId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -97,18 +109,30 @@ abstract class $CustomerDataModelCopyWith<$Res> {
           CustomerDataModel value, $Res Function(CustomerDataModel) then) =
       _$CustomerDataModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: '_id') String? sId,
-      @JsonKey(name: 'customer_id') String? customerId,
-      @JsonKey(name: 'customer_code') String? customerCode,
-      @JsonKey(name: 'customer_name') String? customerName,
-      @JsonKey(name: 'default_location_id') String? defaultLocationId,
-      @JsonKey(name: 'phone1') String? phone1,
-      @JsonKey(name: 'address') String? address,
-      @JsonKey(name: 'is_default') String? isDefault,
-      @JsonKey(name: 'code') String? code,
-      @JsonKey(name: 'point_reward') String? pointReward,
-      @JsonKey(name: 'default_type_id') String? defaultTypeId,
-      @JsonKey(name: 'default_term_id') String? defaultTermId});
+      {@JsonKey(name: '_id', includeIfNull: true)
+          String? sId,
+      @JsonKey(name: 'customer_id', includeIfNull: true)
+          String? customerId,
+      @JsonKey(name: 'customer_code', includeIfNull: true)
+          String? customerCode,
+      @JsonKey(name: 'customer_name', includeIfNull: true)
+          String? customerName,
+      @JsonKey(name: 'default_location_id', includeIfNull: true)
+          String? defaultLocationId,
+      @JsonKey(name: 'phone1', includeIfNull: true)
+          String? phone1,
+      @JsonKey(name: 'address', includeIfNull: true)
+          String? address,
+      @JsonKey(name: 'is_default', includeIfNull: true)
+          String? isDefault,
+      @JsonKey(name: 'code', includeIfNull: true)
+          String? code,
+      @JsonKey(name: 'point_reward', includeIfNull: true)
+          String? pointReward,
+      @JsonKey(name: 'default_type_id', includeIfNull: true)
+          String? defaultTypeId,
+      @JsonKey(name: 'default_term_id', includeIfNull: true)
+          String? defaultTermId});
 }
 
 /// @nodoc
@@ -196,18 +220,30 @@ abstract class _$CustomerDataModelCopyWith<$Res>
       __$CustomerDataModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: '_id') String? sId,
-      @JsonKey(name: 'customer_id') String? customerId,
-      @JsonKey(name: 'customer_code') String? customerCode,
-      @JsonKey(name: 'customer_name') String? customerName,
-      @JsonKey(name: 'default_location_id') String? defaultLocationId,
-      @JsonKey(name: 'phone1') String? phone1,
-      @JsonKey(name: 'address') String? address,
-      @JsonKey(name: 'is_default') String? isDefault,
-      @JsonKey(name: 'code') String? code,
-      @JsonKey(name: 'point_reward') String? pointReward,
-      @JsonKey(name: 'default_type_id') String? defaultTypeId,
-      @JsonKey(name: 'default_term_id') String? defaultTermId});
+      {@JsonKey(name: '_id', includeIfNull: true)
+          String? sId,
+      @JsonKey(name: 'customer_id', includeIfNull: true)
+          String? customerId,
+      @JsonKey(name: 'customer_code', includeIfNull: true)
+          String? customerCode,
+      @JsonKey(name: 'customer_name', includeIfNull: true)
+          String? customerName,
+      @JsonKey(name: 'default_location_id', includeIfNull: true)
+          String? defaultLocationId,
+      @JsonKey(name: 'phone1', includeIfNull: true)
+          String? phone1,
+      @JsonKey(name: 'address', includeIfNull: true)
+          String? address,
+      @JsonKey(name: 'is_default', includeIfNull: true)
+          String? isDefault,
+      @JsonKey(name: 'code', includeIfNull: true)
+          String? code,
+      @JsonKey(name: 'point_reward', includeIfNull: true)
+          String? pointReward,
+      @JsonKey(name: 'default_type_id', includeIfNull: true)
+          String? defaultTypeId,
+      @JsonKey(name: 'default_term_id', includeIfNull: true)
+          String? defaultTermId});
 }
 
 /// @nodoc
@@ -293,57 +329,69 @@ class __$CustomerDataModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CustomerDataModel implements _CustomerDataModel {
   _$_CustomerDataModel(
-      {@JsonKey(name: '_id') this.sId = "",
-      @JsonKey(name: 'customer_id') this.customerId = "",
-      @JsonKey(name: 'customer_code') this.customerCode = "",
-      @JsonKey(name: 'customer_name') this.customerName = "",
-      @JsonKey(name: 'default_location_id') this.defaultLocationId = "",
-      @JsonKey(name: 'phone1') this.phone1 = "",
-      @JsonKey(name: 'address') this.address = "",
-      @JsonKey(name: 'is_default') this.isDefault = "",
-      @JsonKey(name: 'code') this.code = "",
-      @JsonKey(name: 'point_reward') this.pointReward = "",
-      @JsonKey(name: 'default_type_id') this.defaultTypeId = "",
-      @JsonKey(name: 'default_term_id') this.defaultTermId = ""});
+      {@JsonKey(name: '_id', includeIfNull: true)
+          this.sId = "",
+      @JsonKey(name: 'customer_id', includeIfNull: true)
+          this.customerId = "",
+      @JsonKey(name: 'customer_code', includeIfNull: true)
+          this.customerCode = "",
+      @JsonKey(name: 'customer_name', includeIfNull: true)
+          this.customerName = "",
+      @JsonKey(name: 'default_location_id', includeIfNull: true)
+          this.defaultLocationId = "",
+      @JsonKey(name: 'phone1', includeIfNull: true)
+          this.phone1 = "",
+      @JsonKey(name: 'address', includeIfNull: true)
+          this.address = "",
+      @JsonKey(name: 'is_default', includeIfNull: true)
+          this.isDefault = "",
+      @JsonKey(name: 'code', includeIfNull: true)
+          this.code = "",
+      @JsonKey(name: 'point_reward', includeIfNull: true)
+          this.pointReward = "",
+      @JsonKey(name: 'default_type_id', includeIfNull: true)
+          this.defaultTypeId = "",
+      @JsonKey(name: 'default_term_id', includeIfNull: true)
+          this.defaultTermId = ""});
 
   factory _$_CustomerDataModel.fromJson(Map<String, dynamic> json) =>
       _$$_CustomerDataModelFromJson(json);
 
   @override
-  @JsonKey(name: '_id')
+  @JsonKey(name: '_id', includeIfNull: true)
   final String? sId;
   @override
-  @JsonKey(name: 'customer_id')
+  @JsonKey(name: 'customer_id', includeIfNull: true)
   final String? customerId;
   @override
-  @JsonKey(name: 'customer_code')
+  @JsonKey(name: 'customer_code', includeIfNull: true)
   final String? customerCode;
   @override
-  @JsonKey(name: 'customer_name')
+  @JsonKey(name: 'customer_name', includeIfNull: true)
   final String? customerName;
   @override
-  @JsonKey(name: 'default_location_id')
+  @JsonKey(name: 'default_location_id', includeIfNull: true)
   final String? defaultLocationId;
   @override
-  @JsonKey(name: 'phone1')
+  @JsonKey(name: 'phone1', includeIfNull: true)
   final String? phone1;
   @override
-  @JsonKey(name: 'address')
+  @JsonKey(name: 'address', includeIfNull: true)
   final String? address;
   @override
-  @JsonKey(name: 'is_default')
+  @JsonKey(name: 'is_default', includeIfNull: true)
   final String? isDefault;
   @override
-  @JsonKey(name: 'code')
+  @JsonKey(name: 'code', includeIfNull: true)
   final String? code;
   @override
-  @JsonKey(name: 'point_reward')
+  @JsonKey(name: 'point_reward', includeIfNull: true)
   final String? pointReward;
   @override
-  @JsonKey(name: 'default_type_id')
+  @JsonKey(name: 'default_type_id', includeIfNull: true)
   final String? defaultTypeId;
   @override
-  @JsonKey(name: 'default_term_id')
+  @JsonKey(name: 'default_term_id', includeIfNull: true)
   final String? defaultTermId;
 
   @override
@@ -419,58 +467,69 @@ class _$_CustomerDataModel implements _CustomerDataModel {
 
 abstract class _CustomerDataModel implements CustomerDataModel {
   factory _CustomerDataModel(
-          {@JsonKey(name: '_id') String? sId,
-          @JsonKey(name: 'customer_id') String? customerId,
-          @JsonKey(name: 'customer_code') String? customerCode,
-          @JsonKey(name: 'customer_name') String? customerName,
-          @JsonKey(name: 'default_location_id') String? defaultLocationId,
-          @JsonKey(name: 'phone1') String? phone1,
-          @JsonKey(name: 'address') String? address,
-          @JsonKey(name: 'is_default') String? isDefault,
-          @JsonKey(name: 'code') String? code,
-          @JsonKey(name: 'point_reward') String? pointReward,
-          @JsonKey(name: 'default_type_id') String? defaultTypeId,
-          @JsonKey(name: 'default_term_id') String? defaultTermId}) =
-      _$_CustomerDataModel;
+      {@JsonKey(name: '_id', includeIfNull: true)
+          String? sId,
+      @JsonKey(name: 'customer_id', includeIfNull: true)
+          String? customerId,
+      @JsonKey(name: 'customer_code', includeIfNull: true)
+          String? customerCode,
+      @JsonKey(name: 'customer_name', includeIfNull: true)
+          String? customerName,
+      @JsonKey(name: 'default_location_id', includeIfNull: true)
+          String? defaultLocationId,
+      @JsonKey(name: 'phone1', includeIfNull: true)
+          String? phone1,
+      @JsonKey(name: 'address', includeIfNull: true)
+          String? address,
+      @JsonKey(name: 'is_default', includeIfNull: true)
+          String? isDefault,
+      @JsonKey(name: 'code', includeIfNull: true)
+          String? code,
+      @JsonKey(name: 'point_reward', includeIfNull: true)
+          String? pointReward,
+      @JsonKey(name: 'default_type_id', includeIfNull: true)
+          String? defaultTypeId,
+      @JsonKey(name: 'default_term_id', includeIfNull: true)
+          String? defaultTermId}) = _$_CustomerDataModel;
 
   factory _CustomerDataModel.fromJson(Map<String, dynamic> json) =
       _$_CustomerDataModel.fromJson;
 
   @override
-  @JsonKey(name: '_id')
+  @JsonKey(name: '_id', includeIfNull: true)
   String? get sId => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'customer_id')
+  @JsonKey(name: 'customer_id', includeIfNull: true)
   String? get customerId => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'customer_code')
+  @JsonKey(name: 'customer_code', includeIfNull: true)
   String? get customerCode => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'customer_name')
+  @JsonKey(name: 'customer_name', includeIfNull: true)
   String? get customerName => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'default_location_id')
+  @JsonKey(name: 'default_location_id', includeIfNull: true)
   String? get defaultLocationId => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'phone1')
+  @JsonKey(name: 'phone1', includeIfNull: true)
   String? get phone1 => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'address')
+  @JsonKey(name: 'address', includeIfNull: true)
   String? get address => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'is_default')
+  @JsonKey(name: 'is_default', includeIfNull: true)
   String? get isDefault => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'code')
+  @JsonKey(name: 'code', includeIfNull: true)
   String? get code => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'point_reward')
+  @JsonKey(name: 'point_reward', includeIfNull: true)
   String? get pointReward => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'default_type_id')
+  @JsonKey(name: 'default_type_id', includeIfNull: true)
   String? get defaultTypeId => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'default_term_id')
+  @JsonKey(name: 'default_term_id', includeIfNull: true)
   String? get defaultTermId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

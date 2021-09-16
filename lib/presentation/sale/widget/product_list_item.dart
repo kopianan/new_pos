@@ -32,7 +32,7 @@ class ProductListItem extends StatelessWidget {
             children: [
               Text(
                 "Rp." + item.itmPriceFmt!,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize:15, fontWeight: FontWeight.bold),
               ),
               Text("Stok : " + double.parse(item.qty!).toStringAsFixed(0)),
             ],

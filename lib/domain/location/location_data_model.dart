@@ -6,11 +6,21 @@ part 'location_data_model.g.dart';
 @freezed
 class LocationDataModel with _$LocationDataModel {
   factory LocationDataModel({
-    @JsonKey(name: "employee_id") String? employeeId,
-    @JsonKey(name: "employee_name") String? employeeName,
-    @JsonKey(name: "location_code") String? locationCode,
-    @JsonKey(name: "user_name") String? userName,
-    @JsonKey(name: "password_value") String? passwordValue,
+    @Default("")
+    @JsonKey(name: "employee_id", includeIfNull: true)
+        String? employeeId,
+    @Default("")
+    @JsonKey(name: "employee_name", includeIfNull: true)
+        String? employeeName,
+    @Default("")
+    @JsonKey(name: "location_code", includeIfNull: true)
+        String? locationCode,
+    @Default("")
+    @JsonKey(name: "user_name", includeIfNull: true)
+        String? userName,
+    @Default("")
+    @JsonKey(name: "password_value", includeIfNull: true)
+        String? passwordValue,
   }) = _LocationDataModel;
 
   factory LocationDataModel.fromJson(Map<String, dynamic> json) =>

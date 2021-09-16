@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pos/presentation/auth/auth_page.dart';
-import 'package:pos/presentation/menu/menu_page.dart';
 import 'package:pos/presentation/splash_screen_page.dart';
 import 'package:pos/routes/routes.dart';
 
@@ -20,6 +18,11 @@ class _AppWidgetState extends State<AppWidget> {
       title: 'POS',
       getPages: Routes.getPages,
       theme: ThemeData(
+        appBarTheme: AppBarTheme(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            iconTheme: IconThemeData(color: Colors.blueGrey)),
+        scaffoldBackgroundColor: Colors.white,
         textTheme: GoogleFonts.nunitoTextTheme(),
         primarySwatch: Colors.blue,
       ),

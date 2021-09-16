@@ -1,11 +1,14 @@
 import 'package:intl/intl.dart';
 
 class CustomDate {
-  static String getNowDate() {
+  static DateTime getNowDate() {
     var _date = DateTime.now();
+    return _date;
+  }
 
+  static String convertDate(DateTime date) {
     var _formatter = DateFormat.yMEd();
-    return _formatter.format(_date);
+    return _formatter.format(date);
   }
 
   static String getMonthYear() {

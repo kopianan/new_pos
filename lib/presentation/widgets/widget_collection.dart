@@ -121,7 +121,7 @@ class TransactionInfoDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var textStyle = const TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
+    var textStyle = const TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(

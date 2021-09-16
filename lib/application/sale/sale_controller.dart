@@ -3,7 +3,12 @@ import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:pos/domain/customer_data_model.dart';
+import 'package:pos/domain/location/location_data_model.dart';
 import 'package:pos/domain/product_data_model.dart';
+import 'package:pos/domain/sale_transaction_data_model.dart';
+import 'package:pos/infrastructure/function/custom_data.dart';
+import 'package:pos/infrastructure/function/custom_date.dart';
+import 'package:pos/infrastructure/storage/storage.dart';
 
 class SaleController extends GetxController {
   RxList<CustomerDataModel> _userList = <CustomerDataModel>[].obs;
@@ -11,14 +16,64 @@ class SaleController extends GetxController {
   final _selectedCustomer = CustomerDataModel().obs;
   RxList<ProductDataModel> _selectedListItem = <ProductDataModel>[].obs;
   RxList<ProductDataModel> _cartListItem = <ProductDataModel>[].obs;
+  Rx<LocationDataModel> _selectedLocation = LocationDataModel().obs;
   RxDouble _grandTotal = 0.0.obs;
+  RxString _transactionNumber = "".obs;
+  RxBool _isEditable = false.obs;
+  Rx<DateTime> _dateTime = DateTime.now().obs;
+
+  //SETUP EMPTY SALE DATA
+
+  void setupNewData() {
+    _isEditable.value = false;
+    setTransactionNumber(CustomData().generateTransactionId());
+    setSelectedLocation(PrefStorage().getUserLogin());
+    setTransactionDate(DateTime.now());
+    setSelectedCustomer(CustomerDataModel());
+    setCartList([]);
+  }
+
+  //SETUP LOAD DATA
+  void loadDataFromStorage(SaleTransactionDataModel trans) {
+    _isEditable.value = true;
+    setTransactionNumber(trans.transactionNumber);
+    setSelectedLocation(trans.selectedLocation);
+    setTransactionDate(trans.date);
+    setSelectedCustomer(trans.selectedCustomer);
+    setCartList(trans.listProduct);
+  }
+
+  //DATE
+  void setTransactionDate(DateTime date) {
+    this._dateTime.value = date;
+  }
+
+  DateTime get getTransactionDate => this._dateTime.value;
+
+  //LOCATION
+  void setSelectedLocation(LocationDataModel locationDataModel) {
+    this._selectedLocation.value = locationDataModel;
+  }
+
+  LocationDataModel get getSelectedLocation => this._selectedLocation.value;
+
+  //TRANSACTION NUMBER
+  void setTransactionNumber(String data) {
+    this._transactionNumber.value = data;
+  }
+
+  String get getTransactionNumber => this._transactionNumber.value;
 
   void setProductList(List<ProductDataModel> list) {
     this._productList.assignAll(list);
   }
 
   List<ProductDataModel> get getProductList => this._productList;
+
   //CART LIST ITEM
+  void setCartList(List<ProductDataModel> list) {
+    this._cartListItem.assignAll(list);
+  }
 
   Either<String, Unit> addBuyQty(ProductDataModel item) {
     //find data
@@ -27,7 +82,7 @@ class SaleController extends GetxController {
     //Find index
     int _index = _cartListItem.indexOf(_currItem);
 
-    if ((_currItem.totalBuy + 1) > double.parse(_currItem.qty!)) {
+    if ((_currItem.totalBuy + 1) > int.parse(_currItem.qty!)) {
       return left("Stock tidak cukup");
     } else {
       //Add quantity

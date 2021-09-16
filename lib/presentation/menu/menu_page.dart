@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pos/infrastructure/function/custom_snackbar.dart';
+import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/presentation/auth/auth_page.dart';
 import 'package:pos/presentation/config/config_page.dart';
 import 'package:pos/presentation/config/location_page.dart';
@@ -42,7 +44,14 @@ class _MenuPageState extends State<MenuPage> {
               // const SizedBox(height: 20),
               _CustomOutlineButton(
                 onTap: () {
-                  Get.toNamed(AuthPage.TAG);
+                  //check if base url already there
+                  try {
+                    PrefStorage().getBaseUrl();
+                    Get.toNamed(AuthPage.TAG);
+                  } catch (e) {
+                    showDefaultSnackbar(context,
+                        message: "Silahkan set config terlebih dahulu");
+                  }
                 },
                 text: "Login",
               ),

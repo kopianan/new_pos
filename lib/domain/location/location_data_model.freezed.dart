@@ -22,11 +22,16 @@ class _$LocationDataModelTearOff {
   const _$LocationDataModelTearOff();
 
   _LocationDataModel call(
-      {@JsonKey(name: "employee_id") String? employeeId,
-      @JsonKey(name: "employee_name") String? employeeName,
-      @JsonKey(name: "location_code") String? locationCode,
-      @JsonKey(name: "user_name") String? userName,
-      @JsonKey(name: "password_value") String? passwordValue}) {
+      {@JsonKey(name: "employee_id", includeIfNull: true)
+          String? employeeId = "",
+      @JsonKey(name: "employee_name", includeIfNull: true)
+          String? employeeName = "",
+      @JsonKey(name: "location_code", includeIfNull: true)
+          String? locationCode = "",
+      @JsonKey(name: "user_name", includeIfNull: true)
+          String? userName = "",
+      @JsonKey(name: "password_value", includeIfNull: true)
+          String? passwordValue = ""}) {
     return _LocationDataModel(
       employeeId: employeeId,
       employeeName: employeeName,
@@ -46,15 +51,15 @@ const $LocationDataModel = _$LocationDataModelTearOff();
 
 /// @nodoc
 mixin _$LocationDataModel {
-  @JsonKey(name: "employee_id")
+  @JsonKey(name: "employee_id", includeIfNull: true)
   String? get employeeId => throw _privateConstructorUsedError;
-  @JsonKey(name: "employee_name")
+  @JsonKey(name: "employee_name", includeIfNull: true)
   String? get employeeName => throw _privateConstructorUsedError;
-  @JsonKey(name: "location_code")
+  @JsonKey(name: "location_code", includeIfNull: true)
   String? get locationCode => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_name")
+  @JsonKey(name: "user_name", includeIfNull: true)
   String? get userName => throw _privateConstructorUsedError;
-  @JsonKey(name: "password_value")
+  @JsonKey(name: "password_value", includeIfNull: true)
   String? get passwordValue => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -69,11 +74,16 @@ abstract class $LocationDataModelCopyWith<$Res> {
           LocationDataModel value, $Res Function(LocationDataModel) then) =
       _$LocationDataModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: "employee_id") String? employeeId,
-      @JsonKey(name: "employee_name") String? employeeName,
-      @JsonKey(name: "location_code") String? locationCode,
-      @JsonKey(name: "user_name") String? userName,
-      @JsonKey(name: "password_value") String? passwordValue});
+      {@JsonKey(name: "employee_id", includeIfNull: true)
+          String? employeeId,
+      @JsonKey(name: "employee_name", includeIfNull: true)
+          String? employeeName,
+      @JsonKey(name: "location_code", includeIfNull: true)
+          String? locationCode,
+      @JsonKey(name: "user_name", includeIfNull: true)
+          String? userName,
+      @JsonKey(name: "password_value", includeIfNull: true)
+          String? passwordValue});
 }
 
 /// @nodoc
@@ -126,11 +136,16 @@ abstract class _$LocationDataModelCopyWith<$Res>
       __$LocationDataModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: "employee_id") String? employeeId,
-      @JsonKey(name: "employee_name") String? employeeName,
-      @JsonKey(name: "location_code") String? locationCode,
-      @JsonKey(name: "user_name") String? userName,
-      @JsonKey(name: "password_value") String? passwordValue});
+      {@JsonKey(name: "employee_id", includeIfNull: true)
+          String? employeeId,
+      @JsonKey(name: "employee_name", includeIfNull: true)
+          String? employeeName,
+      @JsonKey(name: "location_code", includeIfNull: true)
+          String? locationCode,
+      @JsonKey(name: "user_name", includeIfNull: true)
+          String? userName,
+      @JsonKey(name: "password_value", includeIfNull: true)
+          String? passwordValue});
 }
 
 /// @nodoc
@@ -181,29 +196,34 @@ class __$LocationDataModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LocationDataModel implements _LocationDataModel {
   _$_LocationDataModel(
-      {@JsonKey(name: "employee_id") this.employeeId,
-      @JsonKey(name: "employee_name") this.employeeName,
-      @JsonKey(name: "location_code") this.locationCode,
-      @JsonKey(name: "user_name") this.userName,
-      @JsonKey(name: "password_value") this.passwordValue});
+      {@JsonKey(name: "employee_id", includeIfNull: true)
+          this.employeeId = "",
+      @JsonKey(name: "employee_name", includeIfNull: true)
+          this.employeeName = "",
+      @JsonKey(name: "location_code", includeIfNull: true)
+          this.locationCode = "",
+      @JsonKey(name: "user_name", includeIfNull: true)
+          this.userName = "",
+      @JsonKey(name: "password_value", includeIfNull: true)
+          this.passwordValue = ""});
 
   factory _$_LocationDataModel.fromJson(Map<String, dynamic> json) =>
       _$$_LocationDataModelFromJson(json);
 
   @override
-  @JsonKey(name: "employee_id")
+  @JsonKey(name: "employee_id", includeIfNull: true)
   final String? employeeId;
   @override
-  @JsonKey(name: "employee_name")
+  @JsonKey(name: "employee_name", includeIfNull: true)
   final String? employeeName;
   @override
-  @JsonKey(name: "location_code")
+  @JsonKey(name: "location_code", includeIfNull: true)
   final String? locationCode;
   @override
-  @JsonKey(name: "user_name")
+  @JsonKey(name: "user_name", includeIfNull: true)
   final String? userName;
   @override
-  @JsonKey(name: "password_value")
+  @JsonKey(name: "password_value", includeIfNull: true)
   final String? passwordValue;
 
   @override
@@ -254,30 +274,34 @@ class _$_LocationDataModel implements _LocationDataModel {
 
 abstract class _LocationDataModel implements LocationDataModel {
   factory _LocationDataModel(
-          {@JsonKey(name: "employee_id") String? employeeId,
-          @JsonKey(name: "employee_name") String? employeeName,
-          @JsonKey(name: "location_code") String? locationCode,
-          @JsonKey(name: "user_name") String? userName,
-          @JsonKey(name: "password_value") String? passwordValue}) =
-      _$_LocationDataModel;
+      {@JsonKey(name: "employee_id", includeIfNull: true)
+          String? employeeId,
+      @JsonKey(name: "employee_name", includeIfNull: true)
+          String? employeeName,
+      @JsonKey(name: "location_code", includeIfNull: true)
+          String? locationCode,
+      @JsonKey(name: "user_name", includeIfNull: true)
+          String? userName,
+      @JsonKey(name: "password_value", includeIfNull: true)
+          String? passwordValue}) = _$_LocationDataModel;
 
   factory _LocationDataModel.fromJson(Map<String, dynamic> json) =
       _$_LocationDataModel.fromJson;
 
   @override
-  @JsonKey(name: "employee_id")
+  @JsonKey(name: "employee_id", includeIfNull: true)
   String? get employeeId => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: "employee_name")
+  @JsonKey(name: "employee_name", includeIfNull: true)
   String? get employeeName => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: "location_code")
+  @JsonKey(name: "location_code", includeIfNull: true)
   String? get locationCode => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: "user_name")
+  @JsonKey(name: "user_name", includeIfNull: true)
   String? get userName => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: "password_value")
+  @JsonKey(name: "password_value", includeIfNull: true)
   String? get passwordValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
