@@ -4,7 +4,6 @@ import 'package:pos/infrastructure/function/custom_snackbar.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/presentation/auth/auth_page.dart';
 import 'package:pos/presentation/config/config_page.dart';
-import 'package:pos/presentation/config/location_page.dart';
 import 'package:pos/presentation/widgets/widget_collection.dart';
 
 class MenuPage extends StatefulWidget {
