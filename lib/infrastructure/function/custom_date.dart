@@ -11,6 +11,11 @@ class CustomDate {
     return _formatter.format(date);
   }
 
+  static String convertDateSales(DateTime date) {
+    var _formatter = DateFormat('dd/MM/yyyy');
+    return _formatter.format(date);
+  }
+
   static String getMonthYear() {
     var _dateNow = DateTime.now();
     var _date = DateFormat('yyMM').format(_dateNow);

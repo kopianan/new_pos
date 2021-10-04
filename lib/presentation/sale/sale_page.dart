@@ -80,6 +80,8 @@ class _SalePageState extends State<SalePage> {
     }
   }
 
+  final _saleBloc = getIt<SaleCubit>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,206 +98,224 @@ class _SalePageState extends State<SalePage> {
       //   ],
       // ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    foregroundColor: Colors.blueGrey,
-                    title: Text("Buat Pesanan"),
-                    centerTitle: true,
-                    floating: true,
-                  ),
-                  SliverToBoxAdapter(
-                      child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: informationSection(),
-                  )),
-                  SliverToBoxAdapter(child: Divider(thickness: 1)),
-                  SliverToBoxAdapter(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: 10,
-                            bottom: 8,
-                            right: 15,
-                            left: 15,
-                          ),
-                          child: SectionTitle(
-                            title: "Transaction Detail",
-                            textButton: "Tambah",
-                            onTap: () {
-                              Get.toNamed(AddItemPage.TAG);
-                            },
-                          ),
-                        ),
-                        Divider(
-                          thickness: 1,
-                        )
-                      ],
-                    ),
-                  ),
-                  Obx(
-                    () => SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          var _list = _saleController.getCartList;
-
-                          return ProductCartItem(
-                            onDelete: () {
-                              _saleController.removeItemFromCart(_list[index]);
-                            },
-                            item: _list[index],
-                            onAdd: () {
-                              _saleController.addBuyQty(_list[index]).fold(
-                                (l) {
-                                  Get.showSnackbar(
-                                    GetBar(
-                                      message: l,
-                                      duration: Duration(seconds: 1),
-                                    ),
-                                  );
-                                },
-                                (r) => print("Sukses"),
-                              );
-                            },
-                            onDecrease: () {
-                              _saleController.decreaseBuyQty(_list[index]).fold(
-                                (l) {
-                                  Get.showSnackbar(
-                                    GetBar(
-                                      message: l,
-                                      duration: Duration(seconds: 1),
-                                    ),
-                                  );
-                                },
-                                (r) => print("Sukses"),
-                              );
-                            },
-                          );
-                        },
-                        childCount: _saleController.getCartList.length,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(-1, -2),
-                    blurRadius: 2,
-                    spreadRadius: 2)
-              ]),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: BlocProvider(
+          create: (context) => _saleBloc,
+          child: BlocConsumer<SaleCubit, SaleState>(
+            listener: (context, state) {
+              // TODO: implement listener
+            },
+            builder: (context, state) {
+              return Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Grand Total",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverAppBar(
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          foregroundColor: Colors.blueGrey,
+                          title: Text("Buat Pesanan"),
+                          centerTitle: true,
+                          floating: true,
+                        ),
+                        SliverToBoxAdapter(
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: informationSection(),
+                        )),
+                        SliverToBoxAdapter(child: Divider(thickness: 1)),
+                        SliverToBoxAdapter(
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: 10,
+                                  bottom: 8,
+                                  right: 15,
+                                  left: 15,
+                                ),
+                                child: SectionTitle(
+                                  title: "Transaction Detail",
+                                  textButton: "Tambah",
+                                  onTap: () {
+                                    Get.toNamed(AddItemPage.TAG);
+                                  },
+                                ),
+                              ),
+                              Divider(
+                                thickness: 1,
+                              )
+                            ],
                           ),
                         ),
                         Obx(
-                          () => Text(
-                            _saleController.calculateGrandTotal().toString(),
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
+                          () => SliverList(
+                            delegate: SliverChildBuilderDelegate(
+                              (context, index) {
+                                var _list = _saleController.getCartList;
+
+                                return ProductCartItem(
+                                  onDelete: () {
+                                    _saleController
+                                        .removeItemFromCart(_list[index]);
+                                  },
+                                  item: _list[index],
+                                  onAdd: () {
+                                    _saleController
+                                        .addBuyQty(_list[index])
+                                        .fold(
+                                      (l) {
+                                        Get.showSnackbar(
+                                          GetBar(
+                                            message: l,
+                                            duration: Duration(seconds: 1),
+                                          ),
+                                        );
+                                      },
+                                      (r) => print("Sukses"),
+                                    );
+                                  },
+                                  onDecrease: () {
+                                    _saleController
+                                        .decreaseBuyQty(_list[index])
+                                        .fold(
+                                      (l) {
+                                        Get.showSnackbar(
+                                          GetBar(
+                                            message: l,
+                                            duration: Duration(seconds: 1),
+                                          ),
+                                        );
+                                      },
+                                      (r) => print("Sukses"),
+                                    );
+                                  },
+                                );
+                              },
+                              childCount: _saleController.getCartList.length,
                             ),
                           ),
                         )
                       ],
                     ),
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: MaterialButton(
-                          height: 45,
-                          elevation: 5,
-                          shape: OutlineInputBorder(
-                              borderSide: BorderSide(
-                            width: 2,
-                            color: Colors.indigoAccent[400]!,
-                          )),
-                          child: Text(
-                            "Simpan",
-                            style: TextStyle(
-                              color: Colors.indigoAccent[400]!,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          onPressed: () async {
-                            try {
-                              await saveTransactionData();
-                              showDefaultSnackbar(context,
-                                  message: "Berhasil menyimpan data",
-                                  duration: Duration(seconds: 3));
-                            } catch (e) {
-                              showDefaultSnackbar(
-                                context,
-                                message: e.toString(),
-                                duration: Duration(seconds: 3),
-                              );
-                            }
-                          },
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        flex: 3,
-                        child: MaterialButton(
-                          height: 45,
-                          elevation: 5,
-                          color: Colors.indigoAccent[400],
-                          child: Text(
-                            "Lanjutkan",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          onPressed: () {
-                            print(_box.getSavedTransactionDarta());
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
                   Container(
-                    padding: EdgeInsets.all(5),
-                    alignment: Alignment.center,
-                    child: InkWell(
-                      child: Text(
-                        "Hapus Record",
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
-                      ),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(-1, -2),
+                          blurRadius: 2,
+                          spreadRadius: 2)
+                    ]),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Grand Total",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Obx(
+                                () => Text(
+                                  _saleController
+                                      .calculateGrandTotal()
+                                      .toString(),
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: MaterialButton(
+                                height: 45,
+                                elevation: 5,
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                  width: 2,
+                                  color: Colors.indigoAccent[400]!,
+                                )),
+                                child: Text(
+                                  "Simpan",
+                                  style: TextStyle(
+                                    color: Colors.indigoAccent[400]!,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                onPressed: () async {
+                                  try {
+                                    await saveTransactionData();
+                                    showDefaultSnackbar(context,
+                                        message: "Berhasil menyimpan data",
+                                        duration: Duration(seconds: 3));
+                                  } catch (e) {
+                                    showDefaultSnackbar(
+                                      context,
+                                      message: e.toString(),
+                                      duration: Duration(seconds: 3),
+                                    );
+                                  }
+                                },
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Expanded(
+                              flex: 3,
+                              child: MaterialButton(
+                                height: 45,
+                                elevation: 5,
+                                color: Colors.indigoAccent[400],
+                                child: Text(
+                                  "Lanjutkan",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  saleCubit.getCustomerDiscount(
+                                      _saleController.getSelectedCustomer);
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          alignment: Alignment.center,
+                          child: InkWell(
+                            child: Text(
+                              "Hapus Record",
+                              style: TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                  )
+                  ),
                 ],
-              ),
-            ),
-          ],
+              );
+            },
+          ),
         ),
       ),
     );

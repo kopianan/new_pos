@@ -4,9 +4,12 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:pos/application/sale/sale_function.dart';
 import 'package:pos/domain/customer_data_model.dart';
+import 'package:pos/domain/discount/discount_data_model.dart';
 import 'package:pos/domain/location/location_data_model.dart';
 import 'package:pos/domain/payment_term.dart';
 import 'package:pos/domain/product_data_model.dart';
+import 'package:pos/domain/sale/item_detail_data_model.dart';
+import 'package:pos/domain/sale/request_sale_transaction_data_model.dart';
 import 'package:pos/domain/sale_transaction_data_model.dart';
 import 'package:pos/infrastructure/function/custom_data.dart';
 import 'package:pos/infrastructure/function/custom_date.dart';
@@ -26,6 +29,7 @@ class SaleController extends GetxController {
 
   Rx<PaymentTerm> _paymentTerm = PaymentTerm().obs;
   Rx<PaymentTerm> _paymentType = PaymentTerm().obs;
+  RxList<DiscountDataModel> _customrDiscountList = <DiscountDataModel>[].obs;
 
   //SETUP EMPTY SALE DATA
 
@@ -227,4 +231,37 @@ class SaleController extends GetxController {
   }
 
   CustomerDataModel get getSelectedCustomer => this._selectedCustomer.value;
+
+//void process request
+
+  void convertData() {
+    RequestSaleTransactionDataModel _saleTransaction;
+    List<ItemDetailDataModel> _itemList = [];
+
+    _cartListItem.forEach((element) {
+      var _singleItem = ItemDetailDataModel(
+          discount: "",
+          qty: element.totalBuy.toStringAsFixed(0),
+          itemCode: element.itemCode,
+          itemId: element.itemId,
+          price: element.itemPrice,
+          tax: "",
+          unit: "PCS");
+      _itemList.add(_singleItem);
+    });
+
+    _saleTransaction = RequestSaleTransactionDataModel(
+      transNo: getTransactionNumber,
+      location: getSelectedLocation.locationCode,
+      transDt: CustomDate.convertDateSales(DateTime.now()),
+      customer: getSelectedCustomer.customerId,
+      createBy: PrefStorage().getUserLogin().userName,
+      remark: "remark",
+      pmtterm: getPaymentTerm.code,
+      pmttype: getPaymentType.code,
+      details: _itemList,
+      transType: PrefStorage().getTransactionType(),
+    );
+    print(_saleTransaction);
+  }
 }
