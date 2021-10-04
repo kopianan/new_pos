@@ -28,6 +28,8 @@ class _$SaleTransactionDataModelTearOff {
       required DateTime date,
       required String total,
       required CustomerDataModel selectedCustomer,
+      required PaymentTerm paymentTerm,
+      required PaymentTerm paymentType,
       required List<ProductDataModel> listProduct}) {
     return _SaleTransactionDataModel(
       transactionNumber: transactionNumber,
@@ -35,6 +37,8 @@ class _$SaleTransactionDataModelTearOff {
       date: date,
       total: total,
       selectedCustomer: selectedCustomer,
+      paymentTerm: paymentTerm,
+      paymentType: paymentType,
       listProduct: listProduct,
     );
   }
@@ -54,6 +58,8 @@ mixin _$SaleTransactionDataModel {
   DateTime get date => throw _privateConstructorUsedError;
   String get total => throw _privateConstructorUsedError;
   CustomerDataModel get selectedCustomer => throw _privateConstructorUsedError;
+  PaymentTerm get paymentTerm => throw _privateConstructorUsedError;
+  PaymentTerm get paymentType => throw _privateConstructorUsedError;
   List<ProductDataModel> get listProduct => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -73,10 +79,14 @@ abstract class $SaleTransactionDataModelCopyWith<$Res> {
       DateTime date,
       String total,
       CustomerDataModel selectedCustomer,
+      PaymentTerm paymentTerm,
+      PaymentTerm paymentType,
       List<ProductDataModel> listProduct});
 
   $LocationDataModelCopyWith<$Res> get selectedLocation;
   $CustomerDataModelCopyWith<$Res> get selectedCustomer;
+  $PaymentTermCopyWith<$Res> get paymentTerm;
+  $PaymentTermCopyWith<$Res> get paymentType;
 }
 
 /// @nodoc
@@ -95,6 +105,8 @@ class _$SaleTransactionDataModelCopyWithImpl<$Res>
     Object? date = freezed,
     Object? total = freezed,
     Object? selectedCustomer = freezed,
+    Object? paymentTerm = freezed,
+    Object? paymentType = freezed,
     Object? listProduct = freezed,
   }) {
     return _then(_value.copyWith(
@@ -118,6 +130,14 @@ class _$SaleTransactionDataModelCopyWithImpl<$Res>
           ? _value.selectedCustomer
           : selectedCustomer // ignore: cast_nullable_to_non_nullable
               as CustomerDataModel,
+      paymentTerm: paymentTerm == freezed
+          ? _value.paymentTerm
+          : paymentTerm // ignore: cast_nullable_to_non_nullable
+              as PaymentTerm,
+      paymentType: paymentType == freezed
+          ? _value.paymentType
+          : paymentType // ignore: cast_nullable_to_non_nullable
+              as PaymentTerm,
       listProduct: listProduct == freezed
           ? _value.listProduct
           : listProduct // ignore: cast_nullable_to_non_nullable
@@ -138,6 +158,20 @@ class _$SaleTransactionDataModelCopyWithImpl<$Res>
       return _then(_value.copyWith(selectedCustomer: value));
     });
   }
+
+  @override
+  $PaymentTermCopyWith<$Res> get paymentTerm {
+    return $PaymentTermCopyWith<$Res>(_value.paymentTerm, (value) {
+      return _then(_value.copyWith(paymentTerm: value));
+    });
+  }
+
+  @override
+  $PaymentTermCopyWith<$Res> get paymentType {
+    return $PaymentTermCopyWith<$Res>(_value.paymentType, (value) {
+      return _then(_value.copyWith(paymentType: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -153,12 +187,18 @@ abstract class _$SaleTransactionDataModelCopyWith<$Res>
       DateTime date,
       String total,
       CustomerDataModel selectedCustomer,
+      PaymentTerm paymentTerm,
+      PaymentTerm paymentType,
       List<ProductDataModel> listProduct});
 
   @override
   $LocationDataModelCopyWith<$Res> get selectedLocation;
   @override
   $CustomerDataModelCopyWith<$Res> get selectedCustomer;
+  @override
+  $PaymentTermCopyWith<$Res> get paymentTerm;
+  @override
+  $PaymentTermCopyWith<$Res> get paymentType;
 }
 
 /// @nodoc
@@ -180,6 +220,8 @@ class __$SaleTransactionDataModelCopyWithImpl<$Res>
     Object? date = freezed,
     Object? total = freezed,
     Object? selectedCustomer = freezed,
+    Object? paymentTerm = freezed,
+    Object? paymentType = freezed,
     Object? listProduct = freezed,
   }) {
     return _then(_SaleTransactionDataModel(
@@ -203,6 +245,14 @@ class __$SaleTransactionDataModelCopyWithImpl<$Res>
           ? _value.selectedCustomer
           : selectedCustomer // ignore: cast_nullable_to_non_nullable
               as CustomerDataModel,
+      paymentTerm: paymentTerm == freezed
+          ? _value.paymentTerm
+          : paymentTerm // ignore: cast_nullable_to_non_nullable
+              as PaymentTerm,
+      paymentType: paymentType == freezed
+          ? _value.paymentType
+          : paymentType // ignore: cast_nullable_to_non_nullable
+              as PaymentTerm,
       listProduct: listProduct == freezed
           ? _value.listProduct
           : listProduct // ignore: cast_nullable_to_non_nullable
@@ -220,6 +270,8 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
       required this.date,
       required this.total,
       required this.selectedCustomer,
+      required this.paymentTerm,
+      required this.paymentType,
       required this.listProduct});
 
   factory _$_SaleTransactionDataModel.fromJson(Map<String, dynamic> json) =>
@@ -236,11 +288,15 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
   @override
   final CustomerDataModel selectedCustomer;
   @override
+  final PaymentTerm paymentTerm;
+  @override
+  final PaymentTerm paymentType;
+  @override
   final List<ProductDataModel> listProduct;
 
   @override
   String toString() {
-    return 'SaleTransactionDataModel(transactionNumber: $transactionNumber, selectedLocation: $selectedLocation, date: $date, total: $total, selectedCustomer: $selectedCustomer, listProduct: $listProduct)';
+    return 'SaleTransactionDataModel(transactionNumber: $transactionNumber, selectedLocation: $selectedLocation, date: $date, total: $total, selectedCustomer: $selectedCustomer, paymentTerm: $paymentTerm, paymentType: $paymentType, listProduct: $listProduct)';
   }
 
   @override
@@ -260,6 +316,12 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
             (identical(other.selectedCustomer, selectedCustomer) ||
                 const DeepCollectionEquality()
                     .equals(other.selectedCustomer, selectedCustomer)) &&
+            (identical(other.paymentTerm, paymentTerm) ||
+                const DeepCollectionEquality()
+                    .equals(other.paymentTerm, paymentTerm)) &&
+            (identical(other.paymentType, paymentType) ||
+                const DeepCollectionEquality()
+                    .equals(other.paymentType, paymentType)) &&
             (identical(other.listProduct, listProduct) ||
                 const DeepCollectionEquality()
                     .equals(other.listProduct, listProduct)));
@@ -273,6 +335,8 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
       const DeepCollectionEquality().hash(date) ^
       const DeepCollectionEquality().hash(total) ^
       const DeepCollectionEquality().hash(selectedCustomer) ^
+      const DeepCollectionEquality().hash(paymentTerm) ^
+      const DeepCollectionEquality().hash(paymentType) ^
       const DeepCollectionEquality().hash(listProduct);
 
   @JsonKey(ignore: true)
@@ -294,6 +358,8 @@ abstract class _SaleTransactionDataModel implements SaleTransactionDataModel {
           required DateTime date,
           required String total,
           required CustomerDataModel selectedCustomer,
+          required PaymentTerm paymentTerm,
+          required PaymentTerm paymentType,
           required List<ProductDataModel> listProduct}) =
       _$_SaleTransactionDataModel;
 
@@ -310,6 +376,10 @@ abstract class _SaleTransactionDataModel implements SaleTransactionDataModel {
   String get total => throw _privateConstructorUsedError;
   @override
   CustomerDataModel get selectedCustomer => throw _privateConstructorUsedError;
+  @override
+  PaymentTerm get paymentTerm => throw _privateConstructorUsedError;
+  @override
+  PaymentTerm get paymentType => throw _privateConstructorUsedError;
   @override
   List<ProductDataModel> get listProduct => throw _privateConstructorUsedError;
   @override

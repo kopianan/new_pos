@@ -37,6 +37,12 @@ class _$SaleStateTearOff {
     );
   }
 
+  _OnGetCustomerDiscount onGetCustomerDiscount(List<DiscountDataModel> list) {
+    return _OnGetCustomerDiscount(
+      list,
+    );
+  }
+
   _OnGetCustomer onGetCustomer(List<CustomerDataModel>? list) {
     return _OnGetCustomer(
       list,
@@ -55,6 +61,8 @@ mixin _$SaleState {
     required TResult Function() isLoading,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(List<DiscountDataModel> list)
+        onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +72,7 @@ mixin _$SaleState {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
   }) =>
       throw _privateConstructorUsedError;
@@ -73,6 +82,7 @@ mixin _$SaleState {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     required TResult orElse(),
   }) =>
@@ -83,6 +93,8 @@ mixin _$SaleState {
     required TResult Function(_IsLoading value) isLoading,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetCustomerDiscount value)
+        onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
   }) =>
       throw _privateConstructorUsedError;
@@ -92,6 +104,7 @@ mixin _$SaleState {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
   }) =>
       throw _privateConstructorUsedError;
@@ -101,6 +114,7 @@ mixin _$SaleState {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     required TResult orElse(),
   }) =>
@@ -163,6 +177,8 @@ class _$_Initial implements _Initial {
     required TResult Function() isLoading,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(List<DiscountDataModel> list)
+        onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
   }) {
     return initial();
@@ -175,6 +191,7 @@ class _$_Initial implements _Initial {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
   }) {
     return initial?.call();
@@ -187,6 +204,7 @@ class _$_Initial implements _Initial {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     required TResult orElse(),
   }) {
@@ -203,6 +221,8 @@ class _$_Initial implements _Initial {
     required TResult Function(_IsLoading value) isLoading,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetCustomerDiscount value)
+        onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
   }) {
     return initial(this);
@@ -215,6 +235,7 @@ class _$_Initial implements _Initial {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
   }) {
     return initial?.call(this);
@@ -227,6 +248,7 @@ class _$_Initial implements _Initial {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     required TResult orElse(),
   }) {
@@ -283,6 +305,8 @@ class _$_IsLoading implements _IsLoading {
     required TResult Function() isLoading,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(List<DiscountDataModel> list)
+        onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
   }) {
     return isLoading();
@@ -295,6 +319,7 @@ class _$_IsLoading implements _IsLoading {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
   }) {
     return isLoading?.call();
@@ -307,6 +332,7 @@ class _$_IsLoading implements _IsLoading {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     required TResult orElse(),
   }) {
@@ -323,6 +349,8 @@ class _$_IsLoading implements _IsLoading {
     required TResult Function(_IsLoading value) isLoading,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetCustomerDiscount value)
+        onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
   }) {
     return isLoading(this);
@@ -335,6 +363,7 @@ class _$_IsLoading implements _IsLoading {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
   }) {
     return isLoading?.call(this);
@@ -347,6 +376,7 @@ class _$_IsLoading implements _IsLoading {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     required TResult orElse(),
   }) {
@@ -427,6 +457,8 @@ class _$_IsError implements _IsError {
     required TResult Function() isLoading,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(List<DiscountDataModel> list)
+        onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
   }) {
     return isError(error);
@@ -439,6 +471,7 @@ class _$_IsError implements _IsError {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
   }) {
     return isError?.call(error);
@@ -451,6 +484,7 @@ class _$_IsError implements _IsError {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     required TResult orElse(),
   }) {
@@ -467,6 +501,8 @@ class _$_IsError implements _IsError {
     required TResult Function(_IsLoading value) isLoading,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetCustomerDiscount value)
+        onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
   }) {
     return isError(this);
@@ -479,6 +515,7 @@ class _$_IsError implements _IsError {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
   }) {
     return isError?.call(this);
@@ -491,6 +528,7 @@ class _$_IsError implements _IsError {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     required TResult orElse(),
   }) {
@@ -579,6 +617,8 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     required TResult Function() isLoading,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(List<DiscountDataModel> list)
+        onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
   }) {
     return onGetAllProducts(list);
@@ -591,6 +631,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
   }) {
     return onGetAllProducts?.call(list);
@@ -603,6 +644,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     required TResult orElse(),
   }) {
@@ -619,6 +661,8 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     required TResult Function(_IsLoading value) isLoading,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetCustomerDiscount value)
+        onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
   }) {
     return onGetAllProducts(this);
@@ -631,6 +675,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
   }) {
     return onGetAllProducts?.call(this);
@@ -643,6 +688,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     required TResult orElse(),
   }) {
@@ -660,6 +706,168 @@ abstract class _OnGetAllProducts implements SaleState {
   List<ProductDataModel> get list => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$OnGetAllProductsCopyWith<_OnGetAllProducts> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnGetCustomerDiscountCopyWith<$Res> {
+  factory _$OnGetCustomerDiscountCopyWith(_OnGetCustomerDiscount value,
+          $Res Function(_OnGetCustomerDiscount) then) =
+      __$OnGetCustomerDiscountCopyWithImpl<$Res>;
+  $Res call({List<DiscountDataModel> list});
+}
+
+/// @nodoc
+class __$OnGetCustomerDiscountCopyWithImpl<$Res>
+    extends _$SaleStateCopyWithImpl<$Res>
+    implements _$OnGetCustomerDiscountCopyWith<$Res> {
+  __$OnGetCustomerDiscountCopyWithImpl(_OnGetCustomerDiscount _value,
+      $Res Function(_OnGetCustomerDiscount) _then)
+      : super(_value, (v) => _then(v as _OnGetCustomerDiscount));
+
+  @override
+  _OnGetCustomerDiscount get _value => super._value as _OnGetCustomerDiscount;
+
+  @override
+  $Res call({
+    Object? list = freezed,
+  }) {
+    return _then(_OnGetCustomerDiscount(
+      list == freezed
+          ? _value.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<DiscountDataModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
+  const _$_OnGetCustomerDiscount(this.list);
+
+  @override
+  final List<DiscountDataModel> list;
+
+  @override
+  String toString() {
+    return 'SaleState.onGetCustomerDiscount(list: $list)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnGetCustomerDiscount &&
+            (identical(other.list, list) ||
+                const DeepCollectionEquality().equals(other.list, list)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(list);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnGetCustomerDiscountCopyWith<_OnGetCustomerDiscount> get copyWith =>
+      __$OnGetCustomerDiscountCopyWithImpl<_OnGetCustomerDiscount>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() isLoading,
+    required TResult Function(String error) isError,
+    required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(List<DiscountDataModel> list)
+        onGetCustomerDiscount,
+    required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
+  }) {
+    return onGetCustomerDiscount(list);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function(String error)? isError,
+    TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
+    TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
+  }) {
+    return onGetCustomerDiscount?.call(list);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function(String error)? isError,
+    TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
+    TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
+    required TResult orElse(),
+  }) {
+    if (onGetCustomerDiscount != null) {
+      return onGetCustomerDiscount(list);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_IsError value) isError,
+    required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetCustomerDiscount value)
+        onGetCustomerDiscount,
+    required TResult Function(_OnGetCustomer value) onGetCustomer,
+  }) {
+    return onGetCustomerDiscount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsError value)? isError,
+    TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
+    TResult Function(_OnGetCustomer value)? onGetCustomer,
+  }) {
+    return onGetCustomerDiscount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsError value)? isError,
+    TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
+    TResult Function(_OnGetCustomer value)? onGetCustomer,
+    required TResult orElse(),
+  }) {
+    if (onGetCustomerDiscount != null) {
+      return onGetCustomerDiscount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnGetCustomerDiscount implements SaleState {
+  const factory _OnGetCustomerDiscount(List<DiscountDataModel> list) =
+      _$_OnGetCustomerDiscount;
+
+  List<DiscountDataModel> get list => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnGetCustomerDiscountCopyWith<_OnGetCustomerDiscount> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -731,6 +939,8 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     required TResult Function() isLoading,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(List<DiscountDataModel> list)
+        onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
   }) {
     return onGetCustomer(list);
@@ -743,6 +953,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
   }) {
     return onGetCustomer?.call(list);
@@ -755,6 +966,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     TResult Function()? isLoading,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     required TResult orElse(),
   }) {
@@ -771,6 +983,8 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     required TResult Function(_IsLoading value) isLoading,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetCustomerDiscount value)
+        onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
   }) {
     return onGetCustomer(this);
@@ -783,6 +997,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
   }) {
     return onGetCustomer?.call(this);
@@ -795,6 +1010,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     TResult Function(_IsLoading value)? isLoading,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     required TResult orElse(),
   }) {

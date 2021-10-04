@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pos/domain/customer_data_model.dart';
+import 'package:pos/domain/discount/discount_data_model.dart';
 import 'package:pos/domain/product_data_model.dart';
 import 'package:pos/domain/sale/i_sale.dart';
 
@@ -31,5 +32,19 @@ class SaleCubit extends Cubit<SaleState> {
       (l) => emit(SaleState.isError(l.toString())),
       (r) => emit(SaleState.onGetCustomer(r)),
     );
+  }
+
+  void getCustomerDiscount(CustomerDataModel customerDataModel) async {
+    emit(const SaleState.isLoading());
+    try {
+      final _data = await iSale.getCustomerDiscount(customerDataModel);
+
+      _data.fold(
+        (l) => emit(SaleState.isError(l.toString())),
+        (r) => emit(SaleState.onGetCustomerDiscount(r)),
+      );
+    } catch (e) {
+      emit(SaleState.isError(e.toString()));
+    }
   }
 }

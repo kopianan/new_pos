@@ -90,7 +90,7 @@ class SectionTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         (textButton == null)
             ? SizedBox()
@@ -101,7 +101,7 @@ class SectionTitle extends StatelessWidget {
                 child: Text(
                   textButton!,
                   style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.blue),
                 ),
@@ -121,7 +121,7 @@ class TransactionInfoDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var textStyle = const TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
+    var textStyle = const TextStyle(fontSize: 14, fontWeight: FontWeight.w300);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(

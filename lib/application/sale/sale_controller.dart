@@ -2,8 +2,10 @@ import 'package:collection/src/iterable_extensions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:pos/application/sale/sale_function.dart';
 import 'package:pos/domain/customer_data_model.dart';
 import 'package:pos/domain/location/location_data_model.dart';
+import 'package:pos/domain/payment_term.dart';
 import 'package:pos/domain/product_data_model.dart';
 import 'package:pos/domain/sale_transaction_data_model.dart';
 import 'package:pos/infrastructure/function/custom_data.dart';
@@ -22,6 +24,9 @@ class SaleController extends GetxController {
   RxBool _isEditable = false.obs;
   Rx<DateTime> _dateTime = DateTime.now().obs;
 
+  Rx<PaymentTerm> _paymentTerm = PaymentTerm().obs;
+  Rx<PaymentTerm> _paymentType = PaymentTerm().obs;
+
   //SETUP EMPTY SALE DATA
 
   void setupNewData() {
@@ -30,6 +35,8 @@ class SaleController extends GetxController {
     setSelectedLocation(PrefStorage().getUserLogin());
     setTransactionDate(DateTime.now());
     setSelectedCustomer(CustomerDataModel());
+    setPaymentTerm(PaymentTerm());
+    setPaymentType(PaymentTerm());
     setCartList([]);
   }
 
@@ -41,7 +48,23 @@ class SaleController extends GetxController {
     setTransactionDate(trans.date);
     setSelectedCustomer(trans.selectedCustomer);
     setCartList(trans.listProduct);
+    setPaymentTerm(trans.paymentTerm);
+    setPaymentType(trans.paymentType);
   }
+
+  //PAYMENT TYPE
+  void setPaymentType(PaymentTerm data) {
+    this._paymentType.value = data;
+  }
+
+  PaymentTerm get getPaymentType => this._paymentType.value;
+
+  //PAYMENT TERM
+  void setPaymentTerm(PaymentTerm data) {
+    this._paymentTerm.value = data;
+  }
+
+  PaymentTerm get getPaymentTerm => this._paymentTerm.value;
 
   //DATE
   void setTransactionDate(DateTime date) {
@@ -82,7 +105,7 @@ class SaleController extends GetxController {
     //Find index
     int _index = _cartListItem.indexOf(_currItem);
 
-    if ((_currItem.totalBuy + 1) > int.parse(_currItem.qty!)) {
+    if ((_currItem.totalBuy + 1) > double.parse(_currItem.qty!)) {
       return left("Stock tidak cukup");
     } else {
       //Add quantity
@@ -199,6 +222,8 @@ class SaleController extends GetxController {
 
   void setSelectedCustomer(CustomerDataModel data) {
     _selectedCustomer.value = data;
+    setPaymentTerm(SaleFunction.customerPaymentTerm(data));
+    setPaymentType(SaleFunction.customerPaymentType(data));
   }
 
   CustomerDataModel get getSelectedCustomer => this._selectedCustomer.value;

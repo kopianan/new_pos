@@ -25,6 +25,7 @@ class _ListSalePageState extends State<ListSalePage> {
   @override
   void initState() {
     _list = _box.getSavedTransactionDarta();
+    print(_list); 
     super.initState();
   }
 

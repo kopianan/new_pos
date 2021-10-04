@@ -63,7 +63,7 @@ class ProductCartItem extends StatelessWidget {
                   ),
                 ],
               ),
-              subtitle: Text("Stok : " + item.qty!),
+              subtitle: Text("Stok : " + double.parse(item.qty!).toStringAsFixed(0)),
               trailing: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,

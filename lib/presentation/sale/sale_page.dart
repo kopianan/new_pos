@@ -6,7 +6,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/application/sale/sale_cubit.dart';
+import 'package:pos/application/sale/sale_function.dart';
 import 'package:pos/domain/customer_data_model.dart';
+import 'package:pos/domain/payment_term.dart';
 import 'package:pos/domain/sale_transaction_data_model.dart';
 import 'package:pos/infrastructure/function/custom_data.dart';
 import 'package:pos/infrastructure/function/custom_date.dart';
@@ -50,6 +52,8 @@ class _SalePageState extends State<SalePage> {
   Future<void> saveTransactionData() async {
     var _transaction = SaleTransactionDataModel(
         date: CustomDate.getNowDate(),
+        paymentTerm: _saleController.getPaymentTerm,
+        paymentType: _saleController.getPaymentType,
         selectedCustomer: _saleController.getSelectedCustomer,
         selectedLocation: _saleController.getSelectedLocation,
         transactionNumber: _saleController.getTransactionNumber,
@@ -110,12 +114,13 @@ class _SalePageState extends State<SalePage> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: informationSection(),
                   )),
+                  SliverToBoxAdapter(child: Divider(thickness: 1)),
                   SliverToBoxAdapter(
                     child: Column(
                       children: [
                         Padding(
                           padding: EdgeInsets.only(
-                            top: 20,
+                            top: 10,
                             bottom: 8,
                             right: 15,
                             left: 15,
@@ -300,87 +305,94 @@ class _SalePageState extends State<SalePage> {
     return Column(
       children: [
         const SectionTitle(title: "Transaction Info"),
-        Card(
-          elevation: 5,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          margin: EdgeInsets.zero,
-          child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TransactionInfoDetail(
-                    title: "Nomor Transaksi",
-                    value: _saleController.getTransactionNumber,
+        Container(
+            margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TransactionInfoDetail(
+                  title: "Nomor Transaksi",
+                  value: _saleController.getTransactionNumber,
+                ),
+                TransactionInfoDetail(
+                  title: "Kode Lokasi",
+                  value: _saleController.getSelectedLocation.locationCode!,
+                ),
+                TransactionInfoDetail(
+                  title: "Tanggal",
+                  value: CustomDate.convertDate(
+                      _saleController.getTransactionDate),
+                ),
+                Obx(() => TransactionInfoDetail(
+                      title: "Payment Term",
+                      value: (_saleController.getPaymentTerm == PaymentTerm())
+                          ? "Pilih Customer"
+                          : _saleController.getPaymentTerm.name!,
+                    )),
+                Obx(
+                  () => TransactionInfoDetail(
+                    title: "PaymentType",
+                    value: (_saleController.getPaymentType == PaymentTerm())
+                        ? "Pilih Customer"
+                        : _saleController.getPaymentType.name!,
                   ),
-                  TransactionInfoDetail(
-                    title: "Kode Lokasi",
-                    value: _saleController.getSelectedLocation.locationCode!,
-                  ),
-                  TransactionInfoDetail(
-                    title: "Tanggal",
-                    value: CustomDate.convertDate(
-                        _saleController.getTransactionDate),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                            flex: 2,
-                            child: Text(
-                              "Nama Customer",
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold),
-                            )),
-                        Text(":  ",
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          flex: 2,
+                          child: Text(
+                            "Nama Customer",
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold)),
-                        Expanded(
-                            flex: 3,
-                            child: InkWell(
-                              onTap: () {
-                                Get.toNamed(ChooseCustomerPage.TAG);
-                              },
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Obx(
-                                    () => Expanded(
-                                      child: (_saleController
-                                                  .getSelectedCustomer ==
-                                              CustomerDataModel())
-                                          ? Text(
-                                              "Pilih Customer / Tap Disini",
-                                              overflow: TextOverflow.clip,
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: Colors.red,
-                                                  fontWeight: FontWeight.bold),
-                                            )
-                                          : Text(
-                                              _saleController
-                                                  .getSelectedCustomer
-                                                  .customerName!,
-                                              overflow: TextOverflow.clip,
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                    ),
+                                fontSize: 14, fontWeight: FontWeight.w500),
+                          )),
+                      Text(":  ",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold)),
+                      Expanded(
+                          flex: 3,
+                          child: InkWell(
+                            onTap: () {
+                              Get.toNamed(ChooseCustomerPage.TAG);
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Obx(
+                                  () => Expanded(
+                                    child: (_saleController
+                                                .getSelectedCustomer ==
+                                            CustomerDataModel())
+                                        ? Text(
+                                            "Pilih Customer / Tap Disini",
+                                            overflow: TextOverflow.clip,
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.red,
+                                                fontWeight: FontWeight.bold),
+                                          )
+                                        : Text(
+                                            _saleController.getSelectedCustomer
+                                                .customerName!,
+                                            overflow: TextOverflow.clip,
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                   ),
-                                  Icon(Icons.find_in_page_outlined, size: 30)
-                                ],
-                              ),
-                            )),
-                      ],
-                    ),
+                                ),
+                                Icon(Icons.find_in_page_outlined, size: 30)
+                              ],
+                            ),
+                          )),
+                    ],
                   ),
-                ],
-              )),
-        ),
+                ),
+              ],
+            )),
       ],
     );
   }

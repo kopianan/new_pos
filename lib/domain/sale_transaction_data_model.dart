@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pos/domain/customer_data_model.dart';
 import 'package:pos/domain/location/location_data_model.dart';
+import 'package:pos/domain/payment_term.dart';
 import 'package:pos/domain/product_data_model.dart';
 
 part 'sale_transaction_data_model.freezed.dart';
@@ -14,6 +15,8 @@ class SaleTransactionDataModel with _$SaleTransactionDataModel {
     required DateTime date,
     required String total,
     required CustomerDataModel selectedCustomer,
+    required PaymentTerm paymentTerm,
+    required PaymentTerm paymentType,
     required List<ProductDataModel> listProduct,
   }) = _SaleTransactionDataModel;
 

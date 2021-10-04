@@ -16,6 +16,10 @@ _$_SaleTransactionDataModel _$$_SaleTransactionDataModelFromJson(
       total: json['total'] as String,
       selectedCustomer: CustomerDataModel.fromJson(
           json['selectedCustomer'] as Map<String, dynamic>),
+      paymentTerm:
+          PaymentTerm.fromJson(json['paymentTerm'] as Map<String, dynamic>),
+      paymentType:
+          PaymentTerm.fromJson(json['paymentType'] as Map<String, dynamic>),
       listProduct: (json['listProduct'] as List<dynamic>)
           .map((e) => ProductDataModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -29,5 +33,7 @@ Map<String, dynamic> _$$_SaleTransactionDataModelToJson(
       'date': instance.date.toIso8601String(),
       'total': instance.total,
       'selectedCustomer': instance.selectedCustomer,
+      'paymentTerm': instance.paymentTerm,
+      'paymentType': instance.paymentType,
       'listProduct': instance.listProduct,
     };
