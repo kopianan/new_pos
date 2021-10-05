@@ -227,7 +227,7 @@ class _SalePageState extends State<SalePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Grand Total",
+                              "Subtotal",
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -274,25 +274,23 @@ class _SalePageState extends State<SalePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Total Discount",
+                              "Grand Total",
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Text(
-                              "- " +
+                            Obx(() => Text(
                                   convertNumber(
-                                      _saleController.calculateSubTotal() -
-                                          _saleController
-                                              .calculateDiscountGrandTotal()),
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green),
-                            )
+                                      _saleController.calculateFinalTotal()),
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ))
                           ],
                         ),
+                        SizedBox(height: 10),
                         Row(
                           children: [
                             Expanded(
@@ -345,9 +343,7 @@ class _SalePageState extends State<SalePage> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  print(_saleController.getSelectedCustomer);
-                                  _saleBloc.getCustomerDiscount(
-                                      _saleController.getSelectedCustomer);
+                                  _saleController.convertData();
                                 },
                               ),
                             ),

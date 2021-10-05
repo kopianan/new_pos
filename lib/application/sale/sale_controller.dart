@@ -189,6 +189,26 @@ class SaleController extends GetxController {
     return _grandDiscount.value;
   }
 
+  double calculateFinalTotal() {
+    double _finalTotal = 0;
+
+    if (_cartListItem.length == 0) {
+      _finalTotal = 0;
+    }
+    _cartListItem.forEach(
+      (element) {
+        var _subTotal = element.totalBuy * double.parse(element.itemPrice!);
+        if (element.isPercentage == true) {
+          _finalTotal += _subTotal - ((element.discount! / 100.0) * _subTotal);
+        } else {
+          _finalTotal += _subTotal - ((element.discount!) * _subTotal);
+        }
+      },
+    );
+
+    return _finalTotal;
+  }
+
   void addItemToCart(ProductDataModel item) {
     _cartListItem.add(item);
   }
@@ -306,7 +326,7 @@ class SaleController extends GetxController {
 
     _cartListItem.forEach((element) {
       var _singleItem = ItemDetailDataModel(
-          discount: "",
+          discount: element.discount.toString() + "%",
           qty: element.totalBuy.toStringAsFixed(0),
           itemCode: element.itemCode,
           itemId: element.itemId,
