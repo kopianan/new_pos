@@ -23,6 +23,7 @@ class SaleController extends GetxController {
   RxList<ProductDataModel> _cartListItem = <ProductDataModel>[].obs;
   Rx<LocationDataModel> _selectedLocation = LocationDataModel().obs;
   RxDouble _grandTotal = 0.0.obs;
+  RxDouble _grandDiscount = 0.0.obs;
   RxString _transactionNumber = "".obs;
   RxBool _isEditable = false.obs;
   Rx<DateTime> _dateTime = DateTime.now().obs;
@@ -97,6 +98,14 @@ class SaleController extends GetxController {
 
   List<ProductDataModel> get getProductList => this._productList;
 
+  //DISCOUNT LIST
+  void setCustomerDiscountList(List<DiscountDataModel> discList) {
+    this._customrDiscountList.assignAll(discList);
+  }
+
+  List<DiscountDataModel> get getCustomerDiscountList =>
+      this._customrDiscountList;
+
   //CART LIST ITEM
   void setCartList(List<ProductDataModel> list) {
     this._cartListItem.assignAll(list);
@@ -142,20 +151,42 @@ class SaleController extends GetxController {
     }
   }
 
-  String calculateGrandTotal() {
+  double calculateSubTotal() {
     _grandTotal.value = 0;
+
     if (_cartListItem.length == 0) {
       _grandTotal.value = 0;
     }
     _cartListItem.forEach(
       (element) {
+        //Calculate Grand Total
         _grandTotal.value +=
             element.totalBuy * double.parse(element.itemPrice!);
       },
     );
-    var _formatted = NumberFormat.currency(symbol: "Rp.", decimalDigits: 0)
-        .format(_grandTotal.value);
-    return _formatted;
+    return _grandTotal.value;
+  }
+
+  double calculateDiscountGrandTotal() {
+    _grandDiscount.value = 0;
+
+    if (_cartListItem.length == 0) {
+      _grandDiscount.value = 0;
+    }
+    _cartListItem.forEach(
+      (element) {
+        var _subTotal = element.totalBuy * double.parse(element.itemPrice!);
+        if (element.isPercentage == true) {
+          _grandDiscount.value += element.totalBuy *
+              double.parse(element.itemPrice!) *
+              (element.discount! / 100.0);
+        } else {
+          _grandDiscount.value += _subTotal - ((element.discount!) * _subTotal);
+        }
+      },
+    );
+
+    return _grandDiscount.value;
   }
 
   void addItemToCart(ProductDataModel item) {
@@ -167,6 +198,8 @@ class SaleController extends GetxController {
   }
 
   double get getGrandTotal => this._grandTotal.value;
+  double get getGrandDiscount => this._grandDiscount.value;
+
   List<ProductDataModel> get getCartList => this._cartListItem;
 
   //SELECTED ITEM
@@ -182,6 +215,37 @@ class SaleController extends GetxController {
 
     _selectedListItem.removeAt(index);
     _selectedListItem.insert(index, _new);
+  }
+
+  ProductDataModel checkDiscountForItem(ProductDataModel cart) {
+    var _discountList = getCustomerDiscountList;
+    ProductDataModel _newCart = cart;
+
+    for (var i = 0; i < _discountList.length; i++) {
+      var _disc = _discountList[i];
+
+      if (_disc.kategoriId == _newCart.kategoriId) {
+        if (_disc.eventDiscount!.contains("%")) {
+          var _newItem = _newCart.copyWith(isPercentage: true);
+          _newCart = _newItem;
+        } else {
+          var _newItem = _newCart.copyWith(isPercentage: false);
+          _newCart = _newItem;
+        }
+
+        try {
+          var _data = double.parse(
+              _disc.eventDiscount!.replaceAll(RegExp("[^\\d.]"), "").trim());
+
+          var _withDiscount = _newCart.copyWith(discount: _data);
+          _newCart = _withDiscount;
+          return _newCart;
+        } catch (e) {
+          return cart;
+        }
+      }
+    }
+    return _newCart;
   }
 
   void onSaveSelectList() {
@@ -206,9 +270,11 @@ class SaleController extends GetxController {
         try {
           var _item =
               _cartListItem.firstWhere((data) => data.itemId == element.itemId);
-          addBuyQty(_item);
+          var _afterDiscount = checkDiscountForItem(element);
+          addBuyQty(_afterDiscount);
         } catch (e) {
-          _cartListItem.add(element.copyWith(totalBuy: 1));
+          var _afterDiscount = checkDiscountForItem(element);
+          _cartListItem.add(_afterDiscount.copyWith(totalBuy: 1));
         }
       }
     });

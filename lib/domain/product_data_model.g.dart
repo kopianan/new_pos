@@ -30,6 +30,8 @@ _$_ProductDataModel _$$_ProductDataModelFromJson(Map<String, dynamic> json) =>
       displayStore: json['display_store'] as String?,
       weight: json['weight'] as String?,
       inOrder: json['in_order'] as String?,
+      discount: (json['discount'] as num?)?.toDouble() ?? 0,
+      isPercentage: json['is_percentage'] as bool? ?? null,
       isChecked: json['isChecked'] as bool? ?? false,
       totalBuy: json['total_buy'] as int? ?? 0,
     );
@@ -58,6 +60,8 @@ Map<String, dynamic> _$$_ProductDataModelToJson(_$_ProductDataModel instance) =>
       'display_store': instance.displayStore,
       'weight': instance.weight,
       'in_order': instance.inOrder,
+      'discount': instance.discount,
+      'is_percentage': instance.isPercentage,
       'isChecked': instance.isChecked,
       'total_buy': instance.totalBuy,
     };

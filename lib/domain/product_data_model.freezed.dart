@@ -44,6 +44,8 @@ class _$ProductDataModelTearOff {
       @JsonKey(name: 'display_store') String? displayStore,
       @JsonKey(name: 'weight') String? weight,
       @JsonKey(name: 'in_order') String? inOrder,
+      @JsonKey(name: 'discount', includeIfNull: true) double? discount = 0,
+      @JsonKey(name: 'is_percentage') bool? isPercentage = null,
       @JsonKey(name: 'isChecked') bool? isChecked = false,
       @JsonKey(name: 'total_buy') int totalBuy = 0}) {
     return _ProductDataModel(
@@ -69,6 +71,8 @@ class _$ProductDataModelTearOff {
       displayStore: displayStore,
       weight: weight,
       inOrder: inOrder,
+      discount: discount,
+      isPercentage: isPercentage,
       isChecked: isChecked,
       totalBuy: totalBuy,
     );
@@ -128,6 +132,10 @@ mixin _$ProductDataModel {
   String? get weight => throw _privateConstructorUsedError;
   @JsonKey(name: 'in_order')
   String? get inOrder => throw _privateConstructorUsedError;
+  @JsonKey(name: 'discount', includeIfNull: true)
+  double? get discount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_percentage')
+  bool? get isPercentage => throw _privateConstructorUsedError;
   @JsonKey(name: 'isChecked')
   bool? get isChecked => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_buy')
@@ -167,6 +175,8 @@ abstract class $ProductDataModelCopyWith<$Res> {
       @JsonKey(name: 'display_store') String? displayStore,
       @JsonKey(name: 'weight') String? weight,
       @JsonKey(name: 'in_order') String? inOrder,
+      @JsonKey(name: 'discount', includeIfNull: true) double? discount,
+      @JsonKey(name: 'is_percentage') bool? isPercentage,
       @JsonKey(name: 'isChecked') bool? isChecked,
       @JsonKey(name: 'total_buy') int totalBuy});
 }
@@ -204,6 +214,8 @@ class _$ProductDataModelCopyWithImpl<$Res>
     Object? displayStore = freezed,
     Object? weight = freezed,
     Object? inOrder = freezed,
+    Object? discount = freezed,
+    Object? isPercentage = freezed,
     Object? isChecked = freezed,
     Object? totalBuy = freezed,
   }) {
@@ -296,6 +308,14 @@ class _$ProductDataModelCopyWithImpl<$Res>
           ? _value.inOrder
           : inOrder // ignore: cast_nullable_to_non_nullable
               as String?,
+      discount: discount == freezed
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as double?,
+      isPercentage: isPercentage == freezed
+          ? _value.isPercentage
+          : isPercentage // ignore: cast_nullable_to_non_nullable
+              as bool?,
       isChecked: isChecked == freezed
           ? _value.isChecked
           : isChecked // ignore: cast_nullable_to_non_nullable
@@ -338,6 +358,8 @@ abstract class _$ProductDataModelCopyWith<$Res>
       @JsonKey(name: 'display_store') String? displayStore,
       @JsonKey(name: 'weight') String? weight,
       @JsonKey(name: 'in_order') String? inOrder,
+      @JsonKey(name: 'discount', includeIfNull: true) double? discount,
+      @JsonKey(name: 'is_percentage') bool? isPercentage,
       @JsonKey(name: 'isChecked') bool? isChecked,
       @JsonKey(name: 'total_buy') int totalBuy});
 }
@@ -377,6 +399,8 @@ class __$ProductDataModelCopyWithImpl<$Res>
     Object? displayStore = freezed,
     Object? weight = freezed,
     Object? inOrder = freezed,
+    Object? discount = freezed,
+    Object? isPercentage = freezed,
     Object? isChecked = freezed,
     Object? totalBuy = freezed,
   }) {
@@ -469,6 +493,14 @@ class __$ProductDataModelCopyWithImpl<$Res>
           ? _value.inOrder
           : inOrder // ignore: cast_nullable_to_non_nullable
               as String?,
+      discount: discount == freezed
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as double?,
+      isPercentage: isPercentage == freezed
+          ? _value.isPercentage
+          : isPercentage // ignore: cast_nullable_to_non_nullable
+              as bool?,
       isChecked: isChecked == freezed
           ? _value.isChecked
           : isChecked // ignore: cast_nullable_to_non_nullable
@@ -507,6 +539,8 @@ class _$_ProductDataModel implements _ProductDataModel {
       @JsonKey(name: 'display_store') this.displayStore,
       @JsonKey(name: 'weight') this.weight,
       @JsonKey(name: 'in_order') this.inOrder,
+      @JsonKey(name: 'discount', includeIfNull: true) this.discount = 0,
+      @JsonKey(name: 'is_percentage') this.isPercentage = null,
       @JsonKey(name: 'isChecked') this.isChecked = false,
       @JsonKey(name: 'total_buy') this.totalBuy = 0});
 
@@ -580,6 +614,12 @@ class _$_ProductDataModel implements _ProductDataModel {
   @JsonKey(name: 'in_order')
   final String? inOrder;
   @override
+  @JsonKey(name: 'discount', includeIfNull: true)
+  final double? discount;
+  @override
+  @JsonKey(name: 'is_percentage')
+  final bool? isPercentage;
+  @override
   @JsonKey(name: 'isChecked')
   final bool? isChecked;
   @override
@@ -588,7 +628,7 @@ class _$_ProductDataModel implements _ProductDataModel {
 
   @override
   String toString() {
-    return 'ProductDataModel(itemId: $itemId, itemCode: $itemCode, barcode: $barcode, itemSku: $itemSku, updateDate: $updateDate, kategoriId: $kategoriId, internalCode: $internalCode, kategoriCode: $kategoriCode, kategori: $kategori, katPicture: $katPicture, itemName: $itemName, description: $description, itemPrice: $itemPrice, itmPriceFmt: $itmPriceFmt, isFixedPrice: $isFixedPrice, qty: $qty, unitCode: $unitCode, taxCode: $taxCode, pic: $pic, displayStore: $displayStore, weight: $weight, inOrder: $inOrder, isChecked: $isChecked, totalBuy: $totalBuy)';
+    return 'ProductDataModel(itemId: $itemId, itemCode: $itemCode, barcode: $barcode, itemSku: $itemSku, updateDate: $updateDate, kategoriId: $kategoriId, internalCode: $internalCode, kategoriCode: $kategoriCode, kategori: $kategori, katPicture: $katPicture, itemName: $itemName, description: $description, itemPrice: $itemPrice, itmPriceFmt: $itmPriceFmt, isFixedPrice: $isFixedPrice, qty: $qty, unitCode: $unitCode, taxCode: $taxCode, pic: $pic, displayStore: $displayStore, weight: $weight, inOrder: $inOrder, discount: $discount, isPercentage: $isPercentage, isChecked: $isChecked, totalBuy: $totalBuy)';
   }
 
   @override
@@ -657,11 +697,13 @@ class _$_ProductDataModel implements _ProductDataModel {
             (identical(other.inOrder, inOrder) ||
                 const DeepCollectionEquality()
                     .equals(other.inOrder, inOrder)) &&
-            (identical(other.isChecked, isChecked) ||
+            (identical(other.discount, discount) ||
                 const DeepCollectionEquality()
-                    .equals(other.isChecked, isChecked)) &&
-            (identical(other.totalBuy, totalBuy) ||
-                const DeepCollectionEquality().equals(other.totalBuy, totalBuy)));
+                    .equals(other.discount, discount)) &&
+            (identical(other.isPercentage, isPercentage) ||
+                const DeepCollectionEquality().equals(other.isPercentage, isPercentage)) &&
+            (identical(other.isChecked, isChecked) || const DeepCollectionEquality().equals(other.isChecked, isChecked)) &&
+            (identical(other.totalBuy, totalBuy) || const DeepCollectionEquality().equals(other.totalBuy, totalBuy)));
   }
 
   @override
@@ -689,6 +731,8 @@ class _$_ProductDataModel implements _ProductDataModel {
       const DeepCollectionEquality().hash(displayStore) ^
       const DeepCollectionEquality().hash(weight) ^
       const DeepCollectionEquality().hash(inOrder) ^
+      const DeepCollectionEquality().hash(discount) ^
+      const DeepCollectionEquality().hash(isPercentage) ^
       const DeepCollectionEquality().hash(isChecked) ^
       const DeepCollectionEquality().hash(totalBuy);
 
@@ -727,6 +771,8 @@ abstract class _ProductDataModel implements ProductDataModel {
       @JsonKey(name: 'display_store') String? displayStore,
       @JsonKey(name: 'weight') String? weight,
       @JsonKey(name: 'in_order') String? inOrder,
+      @JsonKey(name: 'discount', includeIfNull: true) double? discount,
+      @JsonKey(name: 'is_percentage') bool? isPercentage,
       @JsonKey(name: 'isChecked') bool? isChecked,
       @JsonKey(name: 'total_buy') int totalBuy}) = _$_ProductDataModel;
 
@@ -799,6 +845,12 @@ abstract class _ProductDataModel implements ProductDataModel {
   @override
   @JsonKey(name: 'in_order')
   String? get inOrder => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'discount', includeIfNull: true)
+  double? get discount => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'is_percentage')
+  bool? get isPercentage => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'isChecked')
   bool? get isChecked => throw _privateConstructorUsedError;

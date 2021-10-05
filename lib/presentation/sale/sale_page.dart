@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
 import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/application/sale/sale_cubit.dart';
 import 'package:pos/application/sale/sale_function.dart';
 import 'package:pos/domain/customer_data_model.dart';
+import 'package:pos/domain/discount/discount_data_model.dart';
 import 'package:pos/domain/payment_term.dart';
 import 'package:pos/domain/sale_transaction_data_model.dart';
 import 'package:pos/infrastructure/function/custom_data.dart';
@@ -49,6 +51,10 @@ class _SalePageState extends State<SalePage> {
     _saleController.setProductList(_list);
   }
 
+  String convertNumber(double data) {
+    return NumberFormat.currency(symbol: "Rp.", decimalDigits: 0).format(data);
+  }
+
   Future<void> saveTransactionData() async {
     var _transaction = SaleTransactionDataModel(
         date: CustomDate.getNowDate(),
@@ -58,7 +64,7 @@ class _SalePageState extends State<SalePage> {
         selectedLocation: _saleController.getSelectedLocation,
         transactionNumber: _saleController.getTransactionNumber,
         listProduct: _saleController.getCartList,
-        total: _saleController.calculateGrandTotal());
+        total: convertNumber(_saleController.calculateSubTotal()));
     var _savedList = _box.getSavedTransactionDarta();
 
     //check the data if there is duplicate just update
@@ -85,24 +91,29 @@ class _SalePageState extends State<SalePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text("Sale"),
-      //   actions: [
-      //     IconButton(
-      //       tooltip: "Sinkron Data",
-      //       onPressed: () {
-      //         saleCubit.getAllProduct();
-      //       },
-      //       icon: const Icon(Icons.refresh),
-      //     )
-      //   ],
-      // ),
       body: SafeArea(
         child: BlocProvider(
           create: (context) => _saleBloc,
           child: BlocConsumer<SaleCubit, SaleState>(
             listener: (context, state) {
-              // TODO: implement listener
+              print(state);
+              state.maybeMap(
+                  orElse: () {},
+                  isLoadingDiscount: (e) {
+                    Get.showSnackbar(
+                      GetBar(
+                        message: "Cek diskon user",
+                        showProgressIndicator: true,
+                      ),
+                    );
+                  },
+                  onGetCustomerDiscount: (e) {
+                    Get.back();
+                    _saleController.setCustomerDiscountList(e.list);
+                  },
+                  isError: (e) {
+                    Get.back();
+                  });
             },
             builder: (context, state) {
               return Column(
@@ -211,31 +222,76 @@ class _SalePageState extends State<SalePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Grand Total",
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Grand Total",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Obx(
+                              () => Text(
+                                convertNumber(
+                                    _saleController.calculateSubTotal()),
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Obx(
-                                () => Text(
-                                  _saleController
-                                      .calculateGrandTotal()
-                                      .toString(),
-                                  style: TextStyle(
-                                    fontSize: 20,
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Total Discount",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Obx(
+                              () => Text(
+                                "- " +
+                                    convertNumber(_saleController
+                                        .calculateDiscountGrandTotal()),
+                                style: TextStyle(
+                                    fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
+                                    color: Colors.green),
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Total Discount",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "- " +
+                                  convertNumber(
+                                      _saleController.calculateSubTotal() -
+                                          _saleController
+                                              .calculateDiscountGrandTotal()),
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green),
+                            )
+                          ],
                         ),
                         Row(
                           children: [
@@ -289,7 +345,8 @@ class _SalePageState extends State<SalePage> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  saleCubit.getCustomerDiscount(
+                                  print(_saleController.getSelectedCustomer);
+                                  _saleBloc.getCustomerDiscount(
                                       _saleController.getSelectedCustomer);
                                 },
                               ),
@@ -319,6 +376,38 @@ class _SalePageState extends State<SalePage> {
         ),
       ),
     );
+  }
+
+  void applyDiscountToItems(List<DiscountDataModel> discountList) {
+    var _listCart = _saleController.getCartList;
+
+    for (var i = 0; i < _listCart.length; i++) {
+      var _cart = _listCart[i];
+      for (var i = 0; i < discountList.length; i++) {
+        var _disc = discountList[i];
+
+        if (_disc.kategoriId == _cart.kategoriId) {
+          if (_disc.eventDiscount!.contains("%")) {
+            var _newItem = _cart.copyWith(isPercentage: true);
+            _cart = _newItem;
+          } else {
+            var _newItem = _cart.copyWith(isPercentage: false);
+            _cart = _newItem;
+          }
+
+          try {
+            var _data = double.parse(
+                _disc.eventDiscount!.replaceAll(RegExp("[^\\d.]"), "").trim());
+
+            var _newCart = _cart.copyWith(discount: _data);
+            _cart = _newCart;
+            break;
+          } catch (e) {}
+        }
+      }
+      _listCart[i] = _cart;
+    }
+    print(_listCart);
   }
 
   Column informationSection() {
@@ -375,8 +464,11 @@ class _SalePageState extends State<SalePage> {
                       Expanded(
                           flex: 3,
                           child: InkWell(
-                            onTap: () {
-                              Get.toNamed(ChooseCustomerPage.TAG);
+                            onTap: () async {
+                              var _selectedUser =
+                                  await Get.toNamed(ChooseCustomerPage.TAG);
+
+                              _saleBloc.getCustomerDiscount(_selectedUser);
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

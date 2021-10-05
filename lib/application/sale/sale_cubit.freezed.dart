@@ -25,6 +25,10 @@ class _$SaleStateTearOff {
     return const _IsLoading();
   }
 
+  _IsLoadingDiscount isLoadingDiscount() {
+    return const _IsLoadingDiscount();
+  }
+
   _IsError isError(String error) {
     return _IsError(
       error,
@@ -59,6 +63,7 @@ mixin _$SaleState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() isLoading,
+    required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
     required TResult Function(List<DiscountDataModel> list)
@@ -70,6 +75,7 @@ mixin _$SaleState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -80,6 +86,7 @@ mixin _$SaleState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -91,6 +98,7 @@ mixin _$SaleState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
     required TResult Function(_OnGetCustomerDiscount value)
@@ -102,6 +110,7 @@ mixin _$SaleState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -112,6 +121,7 @@ mixin _$SaleState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -175,6 +185,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() isLoading,
+    required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
     required TResult Function(List<DiscountDataModel> list)
@@ -189,6 +200,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -202,6 +214,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -219,6 +232,7 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
     required TResult Function(_OnGetCustomerDiscount value)
@@ -233,6 +247,7 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -246,6 +261,7 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -303,6 +319,7 @@ class _$_IsLoading implements _IsLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() isLoading,
+    required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
     required TResult Function(List<DiscountDataModel> list)
@@ -317,6 +334,7 @@ class _$_IsLoading implements _IsLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -330,6 +348,7 @@ class _$_IsLoading implements _IsLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -347,6 +366,7 @@ class _$_IsLoading implements _IsLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
     required TResult Function(_OnGetCustomerDiscount value)
@@ -361,6 +381,7 @@ class _$_IsLoading implements _IsLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -374,6 +395,7 @@ class _$_IsLoading implements _IsLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -389,6 +411,142 @@ class _$_IsLoading implements _IsLoading {
 
 abstract class _IsLoading implements SaleState {
   const factory _IsLoading() = _$_IsLoading;
+}
+
+/// @nodoc
+abstract class _$IsLoadingDiscountCopyWith<$Res> {
+  factory _$IsLoadingDiscountCopyWith(
+          _IsLoadingDiscount value, $Res Function(_IsLoadingDiscount) then) =
+      __$IsLoadingDiscountCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$IsLoadingDiscountCopyWithImpl<$Res>
+    extends _$SaleStateCopyWithImpl<$Res>
+    implements _$IsLoadingDiscountCopyWith<$Res> {
+  __$IsLoadingDiscountCopyWithImpl(
+      _IsLoadingDiscount _value, $Res Function(_IsLoadingDiscount) _then)
+      : super(_value, (v) => _then(v as _IsLoadingDiscount));
+
+  @override
+  _IsLoadingDiscount get _value => super._value as _IsLoadingDiscount;
+}
+
+/// @nodoc
+
+class _$_IsLoadingDiscount implements _IsLoadingDiscount {
+  const _$_IsLoadingDiscount();
+
+  @override
+  String toString() {
+    return 'SaleState.isLoadingDiscount()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _IsLoadingDiscount);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() isLoading,
+    required TResult Function() isLoadingDiscount,
+    required TResult Function(String error) isError,
+    required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(List<DiscountDataModel> list)
+        onGetCustomerDiscount,
+    required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
+  }) {
+    return isLoadingDiscount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
+    TResult Function(String error)? isError,
+    TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
+    TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
+  }) {
+    return isLoadingDiscount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
+    TResult Function(String error)? isError,
+    TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
+    TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
+    required TResult orElse(),
+  }) {
+    if (isLoadingDiscount != null) {
+      return isLoadingDiscount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
+    required TResult Function(_IsError value) isError,
+    required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetCustomerDiscount value)
+        onGetCustomerDiscount,
+    required TResult Function(_OnGetCustomer value) onGetCustomer,
+  }) {
+    return isLoadingDiscount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
+    TResult Function(_IsError value)? isError,
+    TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
+    TResult Function(_OnGetCustomer value)? onGetCustomer,
+  }) {
+    return isLoadingDiscount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
+    TResult Function(_IsError value)? isError,
+    TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
+    TResult Function(_OnGetCustomer value)? onGetCustomer,
+    required TResult orElse(),
+  }) {
+    if (isLoadingDiscount != null) {
+      return isLoadingDiscount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsLoadingDiscount implements SaleState {
+  const factory _IsLoadingDiscount() = _$_IsLoadingDiscount;
 }
 
 /// @nodoc
@@ -455,6 +613,7 @@ class _$_IsError implements _IsError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() isLoading,
+    required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
     required TResult Function(List<DiscountDataModel> list)
@@ -469,6 +628,7 @@ class _$_IsError implements _IsError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -482,6 +642,7 @@ class _$_IsError implements _IsError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -499,6 +660,7 @@ class _$_IsError implements _IsError {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
     required TResult Function(_OnGetCustomerDiscount value)
@@ -513,6 +675,7 @@ class _$_IsError implements _IsError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -526,6 +689,7 @@ class _$_IsError implements _IsError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -615,6 +779,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() isLoading,
+    required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
     required TResult Function(List<DiscountDataModel> list)
@@ -629,6 +794,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -642,6 +808,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -659,6 +826,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
     required TResult Function(_OnGetCustomerDiscount value)
@@ -673,6 +841,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -686,6 +855,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -777,6 +947,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() isLoading,
+    required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
     required TResult Function(List<DiscountDataModel> list)
@@ -791,6 +962,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -804,6 +976,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -821,6 +994,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
     required TResult Function(_OnGetCustomerDiscount value)
@@ -835,6 +1009,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -848,6 +1023,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -937,6 +1113,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() isLoading,
+    required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
     required TResult Function(List<DiscountDataModel> list)
@@ -951,6 +1128,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -964,6 +1142,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
@@ -981,6 +1160,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
     required TResult Function(_OnGetCustomerDiscount value)
@@ -995,6 +1175,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
@@ -1008,6 +1189,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,

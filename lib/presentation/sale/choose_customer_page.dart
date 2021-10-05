@@ -94,7 +94,7 @@ class _ChooseCustomerPageState extends State<ChooseCustomerPage> {
           },
           onSuggestionSelected: (suggestion) {
             _saleController.setSelectedCustomer(suggestion);
-            Get.back(closeOverlays: true);
+            Get.back(closeOverlays: true, result: suggestion);
           },
         ),
       );

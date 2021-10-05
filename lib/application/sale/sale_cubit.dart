@@ -35,7 +35,7 @@ class SaleCubit extends Cubit<SaleState> {
   }
 
   void getCustomerDiscount(CustomerDataModel customerDataModel) async {
-    emit(const SaleState.isLoading());
+    emit(const SaleState.isLoadingDiscount());
     try {
       final _data = await iSale.getCustomerDiscount(customerDataModel);
 

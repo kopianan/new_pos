@@ -28,6 +28,10 @@ class ProductDataModel with _$ProductDataModel {
     @JsonKey(name: 'display_store') String? displayStore,
     @JsonKey(name: 'weight') String? weight,
     @JsonKey(name: 'in_order') String? inOrder,
+    @Default(0)
+    @JsonKey(name: 'discount', includeIfNull: true)
+        double? discount,
+    @Default(null) @JsonKey(name: 'is_percentage') bool? isPercentage,
     @Default(false) @JsonKey(name: 'isChecked') bool? isChecked,
     @Default(0) @JsonKey(name: 'total_buy') int totalBuy,
   }) = _ProductDataModel;

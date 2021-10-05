@@ -63,7 +63,8 @@ class ProductCartItem extends StatelessWidget {
                   ),
                 ],
               ),
-              subtitle: Text("Stok : " + double.parse(item.qty!).toStringAsFixed(0)),
+              subtitle:
+                  Text("Stok : " + double.parse(item.qty!).toStringAsFixed(0)),
               trailing: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -73,6 +74,17 @@ class ProductCartItem extends StatelessWidget {
                         .format(double.parse(item.itemPrice!) * item.totalBuy),
                     style: TextStyle(fontSize: 17),
                   ),
+                  (item.discount == null)
+                      ? SizedBox()
+                      : Text(
+                          (item.isPercentage == true)
+                              ? 'Discount ${item.discount!.toStringAsFixed(0)} %'
+                              : 'Discount ${item.discount!.toStringAsFixed(0)}',
+                          style: TextStyle(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        )
                 ],
               ),
             ),

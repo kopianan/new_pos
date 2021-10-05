@@ -4,6 +4,7 @@ part of 'sale_cubit.dart';
 abstract class SaleState with _$SaleState {
   const factory SaleState.initial() = _Initial;
   const factory SaleState.isLoading() = _IsLoading;
+  const factory SaleState.isLoadingDiscount() = _IsLoadingDiscount;
   const factory SaleState.isError(String error) = _IsError;
   const factory SaleState.onGetAllProducts(List<ProductDataModel> list) =
       _OnGetAllProducts;
