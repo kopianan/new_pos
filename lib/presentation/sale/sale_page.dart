@@ -16,6 +16,7 @@ import 'package:pos/infrastructure/function/custom_data.dart';
 import 'package:pos/infrastructure/function/custom_date.dart';
 import 'package:pos/infrastructure/function/custom_snackbar.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
+import 'package:pos/presentation/progress/transaction_progress_page.dart';
 import 'package:pos/presentation/sale/add_item_page.dart';
 import 'package:pos/presentation/sale/choose_customer_page.dart';
 import 'package:pos/presentation/sale/widget/product_cart_item.dart';
@@ -343,7 +344,7 @@ class _SalePageState extends State<SalePage> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  _saleController.convertData();
+                                  Get.toNamed(TransactionProgressPage.TAG);
                                 },
                               ),
                             ),
@@ -372,38 +373,6 @@ class _SalePageState extends State<SalePage> {
         ),
       ),
     );
-  }
-
-  void applyDiscountToItems(List<DiscountDataModel> discountList) {
-    var _listCart = _saleController.getCartList;
-
-    for (var i = 0; i < _listCart.length; i++) {
-      var _cart = _listCart[i];
-      for (var i = 0; i < discountList.length; i++) {
-        var _disc = discountList[i];
-
-        if (_disc.kategoriId == _cart.kategoriId) {
-          if (_disc.eventDiscount!.contains("%")) {
-            var _newItem = _cart.copyWith(isPercentage: true);
-            _cart = _newItem;
-          } else {
-            var _newItem = _cart.copyWith(isPercentage: false);
-            _cart = _newItem;
-          }
-
-          try {
-            var _data = double.parse(
-                _disc.eventDiscount!.replaceAll(RegExp("[^\\d.]"), "").trim());
-
-            var _newCart = _cart.copyWith(discount: _data);
-            _cart = _newCart;
-            break;
-          } catch (e) {}
-        }
-      }
-      _listCart[i] = _cart;
-    }
-    print(_listCart);
   }
 
   Column informationSection() {

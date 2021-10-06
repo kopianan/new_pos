@@ -1,7 +1,7 @@
 part of 'sale_cubit.dart';
 
 @freezed
-abstract class SaleState with _$SaleState {
+class SaleState with _$SaleState {
   const factory SaleState.initial() = _Initial;
   const factory SaleState.isLoading() = _IsLoading;
   const factory SaleState.isLoadingDiscount() = _IsLoadingDiscount;
@@ -14,4 +14,7 @@ abstract class SaleState with _$SaleState {
   const factory SaleState.onGetCustomer(
     List<CustomerDataModel>? list,
   ) = _OnGetCustomer;
+
+  const factory SaleState.onCreateTransactionSuccess(String message) =
+      _OnCreateTransactionSuccess;
 }

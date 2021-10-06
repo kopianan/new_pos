@@ -7,6 +7,7 @@ import 'package:pos/presentation/config/location_page.dart';
 import 'package:pos/presentation/dashboard/dashboard_page.dart';
 import 'package:pos/presentation/list_sale/list_sale_page.dart';
 import 'package:pos/presentation/menu/menu_page.dart';
+import 'package:pos/presentation/progress/transaction_progress_page.dart';
 import 'package:pos/presentation/sale/add_item_page.dart';
 import 'package:pos/presentation/sale/choose_customer_page.dart';
 import 'package:pos/presentation/sale/sale_page.dart';
@@ -38,6 +39,10 @@ class Routes {
     GetPage(
         name: ListSalePage.TAG,
         page: () => const ListSalePage(),
+        binding: SaleBinding()),
+    GetPage(
+        name: TransactionProgressPage.TAG,
+        page: () => const TransactionProgressPage(),
         binding: SaleBinding()),
   ];
 

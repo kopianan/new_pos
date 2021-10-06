@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:collection/src/iterable_extensions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
@@ -320,7 +322,7 @@ class SaleController extends GetxController {
 
 //void process request
 
-  void convertData() {
+  dynamic convertData() {
     RequestSaleTransactionDataModel _saleTransaction;
     List<ItemDetailDataModel> _itemList = [];
 
@@ -348,6 +350,12 @@ class SaleController extends GetxController {
       details: _itemList,
       transType: PrefStorage().getTransactionType(),
     );
-    print(_saleTransaction);
+
+    var _rawData = {
+      'sales_trans': [_saleTransaction.toJson()]
+    };
+    print(_rawData);
+
+    return _rawData;
   }
 }

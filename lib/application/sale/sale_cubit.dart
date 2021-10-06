@@ -5,6 +5,7 @@ import 'package:pos/domain/customer_data_model.dart';
 import 'package:pos/domain/discount/discount_data_model.dart';
 import 'package:pos/domain/product_data_model.dart';
 import 'package:pos/domain/sale/i_sale.dart';
+import 'package:pos/domain/sale/request_sale_transaction_data_model.dart';
 
 part 'sale_state.dart';
 part 'sale_cubit.freezed.dart';
@@ -42,6 +43,20 @@ class SaleCubit extends Cubit<SaleState> {
       _data.fold(
         (l) => emit(SaleState.isError(l.toString())),
         (r) => emit(SaleState.onGetCustomerDiscount(r)),
+      );
+    } catch (e) {
+      emit(SaleState.isError(e.toString()));
+    }
+  }
+
+  void makePayment(dynamic sale) async {
+    emit(const SaleState.isLoadingDiscount());
+    try {
+      final _data = await iSale.makeTransaction(sale);
+
+      _data.fold(
+        (l) => emit(SaleState.isError(l.toString())),
+        (r) => emit(SaleState.onCreateTransactionSuccess(r)),
       );
     } catch (e) {
       emit(SaleState.isError(e.toString()));

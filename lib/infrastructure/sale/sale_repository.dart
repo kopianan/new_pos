@@ -7,6 +7,7 @@ import 'package:pos/domain/customer_data_model.dart';
 import 'package:pos/domain/discount/discount_data_model.dart';
 import 'package:pos/domain/product_data_model.dart';
 import 'package:pos/domain/sale/i_sale.dart';
+import 'package:pos/domain/sale/request_sale_transaction_data_model.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 
 @LazySingleton(as: ISale)
@@ -79,6 +80,38 @@ class SaleRepository extends ISale {
           _data.map((e) => DiscountDataModel.fromJson(e)).toList();
 
       return right(_listProduct);
+    } on DioError catch (e) {
+      return left(e.toString());
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either<String, String>> makeTransaction(dynamic sale) async {
+    Response response;
+
+//Success
+// {
+//     "error": 0,
+//     "message": " \n Processing Trans No: RA-GODM9828/2007/9532 - Date: 06/07/2020  RESULT: SUCCESS"
+// }
+
+// Error{
+// "error":1,
+// "message":" \n Processing Trans No: RA-GODM9828/2007/9532 - Date: 06/07/2020 RESULT: ERROR:Invalid No, already used by
+// other transaction : RA-GODM9828/2007/9532"
+// }
+    FormData formData = FormData.fromMap({"docs": json.encode(sale)});
+    try {
+      response = await dio.post(
+          box.getBaseUrl() +
+              "weblayer/template/api,CreateSI.vm?cmd=1&key=${box.getToken}",
+          data: formData);
+
+      dynamic _data = json.decode(response.data);
+      print(_data['error']);
+      return right(_data.toString());
     } on DioError catch (e) {
       return left(e.toString());
     } catch (e) {
