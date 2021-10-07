@@ -88,20 +88,10 @@ class SaleRepository extends ISale {
   }
 
   @override
-  Future<Either<String, String>> makeTransaction(dynamic sale) async {
+  Future<Either<String, RequestSaleTransactionDataModel>> makeTransaction(
+      RequestSaleTransactionDataModel data, dynamic sale) async {
     Response response;
 
-//Success
-// {
-//     "error": 0,
-//     "message": " \n Processing Trans No: RA-GODM9828/2007/9532 - Date: 06/07/2020  RESULT: SUCCESS"
-// }
-
-// Error{
-// "error":1,
-// "message":" \n Processing Trans No: RA-GODM9828/2007/9532 - Date: 06/07/2020 RESULT: ERROR:Invalid No, already used by
-// other transaction : RA-GODM9828/2007/9532"
-// }
     FormData formData = FormData.fromMap({"docs": json.encode(sale)});
     try {
       response = await dio.post(
@@ -109,9 +99,34 @@ class SaleRepository extends ISale {
               "weblayer/template/api,CreateSI.vm?cmd=1&key=${box.getToken}",
           data: formData);
 
+      var _data = json.decode(response.data.trim());
+      print(_data);
+      if (_data['error'] == 0) {
+        return right(data);
+      } else
+        return left(_data['message'].toString());
+    } on DioError catch (e) {
+      return left(e.toString());
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either<String, String>> confirmPayment(
+      RequestSaleTransactionDataModel sale) async {
+    Response response;
+
+    try {
+      response = await dio.get(box.getBaseUrl() +
+          "weblayer/template/api,UpdateSIPaymentStatus.vm?invoiceno=${sale.transNo}");
+
       dynamic _data = json.decode(response.data);
-      print(_data['error']);
-      return right(_data.toString());
+
+      if (_data['error'] == 1) {
+        return left(_data['message']);
+      } else
+        return right(_data['message'].toString());
     } on DioError catch (e) {
       return left(e.toString());
     } catch (e) {

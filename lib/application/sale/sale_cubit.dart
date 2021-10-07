@@ -49,14 +49,28 @@ class SaleCubit extends Cubit<SaleState> {
     }
   }
 
-  void makePayment(dynamic sale) async {
+  void makePayment(dynamic sale, RequestSaleTransactionDataModel data) async {
     emit(const SaleState.isLoadingDiscount());
     try {
-      final _data = await iSale.makeTransaction(sale);
+      final _data = await iSale.makeTransaction(data, sale);
 
       _data.fold(
         (l) => emit(SaleState.isError(l.toString())),
-        (r) => emit(SaleState.onCreateTransactionSuccess(r)),
+        (r) => emit(SaleState.onCreateTransactionSuccess(data)),
+      );
+    } catch (e) {
+      emit(SaleState.isError(e.toString()));
+    }
+  }
+
+  void confirmPayment(RequestSaleTransactionDataModel data) async {
+    emit(const SaleState.isLoadingDiscount());
+    try {
+      final _data = await iSale.confirmPayment(data);
+
+      _data.fold(
+        (l) => emit(SaleState.isError(l.toString())),
+        (r) => emit(SaleState.onConfirmPaymentSuccess(r)),
       );
     } catch (e) {
       emit(SaleState.isError(e.toString()));

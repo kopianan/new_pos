@@ -12,4 +12,5 @@ class ConstantsData {
   ];
 
   static List<PaymentTerm> get getPaymentTermList => _paymentTerm;
+  static String get getGlobalPaymentType => "143166590740501290483";
 }

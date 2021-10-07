@@ -29,7 +29,8 @@ class SaleController extends GetxController {
   RxString _transactionNumber = "".obs;
   RxBool _isEditable = false.obs;
   Rx<DateTime> _dateTime = DateTime.now().obs;
-
+  Rx<RequestSaleTransactionDataModel> _saleDataModel =
+      RequestSaleTransactionDataModel().obs;
   Rx<PaymentTerm> _paymentTerm = PaymentTerm().obs;
   Rx<PaymentTerm> _paymentType = PaymentTerm().obs;
   RxList<DiscountDataModel> _customrDiscountList = <DiscountDataModel>[].obs;
@@ -320,6 +321,8 @@ class SaleController extends GetxController {
 
   CustomerDataModel get getSelectedCustomer => this._selectedCustomer.value;
 
+  RequestSaleTransactionDataModel get getSaleDataModel =>
+      this._saleDataModel.value;
 //void process request
 
   dynamic convertData() {
@@ -350,11 +353,12 @@ class SaleController extends GetxController {
       details: _itemList,
       transType: PrefStorage().getTransactionType(),
     );
-
+    print(json.encode(_saleTransaction.toJson()));
     var _rawData = {
       'sales_trans': [_saleTransaction.toJson()]
     };
     print(_rawData);
+    _saleDataModel.value = _saleTransaction;
 
     return _rawData;
   }
