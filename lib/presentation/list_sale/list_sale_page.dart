@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/domain/sale_transaction_data_model.dart';
 import 'package:pos/infrastructure/function/custom_date.dart';
@@ -17,7 +16,6 @@ class ListSalePage extends StatefulWidget {
 
 class _ListSalePageState extends State<ListSalePage> {
   PrefStorage _box = PrefStorage();
-  GetStorage _storage = GetStorage();
 
   List<SaleTransactionDataModel> _list = [];
 
@@ -25,48 +23,99 @@ class _ListSalePageState extends State<ListSalePage> {
   @override
   void initState() {
     _list = _box.getSavedTransactionDarta();
-    print(_list); 
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
-        body: ListView.builder(
-            itemCount: _list.length,
-            itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  ListTile(
-                    onTap: () {
-                      //set Data frist
-                      _saleController.loadDataFromStorage(_list[index]);
-                      Get.toNamed(SalePage.TAG);
-                    },
-                    title: Text(
-                      _list[index].transactionNumber,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+        appBar: AppBar(
+          title: Text(
+            "LIST SALE",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+        body: (_list.length == 0)
+            ? Container(
+                width: double.infinity,
+                height: double.infinity,
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.list_alt_sharp,
+                      size: 100,
+                      color: Colors.grey,
                     ),
-                    subtitle: Text(CustomDate.convertDate(_list[index].date)),
-                    trailing: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Tunda",
-                          style: TextStyle(color: Colors.red),
+                    SizedBox(height: 20),
+                    Text(
+                      "Tidak Ada Data",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            : ListView.builder(
+                itemCount: _list.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      ListTile(
+                        onTap: () async {
+                          //set Data frist
+                          _saleController.loadDataFromStorage(_list[index]);
+                          await Get.toNamed(SalePage.TAG);
+                          setState(() {
+                            _list = _box.getSavedTransactionDarta();
+                          });
+                        },
+                        title: Text(
+                          _list[index].transactionNumber,
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text(
-                          _list[index].total,
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ),
-                  Divider(height: 0)
-                ],
-              );
-            }));
+                        subtitle: Text(
+                          CustomDate.convertDate(_list[index].date),
+                        ),
+                        trailing: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              _list[index].status,
+                              style: TextStyle(
+                                  color: checkColor(_list[index].status)),
+                            ),
+                            Text(
+                              _list[index].total,
+                              style: TextStyle(
+                                  fontSize: 17, fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ),
+                      Divider(height: 0)
+                    ],
+                  );
+                }));
+  }
+
+  Color checkColor(String status) {
+    switch (status) {
+      case "CANCEL":
+        return Colors.red;
+      case "PENDING":
+        return Colors.amber;
+      case "SEND":
+        return Colors.green;
+      case "PROCCESS":
+        return Colors.blue;
+      default:
+        return Colors.red;
+    }
   }
 }

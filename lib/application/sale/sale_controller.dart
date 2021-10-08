@@ -2,9 +2,12 @@ import 'dart:convert';
 
 import 'package:collection/src/iterable_extensions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:pos/application/sale/sale_function.dart';
+import 'package:pos/config/constants_data.dart';
 import 'package:pos/domain/customer_data_model.dart';
 import 'package:pos/domain/discount/discount_data_model.dart';
 import 'package:pos/domain/location/location_data_model.dart';
@@ -15,6 +18,7 @@ import 'package:pos/domain/sale/request_sale_transaction_data_model.dart';
 import 'package:pos/domain/sale_transaction_data_model.dart';
 import 'package:pos/infrastructure/function/custom_data.dart';
 import 'package:pos/infrastructure/function/custom_date.dart';
+import 'package:pos/infrastructure/function/global_function.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 
 class SaleController extends GetxController {
@@ -34,8 +38,9 @@ class SaleController extends GetxController {
   Rx<PaymentTerm> _paymentTerm = PaymentTerm().obs;
   Rx<PaymentTerm> _paymentType = PaymentTerm().obs;
   RxList<DiscountDataModel> _customrDiscountList = <DiscountDataModel>[].obs;
-
+  RxString _saleStatus = describeEnum(TransStatus.PROCCESS).obs;
   //SETUP EMPTY SALE DATA
+  PrefStorage _box = PrefStorage();
 
   void setupNewData() {
     _isEditable.value = false;
@@ -43,9 +48,10 @@ class SaleController extends GetxController {
     setSelectedLocation(PrefStorage().getUserLogin());
     setTransactionDate(DateTime.now());
     setSelectedCustomer(CustomerDataModel());
+    setCartList([]);
     setPaymentTerm(PaymentTerm());
     setPaymentType(PaymentTerm());
-    setCartList([]);
+    setSaleStatus(describeEnum(TransStatus.PROCCESS));
   }
 
   //SETUP LOAD DATA
@@ -58,8 +64,14 @@ class SaleController extends GetxController {
     setCartList(trans.listProduct);
     setPaymentTerm(trans.paymentTerm);
     setPaymentType(trans.paymentType);
+    setSaleStatus(trans.status);
   }
 
+  void setSaleStatus(String status) {
+    this._saleStatus.value = status;
+  }
+
+  String get getSetStatus => this._saleStatus.value;
   //PAYMENT TYPE
   void setPaymentType(PaymentTerm data) {
     this._paymentType.value = data;
@@ -218,6 +230,8 @@ class SaleController extends GetxController {
 
   void removeItemFromCart(ProductDataModel item) {
     _cartListItem.removeWhere((element) => element.itemCode == item.itemCode);
+    _selectedListItem
+        .removeWhere((element) => element.itemCode == item.itemCode);
   }
 
   double get getGrandTotal => this._grandTotal.value;
@@ -231,13 +245,17 @@ class SaleController extends GetxController {
   }
 
   void updateSelectedList(ProductDataModel data, bool isChecked) {
-    var _selected =
-        this._selectedListItem.firstWhere((element) => element == data);
-    var _new = _selected.copyWith(isChecked: isChecked);
-    int index = _selectedListItem.indexOf(data);
+    try {
+      var _selected =
+          this._selectedListItem.firstWhere((element) => element == data);
+      var _new = _selected.copyWith(isChecked: isChecked);
+      int index = _selectedListItem.indexOf(data);
 
-    _selectedListItem.removeAt(index);
-    _selectedListItem.insert(index, _new);
+      _selectedListItem.removeAt(index);
+      _selectedListItem.insert(index, _new);
+    } catch (e) {
+      throw (Exception(e));
+    }
   }
 
   ProductDataModel checkDiscountForItem(ProductDataModel cart) {
@@ -361,5 +379,39 @@ class SaleController extends GetxController {
     _saleDataModel.value = _saleTransaction;
 
     return _rawData;
+  }
+
+  Future<void> saveTransactionData(
+    @Default("PENDING") String status,
+  ) async {
+    var _transaction = SaleTransactionDataModel(
+        date: CustomDate.getNowDate(),
+        paymentTerm: getPaymentTerm,
+        paymentType: getPaymentType,
+        selectedCustomer: getSelectedCustomer,
+        selectedLocation: getSelectedLocation,
+        transactionNumber: getTransactionNumber,
+        listProduct: getCartList,
+        status: status,
+        total: convertNumber(calculateSubTotal()));
+    var _savedList = _box.getSavedTransactionDarta();
+
+    //check the data if there is duplicate just update
+    try {
+      var _duplicate = _savedList.firstWhere((element) =>
+          element.transactionNumber == _transaction.transactionNumber);
+      //remove duplicate
+      _savedList.removeWhere((element) =>
+          element.transactionNumber == _duplicate.transactionNumber);
+
+      //Saving
+      _savedList.add(_transaction);
+      _box.saveTransactionData(_savedList);
+    } catch (e) {
+      //no duplicate data
+      //just add as new data
+      _savedList.add(_transaction);
+      _box.saveTransactionData(_savedList);
+    }
   }
 }

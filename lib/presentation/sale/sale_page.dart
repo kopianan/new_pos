@@ -1,29 +1,26 @@
 import 'dart:ui';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:intl/intl.dart';
 import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/application/sale/sale_cubit.dart';
-import 'package:pos/application/sale/sale_function.dart';
+import 'package:pos/config/constants_data.dart';
 import 'package:pos/domain/customer_data_model.dart';
-import 'package:pos/domain/discount/discount_data_model.dart';
 import 'package:pos/domain/payment_term.dart';
-import 'package:pos/domain/sale_transaction_data_model.dart';
 import 'package:pos/infrastructure/function/custom_data.dart';
 import 'package:pos/infrastructure/function/custom_date.dart';
 import 'package:pos/infrastructure/function/custom_snackbar.dart';
+import 'package:pos/infrastructure/function/global_function.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/presentation/progress/transaction_progress_page.dart';
 import 'package:pos/presentation/sale/add_item_page.dart';
 import 'package:pos/presentation/sale/choose_customer_page.dart';
 import 'package:pos/presentation/sale/widget/product_cart_item.dart';
 import 'package:pos/presentation/widgets/widget_collection.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../injectable.dart';
-import 'widget/product_list_item.dart';
 
 class SalePage extends StatefulWidget {
   static const String TAG = '/sale-page';
@@ -50,41 +47,6 @@ class _SalePageState extends State<SalePage> {
   void _loadProductList() {
     var _list = _box.loadProductList();
     _saleController.setProductList(_list);
-  }
-
-  String convertNumber(double data) {
-    return NumberFormat.currency(symbol: "Rp.", decimalDigits: 0).format(data);
-  }
-
-  Future<void> saveTransactionData() async {
-    var _transaction = SaleTransactionDataModel(
-        date: CustomDate.getNowDate(),
-        paymentTerm: _saleController.getPaymentTerm,
-        paymentType: _saleController.getPaymentType,
-        selectedCustomer: _saleController.getSelectedCustomer,
-        selectedLocation: _saleController.getSelectedLocation,
-        transactionNumber: _saleController.getTransactionNumber,
-        listProduct: _saleController.getCartList,
-        total: convertNumber(_saleController.calculateSubTotal()));
-    var _savedList = _box.getSavedTransactionDarta();
-
-    //check the data if there is duplicate just update
-    try {
-      var _duplicate = _savedList.firstWhere((element) =>
-          element.transactionNumber == _transaction.transactionNumber);
-      //remove duplicate
-      _savedList.removeWhere((element) =>
-          element.transactionNumber == _duplicate.transactionNumber);
-
-      //Saving
-      _savedList.add(_transaction);
-      _box.saveTransactionData(_savedList);
-    } catch (e) {
-      //no duplicate data
-      //just add as new data
-      _savedList.add(_transaction);
-      _box.saveTransactionData(_savedList);
-    }
   }
 
   final _saleBloc = getIt<SaleCubit>();
@@ -148,7 +110,10 @@ class _SalePageState extends State<SalePage> {
                                 ),
                                 child: SectionTitle(
                                   title: "Transaction Detail",
-                                  textButton: "Tambah",
+                                  textButton: (_saleController.getSetStatus !=
+                                          describeEnum(TransStatus.PROCCESS))
+                                      ? null
+                                      : "Tambah",
                                   onTap: () {
                                     Get.toNamed(AddItemPage.TAG);
                                   },
@@ -292,77 +257,140 @@ class _SalePageState extends State<SalePage> {
                           ],
                         ),
                         SizedBox(height: 10),
-                        Row(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: MaterialButton(
-                                height: 45,
-                                elevation: 5,
-                                shape: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                  width: 2,
-                                  color: Colors.indigoAccent[400]!,
-                                )),
-                                child: Text(
-                                  "Simpan",
-                                  style: TextStyle(
-                                    color: Colors.indigoAccent[400]!,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
+                        (_saleController.getSetStatus !=
+                                describeEnum(TransStatus.PROCCESS))
+                            ? Row(
+                                children: [
+                                  PrintIcon(
+                                    icon: Icons.print_sharp,
+                                    onPressed: () {
+                                      try {
+                                        launch(ConstantsData.getPrintInvoiceUrl(
+                                            _saleController
+                                                .getTransactionNumber));
+                                      } catch (e) {}
+                                    },
                                   ),
-                                ),
-                                onPressed: () async {
-                                  try {
-                                    await saveTransactionData();
-                                    showDefaultSnackbar(context,
-                                        message: "Berhasil menyimpan data",
-                                        duration: Duration(seconds: 3));
-                                  } catch (e) {
-                                    showDefaultSnackbar(
-                                      context,
-                                      message: e.toString(),
-                                      duration: Duration(seconds: 3),
-                                    );
-                                  }
-                                },
-                              ),
-                            ),
-                            SizedBox(width: 10),
-                            Expanded(
-                              flex: 3,
-                              child: MaterialButton(
-                                height: 45,
-                                elevation: 5,
-                                color: Colors.indigoAccent[400],
-                                child: Text(
-                                  "Lanjutkan",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
+                                  SizedBox(width: 10),
+                                  PrintIcon(
+                                    icon: Icons.print_outlined,
+                                    onPressed: () {
+                                      try {
+                                        launch(ConstantsData.getPdfPrint(
+                                            _saleController
+                                                .getTransactionNumber));
+                                      } catch (e) {}
+                                    },
                                   ),
-                                ),
-                                onPressed: () {
-                                  Get.toNamed(TransactionProgressPage.TAG);
-                                },
+                                  SizedBox(width: 10),
+                                  PrintIcon(
+                                    icon: Icons.share,
+                                    onPressed: () {},
+                                  ),
+                                ],
+                              )
+                            : SizedBox(),
+                        SizedBox(height: 10),
+                        (_saleController.getSetStatus ==
+                                    describeEnum(TransStatus.CANCEL) ||
+                                (_saleController.getSetStatus ==
+                                    describeEnum(TransStatus.SEND)))
+                            ? SizedBox()
+                            : Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: MaterialButton(
+                                          height: 45,
+                                          elevation: 5,
+                                          shape: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                            width: 2,
+                                            color: Colors.indigoAccent[400]!,
+                                          )),
+                                          child: Text(
+                                            "Simpan",
+                                            style: TextStyle(
+                                              color: Colors.indigoAccent[400]!,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          onPressed: () async {
+                                            try {
+                                              //simpan ke local
+                                              await _saleController
+                                                  .saveTransactionData(
+                                                      describeEnum(
+                                                          TransStatus.PENDING));
+                                              showDefaultSnackbar(context,
+                                                  message:
+                                                      "Berhasil menyimpan data",
+                                                  duration:
+                                                      Duration(seconds: 3));
+                                            } catch (e) {
+                                              showDefaultSnackbar(
+                                                context,
+                                                message: e.toString(),
+                                                duration: Duration(seconds: 3),
+                                              );
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Expanded(
+                                        flex: 3,
+                                        child: MaterialButton(
+                                          height: 45,
+                                          elevation: 5,
+                                          color: Colors.indigoAccent[400],
+                                          child: Text(
+                                            "Lanjutkan",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            Get.toNamed(
+                                                TransactionProgressPage.TAG);
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.all(5),
+                                    alignment: Alignment.center,
+                                    child: InkWell(
+                                      onTap: () async {
+                                        try {
+                                          //simpan ke local dengan status cancel
+                                          await _saleController
+                                              .saveTransactionData(describeEnum(
+                                                  TransStatus.SEND));
+                                          Get.back(closeOverlays: true);
+                                        } catch (e) {
+                                          showDefaultSnackbar(context,
+                                              message:
+                                                  "Gagal menghapus record");
+                                        }
+                                      },
+                                      child: Text(
+                                        "Hapus Record",
+                                        style: TextStyle(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          alignment: Alignment.center,
-                          child: InkWell(
-                            child: Text(
-                              "Hapus Record",
-                              style: TextStyle(
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
-                            ),
-                          ),
-                        )
                       ],
                     ),
                   ),
@@ -429,12 +457,16 @@ class _SalePageState extends State<SalePage> {
                       Expanded(
                           flex: 3,
                           child: InkWell(
-                            onTap: () async {
-                              var _selectedUser =
-                                  await Get.toNamed(ChooseCustomerPage.TAG);
+                            onTap: (_saleController.getSetStatus !=
+                                    describeEnum(TransStatus.PROCCESS))
+                                ? null
+                                : () async {
+                                    var _selectedUser = await Get.toNamed(
+                                        ChooseCustomerPage.TAG);
 
-                              _saleBloc.getCustomerDiscount(_selectedUser);
-                            },
+                                    _saleBloc
+                                        .getCustomerDiscount(_selectedUser);
+                                  },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -471,6 +503,31 @@ class _SalePageState extends State<SalePage> {
               ],
             )),
       ],
+    );
+  }
+}
+
+class PrintIcon extends StatelessWidget {
+  const PrintIcon({
+    Key? key,
+    required this.onPressed,
+    required this.icon,
+  });
+
+  final Function onPressed;
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+      padding: EdgeInsets.all(8),
+      child: IconButton(
+        onPressed: () {
+          onPressed();
+        },
+        icon: Icon(icon, size: 35),
+      ),
     );
   }
 }

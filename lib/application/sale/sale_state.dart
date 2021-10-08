@@ -15,8 +15,8 @@ class SaleState with _$SaleState {
     List<CustomerDataModel>? list,
   ) = _OnGetCustomer;
 
-  const factory SaleState.onCreateTransactionSuccess(
-      RequestSaleTransactionDataModel saleData) = _OnCreateTransactionSuccess;
+  const factory SaleState.onCreateTransactionSuccess(String message) =
+      _OnCreateTransactionSuccess;
   const factory SaleState.onConfirmPaymentSuccess(String saleData) =
       _OnConfirmPaymentSuccess;
 }

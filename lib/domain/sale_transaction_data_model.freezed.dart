@@ -30,6 +30,7 @@ class _$SaleTransactionDataModelTearOff {
       required CustomerDataModel selectedCustomer,
       required PaymentTerm paymentTerm,
       required PaymentTerm paymentType,
+      required String status,
       required List<ProductDataModel> listProduct}) {
     return _SaleTransactionDataModel(
       transactionNumber: transactionNumber,
@@ -39,6 +40,7 @@ class _$SaleTransactionDataModelTearOff {
       selectedCustomer: selectedCustomer,
       paymentTerm: paymentTerm,
       paymentType: paymentType,
+      status: status,
       listProduct: listProduct,
     );
   }
@@ -60,6 +62,7 @@ mixin _$SaleTransactionDataModel {
   CustomerDataModel get selectedCustomer => throw _privateConstructorUsedError;
   PaymentTerm get paymentTerm => throw _privateConstructorUsedError;
   PaymentTerm get paymentType => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
   List<ProductDataModel> get listProduct => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -81,6 +84,7 @@ abstract class $SaleTransactionDataModelCopyWith<$Res> {
       CustomerDataModel selectedCustomer,
       PaymentTerm paymentTerm,
       PaymentTerm paymentType,
+      String status,
       List<ProductDataModel> listProduct});
 
   $LocationDataModelCopyWith<$Res> get selectedLocation;
@@ -107,6 +111,7 @@ class _$SaleTransactionDataModelCopyWithImpl<$Res>
     Object? selectedCustomer = freezed,
     Object? paymentTerm = freezed,
     Object? paymentType = freezed,
+    Object? status = freezed,
     Object? listProduct = freezed,
   }) {
     return _then(_value.copyWith(
@@ -138,6 +143,10 @@ class _$SaleTransactionDataModelCopyWithImpl<$Res>
           ? _value.paymentType
           : paymentType // ignore: cast_nullable_to_non_nullable
               as PaymentTerm,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
       listProduct: listProduct == freezed
           ? _value.listProduct
           : listProduct // ignore: cast_nullable_to_non_nullable
@@ -189,6 +198,7 @@ abstract class _$SaleTransactionDataModelCopyWith<$Res>
       CustomerDataModel selectedCustomer,
       PaymentTerm paymentTerm,
       PaymentTerm paymentType,
+      String status,
       List<ProductDataModel> listProduct});
 
   @override
@@ -222,6 +232,7 @@ class __$SaleTransactionDataModelCopyWithImpl<$Res>
     Object? selectedCustomer = freezed,
     Object? paymentTerm = freezed,
     Object? paymentType = freezed,
+    Object? status = freezed,
     Object? listProduct = freezed,
   }) {
     return _then(_SaleTransactionDataModel(
@@ -253,6 +264,10 @@ class __$SaleTransactionDataModelCopyWithImpl<$Res>
           ? _value.paymentType
           : paymentType // ignore: cast_nullable_to_non_nullable
               as PaymentTerm,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
       listProduct: listProduct == freezed
           ? _value.listProduct
           : listProduct // ignore: cast_nullable_to_non_nullable
@@ -272,6 +287,7 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
       required this.selectedCustomer,
       required this.paymentTerm,
       required this.paymentType,
+      required this.status,
       required this.listProduct});
 
   factory _$_SaleTransactionDataModel.fromJson(Map<String, dynamic> json) =>
@@ -292,11 +308,13 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
   @override
   final PaymentTerm paymentType;
   @override
+  final String status;
+  @override
   final List<ProductDataModel> listProduct;
 
   @override
   String toString() {
-    return 'SaleTransactionDataModel(transactionNumber: $transactionNumber, selectedLocation: $selectedLocation, date: $date, total: $total, selectedCustomer: $selectedCustomer, paymentTerm: $paymentTerm, paymentType: $paymentType, listProduct: $listProduct)';
+    return 'SaleTransactionDataModel(transactionNumber: $transactionNumber, selectedLocation: $selectedLocation, date: $date, total: $total, selectedCustomer: $selectedCustomer, paymentTerm: $paymentTerm, paymentType: $paymentType, status: $status, listProduct: $listProduct)';
   }
 
   @override
@@ -322,6 +340,8 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
             (identical(other.paymentType, paymentType) ||
                 const DeepCollectionEquality()
                     .equals(other.paymentType, paymentType)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.listProduct, listProduct) ||
                 const DeepCollectionEquality()
                     .equals(other.listProduct, listProduct)));
@@ -337,6 +357,7 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
       const DeepCollectionEquality().hash(selectedCustomer) ^
       const DeepCollectionEquality().hash(paymentTerm) ^
       const DeepCollectionEquality().hash(paymentType) ^
+      const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(listProduct);
 
   @JsonKey(ignore: true)
@@ -360,6 +381,7 @@ abstract class _SaleTransactionDataModel implements SaleTransactionDataModel {
           required CustomerDataModel selectedCustomer,
           required PaymentTerm paymentTerm,
           required PaymentTerm paymentType,
+          required String status,
           required List<ProductDataModel> listProduct}) =
       _$_SaleTransactionDataModel;
 
@@ -380,6 +402,8 @@ abstract class _SaleTransactionDataModel implements SaleTransactionDataModel {
   PaymentTerm get paymentTerm => throw _privateConstructorUsedError;
   @override
   PaymentTerm get paymentType => throw _privateConstructorUsedError;
+  @override
+  String get status => throw _privateConstructorUsedError;
   @override
   List<ProductDataModel> get listProduct => throw _privateConstructorUsedError;
   @override

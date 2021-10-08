@@ -17,6 +17,7 @@ class SaleTransactionDataModel with _$SaleTransactionDataModel {
     required CustomerDataModel selectedCustomer,
     required PaymentTerm paymentTerm,
     required PaymentTerm paymentType,
+    required String status,
     required List<ProductDataModel> listProduct,
   }) = _SaleTransactionDataModel;
 

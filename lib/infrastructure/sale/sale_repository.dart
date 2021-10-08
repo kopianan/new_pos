@@ -88,7 +88,7 @@ class SaleRepository extends ISale {
   }
 
   @override
-  Future<Either<String, RequestSaleTransactionDataModel>> makeTransaction(
+  Future<Either<String, String>> makeTransaction(
       RequestSaleTransactionDataModel data, dynamic sale) async {
     Response response;
 
@@ -102,7 +102,7 @@ class SaleRepository extends ISale {
       var _data = json.decode(response.data.trim());
       print(_data);
       if (_data['error'] == 0) {
-        return right(data);
+        return right(_data['message']);
       } else
         return left(_data['message'].toString());
     } on DioError catch (e) {
@@ -113,13 +113,12 @@ class SaleRepository extends ISale {
   }
 
   @override
-  Future<Either<String, String>> confirmPayment(
-      RequestSaleTransactionDataModel sale) async {
+  Future<Either<String, String>> confirmPayment(String number) async {
     Response response;
 
     try {
       response = await dio.get(box.getBaseUrl() +
-          "weblayer/template/api,UpdateSIPaymentStatus.vm?invoiceno=${sale.transNo}");
+          "weblayer/template/api,UpdateSIPaymentStatus.vm?invoiceno=${number}");
 
       dynamic _data = json.decode(response.data);
 

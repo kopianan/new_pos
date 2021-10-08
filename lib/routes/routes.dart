@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:pos/application/sale/sale_binding.dart';
-import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/presentation/auth/auth_page.dart';
 import 'package:pos/presentation/config/config_page.dart';
 import 'package:pos/presentation/config/location_page.dart';

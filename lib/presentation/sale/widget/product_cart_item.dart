@@ -1,9 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:pos/application/sale/sale_controller.dart';
+import 'package:pos/config/constants_data.dart';
 import 'package:pos/domain/product_data_model.dart';
 
 class ProductCartItem extends StatelessWidget {
-  const ProductCartItem({
+  ProductCartItem({
     Key? key,
     this.onDelete,
     required this.onAdd,
@@ -16,6 +20,7 @@ class ProductCartItem extends StatelessWidget {
   final Function onDecrease;
   final Function onAdd;
 
+  final _sale = Get.find<SaleController>();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,16 +38,18 @@ class ProductCartItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      onDecrease();
-                    },
-                    child: CircleAvatar(
-                      child: Icon(Icons.remove),
-                      backgroundColor: Colors.blueGrey,
-                      radius: 12,
-                    ),
-                  ),
+                  (_sale.getSetStatus != describeEnum(TransStatus.PROCCESS))
+                      ? SizedBox()
+                      : InkWell(
+                          onTap: () {
+                            onDecrease();
+                          },
+                          child: CircleAvatar(
+                            child: Icon(Icons.remove),
+                            backgroundColor: Colors.blueGrey,
+                            radius: 12,
+                          ),
+                        ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Text(
@@ -51,20 +58,25 @@ class ProductCartItem extends StatelessWidget {
                           TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      onAdd();
-                    },
-                    child: CircleAvatar(
-                      child: Icon(Icons.add),
-                      backgroundColor: Colors.blueGrey,
-                      radius: 12,
-                    ),
-                  ),
+                  (_sale.getSetStatus != describeEnum(TransStatus.PROCCESS))
+                      ? SizedBox()
+                      : InkWell(
+                          onTap: () {
+                            onAdd();
+                          },
+                          child: CircleAvatar(
+                            child: Icon(Icons.add),
+                            backgroundColor: Colors.blueGrey,
+                            radius: 12,
+                          ),
+                        ),
                 ],
               ),
-              subtitle:
-                  Text("Stok : " + double.parse(item.qty!).toStringAsFixed(0)),
+              subtitle: (_sale.getSetStatus !=
+                      describeEnum(TransStatus.PROCCESS))
+                  ? SizedBox()
+                  : Text(
+                      "Stok : " + double.parse(item.qty!).toStringAsFixed(0)),
               trailing: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -88,34 +100,36 @@ class ProductCartItem extends StatelessWidget {
                 ],
               ),
             ),
-            Positioned(
-              width: 80,
-              height: 20,
-              top: 0,
-              right: 0,
-              child: InkWell(
-                onTap: () {
-                  onDelete!();
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      topLeft: Radius.circular(10),
+            (_sale.getSetStatus != describeEnum(TransStatus.PROCCESS))
+                ? SizedBox()
+                : Positioned(
+                    width: 80,
+                    height: 20,
+                    top: 0,
+                    right: 0,
+                    child: InkWell(
+                      onTap: () {
+                        onDelete!();
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(10),
+                            topLeft: Radius.circular(10),
+                          ),
+                          color: Colors.red,
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Hapus",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
+                        ),
+                      ),
                     ),
-                    color: Colors.red,
                   ),
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Hapus",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
         Divider(

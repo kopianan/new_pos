@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/domain/product_data_model.dart';
 import 'package:collection/collection.dart';
+import 'package:pos/infrastructure/function/custom_snackbar.dart';
 
 import 'widget/product_list_item.dart';
 
@@ -122,7 +123,27 @@ class _AddItemPageState extends State<AddItemPage> {
                   return ProductListItem(
                     item: _currItem,
                     onTap: () {
-                      onListClick(context, _currentItemSku!);
+                      if (_filteredList[_currentItemSku]!.length == 1) {
+                        try {
+                          _saleController
+                              .setSelectedList(_filteredList[_currentItemSku]!);
+
+                          _saleController.updateSelectedList(
+                              _saleController.getSElectedList.first, true);
+                          _saleController.onSaveSelectList();
+                          showDefaultSnackbar(context,
+                              message: "Item Ditambahkan");
+                        } catch (e) {
+                          print(e);
+                          showDefaultSnackbar(context,
+                              message: "Item Sudah Ada");
+                        }
+
+                        //check if data already exist
+
+                      } else {
+                        onListClick(context, _currentItemSku!);
+                      }
                     },
                   );
                 },
@@ -143,18 +164,31 @@ class _AddItemPageState extends State<AddItemPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                children: [
-                  Text("Pilih Item"),
-                  TextButton(
-                    onPressed: () async {
-                      _saleController.onSaveSelectList();
-                      Get.back();
-                    },
-                    child: Text("Save"),
-                  )
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children: [
+                    Text(
+                      "Pilih Item",
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    ),
+                    Spacer(),
+                    TextButton(
+                      onPressed: () async {
+                        _saleController.onSaveSelectList();
+                        Get.back();
+                      },
+                      child: Text(
+                        "SIMPAN",
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                ),
               ),
+              Divider(height: 5),
               Obx(
                 () => Container(
                   child: ListView.builder(

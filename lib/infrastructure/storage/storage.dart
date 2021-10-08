@@ -92,6 +92,22 @@ class PrefStorage {
     } catch (e) {}
   }
 
+  // Future<void> removeRecordFromStorage(String transNumber) async {
+  //   try {
+  //     List<Map<String, dynamic>> _data = box.read('list_transaction');
+  //     var _listData = _data
+  //         .map((e) =>
+  //             SaleTransactionDataModel.fromJson(json.decode(json.encode(e))))
+  //         .toList();
+  //     _listData
+  //         .removeWhere((element) => element.transactionNumber == transNumber);
+
+  //     await saveTransactionData(_listData);
+  //   } catch (e) {
+  //     throw (Exception(e.toString()));
+  //   }
+  // }
+
   Future<void> saveTransactionData(
       List<SaleTransactionDataModel> transList) async {
     try {

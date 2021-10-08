@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -43,29 +44,55 @@ class _TransactionProgressPageState extends State<TransactionProgressPage> {
               },
               isLoading: (e) {},
               onCreateTransactionSuccess: (e) {
-                _onCreateTransactionSuccess(context, e.saleData);
+                _onCreateTransactionSuccess(context, e.message);
+                _saleCon.saveTransactionData(describeEnum(TransStatus.SEND));
               },
               onConfirmPaymentSuccess: (e) {
                 showSnackbar("Transaksi Terkonfirmasi Lunas", Colors.green);
+                _saleCon.saveTransactionData(describeEnum(TransStatus.SEND));
               },
             );
           },
           builder: (context, state) {
-            return Container();
+            return SafeArea(
+              child: Container(
+                width: double.infinity,
+                margin: EdgeInsets.only(top: 20),
+                child: state.maybeMap(
+                  orElse: () {
+                    return WaitingPage();
+                  },
+                  isLoading: (e) {
+                    return WaitingPage();
+                  },
+                  onConfirmPaymentSuccess: (e) {
+                    return SuccessPage(
+                      message: e.saleData,
+                    );
+                  },
+                  onCreateTransactionSuccess: (e) {
+                    return SuccessPage(
+                      message: "Pemesanan Dibuat",
+                    );
+                  },
+                ),
+              ),
+            );
           },
         ),
       ),
     );
   }
 
-  void _onCreateTransactionSuccess(
-      BuildContext, RequestSaleTransactionDataModel data) {
-    if (data.pmttype == ConstantsData.getGlobalPaymentType) {
+  void _onCreateTransactionSuccess(BuildContext, String message) {
+    var _pmtType = _saleCon.getPaymentType.code;
+    var _transNumber = _saleCon.getTransactionNumber;
+    if (_pmtType == ConstantsData.getGlobalPaymentType) {
       //confirm payment if payment type is match.
-      _saleCubit.confirmPayment(data);
+      _saleCubit.confirmPayment(_transNumber);
     } else {
       //SUCCESS WITHOUT CONFIRM PAYMENT
-      showSnackbar("Berhasil Mengirim Transaksi", Colors.green);
+      showSnackbar(message, Colors.green);
     }
   }
 
@@ -78,5 +105,74 @@ class _TransactionProgressPageState extends State<TransactionProgressPage> {
       duration: Duration(seconds: 3),
       backgroundColor: background,
     ));
+  }
+}
+
+class WaitingPage extends StatelessWidget {
+  const WaitingPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          Icons.timelapse_sharp,
+          size: 100,
+          color: Colors.amber,
+        ),
+        SizedBox(height: 20),
+        Text(
+          "Payment On Prgoress",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 100),
+        CircularProgressIndicator.adaptive(),
+        Spacer(),
+        Text("Pelase waiting a second."),
+        SizedBox(height: 20),
+      ],
+    );
+  }
+}
+
+class SuccessPage extends StatelessWidget {
+  const SuccessPage({Key? key, required this.message}) : super(key: key);
+  final String message;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          Icons.check_circle_outlined,
+          size: 100,
+          color: Colors.green,
+        ),
+        SizedBox(height: 20),
+        Text(
+          "Pembayaran Berhasil",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        Spacer(),
+        ElevatedButton(
+          onPressed: () {},
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              "KEMBALI",
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        SizedBox(height: 100),
+        Text(message),
+        SizedBox(height: 20),
+      ],
+    );
   }
 }

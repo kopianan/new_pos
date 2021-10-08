@@ -7,10 +7,9 @@ import 'package:pos/domain/sale/request_sale_transaction_data_model.dart';
 abstract class ISale {
   Future<Either<String, List<ProductDataModel>>> getAllProduct();
   Future<Either<String, List<CustomerDataModel>>> getAllCustomer();
-  Future<Either<String, RequestSaleTransactionDataModel>> makeTransaction(
+  Future<Either<String, String>> makeTransaction(
       RequestSaleTransactionDataModel data, dynamic sale);
-  Future<Either<String, String>> confirmPayment(
-      RequestSaleTransactionDataModel sale);
+  Future<Either<String, String>> confirmPayment(String transactionNumber);
   Future<Either<String, List<DiscountDataModel>>> getCustomerDiscount(
       CustomerDataModel customer);
 }

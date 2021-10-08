@@ -56,17 +56,17 @@ class SaleCubit extends Cubit<SaleState> {
 
       _data.fold(
         (l) => emit(SaleState.isError(l.toString())),
-        (r) => emit(SaleState.onCreateTransactionSuccess(data)),
+        (r) => emit(SaleState.onCreateTransactionSuccess(r)),
       );
     } catch (e) {
       emit(SaleState.isError(e.toString()));
     }
   }
 
-  void confirmPayment(RequestSaleTransactionDataModel data) async {
+  void confirmPayment(String transactionNumber) async {
     emit(const SaleState.isLoadingDiscount());
     try {
-      final _data = await iSale.confirmPayment(data);
+      final _data = await iSale.confirmPayment(transactionNumber);
 
       _data.fold(
         (l) => emit(SaleState.isError(l.toString())),
