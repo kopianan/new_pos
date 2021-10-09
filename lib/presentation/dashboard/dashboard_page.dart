@@ -21,16 +21,19 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   final _saleController = Get.find<SaleController>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       drawer: Drawer(
           child: ListView(
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blueGrey,
+                color: Colors.blue,
               ),
               child: Text('POS RTL',
                   style: TextStyle(
@@ -60,41 +63,154 @@ class _DashboardPageState extends State<DashboardPage> {
               ))
         ],
       )),
-      appBar: AppBar(),
-      body: Stack(
-        children: [
-          Positioned(
-            right: -50,
-            bottom: -20,
-            child: SvgPicture.asset(
-              'assets/icons/cashier.svg',
-              color: Colors.grey,
-              width: 300,
-            ),
-          ),
-          SafeArea(
-            child: BlocProvider(
-              create: (context) => getIt<SaleCubit>(),
-              child: BlocConsumer<SaleCubit, SaleState>(
-                listener: (context, state) {
-                  state.maybeMap(
-                    orElse: () {},
-                    onGetAllProducts: (e) {
-                      print("GET ALL PRODUCTS");
-                    },
-                    onGetCustomer: (e) {
-                      print("GET ALL CUSTOMER");
-                    },
-                  );
-                },
-                builder: (context, state) {
-                  return DashboardComponent();
-                },
+
+      body: SafeArea(
+        child: Container(
+          height: Get.size.height,
+          child: Stack(
+            children: [
+              Container(
+                  height: Get.size.height / 2 + 60,
+                  child: Image.asset(
+                    'assets/images/bg-dashboard.jpg',
+                    fit: BoxFit.cover,
+                    colorBlendMode: BlendMode.darken,
+                  )),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(30))),
+                  height: Get.size.height / 2 - 40,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SizedBox(height: 40),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: Color(0xFF152542),
+                              boxShadow: [
+                                BoxShadow(
+                                    offset: Offset(2, 2),
+                                    spreadRadius: 2,
+                                    blurRadius: 2,
+                                    color: Colors.grey[300]!),
+                              ]),
+                          width: Get.size.width / 4,
+                          height: Get.size.width / 4,
+                          child: SvgPicture.asset(
+                            'assets/icons/ig_logo.svg',
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "SELAMAT DATANG\n",
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                      Spacer(),
+                      Container(
+                        margin: EdgeInsets.all(20),
+                        width: double.infinity,
+                        child: MaterialButton(
+                          height: 50,
+                          onPressed: () {   _saleController.setupNewData();
+                Get.toNamed(SalePage.TAG);},
+                          color: Colors.blue,
+                          child: Text(
+                            "BUAT TRANSAKSI",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
+              Positioned(
+                top: 0,
+                right: 0,
+                left: 0,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  height: kToolbarHeight,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.black.withAlpha(150),
+                        child: IconButton(
+                          onPressed: () {
+                            _scaffoldKey.currentState!.openDrawer();
+                          },
+                          color: Colors.white,
+                          icon: Icon(Icons.menu),
+                        ),
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.black.withAlpha(150),
+                        child: IconButton(
+                          onPressed: () {
+                            Get.toNamed(ListSalePage.TAG);
+                          },
+                          color: Colors.white,
+                          icon: Icon(Icons.list_alt),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
-        ],
+        ),
       ),
+      // body: Stack(
+      //   children: [
+      //     Positioned(
+      //       right: -50,
+      //       bottom: -20,
+      //       child: SvgPicture.asset(
+      //         'assets/icons/cashier.svg',
+      //         color: Colors.grey.withAlpha(50),
+      //         width: 300,
+      //       ),
+      //     ),
+      //     SafeArea(
+      //       child: BlocProvider(
+      //         create: (context) => getIt<SaleCubit>(),
+      //         child: BlocConsumer<SaleCubit, SaleState>(
+      //           listener: (context, state) {
+      //             state.maybeMap(
+      //               orElse: () {},
+      //               onGetAllProducts: (e) {
+      //                 print("GET ALL PRODUCTS");
+      //               },
+      //               onGetCustomer: (e) {
+      //                 print("GET ALL CUSTOMER");
+      //               },
+      //             );
+      //           },
+      //           builder: (context, state) {
+      //             return DashboardComponent();
+      //           },
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
@@ -131,36 +247,38 @@ class DashboardComponent extends StatelessWidget {
             ),
           ),
           SizedBox(height: 40),
-          BlocBuilder<SaleCubit, SaleState>(
-            builder: (context, state) {
-              return state.maybeMap(
-                orElse: () {
-                  return MenuButton(
-                      onTap: () {
-                        context.read<SaleCubit>().getAllProduct();
-                      },
-                      text: "Sinkron Data");
-                },
-                isLoading: (e) {
-                  return MenuButton();
-                },
-              );
-            },
-          ),
+          // BlocBuilder<SaleCubit, SaleState>(
+          //   builder: (context, state) {
+          //     return state.maybeMap(
+          //       orElse: () {
+          //         return MenuButton(
+          //             onTap: () {
+          //               context.read<SaleCubit>().getAllProduct();
+          //             },
+          //             text: "Sinkron Data");
+          //       },
+          //       isLoading: (e) {
+          //         return MenuButton();
+          //       },
+          //     );
+          //   },
+          // ),
+          // SizedBox(height: 20),
+
+          MenuButton(
+              onTap: () {
+                Get.toNamed(ListSalePage.TAG);
+              },
+              text: "List Sale"),
           SizedBox(height: 20),
+          Spacer(),
           MenuButton(
               onTap: () {
                 //setup sale
                 _saleController.setupNewData();
                 Get.toNamed(SalePage.TAG);
               },
-              text: "Sale"),
-          SizedBox(height: 20),
-          MenuButton(
-              onTap: () {
-                Get.toNamed(ListSalePage.TAG);
-              },
-              text: "List Sale"),
+              text: "Buat Transaksi"),
           SizedBox(height: 20),
         ],
       ),
