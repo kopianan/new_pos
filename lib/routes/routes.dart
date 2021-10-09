@@ -10,6 +10,7 @@ import 'package:pos/presentation/progress/transaction_progress_page.dart';
 import 'package:pos/presentation/sale/add_item_page.dart';
 import 'package:pos/presentation/sale/choose_customer_page.dart';
 import 'package:pos/presentation/sale/sale_page.dart';
+import 'package:pos/presentation/scan/qr_scan_page.dart';
 import 'package:pos/presentation/splash_screen_page.dart';
 
 class Routes {
@@ -17,6 +18,7 @@ class Routes {
     GetPage(name: AuthPage.TAG, page: () => const AuthPage()),
     GetPage(name: ConfigPage.TAG, page: () => const ConfigPage()),
     GetPage(name: MenuPage.TAG, page: () => const MenuPage()),
+    GetPage(name: QrScanPage.TAG, page: () => const QrScanPage()),
     GetPage(name: LocationPage.TAG, page: () => const LocationPage()),
     GetPage(
         name: DashboardPage.TAG,

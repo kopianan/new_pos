@@ -23,4 +23,8 @@ class ConstantsData {
   static String getPdfPrint(String invoiceNumber) {
     return "http://vipcloud.erp.web.id:8080/teratai/print?helper_class=com.ssti.enterprise.pos.print.helper.InvoicePrintHelper&print_type=3&id=$invoiceNumber&user_name=retailsoft&detail_per_page=10";
   }
+
+  static String getPdfDownload(String invoiceNumber) {
+    return "http://vipcloud.erp.web.id:8080/teratai/print?helper_class=com.ssti.enterprise.pos.print.helper.InvoicePrintHelper&print_type=2&id=${invoiceNumber}&user_name=retailsoft&detail_per_page=10&html_tpl=POSHTML.vm";
+  }
 }

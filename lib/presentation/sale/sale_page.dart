@@ -285,7 +285,16 @@ class _SalePageState extends State<SalePage> {
                                   SizedBox(width: 10),
                                   PrintIcon(
                                     icon: Icons.share,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      try {
+                                        String pdf =
+                                            ConstantsData.getPdfDownload(
+                                                _saleController
+                                                    .getTransactionNumber);
+
+                                        launch(pdf);
+                                      } catch (e) {}
+                                    },
                                   ),
                                 ],
                               )

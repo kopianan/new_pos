@@ -7,6 +7,7 @@ import 'package:pos/application/sale/sale_cubit.dart';
 import 'package:pos/domain/customer_data_model.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/injectable.dart';
+import 'package:pos/presentation/scan/qr_scan_page.dart';
 
 class ChooseCustomerPage extends StatefulWidget {
   static const String TAG = '/choose-customer-page';
@@ -20,6 +21,9 @@ class _ChooseCustomerPageState extends State<ChooseCustomerPage> {
   final _saleController = Get.find<SaleController>();
   PrefStorage _box = PrefStorage();
   List<CustomerDataModel> _listCustomer = [];
+  TextEditingController _cust = TextEditingController();
+  bool keyboard = false;
+  FocusNode focusNode = FocusNode();
   @override
   void initState() {
     checkData();
@@ -58,15 +62,33 @@ class _ChooseCustomerPageState extends State<ChooseCustomerPage> {
         ),
         child: TypeAheadField<CustomerDataModel>(
           hideSuggestionsOnKeyboardHide: true,
+          animationDuration: Duration.zero,
+          hideKeyboard: keyboard,
           textFieldConfiguration: TextFieldConfiguration(
+            controller: _cust,
             autofocus: true,
+            focusNode: focusNode,
             onTap: () {},
             decoration: InputDecoration(
                 suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {});
-                    },
-                    icon: Icon(Icons.close)),
+                  onPressed: () async {
+                    setState(() {
+                      keyboard = true;
+                    });
+                    try {
+                      await Future.delayed(Duration(milliseconds: 500));
+                      String code = await Get.toNamed(QrScanPage.TAG);
+                      setState(() {
+                        keyboard = false;
+                        focusNode.requestFocus();
+                        _cust.text = code;
+                      });
+                    } catch (e) {
+                      print(e);
+                    }
+                  },
+                  icon: Icon(Icons.qr_code),
+                ),
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 hintText: "Cari Customer",
@@ -79,7 +101,8 @@ class _ChooseCustomerPageState extends State<ChooseCustomerPage> {
           ),
           suggestionsCallback: (pattern) {
             return _saleController.getCustomerList.where((element) =>
-                element.customerName!.toLowerCase().contains(pattern));
+                element.customerName!.toLowerCase().contains(pattern) ||
+                element.customerCode!.contains(pattern));
           },
           itemBuilder: (context, suggestion) {
             return Column(

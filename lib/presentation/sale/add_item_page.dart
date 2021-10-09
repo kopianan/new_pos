@@ -5,6 +5,7 @@ import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/domain/product_data_model.dart';
 import 'package:collection/collection.dart';
 import 'package:pos/infrastructure/function/custom_snackbar.dart';
+import 'package:pos/presentation/scan/qr_scan_page.dart';
 
 import 'widget/product_list_item.dart';
 
@@ -19,6 +20,9 @@ class AddItemPage extends StatefulWidget {
 class _AddItemPageState extends State<AddItemPage> {
   final _saleController = Get.find<SaleController>();
   late Map<String?, List<ProductDataModel>> _filteredList;
+  bool keyboard = false;
+  TextEditingController _item = TextEditingController();
+
   @override
   void initState() {
     setupListData();
@@ -52,7 +56,32 @@ class _AddItemPageState extends State<AddItemPage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async {
+          setState(() {
+            keyboard = true;
+          });
+          try {
+            await Future.delayed(Duration(milliseconds: 500));
+            String code = await Get.toNamed(QrScanPage.TAG);
+            setState(() {
+              keyboard = false;
+              _item.text = code;
+            });
+
+            //find data on list
+
+            try {
+              _saleController.getProductList
+                  .firstWhere((element) => element.itemCode == code);
+
+              showDefaultSnackbar(context, message: "Data Ditambahkan");
+            } catch (e) {
+              showDefaultSnackbar(context, message: "Item tidak ditemukan");
+            }
+          } catch (e) {
+            print(e);
+          }
+        },
         child: Icon(Icons.qr_code),
       ),
       body: SafeArea(
@@ -71,14 +100,24 @@ class _AddItemPageState extends State<AddItemPage> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TypeAheadField<ProductDataModel>(
+                animationDuration: Duration.zero,
+                hideKeyboard: keyboard,
                 hideSuggestionsOnKeyboardHide: true,
                 textFieldConfiguration: TextFieldConfiguration(
-                  autofocus: true,
-                  onTap: () {},
+                  controller: _item,
+                  onTap: () {
+                    setState(() {
+                      keyboard = false;
+                    });
+                  },
+                  autofocus: false,
                   decoration: InputDecoration(
                       suffixIcon: IconButton(
                           onPressed: () {
-                            setState(() {});
+                            setState(() {
+                              _item.text = "";
+                              keyboard = true;
+                            });
                           },
                           icon: Icon(Icons.close)),
                       contentPadding: const EdgeInsets.symmetric(
@@ -92,9 +131,13 @@ class _AddItemPageState extends State<AddItemPage> {
                       )),
                 ),
                 suggestionsCallback: (pattern) {
-                  return [];
-                  // return _saleController.getCustomerList.where((element) =>
-                  //     element.customerName!.toLowerCase().contains(pattern));
+                  return _saleController.getProductList
+                      .where((element) =>
+                          element.itemCode!.contains(pattern) ||
+                          element.itemName!
+                              .toLowerCase()
+                              .contains(pattern.toLowerCase()))
+                      .toList();
                 },
                 itemBuilder: (context, val) {
                   return Column(
@@ -108,6 +151,7 @@ class _AddItemPageState extends State<AddItemPage> {
                   );
                 },
                 onSuggestionSelected: (suggestion) {
+                  onSingleItemClicked(suggestion.itemSku!);
                   // _saleController.setSelectedCustomer(suggestion);
                   // Get.back(closeOverlays: true);
                 },
@@ -124,20 +168,7 @@ class _AddItemPageState extends State<AddItemPage> {
                     item: _currItem,
                     onTap: () {
                       if (_filteredList[_currentItemSku]!.length == 1) {
-                        try {
-                          _saleController
-                              .setSelectedList(_filteredList[_currentItemSku]!);
-
-                          _saleController.updateSelectedList(
-                              _saleController.getSElectedList.first, true);
-                          _saleController.onSaveSelectList();
-                          showDefaultSnackbar(context,
-                              message: "Item Ditambahkan");
-                        } catch (e) {
-                          print(e);
-                          showDefaultSnackbar(context,
-                              message: "Item Sudah Ada");
-                        }
+                        onSingleItemClicked(_currentItemSku!);
 
                         //check if data already exist
 
@@ -153,6 +184,20 @@ class _AddItemPageState extends State<AddItemPage> {
         ),
       ),
     );
+  }
+
+  void onSingleItemClicked(String currSKU) {
+    try {
+      _saleController.setSelectedList(_filteredList[currSKU]!);
+
+      _saleController.updateSelectedList(
+          _saleController.getSElectedList.first, true);
+      _saleController.onSaveSelectList();
+      showDefaultSnackbar(context, message: "Item Ditambahkan");
+    } catch (e) {
+      print(e);
+      showDefaultSnackbar(context, message: "Item Sudah Ada");
+    }
   }
 
   void onListClick(BuildContext context, String sku) {
