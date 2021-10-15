@@ -8,6 +8,7 @@ import 'package:pos/domain/discount/discount_data_model.dart';
 import 'package:pos/domain/product_data_model.dart';
 import 'package:pos/domain/sale/i_sale.dart';
 import 'package:pos/domain/sale/request_sale_transaction_data_model.dart';
+import 'package:pos/domain/sale/sales_order_data_model.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 
 @LazySingleton(as: ISale)
@@ -126,6 +127,27 @@ class SaleRepository extends ISale {
         return left(_data['message']);
       } else
         return right(_data['message'].toString());
+    } on DioError catch (e) {
+      return left(e.toString());
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either<String, SalesOrderDataModel>> getSalesOrderId(
+      String transactionNumber) async {
+    Response response;
+
+    try {
+      response = await dio.get(box.getBaseUrl() +
+          "weblayer/template/api,SPGApps.vm?cmd=4&txtype=${box.getTransactionType()}&txno=$transactionNumber");
+
+      List<dynamic> _data = json.decode(response.data);
+
+      final _list = _data.map((e) => SalesOrderDataModel.fromJson(e)).toList();
+      var single = _list.first;
+      return right(single);
     } on DioError catch (e) {
       return left(e.toString());
     } catch (e) {
