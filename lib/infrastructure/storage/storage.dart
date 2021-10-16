@@ -71,6 +71,24 @@ class PrefStorage {
     }
   }
 
+  Future<void> setSelectedLocation(String locationCode) async {
+    try {
+      await box.write('selectedLocation', locationCode);
+    } catch (e) {
+      print(e);
+      throw Exception(e);
+    }
+  }
+
+  String getSelectedLocation() {
+    try {
+      final _url = box.read('selectedLocation');
+      return _url;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
   Future<void> setUserLogin(LocationDataModel location) async {
     try {
       await box.write('userLoginData', location.toJson());

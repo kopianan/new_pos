@@ -21,6 +21,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   final _saleController = Get.find<SaleController>();
+  final _password = TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
@@ -42,9 +43,43 @@ class _DashboardPageState extends State<DashboardPage> {
                   ))),
           ListTile(
             onTap: () {
-              PrefStorage()
-                  .resetData()
-                  .then((value) => Get.offAllNamed(MenuPage.TAG));
+              Get.dialog(SimpleDialog(
+                title: Text(
+                  "Input Password",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                titlePadding: EdgeInsets.all(20),
+                contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                children: [
+                  Text("Silahkan masukkan password untuk melakukan reset data"),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    controller: _password,
+                    obscureText: true,
+                    decoration: InputDecoration(hintText: "Password"),
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                      onPressed: () {
+                        var _user = PrefStorage().getUserLogin();
+
+                        if (_password.text == _user.passwordValue!) {
+                          PrefStorage()
+                              .resetData()
+                              .then((value) => Get.offAllNamed(MenuPage.TAG));
+                        } else {
+                          Get.showSnackbar(
+                            GetBar(
+                              message: "Password tidak cocok",
+                              duration: Duration(seconds: 3),
+                            ),
+                          );
+                        }
+                      },
+                      child: Text("LogOut")),
+                  SizedBox(height: 20),
+                ],
+              ));
             },
             leading: Icon(Icons.restore_outlined),
             title: Text('Reset Data'),
@@ -123,8 +158,10 @@ class _DashboardPageState extends State<DashboardPage> {
                         width: double.infinity,
                         child: MaterialButton(
                           height: 50,
-                          onPressed: () {   _saleController.setupNewData();
-                Get.toNamed(SalePage.TAG);},
+                          onPressed: () {
+                            _saleController.setupNewData();
+                            Get.toNamed(SalePage.TAG);
+                          },
                           color: Colors.blue,
                           child: Text(
                             "BUAT TRANSAKSI",

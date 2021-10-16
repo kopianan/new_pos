@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:pos/application/auth/auth_cubit.dart';
 import 'package:pos/infrastructure/function/custom_snackbar.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/presentation/auth/auth_page.dart';
 import 'package:pos/presentation/config/config_page.dart';
+import 'package:pos/presentation/config/location_page.dart';
+import 'package:pos/presentation/widgets/custom_dropdown.dart';
 import 'package:pos/presentation/widgets/widget_collection.dart';
+
+import '../../injectable.dart';
 
 class MenuPage extends StatefulWidget {
   static const String TAG = '/menu-page';
@@ -15,6 +21,9 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  List<String> _validatedLocation = [];
+  String? location = null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,22 +43,32 @@ class _MenuPageState extends State<MenuPage> {
                 text: "Set Config",
               ),
               const SizedBox(height: 20),
-              // _CustomButton(
-              //   onTap: () {
-              //     Get.toNamed(LocationPage.TAG);
-              //   },
-              //   text: "Set Location",
-              // ),
-              // const SizedBox(height: 20),
+              _CustomButton(
+                onTap: () {
+                  try {
+                    var _url = PrefStorage().getBaseUrl();
+                    Get.toNamed(LocationPage.TAG);
+                  } catch (e) {
+                    Get.showSnackbar(GetBar(
+                      message: "Atur Config Dulu",
+                      duration: Duration(seconds: 2),
+                    ));
+                  }
+                },
+                text: "Set Location",
+              ),
+              const SizedBox(height: 20),
               _CustomOutlineButton(
                 onTap: () {
                   //check if base url already there
                   try {
-                    PrefStorage().getBaseUrl();
-                    Get.toNamed(AuthPage.TAG);
+                    var _url = PrefStorage().getBaseUrl();
+                    var _location = PrefStorage().getSelectedLocation();
+                    Get.offNamed(AuthPage.TAG);
                   } catch (e) {
                     showDefaultSnackbar(context,
-                        message: "Silahkan set config terlebih dahulu");
+                        message:
+                            "Silahkan set config dan pilih lokasi terlebih dahulu");
                   }
                 },
                 text: "Login",

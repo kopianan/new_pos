@@ -7,6 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:pos/infrastructure/function/custom_snackbar.dart';
 import 'package:pos/presentation/scan/qr_scan_page.dart';
 
+import 'widget/product_cart_item.dart';
 import 'widget/product_list_item.dart';
 
 class AddItemPage extends StatefulWidget {
@@ -22,7 +23,7 @@ class _AddItemPageState extends State<AddItemPage> {
   late Map<String?, List<ProductDataModel>> _filteredList;
   bool keyboard = false;
   TextEditingController _item = TextEditingController();
-
+  bool? visibility = false;
   @override
   void initState() {
     setupListData();
@@ -34,6 +35,7 @@ class _AddItemPageState extends State<AddItemPage> {
 
     var _data = _list.toSet().groupListsBy((element) => element.itemSku);
     _filteredList = _data;
+    visibility = _list.length == 0 ? false : true;
   }
 
   @override
@@ -55,35 +57,69 @@ class _AddItemPageState extends State<AddItemPage> {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          setState(() {
-            keyboard = true;
-          });
-          try {
-            await Future.delayed(Duration(milliseconds: 500));
-            String code = await Get.toNamed(QrScanPage.TAG);
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton.small(
+          onPressed: () async {
             setState(() {
-              keyboard = false;
-              _item.text = code;
+              visibility = !visibility!;
             });
+          },
+          child: (visibility!)
+              ? Icon(Icons.arrow_downward_outlined)
+              : Icon(Icons.arrow_upward_outlined)),
+      bottomSheet: BottomSheet(
+          enableDrag: true,
+          onClosing: () {},
+          constraints: BoxConstraints(maxHeight: Get.size.height / 3),
+          builder: (context) {
+            return Obx(() => Visibility(
+                  visible: visibility!,
+                  child: Container(
+                    color: Colors.grey,
+                    padding: EdgeInsets.only(top: 10),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: _saleController.getCartList.length,
+                      itemBuilder: (context, index) {
+                        var _list = _saleController.getCartList;
 
-            //find data on list
-
-            try {
-              _saleController.getProductList
-                  .firstWhere((element) => element.itemCode == code);
-
-              showDefaultSnackbar(context, message: "Data Ditambahkan");
-            } catch (e) {
-              showDefaultSnackbar(context, message: "Item tidak ditemukan");
-            }
-          } catch (e) {
-            print(e);
-          }
-        },
-        child: Icon(Icons.qr_code),
-      ),
+                        return ProductCartItem(
+                          onDelete: () {
+                            _saleController.removeItemFromCart(_list[index]);
+                          },
+                          item: _list[index],
+                          onAdd: () {
+                            _saleController.addBuyQty(_list[index]).fold(
+                              (l) {
+                                Get.showSnackbar(
+                                  GetBar(
+                                    message: l,
+                                    duration: Duration(seconds: 1),
+                                  ),
+                                );
+                              },
+                              (r) => print("Sukses"),
+                            );
+                          },
+                          onDecrease: () {
+                            _saleController.decreaseBuyQty(_list[index]).fold(
+                              (l) {
+                                Get.showSnackbar(
+                                  GetBar(
+                                    message: l,
+                                    duration: Duration(seconds: 1),
+                                  ),
+                                );
+                              },
+                              (r) => print("Sukses"),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ));
+          }),
       body: SafeArea(
         child: Column(
           children: [
@@ -112,6 +148,14 @@ class _AddItemPageState extends State<AddItemPage> {
                   },
                   autofocus: false,
                   decoration: InputDecoration(
+                      prefixIcon: IconButton(
+                        onPressed: () async {
+                          await onScanButton();
+                        },
+                        icon: Icon(
+                          Icons.qr_code,
+                        ),
+                      ),
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -184,6 +228,33 @@ class _AddItemPageState extends State<AddItemPage> {
         ),
       ),
     );
+  }
+
+  Future<void> onScanButton() async {
+    setState(() {
+      keyboard = true;
+    });
+    try {
+      await Future.delayed(Duration(milliseconds: 500));
+      String code = await Get.toNamed(QrScanPage.TAG);
+      setState(() {
+        keyboard = false;
+        _item.text = code;
+      });
+
+      //find data on list
+
+      try {
+        _saleController.getProductList
+            .firstWhere((element) => element.itemCode == code);
+
+        showDefaultSnackbar(context, message: "Data Ditambahkan");
+      } catch (e) {
+        showDefaultSnackbar(context, message: "Item tidak ditemukan");
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   void onSingleItemClicked(String currSKU) {

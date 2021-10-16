@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
       this.suffixIcon,
       this.validator,
       this.readOnly = false,
+      this.isPassword = false,
       this.onTap})
       : super(key: key);
 
@@ -19,6 +20,7 @@ class CustomTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final bool? readOnly;
   final GestureTapCallback? onTap;
+  final bool? isPassword;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,6 +44,7 @@ class CustomTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: TextFormField(
+            obscureText: isPassword!,
             readOnly: readOnly!,
             onTap: onTap,
             controller: controller,

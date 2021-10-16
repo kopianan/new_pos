@@ -120,7 +120,7 @@ class _SalePageState extends State<SalePage> {
                 actions: [
                   IconButton(
                     onPressed: () {
-                      _saleBloc.getAllProduct(); 
+                      _saleBloc.getAllProduct();
                     },
                     icon: Icon(Icons.refresh),
                   )
@@ -340,6 +340,38 @@ class _SalePageState extends State<SalePage> {
                                 shape: OutlineInputBorder(
                                     borderSide: BorderSide(
                                   width: 2,
+                                  color: Colors.red[400]!,
+                                )),
+                                child: Text(
+                                  "Hapus ",
+                                  style: TextStyle(
+                                    color: Colors.red[400]!,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                onPressed: () async {
+                                  try {
+                                    //simpan ke local dengan status cancel
+                                    await _saleController.saveTransactionData(
+                                        describeEnum(TransStatus.SEND));
+                                    Get.back(closeOverlays: true);
+                                  } catch (e) {
+                                    showDefaultSnackbar(context,
+                                        message: "Gagal menghapus record");
+                                  }
+                                },
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Expanded(
+                              flex: 1,
+                              child: MaterialButton(
+                                height: 45,
+                                elevation: 5,
+                                shape: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                  width: 2,
                                   color: Colors.indigoAccent[400]!,
                                 )),
                                 child: Text(
@@ -370,7 +402,6 @@ class _SalePageState extends State<SalePage> {
                             ),
                             SizedBox(width: 10),
                             Expanded(
-                              flex: 3,
                               child: MaterialButton(
                                 height: 45,
                                 elevation: 5,
@@ -390,30 +421,6 @@ class _SalePageState extends State<SalePage> {
                             ),
                           ],
                         ),
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          alignment: Alignment.center,
-                          child: InkWell(
-                            onTap: () async {
-                              try {
-                                //simpan ke local dengan status cancel
-                                await _saleController.saveTransactionData(
-                                    describeEnum(TransStatus.SEND));
-                                Get.back(closeOverlays: true);
-                              } catch (e) {
-                                showDefaultSnackbar(context,
-                                    message: "Gagal menghapus record");
-                              }
-                            },
-                            child: Text(
-                              "Hapus Record",
-                              style: TextStyle(
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
-                            ),
-                          ),
-                        )
                       ],
                     ),
             ],
@@ -426,7 +433,15 @@ class _SalePageState extends State<SalePage> {
   Column informationSection() {
     return Column(
       children: [
-        const SectionTitle(title: "Transaction Info"),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SectionTitle(
+              title: "Transaction Info",
+            ),
+            Text(CustomDate.convertDate(_saleController.getTransactionDate))
+          ],
+        ),
         Container(
             margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             child: Column(
@@ -435,29 +450,6 @@ class _SalePageState extends State<SalePage> {
                 TransactionInfoDetail(
                   title: "Nomor Transaksi",
                   value: _saleController.getTransactionNumber,
-                ),
-                TransactionInfoDetail(
-                  title: "Kode Lokasi",
-                  value: _saleController.getSelectedLocation.locationCode!,
-                ),
-                TransactionInfoDetail(
-                  title: "Tanggal",
-                  value: CustomDate.convertDate(
-                      _saleController.getTransactionDate),
-                ),
-                Obx(() => TransactionInfoDetail(
-                      title: "Payment Term",
-                      value: (_saleController.getPaymentTerm == PaymentTerm())
-                          ? "Pilih Customer"
-                          : _saleController.getPaymentTerm.name!,
-                    )),
-                Obx(
-                  () => TransactionInfoDetail(
-                    title: "PaymentType",
-                    value: (_saleController.getPaymentType == PaymentTerm())
-                        ? "Pilih Customer"
-                        : _saleController.getPaymentType.name!,
-                  ),
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 4),
@@ -503,13 +495,46 @@ class _SalePageState extends State<SalePage> {
                                                 color: Colors.red,
                                                 fontWeight: FontWeight.bold),
                                           )
-                                        : Text(
-                                            _saleController.getSelectedCustomer
-                                                .customerName!,
-                                            overflow: TextOverflow.clip,
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.bold),
+                                        : Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                _saleController
+                                                    .getSelectedCustomer
+                                                    .customerName!,
+                                                overflow: TextOverflow.clip,
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    (_saleController
+                                                                .getPaymentTerm ==
+                                                            PaymentTerm())
+                                                        ? "Pilih Customer"
+                                                        : _saleController
+                                                            .getPaymentTerm
+                                                            .name!,
+                                                  ),
+                                                  Text(" / "),
+                                                  Text(
+                                                    (_saleController
+                                                                .getPaymentType ==
+                                                            PaymentTerm())
+                                                        ? "Pilih Customer"
+                                                        : _saleController
+                                                            .getPaymentType
+                                                            .name!,
+                                                  )
+                                                ],
+                                              )
+                                            ],
                                           ),
                                   ),
                                 ),

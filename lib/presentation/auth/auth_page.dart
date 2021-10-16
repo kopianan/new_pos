@@ -26,6 +26,7 @@ class _AuthPageState extends State<AuthPage> {
 
   final _formKey = GlobalKey<FormState>();
   LocationDataModel? _selected;
+  bool? isPassword = true;
   String? location = null;
   List<String> _validatedLocation = [];
   List<LocationDataModel> _allUsers = <LocationDataModel>[];
@@ -75,6 +76,16 @@ class _AuthPageState extends State<AuthPage> {
                             ),
                             const SizedBox(height: 20),
                             CustomTextField(
+                              isPassword: isPassword,
+                              suffixIcon: InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      isPassword = !isPassword!;
+                                    });
+                                  },
+                                  child: (!isPassword!)
+                                      ? Icon(Icons.visibility_off)
+                                      : Icon(Icons.visibility)),
                               validator: (e) {
                                 if (e!.isEmpty) {
                                   return "Harap isi password";
@@ -86,57 +97,6 @@ class _AuthPageState extends State<AuthPage> {
                               label: "Password",
                             ),
                             const SizedBox(height: 20),
-                            BlocProvider(
-                              create: (context) =>
-                                  getIt<AuthCubit>()..validateLocation(),
-                              child: BlocConsumer<AuthCubit, AuthState>(
-                                listener: (context, state) {
-                                  state.maybeMap(
-                                    orElse: () {},
-                                    onValidateLocation: (e) {
-                                      _validatedLocation.assignAll(e.location);
-                                    },
-                                  );
-                                },
-                                builder: (context, state) {
-                                  return state.maybeMap(
-                                    orElse: () {
-                                      return Container();
-                                    },
-                                    onLoading: (e) {
-                                      return const CustomDropdownLoading(
-                                        label: "Pilih Lokasi",
-                                      );
-                                    },
-                                    onError: (e) {
-                                      return const CustomDropdownLoading(
-                                        label: "Atur Config Dulu",
-                                      );
-                                    },
-                                    onValidateLocation: (e) {
-                                      return SizedBox(
-                                        width: double.infinity,
-                                        child: CustomDropdown(
-                                          validator: (e) {
-                                            if (e == null) {
-                                              return "Pilih lokasi";
-                                            }
-                                            return null;
-                                          },
-                                          hintText: "Pilih lokasi",
-                                          label: "Lokasi",
-                                          onChanged: (e) {
-                                            location = e;
-                                          },
-                                          list: e.location,
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
-                            ),
-                            const SizedBox(height: 30),
                             PosDefaultButton(
                               text: "Login",
                               onPressed: () {
@@ -161,6 +121,7 @@ class _AuthPageState extends State<AuthPage> {
     if (_formKey.currentState!.validate()) {
       final _user = _usernameController.text;
       final _pass = _passwordController.text;
+      location = PrefStorage().getSelectedLocation();
 
       try {
         final _data =

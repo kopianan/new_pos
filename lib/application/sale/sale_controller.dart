@@ -196,7 +196,9 @@ class SaleController extends GetxController {
               double.parse(element.itemPrice!) *
               (element.discount! / 100.0);
         } else {
-          _grandDiscount.value += _subTotal - ((element.discount!) * _subTotal);
+          if (element.discount! != 0)
+            _grandDiscount.value +=
+                _subTotal - ((element.discount!) * _subTotal);
         }
       },
     );
