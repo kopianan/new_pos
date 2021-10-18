@@ -5,12 +5,13 @@ import 'package:pos/domain/payment_term.dart';
 class SaleFunction {
   static PaymentTerm customerPaymentTerm(CustomerDataModel customer) {
     try {
-      var _data = ConstantsData.getPaymentTermList
+      var _data = ConstantsData()
+          .getPaymentTermList()
           .firstWhere((e) => e.code == customer.defaultTermId);
 
       return _data;
     } catch (e) {
-      return ConstantsData.getPaymentTermList.last;
+      return ConstantsData().getPaymentTermList().last;
     }
   }
 

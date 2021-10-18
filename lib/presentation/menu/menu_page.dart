@@ -61,7 +61,7 @@ class _MenuPageState extends State<MenuPage> {
               const SizedBox(height: 20),
               _CustomButton(
                 onTap: () {
-                  Get.toNamed(ConfigPaymentIdPage.TAG); 
+                  Get.toNamed(ConfigPaymentIdPage.TAG);
                 },
                 text: "Set Payment ID",
               ),
@@ -72,11 +72,12 @@ class _MenuPageState extends State<MenuPage> {
                   try {
                     var _url = PrefStorage().getBaseUrl();
                     var _location = PrefStorage().getSelectedLocation();
+                    var _paymentTerm = PrefStorage().getPaymentTerm();
                     Get.offNamed(AuthPage.TAG);
                   } catch (e) {
                     showDefaultSnackbar(context,
                         message:
-                            "Silahkan set config dan pilih lokasi terlebih dahulu");
+                            "Silahkan set config, pilih lokasi dan payment ID terlebih dahulu");
                   }
                 },
                 text: "Login",

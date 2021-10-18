@@ -459,7 +459,7 @@ class _SalePageState extends State<SalePage> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                onPressed: () {
+                                onPressed: () { 
                                   Get.toNamed(TransactionProgressPage.TAG);
                                 },
                               ),
