@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:get_storage/get_storage.dart';
 import 'package:pos/domain/customer_data_model.dart';
 import 'package:pos/domain/location/location_data_model.dart';
+import 'package:pos/domain/payment_term.dart';
 import 'package:pos/domain/product_data_model.dart';
 import 'package:pos/domain/sale_transaction_data_model.dart';
 import 'package:pos/presentation/sale/widget/product_list_item.dart';
@@ -12,6 +13,7 @@ class PrefStorage {
   final box = GetStorage();
 
   String get getToken => '0105';
+ 
 
   Future<void> saveProductList(List<ProductDataModel> list) async {
     try {

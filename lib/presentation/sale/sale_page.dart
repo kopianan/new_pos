@@ -175,7 +175,17 @@ class _SalePageState extends State<SalePage> {
                             ? null
                             : "Tambah",
                         onTap: () {
-                          Get.toNamed(AddItemPage.TAG);
+                          if (_saleController.getSelectedCustomer ==
+                              CustomerDataModel()) {
+                            Get.showSnackbar(
+                              GetBar(
+                                message: "Pilih customer terlebih dahulu",
+                                duration: Duration(seconds: 2),
+                              ),
+                            );
+                          } else {
+                            Get.toNamed(AddItemPage.TAG);
+                          }
                         },
                       ),
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/domain/product_data_model.dart';
 import 'package:collection/collection.dart';
@@ -20,10 +21,10 @@ class AddItemPage extends StatefulWidget {
 
 class _AddItemPageState extends State<AddItemPage> {
   final _saleController = Get.find<SaleController>();
+  GFBottomSheetController bottomController = GFBottomSheetController();
   late Map<String?, List<ProductDataModel>> _filteredList;
   bool keyboard = false;
   TextEditingController _item = TextEditingController();
-  ScrollController scrollController = ScrollController();
   bool? visibility = false;
   @override
   void initState() {
@@ -42,129 +43,99 @@ class _AddItemPageState extends State<AddItemPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              var _list = _filteredList.keys.toList();
-              // var _list = _saleController.getProductList;
-              // print(_list.length);
-              // var _data =
-              //     _list.toSet().groupListsBy((element) => element.itemSku);
-              // print(_data['645.22.06.90']);
-              // print(_data['645.22.06.90']!.length);
-            },
-            icon: Icon(Icons.ten_k),
-          )
-        ],
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton.small(
-          onPressed: () async {
-            setState(() {
-              visibility = !visibility!;
-            });
-          },
-          child: (visibility!)
-              ? Icon(Icons.arrow_downward_outlined)
-              : Icon(Icons.arrow_upward_outlined)),
-      bottomSheet: BottomSheet(
-          enableDrag: true,
-          onClosing: () {},
-          constraints: BoxConstraints(maxHeight: Get.size.height / 3),
-          builder: (context) {
-            return Obx(() => Visibility(
-                  visible: visibility!,
-                  child: Container(
-                    padding: EdgeInsets.only(top: 12),
-                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(-2, -2),
-                          blurRadius: 2,
-                          spreadRadius: 3)
-                    ]),
-                    child: SingleChildScrollView(
-                      controller: scrollController,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              right: 10,
-                              left: 10,
-                            ),
-                            child: Text(
-                              "Cart",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
+      appBar: AppBar(),
+      bottomSheet: GFBottomSheet(
+          maxContentHeight: Get.size.height / 3,
+          stickyHeaderHeight: 80,
+          elevation: 5,
+          stickyHeader: Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 0)]),
+            child: GFListTile(
+              margin: EdgeInsets.zero,
+              color: Colors.blue.withAlpha(100),
+              titleText: 'CART',
+              subTitle: Obx(() => Text(
+                  "Total  ${_saleController.getCartList.length.toString()}")),
+              icon: Text("Tarik/Dorong"),
+            ),
+          ),
+          // stickyFooterHeight: 50,
+          contentBody: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: Obx(
+                () => (_saleController.getCartList.length == 0)
+                    ? Container(
+                        padding: EdgeInsets.all(20),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Keranjang Kosong",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Divider(),
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: _saleController.getCartList.length,
-                            itemBuilder: (context, index) {
-                              var _list = _saleController.getCartList;
-
-                              return Row(
-                                children: [
-                                  SizedBox(width: 8),
-                                  Text(
-                                    index.toString(),
-                                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                                  ),
-                                  Expanded(
-                                    child: ProductCartItem(
-                                      onDelete: () {
-                                        _saleController
-                                            .removeItemFromCart(_list[index]);
-                                      },
-                                      item: _list[index],
-                                      onAdd: () {
-                                        _saleController
-                                            .addBuyQty(_list[index])
-                                            .fold(
-                                          (l) {
-                                            Get.showSnackbar(
-                                              GetBar(
-                                                message: l,
-                                                duration: Duration(seconds: 1),
-                                              ),
-                                            );
-                                          },
-                                          (r) => print("Sukses"),
+                        ),
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: _saleController.getCartList.length,
+                        itemBuilder: (context, index) {
+                          var _list = _saleController.getCartList;
+                          return Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                index.toString(),
+                                style: TextStyle(
+                                    fontSize: 17, fontWeight: FontWeight.bold),
+                              ),
+                              Expanded(
+                                child: ProductCartItem(
+                                  onDelete: () {
+                                    _saleController
+                                        .removeItemFromCart(_list[index]);
+                                  },
+                                  item: _list[index],
+                                  onAdd: () {
+                                    _saleController
+                                        .addBuyQty(_list[index])
+                                        .fold(
+                                      (l) {
+                                        Get.showSnackbar(
+                                          GetBar(
+                                            message: l,
+                                            duration: Duration(seconds: 1),
+                                          ),
                                         );
                                       },
-                                      onDecrease: () {
-                                        _saleController
-                                            .decreaseBuyQty(_list[index])
-                                            .fold(
-                                          (l) {
-                                            Get.showSnackbar(
-                                              GetBar(
-                                                message: l,
-                                                duration: Duration(seconds: 1),
-                                              ),
-                                            );
-                                          },
-                                          (r) => print("Sukses"),
+                                      (r) => print("Sukses"),
+                                    );
+                                  },
+                                  onDecrease: () {
+                                    _saleController
+                                        .decreaseBuyQty(_list[index])
+                                        .fold(
+                                      (l) {
+                                        Get.showSnackbar(
+                                          GetBar(
+                                            message: l,
+                                            duration: Duration(seconds: 1),
+                                          ),
                                         );
                                       },
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                        ],
+                                      (r) => print("Sukses"),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          );
+                        },
                       ),
-                    ),
-                  ),
-                ));
-          }),
+              )),
+          controller: bottomController),
       body: SafeArea(
         child: Column(
           children: [
@@ -312,9 +283,6 @@ class _AddItemPageState extends State<AddItemPage> {
       print(e);
       showDefaultSnackbar(context, message: "Item Sudah Ada");
     }
-    scrollController.jumpTo(
-      scrollController.position.maxScrollExtent,
-    );
   }
 
   void onListClick(BuildContext context, String sku) {

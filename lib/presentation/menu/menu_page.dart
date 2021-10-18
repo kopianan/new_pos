@@ -6,6 +6,7 @@ import 'package:pos/infrastructure/function/custom_snackbar.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/presentation/auth/auth_page.dart';
 import 'package:pos/presentation/config/config_page.dart';
+import 'package:pos/presentation/config/config_payment_id_page.dart';
 import 'package:pos/presentation/config/location_page.dart';
 import 'package:pos/presentation/widgets/custom_dropdown.dart';
 import 'package:pos/presentation/widgets/widget_collection.dart';
@@ -56,6 +57,13 @@ class _MenuPageState extends State<MenuPage> {
                   }
                 },
                 text: "Set Location",
+              ),
+              const SizedBox(height: 20),
+              _CustomButton(
+                onTap: () {
+                  Get.toNamed(ConfigPaymentIdPage.TAG); 
+                },
+                text: "Set Payment ID",
               ),
               const SizedBox(height: 20),
               _CustomOutlineButton(
