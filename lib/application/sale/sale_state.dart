@@ -8,6 +8,7 @@ class SaleState with _$SaleState {
   const factory SaleState.isError(String error) = _IsError;
   const factory SaleState.onGetAllProducts(List<ProductDataModel> list) =
       _OnGetAllProducts;
+  const factory SaleState.onGetSaleDetail(String id) = _OnGetSaleDetail;
   const factory SaleState.onGetCustomerDiscount(List<DiscountDataModel> list) =
       _OnGetCustomerDiscount;
 

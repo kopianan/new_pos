@@ -48,16 +48,28 @@ class _QrScanPageState extends State<QrScanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: Text("Scan"),
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        
         children: <Widget>[
-          Container(
-            child: Expanded(
-              child: QRView(
-                key: qrKey,
-                onQRViewCreated: _onQRViewCreated,
-              ),
+          Expanded(
+            child: QRView(
+              key: qrKey,
+              onQRViewCreated: _onQRViewCreated,
             ),
           ),
+          Container(
+            alignment: Alignment.center,
+            height: 100,
+            color: Colors.black.withAlpha(100),
+            child: Text("Scanning QR / Barcode. . .",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          )
         ],
       ),
     );

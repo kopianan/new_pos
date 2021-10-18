@@ -11,7 +11,7 @@ abstract class ISale {
   Future<Either<String, String>> makeTransaction(
       RequestSaleTransactionDataModel data, dynamic sale);
   Future<Either<String, String>> confirmPayment(String transactionNumber);
-  Future<Either<String, SalesOrderDataModel>> getSalesOrderId(
+  Future<Either<String, String>> getSalesOrderId(
       String transactionNumber);
   Future<Either<String, List<DiscountDataModel>>> getCustomerDiscount(
       CustomerDataModel customer);

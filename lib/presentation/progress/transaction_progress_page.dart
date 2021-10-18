@@ -7,6 +7,7 @@ import 'package:pos/application/sale/sale_cubit.dart';
 import 'package:pos/config/constants_data.dart';
 import 'package:pos/domain/sale/request_sale_transaction_data_model.dart';
 import 'package:pos/injectable.dart';
+import 'package:pos/presentation/dashboard/dashboard_page.dart';
 
 class TransactionProgressPage extends StatefulWidget {
   static const String TAG = '/transaction-progress-page';
@@ -59,6 +60,11 @@ class _TransactionProgressPageState extends State<TransactionProgressPage> {
                 width: double.infinity,
                 margin: EdgeInsets.only(top: 20),
                 child: state.maybeMap(
+                  isError: (e) {
+                    return ErrorPage(
+                      message: e.error,
+                    );
+                  },
                   orElse: () {
                     return WaitingPage();
                   },
@@ -139,6 +145,47 @@ class WaitingPage extends StatelessWidget {
   }
 }
 
+class ErrorPage extends StatelessWidget {
+  const ErrorPage({Key? key, this.message}) : super(key: key);
+  final String? message;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.error_outline,
+            size: 100,
+            color: Colors.red,
+          ),
+          SizedBox(height: 20),
+          Text(
+            "Payment Failed",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 100),
+          Text(
+            message!,
+            textAlign: TextAlign.center,
+          ),
+          Spacer(),
+          ElevatedButton(
+              onPressed: () {
+                Get.back(closeOverlays: true);
+              },
+              child: Text("Kembali")),
+          Text("Terjadi kesalahan"),
+          SizedBox(height: 20),
+        ],
+      ),
+    );
+  }
+}
+
 class SuccessPage extends StatelessWidget {
   const SuccessPage({Key? key, required this.message}) : super(key: key);
   final String message;
@@ -160,12 +207,15 @@ class SuccessPage extends StatelessWidget {
         ),
         Spacer(),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.offNamedUntil(
+                DashboardPage.TAG, ModalRoute.withName(DashboardPage.TAG));
+          },
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Text(
               "KEMBALI",
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
         ),

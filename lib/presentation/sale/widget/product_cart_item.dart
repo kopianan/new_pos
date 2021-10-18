@@ -38,7 +38,9 @@ class ProductCartItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  (_sale.getSetStatus != describeEnum(TransStatus.PROCCESS))
+                  (_sale.getSetStatus != describeEnum(TransStatus.PROCCESS) &&
+                          _sale.getSetStatus !=
+                              describeEnum(TransStatus.PENDING))
                       ? SizedBox()
                       : InkWell(
                           onTap: () {
@@ -58,7 +60,9 @@ class ProductCartItem extends StatelessWidget {
                           TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  (_sale.getSetStatus != describeEnum(TransStatus.PROCCESS))
+                  (_sale.getSetStatus != describeEnum(TransStatus.PROCCESS) &&
+                          _sale.getSetStatus !=
+                              describeEnum(TransStatus.PENDING))
                       ? SizedBox()
                       : InkWell(
                           onTap: () {
@@ -100,7 +104,8 @@ class ProductCartItem extends StatelessWidget {
                 ],
               ),
             ),
-            (_sale.getSetStatus != describeEnum(TransStatus.PROCCESS))
+            (_sale.getSetStatus != describeEnum(TransStatus.PROCCESS) &&
+                    _sale.getSetStatus != describeEnum(TransStatus.PENDING))
                 ? SizedBox()
                 : Positioned(
                     width: 80,

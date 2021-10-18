@@ -23,6 +23,7 @@ class _AddItemPageState extends State<AddItemPage> {
   late Map<String?, List<ProductDataModel>> _filteredList;
   bool keyboard = false;
   TextEditingController _item = TextEditingController();
+  ScrollController scrollController = ScrollController();
   bool? visibility = false;
   @override
   void initState() {
@@ -75,47 +76,91 @@ class _AddItemPageState extends State<AddItemPage> {
             return Obx(() => Visibility(
                   visible: visibility!,
                   child: Container(
-                    color: Colors.grey,
-                    padding: EdgeInsets.only(top: 10),
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: _saleController.getCartList.length,
-                      itemBuilder: (context, index) {
-                        var _list = _saleController.getCartList;
+                    padding: EdgeInsets.only(top: 12),
+                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(-2, -2),
+                          blurRadius: 2,
+                          spreadRadius: 3)
+                    ]),
+                    child: SingleChildScrollView(
+                      controller: scrollController,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              right: 10,
+                              left: 10,
+                            ),
+                            child: Text(
+                              "Cart",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Divider(),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: _saleController.getCartList.length,
+                            itemBuilder: (context, index) {
+                              var _list = _saleController.getCartList;
 
-                        return ProductCartItem(
-                          onDelete: () {
-                            _saleController.removeItemFromCart(_list[index]);
-                          },
-                          item: _list[index],
-                          onAdd: () {
-                            _saleController.addBuyQty(_list[index]).fold(
-                              (l) {
-                                Get.showSnackbar(
-                                  GetBar(
-                                    message: l,
-                                    duration: Duration(seconds: 1),
+                              return Row(
+                                children: [
+                                  SizedBox(width: 8),
+                                  Text(
+                                    index.toString(),
+                                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                                   ),
-                                );
-                              },
-                              (r) => print("Sukses"),
-                            );
-                          },
-                          onDecrease: () {
-                            _saleController.decreaseBuyQty(_list[index]).fold(
-                              (l) {
-                                Get.showSnackbar(
-                                  GetBar(
-                                    message: l,
-                                    duration: Duration(seconds: 1),
+                                  Expanded(
+                                    child: ProductCartItem(
+                                      onDelete: () {
+                                        _saleController
+                                            .removeItemFromCart(_list[index]);
+                                      },
+                                      item: _list[index],
+                                      onAdd: () {
+                                        _saleController
+                                            .addBuyQty(_list[index])
+                                            .fold(
+                                          (l) {
+                                            Get.showSnackbar(
+                                              GetBar(
+                                                message: l,
+                                                duration: Duration(seconds: 1),
+                                              ),
+                                            );
+                                          },
+                                          (r) => print("Sukses"),
+                                        );
+                                      },
+                                      onDecrease: () {
+                                        _saleController
+                                            .decreaseBuyQty(_list[index])
+                                            .fold(
+                                          (l) {
+                                            Get.showSnackbar(
+                                              GetBar(
+                                                message: l,
+                                                duration: Duration(seconds: 1),
+                                              ),
+                                            );
+                                          },
+                                          (r) => print("Sukses"),
+                                        );
+                                      },
+                                    ),
                                   ),
-                                );
-                              },
-                              (r) => print("Sukses"),
-                            );
-                          },
-                        );
-                      },
+                                ],
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ));
@@ -213,9 +258,6 @@ class _AddItemPageState extends State<AddItemPage> {
                     onTap: () {
                       if (_filteredList[_currentItemSku]!.length == 1) {
                         onSingleItemClicked(_currentItemSku!);
-
-                        //check if data already exist
-
                       } else {
                         onListClick(context, _currentItemSku!);
                       }
@@ -264,11 +306,15 @@ class _AddItemPageState extends State<AddItemPage> {
       _saleController.updateSelectedList(
           _saleController.getSElectedList.first, true);
       _saleController.onSaveSelectList();
-      showDefaultSnackbar(context, message: "Item Ditambahkan");
+      showDefaultSnackbar(context,
+          message: "Item Ditambahkan", duration: Duration(milliseconds: 1500));
     } catch (e) {
       print(e);
       showDefaultSnackbar(context, message: "Item Sudah Ada");
     }
+    scrollController.jumpTo(
+      scrollController.position.maxScrollExtent,
+    );
   }
 
   void onListClick(BuildContext context, String sku) {

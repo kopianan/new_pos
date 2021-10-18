@@ -41,6 +41,12 @@ class _$SaleStateTearOff {
     );
   }
 
+  _OnGetSaleDetail onGetSaleDetail(String id) {
+    return _OnGetSaleDetail(
+      id,
+    );
+  }
+
   _OnGetCustomerDiscount onGetCustomerDiscount(List<DiscountDataModel> list) {
     return _OnGetCustomerDiscount(
       list,
@@ -78,6 +84,7 @@ mixin _$SaleState {
     required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(String id) onGetSaleDetail,
     required TResult Function(List<DiscountDataModel> list)
         onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
@@ -92,6 +99,7 @@ mixin _$SaleState {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -105,6 +113,7 @@ mixin _$SaleState {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -119,6 +128,7 @@ mixin _$SaleState {
     required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetSaleDetail value) onGetSaleDetail,
     required TResult Function(_OnGetCustomerDiscount value)
         onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
@@ -135,6 +145,7 @@ mixin _$SaleState {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -149,6 +160,7 @@ mixin _$SaleState {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -216,6 +228,7 @@ class _$_Initial implements _Initial {
     required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(String id) onGetSaleDetail,
     required TResult Function(List<DiscountDataModel> list)
         onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
@@ -233,6 +246,7 @@ class _$_Initial implements _Initial {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -249,6 +263,7 @@ class _$_Initial implements _Initial {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -269,6 +284,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetSaleDetail value) onGetSaleDetail,
     required TResult Function(_OnGetCustomerDiscount value)
         onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
@@ -288,6 +304,7 @@ class _$_Initial implements _Initial {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -305,6 +322,7 @@ class _$_Initial implements _Initial {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -366,6 +384,7 @@ class _$_IsLoading implements _IsLoading {
     required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(String id) onGetSaleDetail,
     required TResult Function(List<DiscountDataModel> list)
         onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
@@ -383,6 +402,7 @@ class _$_IsLoading implements _IsLoading {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -399,6 +419,7 @@ class _$_IsLoading implements _IsLoading {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -419,6 +440,7 @@ class _$_IsLoading implements _IsLoading {
     required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetSaleDetail value) onGetSaleDetail,
     required TResult Function(_OnGetCustomerDiscount value)
         onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
@@ -438,6 +460,7 @@ class _$_IsLoading implements _IsLoading {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -455,6 +478,7 @@ class _$_IsLoading implements _IsLoading {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -518,6 +542,7 @@ class _$_IsLoadingDiscount implements _IsLoadingDiscount {
     required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(String id) onGetSaleDetail,
     required TResult Function(List<DiscountDataModel> list)
         onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
@@ -535,6 +560,7 @@ class _$_IsLoadingDiscount implements _IsLoadingDiscount {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -551,6 +577,7 @@ class _$_IsLoadingDiscount implements _IsLoadingDiscount {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -571,6 +598,7 @@ class _$_IsLoadingDiscount implements _IsLoadingDiscount {
     required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetSaleDetail value) onGetSaleDetail,
     required TResult Function(_OnGetCustomerDiscount value)
         onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
@@ -590,6 +618,7 @@ class _$_IsLoadingDiscount implements _IsLoadingDiscount {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -607,6 +636,7 @@ class _$_IsLoadingDiscount implements _IsLoadingDiscount {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -692,6 +722,7 @@ class _$_IsError implements _IsError {
     required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(String id) onGetSaleDetail,
     required TResult Function(List<DiscountDataModel> list)
         onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
@@ -709,6 +740,7 @@ class _$_IsError implements _IsError {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -725,6 +757,7 @@ class _$_IsError implements _IsError {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -745,6 +778,7 @@ class _$_IsError implements _IsError {
     required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetSaleDetail value) onGetSaleDetail,
     required TResult Function(_OnGetCustomerDiscount value)
         onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
@@ -764,6 +798,7 @@ class _$_IsError implements _IsError {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -781,6 +816,7 @@ class _$_IsError implements _IsError {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -874,6 +910,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(String id) onGetSaleDetail,
     required TResult Function(List<DiscountDataModel> list)
         onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
@@ -891,6 +928,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -907,6 +945,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -927,6 +966,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetSaleDetail value) onGetSaleDetail,
     required TResult Function(_OnGetCustomerDiscount value)
         onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
@@ -946,6 +986,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -963,6 +1004,7 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -984,6 +1026,193 @@ abstract class _OnGetAllProducts implements SaleState {
   List<ProductDataModel> get list => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$OnGetAllProductsCopyWith<_OnGetAllProducts> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnGetSaleDetailCopyWith<$Res> {
+  factory _$OnGetSaleDetailCopyWith(
+          _OnGetSaleDetail value, $Res Function(_OnGetSaleDetail) then) =
+      __$OnGetSaleDetailCopyWithImpl<$Res>;
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$OnGetSaleDetailCopyWithImpl<$Res> extends _$SaleStateCopyWithImpl<$Res>
+    implements _$OnGetSaleDetailCopyWith<$Res> {
+  __$OnGetSaleDetailCopyWithImpl(
+      _OnGetSaleDetail _value, $Res Function(_OnGetSaleDetail) _then)
+      : super(_value, (v) => _then(v as _OnGetSaleDetail));
+
+  @override
+  _OnGetSaleDetail get _value => super._value as _OnGetSaleDetail;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_OnGetSaleDetail(
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnGetSaleDetail implements _OnGetSaleDetail {
+  const _$_OnGetSaleDetail(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'SaleState.onGetSaleDetail(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnGetSaleDetail &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnGetSaleDetailCopyWith<_OnGetSaleDetail> get copyWith =>
+      __$OnGetSaleDetailCopyWithImpl<_OnGetSaleDetail>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() isLoading,
+    required TResult Function() isLoadingDiscount,
+    required TResult Function(String error) isError,
+    required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(String id) onGetSaleDetail,
+    required TResult Function(List<DiscountDataModel> list)
+        onGetCustomerDiscount,
+    required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
+    required TResult Function(String message) onCreateTransactionSuccess,
+    required TResult Function(String saleData) onConfirmPaymentSuccess,
+  }) {
+    return onGetSaleDetail(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
+    TResult Function(String error)? isError,
+    TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
+    TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
+    TResult Function(String message)? onCreateTransactionSuccess,
+    TResult Function(String saleData)? onConfirmPaymentSuccess,
+  }) {
+    return onGetSaleDetail?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function()? isLoadingDiscount,
+    TResult Function(String error)? isError,
+    TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
+    TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
+    TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
+    TResult Function(String message)? onCreateTransactionSuccess,
+    TResult Function(String saleData)? onConfirmPaymentSuccess,
+    required TResult orElse(),
+  }) {
+    if (onGetSaleDetail != null) {
+      return onGetSaleDetail(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
+    required TResult Function(_IsError value) isError,
+    required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetSaleDetail value) onGetSaleDetail,
+    required TResult Function(_OnGetCustomerDiscount value)
+        onGetCustomerDiscount,
+    required TResult Function(_OnGetCustomer value) onGetCustomer,
+    required TResult Function(_OnCreateTransactionSuccess value)
+        onCreateTransactionSuccess,
+    required TResult Function(_OnConfirmPaymentSuccess value)
+        onConfirmPaymentSuccess,
+  }) {
+    return onGetSaleDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
+    TResult Function(_IsError value)? isError,
+    TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
+    TResult Function(_OnGetCustomer value)? onGetCustomer,
+    TResult Function(_OnCreateTransactionSuccess value)?
+        onCreateTransactionSuccess,
+    TResult Function(_OnConfirmPaymentSuccess value)? onConfirmPaymentSuccess,
+  }) {
+    return onGetSaleDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
+    TResult Function(_IsError value)? isError,
+    TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
+    TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
+    TResult Function(_OnGetCustomer value)? onGetCustomer,
+    TResult Function(_OnCreateTransactionSuccess value)?
+        onCreateTransactionSuccess,
+    TResult Function(_OnConfirmPaymentSuccess value)? onConfirmPaymentSuccess,
+    required TResult orElse(),
+  }) {
+    if (onGetSaleDetail != null) {
+      return onGetSaleDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnGetSaleDetail implements SaleState {
+  const factory _OnGetSaleDetail(String id) = _$_OnGetSaleDetail;
+
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnGetSaleDetailCopyWith<_OnGetSaleDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1058,6 +1287,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
     required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(String id) onGetSaleDetail,
     required TResult Function(List<DiscountDataModel> list)
         onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
@@ -1075,6 +1305,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -1091,6 +1322,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -1111,6 +1343,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
     required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetSaleDetail value) onGetSaleDetail,
     required TResult Function(_OnGetCustomerDiscount value)
         onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
@@ -1130,6 +1363,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -1147,6 +1381,7 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -1240,6 +1475,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(String id) onGetSaleDetail,
     required TResult Function(List<DiscountDataModel> list)
         onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
@@ -1257,6 +1493,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -1273,6 +1510,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -1293,6 +1531,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetSaleDetail value) onGetSaleDetail,
     required TResult Function(_OnGetCustomerDiscount value)
         onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
@@ -1312,6 +1551,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -1329,6 +1569,7 @@ class _$_OnGetCustomer implements _OnGetCustomer {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -1426,6 +1667,7 @@ class _$_OnCreateTransactionSuccess implements _OnCreateTransactionSuccess {
     required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(String id) onGetSaleDetail,
     required TResult Function(List<DiscountDataModel> list)
         onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
@@ -1443,6 +1685,7 @@ class _$_OnCreateTransactionSuccess implements _OnCreateTransactionSuccess {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -1459,6 +1702,7 @@ class _$_OnCreateTransactionSuccess implements _OnCreateTransactionSuccess {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -1479,6 +1723,7 @@ class _$_OnCreateTransactionSuccess implements _OnCreateTransactionSuccess {
     required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetSaleDetail value) onGetSaleDetail,
     required TResult Function(_OnGetCustomerDiscount value)
         onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
@@ -1498,6 +1743,7 @@ class _$_OnCreateTransactionSuccess implements _OnCreateTransactionSuccess {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -1515,6 +1761,7 @@ class _$_OnCreateTransactionSuccess implements _OnCreateTransactionSuccess {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -1612,6 +1859,7 @@ class _$_OnConfirmPaymentSuccess implements _OnConfirmPaymentSuccess {
     required TResult Function() isLoadingDiscount,
     required TResult Function(String error) isError,
     required TResult Function(List<ProductDataModel> list) onGetAllProducts,
+    required TResult Function(String id) onGetSaleDetail,
     required TResult Function(List<DiscountDataModel> list)
         onGetCustomerDiscount,
     required TResult Function(List<CustomerDataModel>? list) onGetCustomer,
@@ -1629,6 +1877,7 @@ class _$_OnConfirmPaymentSuccess implements _OnConfirmPaymentSuccess {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -1645,6 +1894,7 @@ class _$_OnConfirmPaymentSuccess implements _OnConfirmPaymentSuccess {
     TResult Function()? isLoadingDiscount,
     TResult Function(String error)? isError,
     TResult Function(List<ProductDataModel> list)? onGetAllProducts,
+    TResult Function(String id)? onGetSaleDetail,
     TResult Function(List<DiscountDataModel> list)? onGetCustomerDiscount,
     TResult Function(List<CustomerDataModel>? list)? onGetCustomer,
     TResult Function(String message)? onCreateTransactionSuccess,
@@ -1665,6 +1915,7 @@ class _$_OnConfirmPaymentSuccess implements _OnConfirmPaymentSuccess {
     required TResult Function(_IsLoadingDiscount value) isLoadingDiscount,
     required TResult Function(_IsError value) isError,
     required TResult Function(_OnGetAllProducts value) onGetAllProducts,
+    required TResult Function(_OnGetSaleDetail value) onGetSaleDetail,
     required TResult Function(_OnGetCustomerDiscount value)
         onGetCustomerDiscount,
     required TResult Function(_OnGetCustomer value) onGetCustomer,
@@ -1684,6 +1935,7 @@ class _$_OnConfirmPaymentSuccess implements _OnConfirmPaymentSuccess {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?
@@ -1701,6 +1953,7 @@ class _$_OnConfirmPaymentSuccess implements _OnConfirmPaymentSuccess {
     TResult Function(_IsLoadingDiscount value)? isLoadingDiscount,
     TResult Function(_IsError value)? isError,
     TResult Function(_OnGetAllProducts value)? onGetAllProducts,
+    TResult Function(_OnGetSaleDetail value)? onGetSaleDetail,
     TResult Function(_OnGetCustomerDiscount value)? onGetCustomerDiscount,
     TResult Function(_OnGetCustomer value)? onGetCustomer,
     TResult Function(_OnCreateTransactionSuccess value)?

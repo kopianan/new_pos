@@ -38,8 +38,18 @@ class _SalePageState extends State<SalePage> {
 
   @override
   void initState() {
-    _saleBloc.getAllProduct();
+    checkStatus();
     super.initState();
+  }
+
+  void checkStatus() {
+    if (_saleController.getSetStatus == describeEnum(TransStatus.CANCEL)) {
+    } else if (_saleController.getSetStatus == describeEnum(TransStatus.SEND)) {
+      // get sales id
+      _saleBloc.getSaleOrderId(_saleController.getTransactionNumber);
+    } else {
+      _saleBloc.getAllProduct();
+    }
   }
 
   void _loadProductList() {
@@ -59,6 +69,10 @@ class _SalePageState extends State<SalePage> {
             listener: (context, state) {
               state.maybeMap(
                   orElse: () {},
+                  onGetSaleDetail: (detail) {
+                    //sale detail
+                    print(detail);
+                  },
                   isLoadingDiscount: (e) {
                     Get.showSnackbar(
                       GetBar(
@@ -100,7 +114,17 @@ class _SalePageState extends State<SalePage> {
 
   Widget loadingComponent(BuildContext context) {
     return Center(
-      child: CircularProgressIndicator.adaptive(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircularProgressIndicator.adaptive(),
+          SizedBox(height: 20),
+          Text(
+            "Update Data",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
     );
   }
 
@@ -145,7 +169,9 @@ class _SalePageState extends State<SalePage> {
                       child: SectionTitle(
                         title: "Transaction Detail",
                         textButton: (_saleController.getSetStatus !=
-                                describeEnum(TransStatus.PROCCESS))
+                                    describeEnum(TransStatus.PROCCESS) &&
+                                _saleController.getSetStatus !=
+                                    describeEnum(TransStatus.PENDING))
                             ? null
                             : "Tambah",
                         onTap: () {
@@ -284,42 +310,51 @@ class _SalePageState extends State<SalePage> {
                 ],
               ),
               SizedBox(height: 10),
-              (_saleController.getSetStatus !=
-                      describeEnum(TransStatus.PROCCESS))
-                  ? Row(
-                      children: [
-                        PrintIcon(
-                          icon: Icons.print_sharp,
-                          onPressed: () {
-                            try {
-                              launch(ConstantsData.getPrintInvoiceUrl(
-                                  _saleController.getTransactionNumber));
-                            } catch (e) {}
+              (_saleController.getSetStatus == describeEnum(TransStatus.SEND))
+                  ? BlocBuilder<SaleCubit, SaleState>(
+                      builder: (context, state) {
+                        return state.maybeMap(
+                          orElse: () {
+                            return Container();
                           },
-                        ),
-                        SizedBox(width: 10),
-                        PrintIcon(
-                          icon: Icons.print_outlined,
-                          onPressed: () {
-                            try {
-                              launch(ConstantsData.getPdfPrint(
-                                  _saleController.getTransactionNumber));
-                            } catch (e) {}
-                          },
-                        ),
-                        SizedBox(width: 10),
-                        PrintIcon(
-                          icon: Icons.share,
-                          onPressed: () {
-                            try {
-                              String pdf = ConstantsData.getPdfDownload(
-                                  _saleController.getTransactionNumber);
+                          onGetSaleDetail: (e) {
+                            return Row(
+                              children: [
+                                PrintIcon(
+                                  icon: Icons.print_sharp,
+                                  onPressed: () {
+                                    try {
+                                      launch(ConstantsData.getPrintInvoiceUrl(
+                                          e.id));
+                                    } catch (e) {}
+                                  },
+                                ),
+                                SizedBox(width: 10),
+                                PrintIcon(
+                                  icon: Icons.print_outlined,
+                                  onPressed: () {
+                                    try {
+                                      launch(ConstantsData.getPdfPrint(e.id));
+                                    } catch (e) {}
+                                  },
+                                ),
+                                SizedBox(width: 10),
+                                PrintIcon(
+                                  icon: Icons.share,
+                                  onPressed: () {
+                                    try {
+                                      String pdf =
+                                          ConstantsData.getPdfDownload(e.id);
 
-                              launch(pdf);
-                            } catch (e) {}
+                                      launch(pdf);
+                                    } catch (e) {}
+                                  },
+                                ),
+                              ],
+                            );
                           },
-                        ),
-                      ],
+                        );
+                      },
                     )
                   : SizedBox(),
               SizedBox(height: 10),
@@ -354,7 +389,7 @@ class _SalePageState extends State<SalePage> {
                                   try {
                                     //simpan ke local dengan status cancel
                                     await _saleController.saveTransactionData(
-                                        describeEnum(TransStatus.SEND));
+                                        describeEnum(TransStatus.CANCEL));
                                     Get.back(closeOverlays: true);
                                   } catch (e) {
                                     showDefaultSnackbar(context,

@@ -5,6 +5,7 @@ import 'package:pos/presentation/config/config_page.dart';
 import 'package:pos/presentation/config/location_page.dart';
 import 'package:pos/presentation/dashboard/dashboard_page.dart';
 import 'package:pos/presentation/list_sale/list_sale_page.dart';
+import 'package:pos/presentation/list_sale/sale_history_detail_page.dart';
 import 'package:pos/presentation/menu/menu_page.dart';
 import 'package:pos/presentation/progress/transaction_progress_page.dart';
 import 'package:pos/presentation/sale/add_item_page.dart';
@@ -16,6 +17,9 @@ import 'package:pos/presentation/splash_screen_page.dart';
 class Routes {
   static final List<GetPage> _pages = [
     GetPage(name: AuthPage.TAG, page: () => const AuthPage()),
+    GetPage(
+        name: SaleHistoryDetailPage.TAG,
+        page: () => const SaleHistoryDetailPage()),
     GetPage(name: ConfigPage.TAG, page: () => const ConfigPage()),
     GetPage(name: MenuPage.TAG, page: () => const MenuPage()),
     GetPage(name: QrScanPage.TAG, page: () => const QrScanPage()),

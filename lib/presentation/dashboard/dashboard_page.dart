@@ -8,6 +8,7 @@ import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/injectable.dart';
 import 'package:pos/presentation/auth/auth_page.dart';
 import 'package:pos/presentation/list_sale/list_sale_page.dart';
+import 'package:pos/presentation/list_sale/sale_history_detail_page.dart';
 import 'package:pos/presentation/menu/menu_page.dart';
 import 'package:pos/presentation/sale/sale_page.dart';
 
@@ -201,6 +202,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         child: IconButton(
                           onPressed: () {
                             Get.toNamed(ListSalePage.TAG);
+                            // Get.toNamed(SaleHistoryDetailPage.TAG);
                           },
                           color: Colors.white,
                           icon: Icon(Icons.list_alt),

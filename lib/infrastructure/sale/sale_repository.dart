@@ -135,19 +135,30 @@ class SaleRepository extends ISale {
   }
 
   @override
-  Future<Either<String, SalesOrderDataModel>> getSalesOrderId(
+  Future<Either<String, String>> getSalesOrderId(
       String transactionNumber) async {
     Response response;
+    var _transType = box.getTransactionType();
+    String? id = "";
 
     try {
       response = await dio.get(box.getBaseUrl() +
-          "weblayer/template/api,SPGApps.vm?cmd=4&txtype=${box.getTransactionType()}&txno=$transactionNumber");
+          "weblayer/template/api,SPGApps.vm?cmd=4&txtype=${_transType}&txno=$transactionNumber");
 
       List<dynamic> _data = json.decode(response.data);
+      var single = _data.first;
 
-      final _list = _data.map((e) => SalesOrderDataModel.fromJson(e)).toList();
-      var single = _list.first;
-      return right(single);
+      try {
+        if (_transType == ("SO")) {
+          id = single["sales_order_id"];
+        } else {
+          id = single["sales_transaction_id"];
+        }
+      } catch (e) {
+        return left(e.toString());
+      }
+
+      return right(id!);
     } on DioError catch (e) {
       return left(e.toString());
     } catch (e) {
