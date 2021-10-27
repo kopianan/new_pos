@@ -197,8 +197,7 @@ class SaleController extends GetxController {
               (element.discount! / 100.0);
         } else {
           if (element.discount! != 0)
-            _grandDiscount.value +=
-                _subTotal - ((element.discount!) * _subTotal);
+            _grandDiscount.value += ((element.discount!) * element.totalBuy);
         }
       },
     );
@@ -218,7 +217,7 @@ class SaleController extends GetxController {
         if (element.isPercentage == true) {
           _finalTotal += _subTotal - ((element.discount! / 100.0) * _subTotal);
         } else {
-          _finalTotal += _subTotal - ((element.discount!) * _subTotal);
+          _finalTotal += ((element.discount!) * element.totalBuy);
         }
       },
     );
@@ -268,6 +267,7 @@ class SaleController extends GetxController {
       var _disc = _discountList[i];
 
       if (_disc.kategoriId == _newCart.kategoriId) {
+        print(_disc);
         if (_disc.eventDiscount!.contains("%")) {
           var _newItem = _newCart.copyWith(isPercentage: true);
           _newCart = _newItem;

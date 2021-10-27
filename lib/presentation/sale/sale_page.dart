@@ -334,7 +334,7 @@ class _SalePageState extends State<SalePage> {
                                   icon: Icons.print_sharp,
                                   onPressed: () {
                                     try {
-                                      launch(ConstantsData.getPrintInvoiceUrl(
+                                      launch(ConstantsData().getPrintInvoiceUrl(
                                           e.id));
                                     } catch (e) {}
                                   },
@@ -344,7 +344,7 @@ class _SalePageState extends State<SalePage> {
                                   icon: Icons.print_outlined,
                                   onPressed: () {
                                     try {
-                                      launch(ConstantsData.getPdfPrint(e.id));
+                                      launch(ConstantsData().getPdfPrint(e.id));
                                     } catch (e) {}
                                   },
                                 ),
@@ -354,7 +354,7 @@ class _SalePageState extends State<SalePage> {
                                   onPressed: () {
                                     try {
                                       String pdf =
-                                          ConstantsData.getPdfDownload(e.id);
+                                          ConstantsData().getPdfDownload(e.id);
 
                                       launch(pdf);
                                     } catch (e) {}
@@ -459,7 +459,7 @@ class _SalePageState extends State<SalePage> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                onPressed: () { 
+                                onPressed: () {
                                   Get.toNamed(TransactionProgressPage.TAG);
                                 },
                               ),
