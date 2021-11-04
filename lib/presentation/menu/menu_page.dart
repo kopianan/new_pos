@@ -29,7 +29,14 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              colorFilter: ColorFilter.linearToSrgbGamma(),
+              image: AssetImage('assets/images/bg_default.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,6 +74,7 @@ class _MenuPageState extends State<MenuPage> {
               ),
               const SizedBox(height: 20),
               _CustomOutlineButton(
+                color: Colors.white,
                 onTap: () {
                   //check if base url already there
                   try {
@@ -121,18 +129,21 @@ class _CustomButton extends StatelessWidget {
 }
 
 class _CustomOutlineButton extends StatelessWidget {
-  const _CustomOutlineButton({
-    Key? key,
-    required this.text,
-    required this.onTap,
-  }) : super(key: key);
+  const _CustomOutlineButton(
+      {Key? key,
+      required this.text,
+      required this.onTap,
+      this.color = Colors.white})
+      : super(key: key);
   final Function onTap;
   final String text;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: MaterialButton(
+        color: color,
         height: 80,
         onPressed: () {
           onTap();

@@ -47,8 +47,14 @@ class _LocationPageState extends State<LocationPage> {
                 );
               }, onGetLocation: (e) {
                 return Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        colorFilter: ColorFilter.linearToSrgbGamma(),
+                        image: AssetImage('assets/images/bg_default.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                     padding: EdgeInsets.only(top: 30, right: 20, left: 20),
-                    color: Colors.white,
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,

@@ -33,83 +33,92 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                BlocProvider(
-                  create: (context) => getIt<AuthCubit>()..getLocationList(),
-                  child: BlocConsumer<AuthCubit, AuthState>(
-                    listener: (context, state) {
-                      state.maybeMap(
-                        orElse: () {},
-                        onGetLocation: (e) {
-                          _allUsers.assignAll(e.locations);
-                        },
-                      );
-                    },
-                    builder: (context, state) {
-                      return Form(
-                        key: _formKey,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const PageTitle(title: "Login"),
-                            const SizedBox(height: 50),
-                            const Align(
+      body: Container(
+        height: Get.size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            colorFilter: ColorFilter.linearToSrgbGamma(),
+            image: AssetImage('assets/images/bg_default.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  BlocProvider(
+                    create: (context) => getIt<AuthCubit>()..getLocationList(),
+                    child: BlocConsumer<AuthCubit, AuthState>(
+                      listener: (context, state) {
+                        state.maybeMap(
+                          orElse: () {},
+                          onGetLocation: (e) {
+                            _allUsers.assignAll(e.locations);
+                          },
+                        );
+                      },
+                      builder: (context, state) {
+                        return Form(
+                          key: _formKey,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Align(
                                 alignment: Alignment.center,
-                                child: RoundedLogo()),
-                            const SizedBox(height: 25),
-                            CustomTextField(
-                              validator: (e) {
-                                if (e!.isEmpty) {
-                                  return "Harap isi username";
-                                }
-                                return null;
-                              },
-                              controller: _usernameController,
-                              hintText: "Your username",
-                              label: "Username",
-                            ),
-                            const SizedBox(height: 20),
-                            CustomTextField(
-                              isPassword: isPassword,
-                              suffixIcon: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      isPassword = !isPassword!;
-                                    });
-                                  },
-                                  child: (!isPassword!)
-                                      ? Icon(Icons.visibility_off)
-                                      : Icon(Icons.visibility)),
-                              validator: (e) {
-                                if (e!.isEmpty) {
-                                  return "Harap isi password";
-                                }
-                                return null;
-                              },
-                              controller: _passwordController,
-                              hintText: "Your password",
-                              label: "Password",
-                            ),
-                            const SizedBox(height: 20),
-                            PosDefaultButton(
-                              text: "Login",
-                              onPressed: () {
-                                onLoginButtonClicked();
-                              },
-                            )
-                          ],
-                        ),
-                      );
-                    },
+                                child: Image.asset('assets/images/bg_machine.png'),
+                              ),
+                              const SizedBox(height: 25),
+                              CustomTextField(
+                                validator: (e) {
+                                  if (e!.isEmpty) {
+                                    return "Harap isi username";
+                                  }
+                                  return null;
+                                },
+                                controller: _usernameController,
+                                hintText: "Your username",
+                                label: "Username",
+                              ),
+                              const SizedBox(height: 20),
+                              CustomTextField(
+                                isPassword: isPassword,
+                                suffixIcon: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        isPassword = !isPassword!;
+                                      });
+                                    },
+                                    child: (!isPassword!)
+                                        ? Icon(Icons.visibility_off)
+                                        : Icon(Icons.visibility)),
+                                validator: (e) {
+                                  if (e!.isEmpty) {
+                                    return "Harap isi password";
+                                  }
+                                  return null;
+                                },
+                                controller: _passwordController,
+                                hintText: "Your password",
+                                label: "Password",
+                              ),
+                              const SizedBox(height: 20),
+                              PosDefaultButton(
+                                text: "Login",
+                                onPressed: () {
+                                  onLoginButtonClicked();
+                                },
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

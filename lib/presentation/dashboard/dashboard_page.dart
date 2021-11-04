@@ -103,15 +103,44 @@ class _DashboardPageState extends State<DashboardPage> {
       body: SafeArea(
         child: Container(
           height: Get.size.height,
+          width: double.infinity,
           child: Stack(
             children: [
               Container(
-                  height: Get.size.height / 2 + 60,
-                  child: Image.asset(
-                    'assets/images/bg-dashboard.jpg',
-                    fit: BoxFit.cover,
-                    colorBlendMode: BlendMode.darken,
-                  )),
+                height: Get.size.height / 2 + 60,
+                width: double.infinity,
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      colorFilter: ColorFilter.linearToSrgbGamma(),
+                      image: AssetImage(
+                        'assets/images/bg_default.png',
+                      ),
+                      fit: BoxFit.cover),
+                ),
+                child: Image.asset(
+                  'assets/images/bg_atm.png',
+                  fit: BoxFit.contain,
+                ),
+              ),
+              Positioned(
+                right: 20,
+                top: 50,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Lihat Data\nTransaksi",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                    Image.asset(
+                      'assets/images/img_arrow.png',
+                      width: 80,
+                    ),
+                  ],
+                ),
+              ),
               Positioned(
                 bottom: 0,
                 left: 0,

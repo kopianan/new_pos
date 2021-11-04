@@ -22,7 +22,7 @@ class RoundedLogo extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           image: const DecorationImage(
               image: AssetImage(
-                'assets/images/ig_logo.png',
+                'assets/images/bg_icon.png',
               ),
               fit: BoxFit.cover)),
     );
