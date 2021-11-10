@@ -1,14 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart'; 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:pos/application/sale/sale_controller.dart';
-import 'package:pos/application/sale/sale_cubit.dart';
-import 'package:pos/infrastructure/storage/storage.dart';
-import 'package:pos/injectable.dart';
+import 'package:pos/application/sale/sale_controller.dart'; 
+import 'package:pos/infrastructure/storage/storage.dart'; 
 import 'package:pos/presentation/auth/auth_page.dart';
-import 'package:pos/presentation/list_sale/list_sale_page.dart';
-import 'package:pos/presentation/list_sale/sale_history_detail_page.dart';
+import 'package:pos/presentation/list_sale/list_sale_page.dart'; 
 import 'package:pos/presentation/menu/menu_page.dart';
 import 'package:pos/presentation/sale/sale_page.dart';
 

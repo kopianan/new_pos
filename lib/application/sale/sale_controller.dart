@@ -217,7 +217,8 @@ class SaleController extends GetxController {
         if (element.isPercentage == true) {
           _finalTotal += _subTotal - ((element.discount! / 100.0) * _subTotal);
         } else {
-          _finalTotal += ((element.discount!) * element.totalBuy);
+          if (element.discount! != 0)
+            _finalTotal += _subTotal - ((element.discount!) * element.totalBuy);
         }
       },
     );
@@ -350,8 +351,15 @@ class SaleController extends GetxController {
     List<ItemDetailDataModel> _itemList = [];
 
     _cartListItem.forEach((element) {
+      var _discount = "";
+      if (element.isPercentage!) {
+        _discount = element.discount.toString() + "%";
+      } else {
+        _discount = element.discount.toString();
+      }
+
       var _singleItem = ItemDetailDataModel(
-          discount: element.discount.toString() + "%",
+          discount: _discount,
           qty: element.totalBuy.toStringAsFixed(0),
           itemCode: element.itemCode,
           itemId: element.itemId,
@@ -373,7 +381,7 @@ class SaleController extends GetxController {
       details: _itemList,
       transType: PrefStorage().getTransactionType(),
     );
-    print(json.encode(_saleTransaction.toJson()));
+
     var _rawData = {
       'sales_trans': [_saleTransaction.toJson()]
     };
