@@ -146,9 +146,11 @@ class PrefStorage {
   Future<void> saveTransactionData(
       List<SaleTransactionDataModel> transList) async {
     try {
-      List<Map<String, dynamic>> _list =
-          transList.map((e) => e.toJson()).toList();
-      await box.write('list_transaction', _list);
+      var list = transList
+          .map((element) => json.decode(json.encode(element)))
+          .toList();
+
+      await box.write('list_transaction', list);
     } catch (e) {
       throw Exception(e);
     }
@@ -156,13 +158,13 @@ class PrefStorage {
 
   List<SaleTransactionDataModel> getSavedTransactionDarta() {
     try {
-      List<Map<String, dynamic>> _data = box.read('list_transaction');
-      var _listData = _data
-          .map((e) =>
-              SaleTransactionDataModel.fromJson(json.decode(json.encode(e))))
-          .toList();
+      List _data = box.read('list_transaction');
+      print(_data);
+      var _listData =
+          _data.map((e) => SaleTransactionDataModel.fromJson(e)).toList();
       return _listData;
     } catch (e) {
+      print(e);
       return <SaleTransactionDataModel>[];
     }
   }

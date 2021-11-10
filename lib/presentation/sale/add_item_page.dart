@@ -58,7 +58,10 @@ class _AddItemPageState extends State<AddItemPage> {
               titleText: 'CART',
               subTitle: Obx(() => Text(
                   "Total  ${_saleController.getCartList.length.toString()}")),
-              icon: Text("Tarik/Dorong"),
+              icon: Text(
+                "Slide/TAP",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           // stickyFooterHeight: 50,
@@ -87,7 +90,7 @@ class _AddItemPageState extends State<AddItemPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                index.toString(),
+                                (index + 1).toString(),
                                 style: TextStyle(
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               ),

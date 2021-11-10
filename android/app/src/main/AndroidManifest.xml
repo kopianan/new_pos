@@ -8,10 +8,10 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
    <application
-        android:label="pos"
+        android:label="RTL POS"
         android:usesCleartextTraffic="true"
 
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/bg_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

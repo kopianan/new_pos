@@ -334,8 +334,8 @@ class _SalePageState extends State<SalePage> {
                                   icon: Icons.print_sharp,
                                   onPressed: () {
                                     try {
-                                      launch(ConstantsData().getPrintInvoiceUrl(
-                                          e.id));
+                                      launch(ConstantsData()
+                                          .getPrintInvoiceUrl(e.id));
                                     } catch (e) {}
                                   },
                                 ),
@@ -459,8 +459,47 @@ class _SalePageState extends State<SalePage> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                onPressed: () {
-                                  Get.toNamed(TransactionProgressPage.TAG);
+                                onPressed: () async {
+                                  //Check customer and data
+
+                                  if (_saleController.getSelectedCustomer !=
+                                          CustomerDataModel() &&
+                                      _saleController.getCartList.length > 0) {
+                                    Get.dialog(AlertDialog(
+                                      title: Text("Peringatan !!!"),
+                                      content: Text(
+                                          "Anda yakin ingin melanjutkan pemesanan ? "),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () async {
+                                            Get.back();
+
+                                            Get.toNamed(
+                                                TransactionProgressPage.TAG);
+                                          },
+                                          child: Text(
+                                            "OK",
+                                            style:
+                                                TextStyle(color: Colors.blue),
+                                          ),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Get.back();
+                                          },
+                                          child: Text(
+                                            "Batal",
+                                            style: TextStyle(color: Colors.red),
+                                          ),
+                                        )
+                                      ],
+                                    ));
+                                  } else {
+                                    showDefaultSnackbar(context,
+                                        message:
+                                            "Silahkan isi data customer dan produk",
+                                        color: Colors.red);
+                                  }
                                 },
                               ),
                             ),
@@ -518,11 +557,61 @@ class _SalePageState extends State<SalePage> {
                                     describeEnum(TransStatus.PROCCESS))
                                 ? null
                                 : () async {
-                                    var _selectedUser = await Get.toNamed(
-                                        ChooseCustomerPage.TAG);
+                                    if (_saleController.getSelectedCustomer !=
+                                        CustomerDataModel()) {
+                                      Get.dialog(
+                                        AlertDialog(
+                                          title: Text("Peringatan !!!"),
+                                          content: Text(
+                                              "Mengganti customer akan menghapus data sebelumnya "),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () async {
+                                                Get.back();
+                                                //Remove all data Product
 
-                                    _saleBloc
-                                        .getCustomerDiscount(_selectedUser);
+                                                _saleController.setCartList([]);
+                                                _saleController
+                                                    .setCustomerDiscountList(
+                                                        []);
+                                                _saleController
+                                                    .setSelectedCustomer(
+                                                        CustomerDataModel());
+                                                _saleController
+                                                    .setSelectedList([]);
+                                                var _selectedUser =
+                                                    await Get.toNamed(
+                                                        ChooseCustomerPage.TAG);
+
+                                                _saleBloc.getCustomerDiscount(
+                                                    _selectedUser);
+                                              },
+                                              child: Text(
+                                                "OK",
+                                                style: TextStyle(
+                                                    color: Colors.blue),
+                                              ),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Get.back();
+                                              },
+                                              child: Text(
+                                                "Batal",
+                                                style: TextStyle(
+                                                    color: Colors.red),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    } else {
+                                      var _selectedUser = await Get.toNamed(
+                                          ChooseCustomerPage.TAG);
+
+                                      _saleBloc
+                                          .getCustomerDiscount(_selectedUser);
+                                    }
                                   },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
