@@ -93,15 +93,10 @@ class _TransactionProgressPageState extends State<TransactionProgressPage> {
   }
 
   void _onCreateTransactionSuccess(BuildContext, String message) {
-    var _pmtType = _saleCon.getPaymentType.code;
+    var _pmtType = _saleCon.getPaymentType.paymentTypeId;
     var _transNumber = _saleCon.getTransactionNumber;
-    if (_pmtType == ConstantsData.getGlobalPaymentType) {
-      //confirm payment if payment type is match.
-      _saleCubit.confirmPayment(_transNumber);
-    } else {
-      //SUCCESS WITHOUT CONFIRM PAYMENT
-      showSnackbar(message, Colors.green);
-    }
+
+    _saleCubit.confirmPayment(_transNumber);
   }
 
   void showSnackbar(String message, Color background) {

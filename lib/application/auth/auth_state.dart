@@ -9,6 +9,10 @@ abstract class AuthState with _$AuthState {
       _OnGetLocation;
   const factory AuthState.onValidateLocation(List<String> location) =
       _OnValidateLocation;
+  const factory AuthState.onGetPaymentTerm(List<PaymentTerm> paymentTermList) =
+      _OnGetPaymentTerm;
+  const factory AuthState.onGetPaymentType(List<PaymentType> paymentTypeList) =
+      _OnGetPaymentType;
   const factory AuthState.onAuthenticate(LocationDataModel user) =
       _OnAuthenticate;
 }

@@ -3,6 +3,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pos/domain/i_auth.dart';
 import 'package:pos/domain/location/location_data_model.dart';
+import 'package:pos/domain/payment_term.dart';
+import 'package:pos/domain/sale/payment_type.dart';
 
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
@@ -64,6 +66,36 @@ class AuthCubit extends Cubit<AuthState> {
         (l) => emit(AuthState.onError(l.toString())),
         (r) {
           emit(AuthState.onAuthenticate(r));
+        },
+      );
+    } catch (e) {
+      emit(AuthState.onError(e.toString()));
+    }
+  }
+
+  void getPaymentTerm() async {
+    emit(const AuthState.onLoading());
+    try {
+      final _data = await iAuth.getPaymentTerm();
+      _data.fold(
+        (l) => emit(AuthState.onError(l.toString())),
+        (r) {
+          emit(AuthState.onGetPaymentTerm(r));
+        },
+      );
+    } catch (e) {
+      emit(AuthState.onError(e.toString()));
+    }
+  }
+
+  void getPaymentType() async {
+    emit(const AuthState.onLoading());
+    try {
+      final _data = await iAuth.getPaymentType();
+      _data.fold(
+        (l) => emit(AuthState.onError(l.toString())),
+        (r) {
+          emit(AuthState.onGetPaymentType(r));
         },
       );
     } catch (e) {

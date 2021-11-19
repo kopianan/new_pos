@@ -5,9 +5,11 @@ part 'payment_term.g.dart';
 
 @freezed
 class PaymentTerm with _$PaymentTerm {
-  const factory PaymentTerm({
-    @JsonKey(name: 'nama') String? name,
-    @JsonKey(name: 'kode') String? code,
+  factory PaymentTerm({
+    @JsonKey(name: 'payment_term_id') String? paymentTermId,
+    @JsonKey(name: 'payment_term_code') String? paymentTermCode,
+    @JsonKey(name: 'description') String? description,
+    @JsonKey(name: 'cash_payment') String? cashPayment,
   }) = _PaymentTerm;
 
   factory PaymentTerm.fromJson(Map<String, dynamic> json) =>

@@ -654,7 +654,7 @@ class _SalePageState extends State<SalePage> {
                                                         ? "Pilih Customer"
                                                         : _saleController
                                                             .getPaymentTerm
-                                                            .name!,
+                                                            .paymentTermCode!,
                                                   ),
                                                   Text(" / "),
                                                   Text(
@@ -664,7 +664,7 @@ class _SalePageState extends State<SalePage> {
                                                         ? "Pilih Customer"
                                                         : _saleController
                                                             .getPaymentType
-                                                            .name!,
+                                                            .paymentTypeCode!,
                                                   )
                                                 ],
                                               )

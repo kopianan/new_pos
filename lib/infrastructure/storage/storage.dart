@@ -4,6 +4,7 @@ import 'package:pos/domain/customer_data_model.dart';
 import 'package:pos/domain/location/location_data_model.dart';
 import 'package:pos/domain/payment_term.dart';
 import 'package:pos/domain/product_data_model.dart';
+import 'package:pos/domain/sale/payment_type.dart';
 import 'package:pos/domain/sale_transaction_data_model.dart';
 
 class PrefStorage {
@@ -11,22 +12,45 @@ class PrefStorage {
 
   String get getToken => '0105';
 
-  Future<void> savePaymentTerm(PaymentTerm paymentTerm) async {
+  Future<void> savePaymentTerm(List<PaymentTerm> list) async {
     try {
-      var _data = paymentTerm.toJson();
-      await box.write('payment-term', _data);
+      List<Map<String, dynamic>> _list = list.map((e) => e.toJson()).toList();
+      await box.write('payment-term-list', _list);
     } catch (e) {
       throw Exception();
     }
   }
 
-  PaymentTerm getPaymentTerm() {
+  List<PaymentTerm> loadPaymentTerm() {
     try {
-      final _data = box.read('payment-term');
-      var _term = PaymentTerm.fromJson(_data);
-      return _term;
+      List<Map<String, dynamic>> _data = box.read('payment-term-list');
+      var _listData = _data
+          .map((e) => PaymentTerm.fromJson(json.decode(json.encode(e))))
+          .toList();
+      return _listData;
     } catch (e) {
-      throw Exception(e);
+      return <PaymentTerm>[];
+    }
+  }
+
+  Future<void> savePaymentType(List<PaymentType> list) async {
+    try {
+      List<Map<String, dynamic>> _list = list.map((e) => e.toJson()).toList();
+      await box.write('payment-type-list', _list);
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  List<PaymentType> loadPaymentType() {
+    try {
+      List<Map<String, dynamic>> _data = box.read('payment-type-list');
+      var _listData = _data
+          .map((e) => PaymentType.fromJson(json.decode(json.encode(e))))
+          .toList();
+      return _listData;
+    } catch (e) {
+      return <PaymentType>[];
     }
   }
 

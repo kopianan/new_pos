@@ -43,6 +43,18 @@ class _$AuthStateTearOff {
     );
   }
 
+  _OnGetPaymentTerm onGetPaymentTerm(List<PaymentTerm> paymentTermList) {
+    return _OnGetPaymentTerm(
+      paymentTermList,
+    );
+  }
+
+  _OnGetPaymentType onGetPaymentType(List<PaymentType> paymentTypeList) {
+    return _OnGetPaymentType(
+      paymentTypeList,
+    );
+  }
+
   _OnAuthenticate onAuthenticate(LocationDataModel user) {
     return _OnAuthenticate(
       user,
@@ -62,6 +74,10 @@ mixin _$AuthState {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(List<PaymentTerm> paymentTermList)
+        onGetPaymentTerm,
+    required TResult Function(List<PaymentType> paymentTypeList)
+        onGetPaymentType,
     required TResult Function(LocationDataModel user) onAuthenticate,
   }) =>
       throw _privateConstructorUsedError;
@@ -72,6 +88,8 @@ mixin _$AuthState {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
   }) =>
       throw _privateConstructorUsedError;
@@ -82,6 +100,8 @@ mixin _$AuthState {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) =>
@@ -93,6 +113,8 @@ mixin _$AuthState {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnGetPaymentTerm value) onGetPaymentTerm,
+    required TResult Function(_OnGetPaymentType value) onGetPaymentType,
     required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) =>
       throw _privateConstructorUsedError;
@@ -103,6 +125,8 @@ mixin _$AuthState {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +137,8 @@ mixin _$AuthState {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) =>
@@ -176,6 +202,10 @@ class _$_Initial implements _Initial {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(List<PaymentTerm> paymentTermList)
+        onGetPaymentTerm,
+    required TResult Function(List<PaymentType> paymentTypeList)
+        onGetPaymentType,
     required TResult Function(LocationDataModel user) onAuthenticate,
   }) {
     return initial();
@@ -189,6 +219,8 @@ class _$_Initial implements _Initial {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
   }) {
     return initial?.call();
@@ -202,6 +234,8 @@ class _$_Initial implements _Initial {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) {
@@ -219,6 +253,8 @@ class _$_Initial implements _Initial {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnGetPaymentTerm value) onGetPaymentTerm,
+    required TResult Function(_OnGetPaymentType value) onGetPaymentType,
     required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) {
     return initial(this);
@@ -232,6 +268,8 @@ class _$_Initial implements _Initial {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) {
     return initial?.call(this);
@@ -245,6 +283,8 @@ class _$_Initial implements _Initial {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) {
@@ -302,6 +342,10 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(List<PaymentTerm> paymentTermList)
+        onGetPaymentTerm,
+    required TResult Function(List<PaymentType> paymentTypeList)
+        onGetPaymentType,
     required TResult Function(LocationDataModel user) onAuthenticate,
   }) {
     return onLoading();
@@ -315,6 +359,8 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
   }) {
     return onLoading?.call();
@@ -328,6 +374,8 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) {
@@ -345,6 +393,8 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnGetPaymentTerm value) onGetPaymentTerm,
+    required TResult Function(_OnGetPaymentType value) onGetPaymentType,
     required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) {
     return onLoading(this);
@@ -358,6 +408,8 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) {
     return onLoading?.call(this);
@@ -371,6 +423,8 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) {
@@ -453,6 +507,10 @@ class _$_OnError implements _OnError {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(List<PaymentTerm> paymentTermList)
+        onGetPaymentTerm,
+    required TResult Function(List<PaymentType> paymentTypeList)
+        onGetPaymentType,
     required TResult Function(LocationDataModel user) onAuthenticate,
   }) {
     return onError(errorMessage);
@@ -466,6 +524,8 @@ class _$_OnError implements _OnError {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
   }) {
     return onError?.call(errorMessage);
@@ -479,6 +539,8 @@ class _$_OnError implements _OnError {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) {
@@ -496,6 +558,8 @@ class _$_OnError implements _OnError {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnGetPaymentTerm value) onGetPaymentTerm,
+    required TResult Function(_OnGetPaymentType value) onGetPaymentType,
     required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) {
     return onError(this);
@@ -509,6 +573,8 @@ class _$_OnError implements _OnError {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) {
     return onError?.call(this);
@@ -522,6 +588,8 @@ class _$_OnError implements _OnError {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) {
@@ -611,6 +679,10 @@ class _$_OnGetLocation implements _OnGetLocation {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(List<PaymentTerm> paymentTermList)
+        onGetPaymentTerm,
+    required TResult Function(List<PaymentType> paymentTypeList)
+        onGetPaymentType,
     required TResult Function(LocationDataModel user) onAuthenticate,
   }) {
     return onGetLocation(locations);
@@ -624,6 +696,8 @@ class _$_OnGetLocation implements _OnGetLocation {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
   }) {
     return onGetLocation?.call(locations);
@@ -637,6 +711,8 @@ class _$_OnGetLocation implements _OnGetLocation {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) {
@@ -654,6 +730,8 @@ class _$_OnGetLocation implements _OnGetLocation {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnGetPaymentTerm value) onGetPaymentTerm,
+    required TResult Function(_OnGetPaymentType value) onGetPaymentType,
     required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) {
     return onGetLocation(this);
@@ -667,6 +745,8 @@ class _$_OnGetLocation implements _OnGetLocation {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) {
     return onGetLocation?.call(this);
@@ -680,6 +760,8 @@ class _$_OnGetLocation implements _OnGetLocation {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) {
@@ -771,6 +853,10 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(List<PaymentTerm> paymentTermList)
+        onGetPaymentTerm,
+    required TResult Function(List<PaymentType> paymentTypeList)
+        onGetPaymentType,
     required TResult Function(LocationDataModel user) onAuthenticate,
   }) {
     return onValidateLocation(location);
@@ -784,6 +870,8 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
   }) {
     return onValidateLocation?.call(location);
@@ -797,6 +885,8 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) {
@@ -814,6 +904,8 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnGetPaymentTerm value) onGetPaymentTerm,
+    required TResult Function(_OnGetPaymentType value) onGetPaymentType,
     required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) {
     return onValidateLocation(this);
@@ -827,6 +919,8 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) {
     return onValidateLocation?.call(this);
@@ -840,6 +934,8 @@ class _$_OnValidateLocation implements _OnValidateLocation {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) {
@@ -857,6 +953,356 @@ abstract class _OnValidateLocation implements AuthState {
   List<String> get location => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$OnValidateLocationCopyWith<_OnValidateLocation> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnGetPaymentTermCopyWith<$Res> {
+  factory _$OnGetPaymentTermCopyWith(
+          _OnGetPaymentTerm value, $Res Function(_OnGetPaymentTerm) then) =
+      __$OnGetPaymentTermCopyWithImpl<$Res>;
+  $Res call({List<PaymentTerm> paymentTermList});
+}
+
+/// @nodoc
+class __$OnGetPaymentTermCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$OnGetPaymentTermCopyWith<$Res> {
+  __$OnGetPaymentTermCopyWithImpl(
+      _OnGetPaymentTerm _value, $Res Function(_OnGetPaymentTerm) _then)
+      : super(_value, (v) => _then(v as _OnGetPaymentTerm));
+
+  @override
+  _OnGetPaymentTerm get _value => super._value as _OnGetPaymentTerm;
+
+  @override
+  $Res call({
+    Object? paymentTermList = freezed,
+  }) {
+    return _then(_OnGetPaymentTerm(
+      paymentTermList == freezed
+          ? _value.paymentTermList
+          : paymentTermList // ignore: cast_nullable_to_non_nullable
+              as List<PaymentTerm>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnGetPaymentTerm implements _OnGetPaymentTerm {
+  const _$_OnGetPaymentTerm(this.paymentTermList);
+
+  @override
+  final List<PaymentTerm> paymentTermList;
+
+  @override
+  String toString() {
+    return 'AuthState.onGetPaymentTerm(paymentTermList: $paymentTermList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnGetPaymentTerm &&
+            (identical(other.paymentTermList, paymentTermList) ||
+                const DeepCollectionEquality()
+                    .equals(other.paymentTermList, paymentTermList)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(paymentTermList);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnGetPaymentTermCopyWith<_OnGetPaymentTerm> get copyWith =>
+      __$OnGetPaymentTermCopyWithImpl<_OnGetPaymentTerm>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function(String errorMessage) onError,
+    required TResult Function(List<LocationDataModel> locations) onGetLocation,
+    required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(List<PaymentTerm> paymentTermList)
+        onGetPaymentTerm,
+    required TResult Function(List<PaymentType> paymentTypeList)
+        onGetPaymentType,
+    required TResult Function(LocationDataModel user) onAuthenticate,
+  }) {
+    return onGetPaymentTerm(paymentTermList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String errorMessage)? onError,
+    TResult Function(List<LocationDataModel> locations)? onGetLocation,
+    TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
+    TResult Function(LocationDataModel user)? onAuthenticate,
+  }) {
+    return onGetPaymentTerm?.call(paymentTermList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String errorMessage)? onError,
+    TResult Function(List<LocationDataModel> locations)? onGetLocation,
+    TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
+    TResult Function(LocationDataModel user)? onAuthenticate,
+    required TResult orElse(),
+  }) {
+    if (onGetPaymentTerm != null) {
+      return onGetPaymentTerm(paymentTermList);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnGetLocation value) onGetLocation,
+    required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnGetPaymentTerm value) onGetPaymentTerm,
+    required TResult Function(_OnGetPaymentType value) onGetPaymentType,
+    required TResult Function(_OnAuthenticate value) onAuthenticate,
+  }) {
+    return onGetPaymentTerm(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnGetLocation value)? onGetLocation,
+    TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
+  }) {
+    return onGetPaymentTerm?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnGetLocation value)? onGetLocation,
+    TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
+    required TResult orElse(),
+  }) {
+    if (onGetPaymentTerm != null) {
+      return onGetPaymentTerm(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnGetPaymentTerm implements AuthState {
+  const factory _OnGetPaymentTerm(List<PaymentTerm> paymentTermList) =
+      _$_OnGetPaymentTerm;
+
+  List<PaymentTerm> get paymentTermList => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnGetPaymentTermCopyWith<_OnGetPaymentTerm> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnGetPaymentTypeCopyWith<$Res> {
+  factory _$OnGetPaymentTypeCopyWith(
+          _OnGetPaymentType value, $Res Function(_OnGetPaymentType) then) =
+      __$OnGetPaymentTypeCopyWithImpl<$Res>;
+  $Res call({List<PaymentType> paymentTypeList});
+}
+
+/// @nodoc
+class __$OnGetPaymentTypeCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$OnGetPaymentTypeCopyWith<$Res> {
+  __$OnGetPaymentTypeCopyWithImpl(
+      _OnGetPaymentType _value, $Res Function(_OnGetPaymentType) _then)
+      : super(_value, (v) => _then(v as _OnGetPaymentType));
+
+  @override
+  _OnGetPaymentType get _value => super._value as _OnGetPaymentType;
+
+  @override
+  $Res call({
+    Object? paymentTypeList = freezed,
+  }) {
+    return _then(_OnGetPaymentType(
+      paymentTypeList == freezed
+          ? _value.paymentTypeList
+          : paymentTypeList // ignore: cast_nullable_to_non_nullable
+              as List<PaymentType>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnGetPaymentType implements _OnGetPaymentType {
+  const _$_OnGetPaymentType(this.paymentTypeList);
+
+  @override
+  final List<PaymentType> paymentTypeList;
+
+  @override
+  String toString() {
+    return 'AuthState.onGetPaymentType(paymentTypeList: $paymentTypeList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnGetPaymentType &&
+            (identical(other.paymentTypeList, paymentTypeList) ||
+                const DeepCollectionEquality()
+                    .equals(other.paymentTypeList, paymentTypeList)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(paymentTypeList);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnGetPaymentTypeCopyWith<_OnGetPaymentType> get copyWith =>
+      __$OnGetPaymentTypeCopyWithImpl<_OnGetPaymentType>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function(String errorMessage) onError,
+    required TResult Function(List<LocationDataModel> locations) onGetLocation,
+    required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(List<PaymentTerm> paymentTermList)
+        onGetPaymentTerm,
+    required TResult Function(List<PaymentType> paymentTypeList)
+        onGetPaymentType,
+    required TResult Function(LocationDataModel user) onAuthenticate,
+  }) {
+    return onGetPaymentType(paymentTypeList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String errorMessage)? onError,
+    TResult Function(List<LocationDataModel> locations)? onGetLocation,
+    TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
+    TResult Function(LocationDataModel user)? onAuthenticate,
+  }) {
+    return onGetPaymentType?.call(paymentTypeList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String errorMessage)? onError,
+    TResult Function(List<LocationDataModel> locations)? onGetLocation,
+    TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
+    TResult Function(LocationDataModel user)? onAuthenticate,
+    required TResult orElse(),
+  }) {
+    if (onGetPaymentType != null) {
+      return onGetPaymentType(paymentTypeList);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnGetLocation value) onGetLocation,
+    required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnGetPaymentTerm value) onGetPaymentTerm,
+    required TResult Function(_OnGetPaymentType value) onGetPaymentType,
+    required TResult Function(_OnAuthenticate value) onAuthenticate,
+  }) {
+    return onGetPaymentType(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnGetLocation value)? onGetLocation,
+    TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
+  }) {
+    return onGetPaymentType?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnGetLocation value)? onGetLocation,
+    TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
+    TResult Function(_OnAuthenticate value)? onAuthenticate,
+    required TResult orElse(),
+  }) {
+    if (onGetPaymentType != null) {
+      return onGetPaymentType(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnGetPaymentType implements AuthState {
+  const factory _OnGetPaymentType(List<PaymentType> paymentTypeList) =
+      _$_OnGetPaymentType;
+
+  List<PaymentType> get paymentTypeList => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnGetPaymentTypeCopyWith<_OnGetPaymentType> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -938,6 +1384,10 @@ class _$_OnAuthenticate implements _OnAuthenticate {
     required TResult Function(String errorMessage) onError,
     required TResult Function(List<LocationDataModel> locations) onGetLocation,
     required TResult Function(List<String> location) onValidateLocation,
+    required TResult Function(List<PaymentTerm> paymentTermList)
+        onGetPaymentTerm,
+    required TResult Function(List<PaymentType> paymentTypeList)
+        onGetPaymentType,
     required TResult Function(LocationDataModel user) onAuthenticate,
   }) {
     return onAuthenticate(user);
@@ -951,6 +1401,8 @@ class _$_OnAuthenticate implements _OnAuthenticate {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
   }) {
     return onAuthenticate?.call(user);
@@ -964,6 +1416,8 @@ class _$_OnAuthenticate implements _OnAuthenticate {
     TResult Function(String errorMessage)? onError,
     TResult Function(List<LocationDataModel> locations)? onGetLocation,
     TResult Function(List<String> location)? onValidateLocation,
+    TResult Function(List<PaymentTerm> paymentTermList)? onGetPaymentTerm,
+    TResult Function(List<PaymentType> paymentTypeList)? onGetPaymentType,
     TResult Function(LocationDataModel user)? onAuthenticate,
     required TResult orElse(),
   }) {
@@ -981,6 +1435,8 @@ class _$_OnAuthenticate implements _OnAuthenticate {
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetLocation value) onGetLocation,
     required TResult Function(_OnValidateLocation value) onValidateLocation,
+    required TResult Function(_OnGetPaymentTerm value) onGetPaymentTerm,
+    required TResult Function(_OnGetPaymentType value) onGetPaymentType,
     required TResult Function(_OnAuthenticate value) onAuthenticate,
   }) {
     return onAuthenticate(this);
@@ -994,6 +1450,8 @@ class _$_OnAuthenticate implements _OnAuthenticate {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
   }) {
     return onAuthenticate?.call(this);
@@ -1007,6 +1465,8 @@ class _$_OnAuthenticate implements _OnAuthenticate {
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetLocation value)? onGetLocation,
     TResult Function(_OnValidateLocation value)? onValidateLocation,
+    TResult Function(_OnGetPaymentTerm value)? onGetPaymentTerm,
+    TResult Function(_OnGetPaymentType value)? onGetPaymentType,
     TResult Function(_OnAuthenticate value)? onAuthenticate,
     required TResult orElse(),
   }) {

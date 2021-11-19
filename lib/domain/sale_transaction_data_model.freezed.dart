@@ -29,7 +29,7 @@ class _$SaleTransactionDataModelTearOff {
       required String total,
       required CustomerDataModel selectedCustomer,
       required PaymentTerm paymentTerm,
-      required PaymentTerm paymentType,
+      required PaymentType paymentType,
       required String status,
       required List<ProductDataModel> listProduct}) {
     return _SaleTransactionDataModel(
@@ -61,7 +61,7 @@ mixin _$SaleTransactionDataModel {
   String get total => throw _privateConstructorUsedError;
   CustomerDataModel get selectedCustomer => throw _privateConstructorUsedError;
   PaymentTerm get paymentTerm => throw _privateConstructorUsedError;
-  PaymentTerm get paymentType => throw _privateConstructorUsedError;
+  PaymentType get paymentType => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   List<ProductDataModel> get listProduct => throw _privateConstructorUsedError;
 
@@ -83,14 +83,14 @@ abstract class $SaleTransactionDataModelCopyWith<$Res> {
       String total,
       CustomerDataModel selectedCustomer,
       PaymentTerm paymentTerm,
-      PaymentTerm paymentType,
+      PaymentType paymentType,
       String status,
       List<ProductDataModel> listProduct});
 
   $LocationDataModelCopyWith<$Res> get selectedLocation;
   $CustomerDataModelCopyWith<$Res> get selectedCustomer;
   $PaymentTermCopyWith<$Res> get paymentTerm;
-  $PaymentTermCopyWith<$Res> get paymentType;
+  $PaymentTypeCopyWith<$Res> get paymentType;
 }
 
 /// @nodoc
@@ -142,7 +142,7 @@ class _$SaleTransactionDataModelCopyWithImpl<$Res>
       paymentType: paymentType == freezed
           ? _value.paymentType
           : paymentType // ignore: cast_nullable_to_non_nullable
-              as PaymentTerm,
+              as PaymentType,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -176,8 +176,8 @@ class _$SaleTransactionDataModelCopyWithImpl<$Res>
   }
 
   @override
-  $PaymentTermCopyWith<$Res> get paymentType {
-    return $PaymentTermCopyWith<$Res>(_value.paymentType, (value) {
+  $PaymentTypeCopyWith<$Res> get paymentType {
+    return $PaymentTypeCopyWith<$Res>(_value.paymentType, (value) {
       return _then(_value.copyWith(paymentType: value));
     });
   }
@@ -197,7 +197,7 @@ abstract class _$SaleTransactionDataModelCopyWith<$Res>
       String total,
       CustomerDataModel selectedCustomer,
       PaymentTerm paymentTerm,
-      PaymentTerm paymentType,
+      PaymentType paymentType,
       String status,
       List<ProductDataModel> listProduct});
 
@@ -208,7 +208,7 @@ abstract class _$SaleTransactionDataModelCopyWith<$Res>
   @override
   $PaymentTermCopyWith<$Res> get paymentTerm;
   @override
-  $PaymentTermCopyWith<$Res> get paymentType;
+  $PaymentTypeCopyWith<$Res> get paymentType;
 }
 
 /// @nodoc
@@ -263,7 +263,7 @@ class __$SaleTransactionDataModelCopyWithImpl<$Res>
       paymentType: paymentType == freezed
           ? _value.paymentType
           : paymentType // ignore: cast_nullable_to_non_nullable
-              as PaymentTerm,
+              as PaymentType,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -306,7 +306,7 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
   @override
   final PaymentTerm paymentTerm;
   @override
-  final PaymentTerm paymentType;
+  final PaymentType paymentType;
   @override
   final String status;
   @override
@@ -380,7 +380,7 @@ abstract class _SaleTransactionDataModel implements SaleTransactionDataModel {
           required String total,
           required CustomerDataModel selectedCustomer,
           required PaymentTerm paymentTerm,
-          required PaymentTerm paymentType,
+          required PaymentType paymentType,
           required String status,
           required List<ProductDataModel> listProduct}) =
       _$_SaleTransactionDataModel;
@@ -401,7 +401,7 @@ abstract class _SaleTransactionDataModel implements SaleTransactionDataModel {
   @override
   PaymentTerm get paymentTerm => throw _privateConstructorUsedError;
   @override
-  PaymentTerm get paymentType => throw _privateConstructorUsedError;
+  PaymentType get paymentType => throw _privateConstructorUsedError;
   @override
   String get status => throw _privateConstructorUsedError;
   @override

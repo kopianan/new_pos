@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:pos/application/sale/sale_binding.dart';
 import 'package:pos/presentation/auth/auth_page.dart';
 import 'package:pos/presentation/config/config_page.dart';
-import 'package:pos/presentation/config/config_payment_id_page.dart';
 import 'package:pos/presentation/config/location_page.dart';
 import 'package:pos/presentation/dashboard/dashboard_page.dart';
 import 'package:pos/presentation/list_sale/list_sale_page.dart';
@@ -22,8 +21,6 @@ class Routes {
         name: SaleHistoryDetailPage.TAG,
         page: () => const SaleHistoryDetailPage()),
     GetPage(name: ConfigPage.TAG, page: () => const ConfigPage()),
-    GetPage(
-        name: ConfigPaymentIdPage.TAG, page: () => const ConfigPaymentIdPage()),
     GetPage(name: MenuPage.TAG, page: () => const MenuPage()),
     GetPage(name: QrScanPage.TAG, page: () => const QrScanPage()),
     GetPage(name: LocationPage.TAG, page: () => const LocationPage()),

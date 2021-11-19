@@ -14,6 +14,7 @@ import 'package:pos/domain/location/location_data_model.dart';
 import 'package:pos/domain/payment_term.dart';
 import 'package:pos/domain/product_data_model.dart';
 import 'package:pos/domain/sale/item_detail_data_model.dart';
+import 'package:pos/domain/sale/payment_type.dart';
 import 'package:pos/domain/sale/request_sale_transaction_data_model.dart';
 import 'package:pos/domain/sale_transaction_data_model.dart';
 import 'package:pos/infrastructure/function/custom_data.dart';
@@ -36,7 +37,7 @@ class SaleController extends GetxController {
   Rx<RequestSaleTransactionDataModel> _saleDataModel =
       RequestSaleTransactionDataModel().obs;
   Rx<PaymentTerm> _paymentTerm = PaymentTerm().obs;
-  Rx<PaymentTerm> _paymentType = PaymentTerm().obs;
+  Rx<PaymentType> _paymentType = PaymentType().obs;
   RxList<DiscountDataModel> _customrDiscountList = <DiscountDataModel>[].obs;
   RxString _saleStatus = describeEnum(TransStatus.PROCCESS).obs;
   //SETUP EMPTY SALE DATA
@@ -50,7 +51,7 @@ class SaleController extends GetxController {
     setSelectedCustomer(CustomerDataModel());
     setCartList([]);
     setPaymentTerm(PaymentTerm());
-    setPaymentType(PaymentTerm());
+    setPaymentType(PaymentType());
     setSaleStatus(describeEnum(TransStatus.PROCCESS));
   }
 
@@ -73,11 +74,11 @@ class SaleController extends GetxController {
 
   String get getSetStatus => this._saleStatus.value;
   //PAYMENT TYPE
-  void setPaymentType(PaymentTerm data) {
+  void setPaymentType(PaymentType data) {
     this._paymentType.value = data;
   }
 
-  PaymentTerm get getPaymentType => this._paymentType.value;
+  PaymentType get getPaymentType => this._paymentType.value;
 
   //PAYMENT TERM
   void setPaymentTerm(PaymentTerm data) {
@@ -268,7 +269,6 @@ class SaleController extends GetxController {
       var _disc = _discountList[i];
 
       if (_disc.kategoriId == _newCart.kategoriId) {
-        print(_disc);
         if (_disc.eventDiscount!.contains("%")) {
           var _newItem = _newCart.copyWith(isPercentage: true);
           _newCart = _newItem;
@@ -287,6 +287,8 @@ class SaleController extends GetxController {
         } catch (e) {
           return cart;
         }
+      } else {
+        _newCart = _newCart.copyWith(isPercentage: false);
       }
     }
     return _newCart;
@@ -336,8 +338,8 @@ class SaleController extends GetxController {
 
   void setSelectedCustomer(CustomerDataModel data) {
     _selectedCustomer.value = data;
-    setPaymentTerm(SaleFunction.customerPaymentTerm(data));
-    setPaymentType(SaleFunction.customerPaymentType(data));
+    setPaymentTerm(SaleFunction().customerPaymentTerm(data));
+    setPaymentType(SaleFunction().customerPaymentType(data));
   }
 
   CustomerDataModel get getSelectedCustomer => this._selectedCustomer.value;
@@ -352,11 +354,12 @@ class SaleController extends GetxController {
 
     _cartListItem.forEach((element) {
       var _discount = "";
-      // if (element.isPercentage!) {
-      //   _discount = element.discount.toString() + "%";
-      // } else {
-      //   _discount = element.discount.toString();
-      // }
+
+      if (element.isPercentage!) {
+        _discount = element.discount.toString() + "%";
+      } else {
+        _discount = element.discount.toString();
+      }
 
       var _singleItem = ItemDetailDataModel(
           discount: _discount,
@@ -376,8 +379,8 @@ class SaleController extends GetxController {
       customer: getSelectedCustomer.customerId,
       createBy: PrefStorage().getUserLogin().userName,
       remark: "remark",
-      pmtterm: getPaymentTerm.code,
-      pmttype: getPaymentType.code,
+      pmtterm: getPaymentTerm.paymentTermId,
+      pmttype: getPaymentType.paymentTypeId,
       details: _itemList,
       transType: PrefStorage().getTransactionType(),
     );

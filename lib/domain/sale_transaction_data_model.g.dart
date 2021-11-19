@@ -19,7 +19,7 @@ _$_SaleTransactionDataModel _$$_SaleTransactionDataModelFromJson(
       paymentTerm:
           PaymentTerm.fromJson(json['paymentTerm'] as Map<String, dynamic>),
       paymentType:
-          PaymentTerm.fromJson(json['paymentType'] as Map<String, dynamic>),
+          PaymentType.fromJson(json['paymentType'] as Map<String, dynamic>),
       status: json['status'] as String,
       listProduct: (json['listProduct'] as List<dynamic>)
           .map((e) => ProductDataModel.fromJson(e as Map<String, dynamic>))

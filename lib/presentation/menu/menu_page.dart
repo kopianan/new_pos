@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:pos/application/auth/auth_cubit.dart';
 import 'package:pos/infrastructure/function/custom_snackbar.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/presentation/auth/auth_page.dart';
 import 'package:pos/presentation/config/config_page.dart';
-import 'package:pos/presentation/config/config_payment_id_page.dart';
 import 'package:pos/presentation/config/location_page.dart';
-import 'package:pos/presentation/widgets/custom_dropdown.dart';
 import 'package:pos/presentation/widgets/widget_collection.dart';
-
-import '../../injectable.dart';
 
 class MenuPage extends StatefulWidget {
   static const String TAG = '/menu-page';
@@ -24,6 +18,7 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   List<String> _validatedLocation = [];
   String? location = null;
+  final _box = PrefStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -66,23 +61,18 @@ class _MenuPageState extends State<MenuPage> {
                 text: "Set Location",
               ),
               const SizedBox(height: 20),
-              _CustomButton(
-                onTap: () {
-                  Get.toNamed(ConfigPaymentIdPage.TAG);
-                },
-                text: "Set Payment ID",
-              ),
-              const SizedBox(height: 20),
               _CustomOutlineButton(
                 color: Colors.white,
                 onTap: () {
                   //check if base url already there
                   try {
-                    var _url = PrefStorage().getBaseUrl();
-                    var _location = PrefStorage().getSelectedLocation();
-                    var _paymentTerm = PrefStorage().getPaymentTerm();
+                    var _url = _box.getBaseUrl();
+                    var _location = _box.getSelectedLocation();
+                    var _paymentTerm = _box.loadPaymentTerm();
+                    var _paymentType = _box.loadPaymentType();
                     Get.offNamed(AuthPage.TAG);
                   } catch (e) {
+                    print(e);
                     showDefaultSnackbar(context,
                         message:
                             "Silahkan set config, pilih lokasi dan payment ID terlebih dahulu");

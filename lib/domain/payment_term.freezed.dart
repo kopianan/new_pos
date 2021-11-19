@@ -22,11 +22,15 @@ class _$PaymentTermTearOff {
   const _$PaymentTermTearOff();
 
   _PaymentTerm call(
-      {@JsonKey(name: 'nama') String? name,
-      @JsonKey(name: 'kode') String? code}) {
+      {@JsonKey(name: 'payment_term_id') String? paymentTermId,
+      @JsonKey(name: 'payment_term_code') String? paymentTermCode,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'cash_payment') String? cashPayment}) {
     return _PaymentTerm(
-      name: name,
-      code: code,
+      paymentTermId: paymentTermId,
+      paymentTermCode: paymentTermCode,
+      description: description,
+      cashPayment: cashPayment,
     );
   }
 
@@ -40,10 +44,14 @@ const $PaymentTerm = _$PaymentTermTearOff();
 
 /// @nodoc
 mixin _$PaymentTerm {
-  @JsonKey(name: 'nama')
-  String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'kode')
-  String? get code => throw _privateConstructorUsedError;
+  @JsonKey(name: 'payment_term_id')
+  String? get paymentTermId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'payment_term_code')
+  String? get paymentTermCode => throw _privateConstructorUsedError;
+  @JsonKey(name: 'description')
+  String? get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'cash_payment')
+  String? get cashPayment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,8 +65,10 @@ abstract class $PaymentTermCopyWith<$Res> {
           PaymentTerm value, $Res Function(PaymentTerm) then) =
       _$PaymentTermCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'nama') String? name,
-      @JsonKey(name: 'kode') String? code});
+      {@JsonKey(name: 'payment_term_id') String? paymentTermId,
+      @JsonKey(name: 'payment_term_code') String? paymentTermCode,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'cash_payment') String? cashPayment});
 }
 
 /// @nodoc
@@ -71,17 +81,27 @@ class _$PaymentTermCopyWithImpl<$Res> implements $PaymentTermCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? name = freezed,
-    Object? code = freezed,
+    Object? paymentTermId = freezed,
+    Object? paymentTermCode = freezed,
+    Object? description = freezed,
+    Object? cashPayment = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      paymentTermId: paymentTermId == freezed
+          ? _value.paymentTermId
+          : paymentTermId // ignore: cast_nullable_to_non_nullable
               as String?,
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
+      paymentTermCode: paymentTermCode == freezed
+          ? _value.paymentTermCode
+          : paymentTermCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cashPayment: cashPayment == freezed
+          ? _value.cashPayment
+          : cashPayment // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -95,8 +115,10 @@ abstract class _$PaymentTermCopyWith<$Res>
       __$PaymentTermCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'nama') String? name,
-      @JsonKey(name: 'kode') String? code});
+      {@JsonKey(name: 'payment_term_id') String? paymentTermId,
+      @JsonKey(name: 'payment_term_code') String? paymentTermCode,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'cash_payment') String? cashPayment});
 }
 
 /// @nodoc
@@ -111,17 +133,27 @@ class __$PaymentTermCopyWithImpl<$Res> extends _$PaymentTermCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? name = freezed,
-    Object? code = freezed,
+    Object? paymentTermId = freezed,
+    Object? paymentTermCode = freezed,
+    Object? description = freezed,
+    Object? cashPayment = freezed,
   }) {
     return _then(_PaymentTerm(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      paymentTermId: paymentTermId == freezed
+          ? _value.paymentTermId
+          : paymentTermId // ignore: cast_nullable_to_non_nullable
               as String?,
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
+      paymentTermCode: paymentTermCode == freezed
+          ? _value.paymentTermCode
+          : paymentTermCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cashPayment: cashPayment == freezed
+          ? _value.cashPayment
+          : cashPayment // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -130,39 +162,58 @@ class __$PaymentTermCopyWithImpl<$Res> extends _$PaymentTermCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_PaymentTerm implements _PaymentTerm {
-  const _$_PaymentTerm(
-      {@JsonKey(name: 'nama') this.name, @JsonKey(name: 'kode') this.code});
+  _$_PaymentTerm(
+      {@JsonKey(name: 'payment_term_id') this.paymentTermId,
+      @JsonKey(name: 'payment_term_code') this.paymentTermCode,
+      @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'cash_payment') this.cashPayment});
 
   factory _$_PaymentTerm.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentTermFromJson(json);
 
   @override
-  @JsonKey(name: 'nama')
-  final String? name;
+  @JsonKey(name: 'payment_term_id')
+  final String? paymentTermId;
   @override
-  @JsonKey(name: 'kode')
-  final String? code;
+  @JsonKey(name: 'payment_term_code')
+  final String? paymentTermCode;
+  @override
+  @JsonKey(name: 'description')
+  final String? description;
+  @override
+  @JsonKey(name: 'cash_payment')
+  final String? cashPayment;
 
   @override
   String toString() {
-    return 'PaymentTerm(name: $name, code: $code)';
+    return 'PaymentTerm(paymentTermId: $paymentTermId, paymentTermCode: $paymentTermCode, description: $description, cashPayment: $cashPayment)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PaymentTerm &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.code, code) ||
-                const DeepCollectionEquality().equals(other.code, code)));
+            (identical(other.paymentTermId, paymentTermId) ||
+                const DeepCollectionEquality()
+                    .equals(other.paymentTermId, paymentTermId)) &&
+            (identical(other.paymentTermCode, paymentTermCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.paymentTermCode, paymentTermCode)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.cashPayment, cashPayment) ||
+                const DeepCollectionEquality()
+                    .equals(other.cashPayment, cashPayment)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(code);
+      const DeepCollectionEquality().hash(paymentTermId) ^
+      const DeepCollectionEquality().hash(paymentTermCode) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(cashPayment);
 
   @JsonKey(ignore: true)
   @override
@@ -176,19 +227,27 @@ class _$_PaymentTerm implements _PaymentTerm {
 }
 
 abstract class _PaymentTerm implements PaymentTerm {
-  const factory _PaymentTerm(
-      {@JsonKey(name: 'nama') String? name,
-      @JsonKey(name: 'kode') String? code}) = _$_PaymentTerm;
+  factory _PaymentTerm(
+      {@JsonKey(name: 'payment_term_id') String? paymentTermId,
+      @JsonKey(name: 'payment_term_code') String? paymentTermCode,
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'cash_payment') String? cashPayment}) = _$_PaymentTerm;
 
   factory _PaymentTerm.fromJson(Map<String, dynamic> json) =
       _$_PaymentTerm.fromJson;
 
   @override
-  @JsonKey(name: 'nama')
-  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'payment_term_id')
+  String? get paymentTermId => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'kode')
-  String? get code => throw _privateConstructorUsedError;
+  @JsonKey(name: 'payment_term_code')
+  String? get paymentTermCode => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'description')
+  String? get description => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'cash_payment')
+  String? get cashPayment => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PaymentTermCopyWith<_PaymentTerm> get copyWith =>
