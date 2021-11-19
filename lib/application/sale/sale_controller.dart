@@ -338,8 +338,10 @@ class SaleController extends GetxController {
 
   void setSelectedCustomer(CustomerDataModel data) {
     _selectedCustomer.value = data;
-    setPaymentTerm(SaleFunction().customerPaymentTerm(data));
-    setPaymentType(SaleFunction().customerPaymentType(data));
+    if (data != CustomerDataModel()) {
+      setPaymentTerm(SaleFunction().customerPaymentTerm(data));
+      setPaymentType(SaleFunction().customerPaymentType(data));
+    }
   }
 
   CustomerDataModel get getSelectedCustomer => this._selectedCustomer.value;
@@ -363,6 +365,7 @@ class SaleController extends GetxController {
 
       var _singleItem = ItemDetailDataModel(
           discount: _discount,
+          itemName: element.itemName!,
           qty: element.totalBuy.toStringAsFixed(0),
           itemCode: element.itemCode,
           itemId: element.itemId,

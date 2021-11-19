@@ -7,6 +7,9 @@ import 'package:pos/infrastructure/storage/storage.dart';
 class SaleFunction {
   final _box = PrefStorage();
   PaymentTerm customerPaymentTerm(CustomerDataModel customer) {
+    if (customer == CustomerDataModel()) {
+      return _box.loadPaymentTerm().last;
+    }
     try {
       var _data = _box
           .loadPaymentTerm()
@@ -19,6 +22,9 @@ class SaleFunction {
   }
 
   PaymentType customerPaymentType(CustomerDataModel customer) {
+    if (customer == CustomerDataModel()) {
+      return _box.loadPaymentType().last;
+    }
     try {
       var _data = _box
           .loadPaymentType()

@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
    <application
-        android:label="RTL POS"
+        android:label="Retailsoft POS"
         android:usesCleartextTraffic="true"
 
         android:icon="@mipmap/bg_icon">

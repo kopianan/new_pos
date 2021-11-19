@@ -17,6 +17,7 @@ class _ConfigPageState extends State<ConfigPage> {
   String selectedTType = 'SO';
   final _url = TextEditingController(
       text: 'http://vipcloud.erp.web.id:8081/teratai-android/');
+  final _storeName = TextEditingController(text: "POS");
   final _formKey = GlobalKey<FormState>();
 
   void selectTransactionType(String value) {
@@ -69,22 +70,42 @@ class _ConfigPageState extends State<ConfigPage> {
                         Form(
                           key: _formKey,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: CustomTextField(
-                            validator: (e) {
-                              if (e!.isEmpty) {
-                                return "URL tidak boleh kosong";
-                              }
-                              return null;
-                            },
-                            hintText: "Insert url config",
-                            controller: _url,
-                            label: "URL",
+                          child: Column(
+                            children: [
+                              CustomTextField(
+                                validator: (e) {
+                                  if (e!.isEmpty) {
+                                    return "URL tidak boleh kosong";
+                                  }
+                                  return null;
+                                },
+                                hintText: "Insert url config",
+                                controller: _url,
+                                label: "URL",
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                child: Text(
+                                    "example : http://vipcloud.erp.web.id:8081/teratai-android/"),
+                              )
+                            ],
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Text(
-                              "example : http://vipcloud.erp.web.id:8081/teratai-android/"),
+                        SizedBox(height: 20),
+                        Column(
+                          children: [
+                            CustomTextField(
+                              validator: (e) {
+                                if (e!.isEmpty) {
+                                  return "Nama toko tidak boleh kosong";
+                                }
+                                return null;
+                              },
+                              hintText: "Input nama toko",
+                              controller: _storeName,
+                              label: "Nama Toko",
+                            ),
+                          ],
                         )
                       ],
                     ),
@@ -136,7 +157,7 @@ class _ConfigPageState extends State<ConfigPage> {
                           try {
                             await _storage.setBaseUrl(_url.text.trim());
                             await _storage.setTransactionType(selectedTType);
-
+                            await _storage.saveStoreName(_storeName.text);
                             Get.back(closeOverlays: true);
                             await showDefaultSnackbar(context,
                                 message: "Berhasil menyimpan config");

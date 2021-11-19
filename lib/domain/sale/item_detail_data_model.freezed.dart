@@ -24,6 +24,7 @@ class _$ItemDetailDataModelTearOff {
   _ItemDetailDataModel call(
       {@JsonKey(name: "item_code") String? itemCode,
       @JsonKey(name: "item_id") String? itemId,
+      @JsonKey(name: "item_name") required String itemName,
       @JsonKey(name: "qty") String? qty,
       @JsonKey(name: "unit") String? unit,
       @JsonKey(name: "price") String? price,
@@ -32,6 +33,7 @@ class _$ItemDetailDataModelTearOff {
     return _ItemDetailDataModel(
       itemCode: itemCode,
       itemId: itemId,
+      itemName: itemName,
       qty: qty,
       unit: unit,
       price: price,
@@ -54,6 +56,8 @@ mixin _$ItemDetailDataModel {
   String? get itemCode => throw _privateConstructorUsedError;
   @JsonKey(name: "item_id")
   String? get itemId => throw _privateConstructorUsedError;
+  @JsonKey(name: "item_name")
+  String get itemName => throw _privateConstructorUsedError;
   @JsonKey(name: "qty")
   String? get qty => throw _privateConstructorUsedError;
   @JsonKey(name: "unit")
@@ -79,6 +83,7 @@ abstract class $ItemDetailDataModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "item_code") String? itemCode,
       @JsonKey(name: "item_id") String? itemId,
+      @JsonKey(name: "item_name") String itemName,
       @JsonKey(name: "qty") String? qty,
       @JsonKey(name: "unit") String? unit,
       @JsonKey(name: "price") String? price,
@@ -99,6 +104,7 @@ class _$ItemDetailDataModelCopyWithImpl<$Res>
   $Res call({
     Object? itemCode = freezed,
     Object? itemId = freezed,
+    Object? itemName = freezed,
     Object? qty = freezed,
     Object? unit = freezed,
     Object? price = freezed,
@@ -114,6 +120,10 @@ class _$ItemDetailDataModelCopyWithImpl<$Res>
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
               as String?,
+      itemName: itemName == freezed
+          ? _value.itemName
+          : itemName // ignore: cast_nullable_to_non_nullable
+              as String,
       qty: qty == freezed
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
@@ -148,6 +158,7 @@ abstract class _$ItemDetailDataModelCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "item_code") String? itemCode,
       @JsonKey(name: "item_id") String? itemId,
+      @JsonKey(name: "item_name") String itemName,
       @JsonKey(name: "qty") String? qty,
       @JsonKey(name: "unit") String? unit,
       @JsonKey(name: "price") String? price,
@@ -170,6 +181,7 @@ class __$ItemDetailDataModelCopyWithImpl<$Res>
   $Res call({
     Object? itemCode = freezed,
     Object? itemId = freezed,
+    Object? itemName = freezed,
     Object? qty = freezed,
     Object? unit = freezed,
     Object? price = freezed,
@@ -185,6 +197,10 @@ class __$ItemDetailDataModelCopyWithImpl<$Res>
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
               as String?,
+      itemName: itemName == freezed
+          ? _value.itemName
+          : itemName // ignore: cast_nullable_to_non_nullable
+              as String,
       qty: qty == freezed
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
@@ -215,6 +231,7 @@ class _$_ItemDetailDataModel implements _ItemDetailDataModel {
   _$_ItemDetailDataModel(
       {@JsonKey(name: "item_code") this.itemCode,
       @JsonKey(name: "item_id") this.itemId,
+      @JsonKey(name: "item_name") required this.itemName,
       @JsonKey(name: "qty") this.qty,
       @JsonKey(name: "unit") this.unit,
       @JsonKey(name: "price") this.price,
@@ -230,6 +247,9 @@ class _$_ItemDetailDataModel implements _ItemDetailDataModel {
   @override
   @JsonKey(name: "item_id")
   final String? itemId;
+  @override
+  @JsonKey(name: "item_name")
+  final String itemName;
   @override
   @JsonKey(name: "qty")
   final String? qty;
@@ -248,7 +268,7 @@ class _$_ItemDetailDataModel implements _ItemDetailDataModel {
 
   @override
   String toString() {
-    return 'ItemDetailDataModel(itemCode: $itemCode, itemId: $itemId, qty: $qty, unit: $unit, price: $price, tax: $tax, discount: $discount)';
+    return 'ItemDetailDataModel(itemCode: $itemCode, itemId: $itemId, itemName: $itemName, qty: $qty, unit: $unit, price: $price, tax: $tax, discount: $discount)';
   }
 
   @override
@@ -260,6 +280,9 @@ class _$_ItemDetailDataModel implements _ItemDetailDataModel {
                     .equals(other.itemCode, itemCode)) &&
             (identical(other.itemId, itemId) ||
                 const DeepCollectionEquality().equals(other.itemId, itemId)) &&
+            (identical(other.itemName, itemName) ||
+                const DeepCollectionEquality()
+                    .equals(other.itemName, itemName)) &&
             (identical(other.qty, qty) ||
                 const DeepCollectionEquality().equals(other.qty, qty)) &&
             (identical(other.unit, unit) ||
@@ -278,6 +301,7 @@ class _$_ItemDetailDataModel implements _ItemDetailDataModel {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(itemCode) ^
       const DeepCollectionEquality().hash(itemId) ^
+      const DeepCollectionEquality().hash(itemName) ^
       const DeepCollectionEquality().hash(qty) ^
       const DeepCollectionEquality().hash(unit) ^
       const DeepCollectionEquality().hash(price) ^
@@ -300,6 +324,7 @@ abstract class _ItemDetailDataModel implements ItemDetailDataModel {
   factory _ItemDetailDataModel(
       {@JsonKey(name: "item_code") String? itemCode,
       @JsonKey(name: "item_id") String? itemId,
+      @JsonKey(name: "item_name") required String itemName,
       @JsonKey(name: "qty") String? qty,
       @JsonKey(name: "unit") String? unit,
       @JsonKey(name: "price") String? price,
@@ -315,6 +340,9 @@ abstract class _ItemDetailDataModel implements ItemDetailDataModel {
   @override
   @JsonKey(name: "item_id")
   String? get itemId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: "item_name")
+  String get itemName => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: "qty")
   String? get qty => throw _privateConstructorUsedError;

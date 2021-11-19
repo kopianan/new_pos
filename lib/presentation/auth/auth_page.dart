@@ -68,7 +68,21 @@ class _AuthPageState extends State<AuthPage> {
                             children: [
                               Align(
                                 alignment: Alignment.center,
-                                child: Image.asset('assets/images/bg_machine.png'),
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/bg_machine.png',
+                                      width: Get.size.width / 1.7,
+                                    ),
+                                    SizedBox(height: 20),
+                                    Text(
+                                      PrefStorage().getStoreName(),
+                                      style: TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
                               ),
                               const SizedBox(height: 25),
                               CustomTextField(

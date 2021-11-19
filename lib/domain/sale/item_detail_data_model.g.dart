@@ -11,6 +11,7 @@ _$_ItemDetailDataModel _$$_ItemDetailDataModelFromJson(
     _$_ItemDetailDataModel(
       itemCode: json['item_code'] as String?,
       itemId: json['item_id'] as String?,
+      itemName: json['item_name'] as String,
       qty: json['qty'] as String?,
       unit: json['unit'] as String?,
       price: json['price'] as String?,
@@ -23,6 +24,7 @@ Map<String, dynamic> _$$_ItemDetailDataModelToJson(
     <String, dynamic>{
       'item_code': instance.itemCode,
       'item_id': instance.itemId,
+      'item_name': instance.itemName,
       'qty': instance.qty,
       'unit': instance.unit,
       'price': instance.price,

@@ -8,6 +8,7 @@ class ItemDetailDataModel with _$ItemDetailDataModel {
   factory ItemDetailDataModel({
     @JsonKey(name: "item_code") String? itemCode,
     @JsonKey(name: "item_id") String? itemId,
+    @JsonKey(name: "item_name") required String itemName,
     @JsonKey(name: "qty") String? qty,
     @JsonKey(name: "unit") String? unit,
     @JsonKey(name: "price") String? price,

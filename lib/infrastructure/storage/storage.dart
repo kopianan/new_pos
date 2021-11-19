@@ -14,8 +14,17 @@ class PrefStorage {
 
   Future<void> savePaymentTerm(List<PaymentTerm> list) async {
     try {
-      List<Map<String, dynamic>> _list = list.map((e) => e.toJson()).toList();
+      var _list = list.map((e) => json.decode(json.encode(e))).toList();
       await box.write('payment-term-list', _list);
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  Future<void> savePaymentType(List<PaymentType> list) async {
+    try {
+      var _list = list.map((e) => json.decode(json.encode(e))).toList();
+      await box.write('payment-type-list', _list);
     } catch (e) {
       throw Exception();
     }
@@ -23,31 +32,18 @@ class PrefStorage {
 
   List<PaymentTerm> loadPaymentTerm() {
     try {
-      List<Map<String, dynamic>> _data = box.read('payment-term-list');
-      var _listData = _data
-          .map((e) => PaymentTerm.fromJson(json.decode(json.encode(e))))
-          .toList();
+      List _data = box.read('payment-term-list');
+      var _listData = _data.map((e) => PaymentTerm.fromJson(e)).toList();
       return _listData;
     } catch (e) {
       return <PaymentTerm>[];
     }
   }
 
-  Future<void> savePaymentType(List<PaymentType> list) async {
-    try {
-      List<Map<String, dynamic>> _list = list.map((e) => e.toJson()).toList();
-      await box.write('payment-type-list', _list);
-    } catch (e) {
-      throw Exception();
-    }
-  }
-
   List<PaymentType> loadPaymentType() {
     try {
-      List<Map<String, dynamic>> _data = box.read('payment-type-list');
-      var _listData = _data
-          .map((e) => PaymentType.fromJson(json.decode(json.encode(e))))
-          .toList();
+      List _data = box.read('payment-type-list');
+      var _listData = _data.map((e) => PaymentType.fromJson(e)).toList();
       return _listData;
     } catch (e) {
       return <PaymentType>[];
@@ -107,6 +103,23 @@ class PrefStorage {
   Future<void> setTransactionType(String trans) async {
     try {
       await box.write('transactionType', trans);
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<void> saveStoreName(String store) async {
+    try {
+      await box.write('store-name', store);
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  String getStoreName() {
+    try {
+      final _store = box.read('store-name');
+      return _store;
     } catch (e) {
       throw Exception(e);
     }
