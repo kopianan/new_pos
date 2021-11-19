@@ -28,7 +28,7 @@ class _TransactionProgressPageState extends State<TransactionProgressPage> {
   @override
   void initState() {
     var _request = _saleCon.convertData();
-
+    print(_request);
     _saleCubit.makePayment(_request, _saleCon.getSaleDataModel);
     super.initState();
   }

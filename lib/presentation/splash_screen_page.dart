@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:pos/application/auth/auth_cubit.dart';
-import 'package:pos/presentation/auth/auth_page.dart';
+import 'package:pos/application/auth/auth_cubit.dart'; 
 import 'package:pos/presentation/dashboard/dashboard_page.dart';
 import 'package:pos/presentation/menu/menu_page.dart';
 
@@ -27,7 +26,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
           state.maybeMap(
             orElse: () {},
             onAuthenticate: (e) {
-              Get.toNamed(DashboardPage.TAG);
+              Get.offAllNamed(DashboardPage.TAG);
             },
             onError: (e) {
               Get.toNamed(MenuPage.TAG);
