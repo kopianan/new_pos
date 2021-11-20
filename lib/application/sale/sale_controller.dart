@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:collection/src/iterable_extensions.dart';
 import 'package:dartz/dartz.dart';
@@ -374,7 +375,6 @@ class SaleController extends GetxController {
           unit: "PCS");
       _itemList.add(_singleItem);
     });
-
     _saleTransaction = RequestSaleTransactionDataModel(
       transNo: getTransactionNumber,
       location: getSelectedLocation.locationCode,
@@ -393,7 +393,7 @@ class SaleController extends GetxController {
     };
     print(_rawData);
     _saleDataModel.value = _saleTransaction;
-
+    debugPrint('json: ${json.encode(_saleTransaction.toJson())}');
     return _rawData;
   }
 

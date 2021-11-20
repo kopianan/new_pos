@@ -8,6 +8,7 @@ import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/application/sale/sale_cubit.dart';
 import 'package:pos/config/constants_data.dart';
 import 'package:pos/domain/sale/request_sale_transaction_data_model.dart';
+import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/injectable.dart';
 import 'package:pos/presentation/dashboard/dashboard_page.dart';
 
@@ -48,6 +49,8 @@ class _TransactionProgressPageState extends State<TransactionProgressPage> {
               isLoading: (e) {},
               onCreateTransactionSuccess: (e) {
                 _onCreateTransactionSuccess(context, e.message);
+                showSnackbar("Transaksi Bershsil Dibuat", Colors.green);
+
                 _saleCon.saveTransactionData(describeEnum(TransStatus.SEND));
               },
               onConfirmPaymentSuccess: (e) {
@@ -95,8 +98,17 @@ class _TransactionProgressPageState extends State<TransactionProgressPage> {
   void _onCreateTransactionSuccess(BuildContext, String message) {
     var _pmtType = _saleCon.getPaymentType.paymentTypeId;
     var _transNumber = _saleCon.getTransactionNumber;
+//check if cash
 
-    _saleCubit.confirmPayment(_transNumber);
+    try {
+      var _paymentType = PrefStorage()
+          .loadPaymentType()
+          .firstWhere((element) => element.paymentTypeId == _pmtType);
+      print(_paymentType);
+      if (_paymentType.paymentTypeCode!.toLowerCase() == "csh") {
+        _saleCubit.confirmPayment(_transNumber);
+      }
+    } catch (e) {}
   }
 
   void showSnackbar(String message, Color background) {
