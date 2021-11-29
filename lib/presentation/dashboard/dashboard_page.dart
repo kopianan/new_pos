@@ -138,11 +138,12 @@ class _DashboardPageState extends State<DashboardPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/images/bg_atm.png',
-                    fit: BoxFit.cover,
+                  Expanded(
+                    child: Image.asset(
+                      'assets/images/bg_atm.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  Spacer(),
                   Container(
                     height: Get.size.height / 2 - 40,
                     child: Column(

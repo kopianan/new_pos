@@ -11,6 +11,7 @@ import 'package:pos/domain/sale/request_sale_transaction_data_model.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/injectable.dart';
 import 'package:pos/presentation/dashboard/dashboard_page.dart';
+import 'package:pos/presentation/list_sale/list_sale_page.dart';
 
 class TransactionProgressPage extends StatefulWidget {
   static const String TAG = '/transaction-progress-page';
@@ -155,8 +156,10 @@ class WaitingPage extends StatelessWidget {
 }
 
 class ErrorPage extends StatelessWidget {
-  const ErrorPage({Key? key, this.message}) : super(key: key);
+  ErrorPage({Key? key, this.message}) : super(key: key);
   final String? message;
+
+  final _sale = Get.find<SaleController>();
 
   @override
   Widget build(BuildContext context) {
@@ -183,10 +186,11 @@ class ErrorPage extends StatelessWidget {
           ),
           Spacer(),
           ElevatedButton(
-              onPressed: () {
-                Get.back(closeOverlays: true);
-              },
-              child: Text("Kembali")),
+            onPressed: () {
+              Get.back(closeOverlays: true);
+            },
+            child: Text("Kembali"),
+          ),
           Text("Terjadi kesalahan"),
           SizedBox(height: 20),
         ],

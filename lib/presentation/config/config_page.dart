@@ -86,7 +86,7 @@ class _ConfigPageState extends State<ConfigPage> {
                               const Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                                 child: Text(
-                                    "example : http://vipcloud.erp.web.id:8081/teratai-android/"),
+                                    "example : http://[nama_domain]:port/[nama_aplikasi]/"),
                               )
                             ],
                           ),
