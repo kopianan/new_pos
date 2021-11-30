@@ -397,7 +397,7 @@ class SaleController extends GetxController {
     return _rawData;
   }
 
-  Future<void> saveTransactionData(
+  Future<SaleTransactionDataModel> saveTransactionData(
     @Default("PENDING") String status,
   ) async {
     var _transaction = SaleTransactionDataModel(
@@ -429,5 +429,6 @@ class SaleController extends GetxController {
       _savedList.add(_transaction);
       _box.saveTransactionData(_savedList);
     }
+    return _transaction;
   }
 }

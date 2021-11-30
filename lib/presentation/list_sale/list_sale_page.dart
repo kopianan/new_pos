@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -29,6 +31,22 @@ class _ListSalePageState extends State<ListSalePage> {
     _filteredList = _list;
 
     super.initState();
+    try {
+      Future.delayed(Duration(milliseconds: 500)).then((e) => checkDirect());
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void checkDirect() {
+    var _data = Get.arguments as dynamic;
+    var _json = SaleTransactionDataModel.fromJson(_data);
+
+    var _selected = _list.firstWhere(
+        (element) => element.transactionNumber == _json.transactionNumber);
+
+    _saleController.loadDataFromStorage(_selected);
+    Get.toNamed(SalePage.TAG);
   }
 
   @override

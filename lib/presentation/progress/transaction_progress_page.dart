@@ -51,12 +51,17 @@ class _TransactionProgressPageState extends State<TransactionProgressPage> {
               onCreateTransactionSuccess: (e) {
                 _onCreateTransactionSuccess(context, e.message);
                 showSnackbar("Transaksi Bershsil Dibuat", Colors.green);
-
-                _saleCon.saveTransactionData(describeEnum(TransStatus.SEND));
               },
-              onConfirmPaymentSuccess: (e) {
+              onConfirmPaymentSuccess: (e) async {
                 showSnackbar("Transaksi Terkonfirmasi Lunas", Colors.green);
-                _saleCon.saveTransactionData(describeEnum(TransStatus.SEND));
+                var _savedData = await _saleCon
+                    .saveTransactionData(describeEnum(TransStatus.SEND));
+                Future.delayed(Duration(seconds: 1))
+                    .then((value) => Get.offNamedUntil(
+                          ListSalePage.TAG,
+                          ModalRoute.withName(DashboardPage.TAG),
+                          arguments: json.decode(json.encode(_savedData)),
+                        ));
               },
             );
           },
@@ -96,7 +101,7 @@ class _TransactionProgressPageState extends State<TransactionProgressPage> {
     );
   }
 
-  void _onCreateTransactionSuccess(BuildContext, String message) {
+  void _onCreateTransactionSuccess(BuildContext, String message) async {
     var _pmtType = _saleCon.getPaymentType.paymentTypeId;
     var _transNumber = _saleCon.getTransactionNumber;
 //check if cash
@@ -105,9 +110,20 @@ class _TransactionProgressPageState extends State<TransactionProgressPage> {
       var _paymentType = PrefStorage()
           .loadPaymentType()
           .firstWhere((element) => element.paymentTypeId == _pmtType);
-      print(_paymentType);
+
       if (_paymentType.paymentTypeCode!.toLowerCase() == "csh") {
         _saleCubit.confirmPayment(_transNumber);
+
+        //direct di dalam response cubit.
+      } else {
+        //direct ke halaman akhir
+        var _savedData =
+            await _saleCon.saveTransactionData(describeEnum(TransStatus.SEND));
+        Future.delayed(Duration(seconds: 1)).then((value) => Get.offNamedUntil(
+              ListSalePage.TAG,
+              ModalRoute.withName(DashboardPage.TAG),
+              arguments: json.decode(json.encode(_savedData.toJson())),
+            ));
       }
     } catch (e) {}
   }
