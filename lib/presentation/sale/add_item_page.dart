@@ -45,6 +45,7 @@ class _AddItemPageState extends State<AddItemPage> {
     return Scaffold(
       appBar: AppBar(),
       bottomSheet: GFBottomSheet(
+        animationDuration: 100,
           maxContentHeight: Get.size.height / 3,
           stickyHeaderHeight: 80,
           elevation: 5,
@@ -109,7 +110,7 @@ class _AddItemPageState extends State<AddItemPage> {
                                         Get.showSnackbar(
                                           GetBar(
                                             message: l,
-                                            duration: Duration(seconds: 1),
+                                            duration: Duration(milliseconds: 1000),
                                           ),
                                         );
                                       },

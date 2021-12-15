@@ -135,7 +135,7 @@ class SaleController extends GetxController {
     //Find index
     int _index = _cartListItem.indexOf(_currItem);
 
-    if ((_currItem.totalBuy + 1) > int.parse(_currItem.qty!)) {
+    if ((_currItem.totalBuy + 1) > double.parse(_currItem.qty!)) {
       return left("Stock tidak cukup");
     } else {
       //Add quantity
