@@ -141,14 +141,7 @@ class _SalePageState extends State<SalePage> {
                 title: Text("Buat Pesanan"),
                 centerTitle: true,
                 floating: true,
-                actions: [
-                  IconButton(
-                    onPressed: () {
-                      _saleBloc.getAllProduct();
-                    },
-                    icon: Icon(Icons.refresh),
-                  )
-                ],
+            
               ),
               SliverToBoxAdapter(
                   child: Padding(

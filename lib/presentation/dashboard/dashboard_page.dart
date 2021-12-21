@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:new_version/new_version.dart';
 import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/presentation/auth/auth_page.dart';
@@ -25,6 +26,18 @@ class _DashboardPageState extends State<DashboardPage> {
   void initState() {
     storeName = PrefStorage().getStoreName();
     super.initState();
+
+    final newVersion = NewVersion(
+      iOSId: 'com.roomart.rtlpos',
+      androidId: 'com.roomart.rtlpos',
+    );
+
+    basicStatusCheck(newVersion);
+  }
+
+  basicStatusCheck(NewVersion newVersion) {
+    newVersion.getVersionStatus().then((value) => print(value!.storeVersion));
+    newVersion.showAlertIfNecessary(context: context);
   }
 
   @override
@@ -139,9 +152,10 @@ class _DashboardPageState extends State<DashboardPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: Image.asset(
-                      'assets/images/bg_atm.png',
-                      fit: BoxFit.cover,
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Image.asset('assets/images/bg_atm.png',
+                          fit: BoxFit.contain),
                     ),
                   ),
                   Container(
