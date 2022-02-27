@@ -31,7 +31,7 @@ _$_ProductDataModel _$$_ProductDataModelFromJson(Map<String, dynamic> json) =>
       weight: json['weight'] as String?,
       inOrder: json['in_order'] as String?,
       discount: (json['discount'] as num?)?.toDouble() ?? 0,
-      isPercentage: json['is_percentage'] as bool? ?? null,
+      isPercentage: json['is_percentage'] as bool? ?? true,
       isChecked: json['isChecked'] as bool? ?? false,
       totalBuy: json['total_buy'] as int? ?? 0,
     );

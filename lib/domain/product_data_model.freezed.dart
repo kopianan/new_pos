@@ -45,7 +45,7 @@ class _$ProductDataModelTearOff {
       @JsonKey(name: 'weight') String? weight,
       @JsonKey(name: 'in_order') String? inOrder,
       @JsonKey(name: 'discount', includeIfNull: true) double? discount = 0,
-      @JsonKey(name: 'is_percentage') bool? isPercentage = null,
+      @JsonKey(name: 'is_percentage') bool? isPercentage = true,
       @JsonKey(name: 'isChecked') bool? isChecked = false,
       @JsonKey(name: 'total_buy') int totalBuy = 0}) {
     return _ProductDataModel(
@@ -540,7 +540,7 @@ class _$_ProductDataModel implements _ProductDataModel {
       @JsonKey(name: 'weight') this.weight,
       @JsonKey(name: 'in_order') this.inOrder,
       @JsonKey(name: 'discount', includeIfNull: true) this.discount = 0,
-      @JsonKey(name: 'is_percentage') this.isPercentage = null,
+      @JsonKey(name: 'is_percentage') this.isPercentage = true,
       @JsonKey(name: 'isChecked') this.isChecked = false,
       @JsonKey(name: 'total_buy') this.totalBuy = 0});
 

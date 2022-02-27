@@ -31,7 +31,7 @@ class ProductDataModel with _$ProductDataModel {
     @Default(0)
     @JsonKey(name: 'discount', includeIfNull: true)
         double? discount,
-    @Default(null) @JsonKey(name: 'is_percentage') bool? isPercentage,
+    @Default(true) @JsonKey(name: 'is_percentage') bool? isPercentage,
     @Default(false) @JsonKey(name: 'isChecked') bool? isChecked,
     @Default(0) @JsonKey(name: 'total_buy') int totalBuy,
   }) = _ProductDataModel;

@@ -215,6 +215,7 @@ class SaleController extends GetxController {
     }
     _cartListItem.forEach(
       (element) {
+        print(element) ; 
         var _subTotal = element.totalBuy * double.parse(element.itemPrice!);
         if (element.isPercentage == true) {
           _finalTotal += _subTotal - ((element.discount! / 100.0) * _subTotal);

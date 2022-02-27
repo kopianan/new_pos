@@ -55,6 +55,7 @@ class _AuthPageState extends State<AuthPage> {
                         state.maybeMap(
                           orElse: () {},
                           onGetLocation: (e) {
+                            print(e.locations) ; 
                             _allUsers.assignAll(e.locations);
                           },
                         );
