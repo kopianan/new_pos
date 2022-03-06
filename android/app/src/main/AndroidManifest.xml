@@ -13,6 +13,7 @@
 
         android:icon="@mipmap/bg_icon">
         <activity
+            android:exported="true"
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"

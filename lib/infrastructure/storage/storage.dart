@@ -108,6 +108,14 @@ class PrefStorage {
     }
   }
 
+  Future<void> setEditable(bool editable) async {
+    try {
+      await box.write('editable', editable);
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
   Future<void> saveStoreName(String store) async {
     try {
       await box.write('store-name', store);
@@ -224,6 +232,15 @@ class PrefStorage {
     try {
       final _url = box.read('transactionType');
       return _url;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  bool getEditable() {
+    try {
+      final _editable = box.read('editable');
+      return _editable;
     } catch (e) {
       throw Exception(e);
     }

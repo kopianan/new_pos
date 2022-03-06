@@ -14,15 +14,22 @@ class ConfigPage extends StatefulWidget {
 }
 
 class _ConfigPageState extends State<ConfigPage> {
-  String selectedTType = 'SO';
-  final _url = TextEditingController(
-      text: 'http://vipcloud.erp.web.id:8081/teratai-android/');
+  String selectedTType = "SO";
+  bool editable = false;
+  final _url =
+      TextEditingController(text: 'http://vipcloud.erp.web.id:8081/store/');
   final _storeName = TextEditingController(text: "POS");
   final _formKey = GlobalKey<FormState>();
 
   void selectTransactionType(String value) {
     setState(() {
       selectedTType = value;
+    });
+  }
+
+  void selectEditable(bool value) {
+    setState(() {
+      editable = value;
     });
   }
 
@@ -103,7 +110,7 @@ class _ConfigPageState extends State<ConfigPage> {
                               },
                               hintText: "Input nama toko",
                               controller: _storeName,
-                              label: "Nama Toko",
+                              label: "Store",
                             ),
                           ],
                         )
@@ -147,6 +154,43 @@ class _ConfigPageState extends State<ConfigPage> {
                       ],
                     ),
                     const SizedBox(height: 25),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("Editable Price & Discount",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 7),
+                        Card(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          margin: EdgeInsets.zero,
+                          child: Column(
+                            children: [
+                              RadioListTile<bool>(
+                                title: const Text("Editable"),
+                                value: true,
+                                groupValue: editable,
+                                onChanged: (e) {
+                                  selectEditable(e!);
+                                },
+                              ),
+                              const Divider(height: 0),
+                              RadioListTile<bool>(
+                                title: const Text("NOT Editable"),
+                                value: false,
+                                groupValue: editable,
+                                onChanged: (e) {
+                                  selectEditable(e!);
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 25),
                     PosDefaultButton(
                       text: "Save",
                       onPressed: () async {
@@ -158,6 +202,7 @@ class _ConfigPageState extends State<ConfigPage> {
                             await _storage.setBaseUrl(_url.text.trim());
                             await _storage.setTransactionType(selectedTType);
                             await _storage.saveStoreName(_storeName.text);
+                            await _storage.setEditable(editable);
                             Get.back(closeOverlays: true);
                             await showDefaultSnackbar(context,
                                 message: "Berhasil menyimpan config");

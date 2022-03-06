@@ -76,11 +76,40 @@ class ProductCartItem extends StatelessWidget {
                         ),
                 ],
               ),
-              subtitle: (_sale.getSetStatus !=
-                      describeEnum(TransStatus.PROCCESS))
-                  ? SizedBox()
-                  : Text(
-                      "Stok : " + double.parse(item.qty!).toStringAsFixed(0)),
+              subtitle: Row(
+                children: [
+                  (_sale.getSetStatus != describeEnum(TransStatus.PROCCESS))
+                      ? SizedBox()
+                      : Text("Stok : " +
+                          double.parse(item.qty!).toStringAsFixed(0)),
+                  Spacer(),
+                  (item.pic!.isNotEmpty)
+                      ? IconButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return Dialog(
+                                    insetPadding: EdgeInsets.zero,
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: Get.size.width,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: NetworkImage(item.pic!),
+                                            fit: BoxFit.contain),
+                                      ),
+                                    ),
+                                  );
+                                });
+                          },
+                          icon: Icon(Icons.image),
+                          color: Colors.grey,
+                        )
+                      : SizedBox(),
+                  SizedBox(width: 10)
+                ],
+              ),
               trailing: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,

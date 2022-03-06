@@ -14,6 +14,8 @@ import 'package:pos/presentation/sale/sale_page.dart';
 import 'package:pos/presentation/scan/qr_scan_page.dart';
 import 'package:pos/presentation/splash_screen_page.dart';
 
+import '../presentation/sale/item_edit_page.dart';
+
 class Routes {
   static final List<GetPage> _pages = [
     GetPage(name: AuthPage.TAG, page: () => const AuthPage()),
@@ -24,6 +26,10 @@ class Routes {
     GetPage(name: MenuPage.TAG, page: () => const MenuPage()),
     GetPage(name: QrScanPage.TAG, page: () => const QrScanPage()),
     GetPage(name: LocationPage.TAG, page: () => const LocationPage()),
+    GetPage(
+        name: ItemEditPage.routeName,
+        page: () => const ItemEditPage(),
+        fullscreenDialog: true),
     GetPage(
         name: DashboardPage.TAG,
         page: () => const DashboardPage(),

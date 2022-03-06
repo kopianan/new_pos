@@ -16,6 +16,7 @@ import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/presentation/progress/transaction_progress_page.dart';
 import 'package:pos/presentation/sale/add_item_page.dart';
 import 'package:pos/presentation/sale/choose_customer_page.dart';
+import 'package:pos/presentation/sale/item_edit_page.dart';
 import 'package:pos/presentation/sale/widget/product_cart_item.dart';
 import 'package:pos/presentation/widgets/widget_collection.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -141,7 +142,6 @@ class _SalePageState extends State<SalePage> {
                 title: Text("Buat Pesanan"),
                 centerTitle: true,
                 floating: true,
-            
               ),
               SliverToBoxAdapter(
                   child: Padding(
@@ -194,37 +194,47 @@ class _SalePageState extends State<SalePage> {
                     (context, index) {
                       var _list = _saleController.getCartList;
 
-                      return ProductCartItem(
-                        onDelete: () {
-                          _saleController.removeItemFromCart(_list[index]);
+                      return InkWell(
+                        onTap: () {
+                          if (_box.getEditable()) {
+                            Get.toNamed(
+                              ItemEditPage.routeName,
+                              arguments: _list[index],
+                            );
+                          }
                         },
-                        item: _list[index],
-                        onAdd: () {
-                          _saleController.addBuyQty(_list[index]).fold(
-                            (l) {
-                              Get.showSnackbar(
-                                GetBar(
-                                  message: l,
-                                  duration: Duration(seconds: 1),
-                                ),
-                              );
-                            },
-                            (r) => print("Sukses"),
-                          );
-                        },
-                        onDecrease: () {
-                          _saleController.decreaseBuyQty(_list[index]).fold(
-                            (l) {
-                              Get.showSnackbar(
-                                GetBar(
-                                  message: l,
-                                  duration: Duration(seconds: 1),
-                                ),
-                              );
-                            },
-                            (r) => print("Sukses"),
-                          );
-                        },
+                        child: ProductCartItem(
+                          onDelete: () {
+                            _saleController.removeItemFromCart(_list[index]);
+                          },
+                          item: _list[index],
+                          onAdd: () {
+                            _saleController.addBuyQty(_list[index]).fold(
+                              (l) {
+                                Get.showSnackbar(
+                                  GetSnackBar(
+                                    message: l,
+                                    duration: Duration(seconds: 1),
+                                  ),
+                                );
+                              },
+                              (r) => print("Sukses"),
+                            );
+                          },
+                          onDecrease: () {
+                            _saleController.decreaseBuyQty(_list[index]).fold(
+                              (l) {
+                                Get.showSnackbar(
+                                  GetBar(
+                                    message: l,
+                                    duration: Duration(seconds: 1),
+                                  ),
+                                );
+                              },
+                              (r) => print("Sukses"),
+                            );
+                          },
+                        ),
                       );
                     },
                     childCount: _saleController.getCartList.length,
@@ -303,13 +313,15 @@ class _SalePageState extends State<SalePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Obx(() => Text(
-                        convertNumber(_saleController.calculateFinalTotal()),
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ))
+                  Obx(
+                    () => Text(
+                      convertNumber(_saleController.calculateFinalTotal()),
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
                 ],
               ),
               SizedBox(height: 10),
