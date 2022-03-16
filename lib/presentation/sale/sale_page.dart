@@ -194,47 +194,37 @@ class _SalePageState extends State<SalePage> {
                     (context, index) {
                       var _list = _saleController.getCartList;
 
-                      return InkWell(
-                        onTap: () {
-                          if (_box.getEditable()) {
-                            Get.toNamed(
-                              ItemEditPage.routeName,
-                              arguments: _list[index],
-                            );
-                          }
+                      return ProductCartItem(
+                        onDelete: () {
+                          _saleController.removeItemFromCart(_list[index]);
                         },
-                        child: ProductCartItem(
-                          onDelete: () {
-                            _saleController.removeItemFromCart(_list[index]);
-                          },
-                          item: _list[index],
-                          onAdd: () {
-                            _saleController.addBuyQty(_list[index]).fold(
-                              (l) {
-                                Get.showSnackbar(
-                                  GetSnackBar(
-                                    message: l,
-                                    duration: Duration(seconds: 1),
-                                  ),
-                                );
-                              },
-                              (r) => print("Sukses"),
-                            );
-                          },
-                          onDecrease: () {
-                            _saleController.decreaseBuyQty(_list[index]).fold(
-                              (l) {
-                                Get.showSnackbar(
-                                  GetBar(
-                                    message: l,
-                                    duration: Duration(seconds: 1),
-                                  ),
-                                );
-                              },
-                              (r) => print("Sukses"),
-                            );
-                          },
-                        ),
+                        item: _list[index],
+                        // onAdd: () {
+                        //   _saleController.addBuyQty(_list[index]).fold(
+                        //     (l) {
+                        //       Get.showSnackbar(
+                        //         GetSnackBar(
+                        //           message: l,
+                        //           duration: Duration(seconds: 1),
+                        //         ),
+                        //       );
+                        //     },
+                        //     (r) => print("Sukses"),
+                        //   );
+                        // },
+                        // onDecrease: () {
+                        //   _saleController.decreaseBuyQty(_list[index]).fold(
+                        //     (l) {
+                        //       Get.showSnackbar(
+                        //         GetBar(
+                        //           message: l,
+                        //           duration: Duration(seconds: 1),
+                        //         ),
+                        //       );
+                        //     },
+                        //     (r) => print("Sukses"),
+                        //   );
+                        // },
                       );
                     },
                     childCount: _saleController.getCartList.length,

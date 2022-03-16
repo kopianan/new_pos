@@ -104,37 +104,6 @@ class _AddItemPageState extends State<AddItemPage> {
                                         .removeItemFromCart(_list[index]);
                                   },
                                   item: _list[index],
-                                  onAdd: () {
-                                    _saleController
-                                        .addBuyQty(_list[index])
-                                        .fold(
-                                      (l) {
-                                        Get.showSnackbar(
-                                          GetBar(
-                                            message: l,
-                                            duration:
-                                                Duration(milliseconds: 1000),
-                                          ),
-                                        );
-                                      },
-                                      (r) => print("Sukses"),
-                                    );
-                                  },
-                                  onDecrease: () {
-                                    _saleController
-                                        .decreaseBuyQty(_list[index])
-                                        .fold(
-                                      (l) {
-                                        Get.showSnackbar(
-                                          GetBar(
-                                            message: l,
-                                            duration: Duration(seconds: 1),
-                                          ),
-                                        );
-                                      },
-                                      (r) => print("Sukses"),
-                                    );
-                                  },
                                 ),
                               ),
                             ],
@@ -276,6 +245,8 @@ class _AddItemPageState extends State<AddItemPage> {
                   var _currItem = _saleController.getProductList.firstWhere(
                       (element) => element.itemSku == _currentItemSku);
                   return ProductListItem(
+                    customerTypeId:
+                        _saleController.getSelectedCustomer.customerTypeId!,
                     item: _currItem,
                     onTap: () {
                       if (_filteredList[_currentItemSku]!.length == 1) {

@@ -18,6 +18,8 @@ class _ConfigPageState extends State<ConfigPage> {
   bool editable = false;
   final _url =
       TextEditingController(text: 'http://vipcloud.erp.web.id:8081/store/');
+  final _imageUrl =
+      TextEditingController(text: 'http://vipcloud.erp.web.id:8081');
   final _storeName = TextEditingController(text: "POS");
   final _formKey = GlobalKey<FormState>();
 
@@ -94,6 +96,23 @@ class _ConfigPageState extends State<ConfigPage> {
                                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                                 child: Text(
                                     "example : http://[nama_domain]:port/[nama_aplikasi]/"),
+                              ),
+                              SizedBox(height: 20),
+                              CustomTextField(
+                                validator: (e) {
+                                  if (e!.isEmpty) {
+                                    return "URL tidak boleh kosong";
+                                  }
+                                  return null;
+                                },
+                                hintText: "Base Image Url",
+                                controller: _imageUrl,
+                                label: "URL",
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                child:
+                                    Text("example : http://[nama_domain]:port"),
                               )
                             ],
                           ),
@@ -199,6 +218,8 @@ class _ConfigPageState extends State<ConfigPage> {
                         if (_formKey.currentState!.validate()) {
                           //set Data To Storage
                           try {
+                            await _storage
+                                .setImageBaseUrl(_imageUrl.text.trim());
                             await _storage.setBaseUrl(_url.text.trim());
                             await _storage.setTransactionType(selectedTType);
                             await _storage.saveStoreName(_storeName.text);

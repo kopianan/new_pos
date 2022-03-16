@@ -5,10 +5,11 @@ import 'package:get/get.dart';
 Future<void> showDefaultSnackbar(BuildContext context,
     {required String message,
     Duration? duration,
-    Color color = Colors.green}) async {
+    Color color = Colors.green,
+    SnackPosition position = SnackPosition.BOTTOM}) async {
   Get.showSnackbar(
     GetBar(
-      snackPosition: SnackPosition.TOP,
+      snackPosition: position,
       snackStyle: SnackStyle.FLOATING,
       margin: EdgeInsets.all(20),
       padding: EdgeInsets.all(8),

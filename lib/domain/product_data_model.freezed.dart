@@ -22,32 +22,62 @@ class _$ProductDataModelTearOff {
   const _$ProductDataModelTearOff();
 
   _ProductDataModel call(
-      {@JsonKey(name: 'item_id') String? itemId,
-      @JsonKey(name: 'item_code') String? itemCode,
-      @JsonKey(name: 'barcode') String? barcode,
-      @JsonKey(name: 'item_sku') String? itemSku,
-      @JsonKey(name: 'update_date') String? updateDate,
-      @JsonKey(name: 'kategori_id') String? kategoriId,
-      @JsonKey(name: 'internal_code') String? internalCode,
-      @JsonKey(name: 'kategori_code') String? kategoriCode,
-      @JsonKey(name: 'kategori') String? kategori,
-      @JsonKey(name: 'kat_picture') String? katPicture,
-      @JsonKey(name: 'item_name') String? itemName,
-      @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'item_price') String? itemPrice,
-      @JsonKey(name: 'itm_price_fmt') String? itmPriceFmt,
-      @JsonKey(name: 'is_fixed_price') String? isFixedPrice,
-      @JsonKey(name: 'qty') String? qty,
-      @JsonKey(name: 'unit_code') String? unitCode,
-      @JsonKey(name: 'tax_code') String? taxCode,
-      @JsonKey(name: 'pic') String? pic,
-      @JsonKey(name: 'display_store') String? displayStore,
-      @JsonKey(name: 'weight') String? weight,
-      @JsonKey(name: 'in_order') String? inOrder,
-      @JsonKey(name: 'discount', includeIfNull: true) double? discount = 0,
-      @JsonKey(name: 'is_percentage') bool? isPercentage = true,
-      @JsonKey(name: 'isChecked') bool? isChecked = false,
-      @JsonKey(name: 'total_buy') int totalBuy = 0}) {
+      {@JsonKey(name: 'item_id')
+          String? itemId,
+      @JsonKey(name: 'item_code')
+          String? itemCode,
+      @JsonKey(name: 'barcode')
+          String? barcode,
+      @JsonKey(name: 'item_sku')
+          String? itemSku,
+      @JsonKey(name: 'update_date')
+          String? updateDate,
+      @JsonKey(name: 'kategori_id')
+          String? kategoriId,
+      @JsonKey(name: 'customer_type_id', includeIfNull: true)
+          String? customerTypeId,
+      @JsonKey(name: 'internal_code')
+          String? internalCode,
+      @JsonKey(name: 'kategori_code')
+          String? kategoriCode,
+      @JsonKey(name: 'kategori')
+          String? kategori,
+      @JsonKey(name: 'kat_picture')
+          String? katPicture,
+      @JsonKey(name: 'item_name')
+          String? itemName,
+      @JsonKey(name: 'description')
+          String? description,
+      @JsonKey(name: 'item_price')
+          String? itemPrice,
+      @JsonKey(name: 'new_price')
+          String? newPrice,
+      @JsonKey(name: 'itm_price_fmt')
+          String? itmPriceFmt,
+      @JsonKey(name: 'is_fixed_price')
+          String? isFixedPrice,
+      @JsonKey(name: 'qty')
+          String? qty,
+      @JsonKey(name: 'unit_code')
+          String? unitCode,
+      @JsonKey(name: 'tax_code')
+          String? taxCode,
+      @JsonKey(name: 'pic')
+          String? pic,
+      @JsonKey(name: 'display_store')
+          String? displayStore,
+      @JsonKey(name: 'weight')
+          String? weight,
+      @JsonKey(name: 'in_order')
+          String? inOrder,
+      @JsonKey(name: 'discount', includeIfNull: true)
+          double? discount = 0,
+      @JsonKey(name: 'is_percentage')
+          bool? isPercentage = true,
+      @JsonKey(name: 'isChecked')
+          bool? isChecked = false,
+      @JsonKey(name: 'total_buy')
+          int totalBuy = 0}) {
     return _ProductDataModel(
       itemId: itemId,
       itemCode: itemCode,
@@ -55,6 +85,7 @@ class _$ProductDataModelTearOff {
       itemSku: itemSku,
       updateDate: updateDate,
       kategoriId: kategoriId,
+      customerTypeId: customerTypeId,
       internalCode: internalCode,
       kategoriCode: kategoriCode,
       kategori: kategori,
@@ -62,6 +93,7 @@ class _$ProductDataModelTearOff {
       itemName: itemName,
       description: description,
       itemPrice: itemPrice,
+      newPrice: newPrice,
       itmPriceFmt: itmPriceFmt,
       isFixedPrice: isFixedPrice,
       qty: qty,
@@ -100,6 +132,8 @@ mixin _$ProductDataModel {
   String? get updateDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'kategori_id')
   String? get kategoriId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'customer_type_id', includeIfNull: true)
+  String? get customerTypeId => throw _privateConstructorUsedError;
   @JsonKey(name: 'internal_code')
   String? get internalCode => throw _privateConstructorUsedError;
   @JsonKey(name: 'kategori_code')
@@ -114,6 +148,8 @@ mixin _$ProductDataModel {
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'item_price')
   String? get itemPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'new_price')
+  String? get newPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'itm_price_fmt')
   String? get itmPriceFmt => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_fixed_price')
@@ -153,32 +189,62 @@ abstract class $ProductDataModelCopyWith<$Res> {
           ProductDataModel value, $Res Function(ProductDataModel) then) =
       _$ProductDataModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'item_id') String? itemId,
-      @JsonKey(name: 'item_code') String? itemCode,
-      @JsonKey(name: 'barcode') String? barcode,
-      @JsonKey(name: 'item_sku') String? itemSku,
-      @JsonKey(name: 'update_date') String? updateDate,
-      @JsonKey(name: 'kategori_id') String? kategoriId,
-      @JsonKey(name: 'internal_code') String? internalCode,
-      @JsonKey(name: 'kategori_code') String? kategoriCode,
-      @JsonKey(name: 'kategori') String? kategori,
-      @JsonKey(name: 'kat_picture') String? katPicture,
-      @JsonKey(name: 'item_name') String? itemName,
-      @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'item_price') String? itemPrice,
-      @JsonKey(name: 'itm_price_fmt') String? itmPriceFmt,
-      @JsonKey(name: 'is_fixed_price') String? isFixedPrice,
-      @JsonKey(name: 'qty') String? qty,
-      @JsonKey(name: 'unit_code') String? unitCode,
-      @JsonKey(name: 'tax_code') String? taxCode,
-      @JsonKey(name: 'pic') String? pic,
-      @JsonKey(name: 'display_store') String? displayStore,
-      @JsonKey(name: 'weight') String? weight,
-      @JsonKey(name: 'in_order') String? inOrder,
-      @JsonKey(name: 'discount', includeIfNull: true) double? discount,
-      @JsonKey(name: 'is_percentage') bool? isPercentage,
-      @JsonKey(name: 'isChecked') bool? isChecked,
-      @JsonKey(name: 'total_buy') int totalBuy});
+      {@JsonKey(name: 'item_id')
+          String? itemId,
+      @JsonKey(name: 'item_code')
+          String? itemCode,
+      @JsonKey(name: 'barcode')
+          String? barcode,
+      @JsonKey(name: 'item_sku')
+          String? itemSku,
+      @JsonKey(name: 'update_date')
+          String? updateDate,
+      @JsonKey(name: 'kategori_id')
+          String? kategoriId,
+      @JsonKey(name: 'customer_type_id', includeIfNull: true)
+          String? customerTypeId,
+      @JsonKey(name: 'internal_code')
+          String? internalCode,
+      @JsonKey(name: 'kategori_code')
+          String? kategoriCode,
+      @JsonKey(name: 'kategori')
+          String? kategori,
+      @JsonKey(name: 'kat_picture')
+          String? katPicture,
+      @JsonKey(name: 'item_name')
+          String? itemName,
+      @JsonKey(name: 'description')
+          String? description,
+      @JsonKey(name: 'item_price')
+          String? itemPrice,
+      @JsonKey(name: 'new_price')
+          String? newPrice,
+      @JsonKey(name: 'itm_price_fmt')
+          String? itmPriceFmt,
+      @JsonKey(name: 'is_fixed_price')
+          String? isFixedPrice,
+      @JsonKey(name: 'qty')
+          String? qty,
+      @JsonKey(name: 'unit_code')
+          String? unitCode,
+      @JsonKey(name: 'tax_code')
+          String? taxCode,
+      @JsonKey(name: 'pic')
+          String? pic,
+      @JsonKey(name: 'display_store')
+          String? displayStore,
+      @JsonKey(name: 'weight')
+          String? weight,
+      @JsonKey(name: 'in_order')
+          String? inOrder,
+      @JsonKey(name: 'discount', includeIfNull: true)
+          double? discount,
+      @JsonKey(name: 'is_percentage')
+          bool? isPercentage,
+      @JsonKey(name: 'isChecked')
+          bool? isChecked,
+      @JsonKey(name: 'total_buy')
+          int totalBuy});
 }
 
 /// @nodoc
@@ -198,6 +264,7 @@ class _$ProductDataModelCopyWithImpl<$Res>
     Object? itemSku = freezed,
     Object? updateDate = freezed,
     Object? kategoriId = freezed,
+    Object? customerTypeId = freezed,
     Object? internalCode = freezed,
     Object? kategoriCode = freezed,
     Object? kategori = freezed,
@@ -205,6 +272,7 @@ class _$ProductDataModelCopyWithImpl<$Res>
     Object? itemName = freezed,
     Object? description = freezed,
     Object? itemPrice = freezed,
+    Object? newPrice = freezed,
     Object? itmPriceFmt = freezed,
     Object? isFixedPrice = freezed,
     Object? qty = freezed,
@@ -244,6 +312,10 @@ class _$ProductDataModelCopyWithImpl<$Res>
           ? _value.kategoriId
           : kategoriId // ignore: cast_nullable_to_non_nullable
               as String?,
+      customerTypeId: customerTypeId == freezed
+          ? _value.customerTypeId
+          : customerTypeId // ignore: cast_nullable_to_non_nullable
+              as String?,
       internalCode: internalCode == freezed
           ? _value.internalCode
           : internalCode // ignore: cast_nullable_to_non_nullable
@@ -271,6 +343,10 @@ class _$ProductDataModelCopyWithImpl<$Res>
       itemPrice: itemPrice == freezed
           ? _value.itemPrice
           : itemPrice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      newPrice: newPrice == freezed
+          ? _value.newPrice
+          : newPrice // ignore: cast_nullable_to_non_nullable
               as String?,
       itmPriceFmt: itmPriceFmt == freezed
           ? _value.itmPriceFmt
@@ -336,32 +412,62 @@ abstract class _$ProductDataModelCopyWith<$Res>
       __$ProductDataModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'item_id') String? itemId,
-      @JsonKey(name: 'item_code') String? itemCode,
-      @JsonKey(name: 'barcode') String? barcode,
-      @JsonKey(name: 'item_sku') String? itemSku,
-      @JsonKey(name: 'update_date') String? updateDate,
-      @JsonKey(name: 'kategori_id') String? kategoriId,
-      @JsonKey(name: 'internal_code') String? internalCode,
-      @JsonKey(name: 'kategori_code') String? kategoriCode,
-      @JsonKey(name: 'kategori') String? kategori,
-      @JsonKey(name: 'kat_picture') String? katPicture,
-      @JsonKey(name: 'item_name') String? itemName,
-      @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'item_price') String? itemPrice,
-      @JsonKey(name: 'itm_price_fmt') String? itmPriceFmt,
-      @JsonKey(name: 'is_fixed_price') String? isFixedPrice,
-      @JsonKey(name: 'qty') String? qty,
-      @JsonKey(name: 'unit_code') String? unitCode,
-      @JsonKey(name: 'tax_code') String? taxCode,
-      @JsonKey(name: 'pic') String? pic,
-      @JsonKey(name: 'display_store') String? displayStore,
-      @JsonKey(name: 'weight') String? weight,
-      @JsonKey(name: 'in_order') String? inOrder,
-      @JsonKey(name: 'discount', includeIfNull: true) double? discount,
-      @JsonKey(name: 'is_percentage') bool? isPercentage,
-      @JsonKey(name: 'isChecked') bool? isChecked,
-      @JsonKey(name: 'total_buy') int totalBuy});
+      {@JsonKey(name: 'item_id')
+          String? itemId,
+      @JsonKey(name: 'item_code')
+          String? itemCode,
+      @JsonKey(name: 'barcode')
+          String? barcode,
+      @JsonKey(name: 'item_sku')
+          String? itemSku,
+      @JsonKey(name: 'update_date')
+          String? updateDate,
+      @JsonKey(name: 'kategori_id')
+          String? kategoriId,
+      @JsonKey(name: 'customer_type_id', includeIfNull: true)
+          String? customerTypeId,
+      @JsonKey(name: 'internal_code')
+          String? internalCode,
+      @JsonKey(name: 'kategori_code')
+          String? kategoriCode,
+      @JsonKey(name: 'kategori')
+          String? kategori,
+      @JsonKey(name: 'kat_picture')
+          String? katPicture,
+      @JsonKey(name: 'item_name')
+          String? itemName,
+      @JsonKey(name: 'description')
+          String? description,
+      @JsonKey(name: 'item_price')
+          String? itemPrice,
+      @JsonKey(name: 'new_price')
+          String? newPrice,
+      @JsonKey(name: 'itm_price_fmt')
+          String? itmPriceFmt,
+      @JsonKey(name: 'is_fixed_price')
+          String? isFixedPrice,
+      @JsonKey(name: 'qty')
+          String? qty,
+      @JsonKey(name: 'unit_code')
+          String? unitCode,
+      @JsonKey(name: 'tax_code')
+          String? taxCode,
+      @JsonKey(name: 'pic')
+          String? pic,
+      @JsonKey(name: 'display_store')
+          String? displayStore,
+      @JsonKey(name: 'weight')
+          String? weight,
+      @JsonKey(name: 'in_order')
+          String? inOrder,
+      @JsonKey(name: 'discount', includeIfNull: true)
+          double? discount,
+      @JsonKey(name: 'is_percentage')
+          bool? isPercentage,
+      @JsonKey(name: 'isChecked')
+          bool? isChecked,
+      @JsonKey(name: 'total_buy')
+          int totalBuy});
 }
 
 /// @nodoc
@@ -383,6 +489,7 @@ class __$ProductDataModelCopyWithImpl<$Res>
     Object? itemSku = freezed,
     Object? updateDate = freezed,
     Object? kategoriId = freezed,
+    Object? customerTypeId = freezed,
     Object? internalCode = freezed,
     Object? kategoriCode = freezed,
     Object? kategori = freezed,
@@ -390,6 +497,7 @@ class __$ProductDataModelCopyWithImpl<$Res>
     Object? itemName = freezed,
     Object? description = freezed,
     Object? itemPrice = freezed,
+    Object? newPrice = freezed,
     Object? itmPriceFmt = freezed,
     Object? isFixedPrice = freezed,
     Object? qty = freezed,
@@ -429,6 +537,10 @@ class __$ProductDataModelCopyWithImpl<$Res>
           ? _value.kategoriId
           : kategoriId // ignore: cast_nullable_to_non_nullable
               as String?,
+      customerTypeId: customerTypeId == freezed
+          ? _value.customerTypeId
+          : customerTypeId // ignore: cast_nullable_to_non_nullable
+              as String?,
       internalCode: internalCode == freezed
           ? _value.internalCode
           : internalCode // ignore: cast_nullable_to_non_nullable
@@ -456,6 +568,10 @@ class __$ProductDataModelCopyWithImpl<$Res>
       itemPrice: itemPrice == freezed
           ? _value.itemPrice
           : itemPrice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      newPrice: newPrice == freezed
+          ? _value.newPrice
+          : newPrice // ignore: cast_nullable_to_non_nullable
               as String?,
       itmPriceFmt: itmPriceFmt == freezed
           ? _value.itmPriceFmt
@@ -517,32 +633,62 @@ class __$ProductDataModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProductDataModel implements _ProductDataModel {
   _$_ProductDataModel(
-      {@JsonKey(name: 'item_id') this.itemId,
-      @JsonKey(name: 'item_code') this.itemCode,
-      @JsonKey(name: 'barcode') this.barcode,
-      @JsonKey(name: 'item_sku') this.itemSku,
-      @JsonKey(name: 'update_date') this.updateDate,
-      @JsonKey(name: 'kategori_id') this.kategoriId,
-      @JsonKey(name: 'internal_code') this.internalCode,
-      @JsonKey(name: 'kategori_code') this.kategoriCode,
-      @JsonKey(name: 'kategori') this.kategori,
-      @JsonKey(name: 'kat_picture') this.katPicture,
-      @JsonKey(name: 'item_name') this.itemName,
-      @JsonKey(name: 'description') this.description,
-      @JsonKey(name: 'item_price') this.itemPrice,
-      @JsonKey(name: 'itm_price_fmt') this.itmPriceFmt,
-      @JsonKey(name: 'is_fixed_price') this.isFixedPrice,
-      @JsonKey(name: 'qty') this.qty,
-      @JsonKey(name: 'unit_code') this.unitCode,
-      @JsonKey(name: 'tax_code') this.taxCode,
-      @JsonKey(name: 'pic') this.pic,
-      @JsonKey(name: 'display_store') this.displayStore,
-      @JsonKey(name: 'weight') this.weight,
-      @JsonKey(name: 'in_order') this.inOrder,
-      @JsonKey(name: 'discount', includeIfNull: true) this.discount = 0,
-      @JsonKey(name: 'is_percentage') this.isPercentage = true,
-      @JsonKey(name: 'isChecked') this.isChecked = false,
-      @JsonKey(name: 'total_buy') this.totalBuy = 0});
+      {@JsonKey(name: 'item_id')
+          this.itemId,
+      @JsonKey(name: 'item_code')
+          this.itemCode,
+      @JsonKey(name: 'barcode')
+          this.barcode,
+      @JsonKey(name: 'item_sku')
+          this.itemSku,
+      @JsonKey(name: 'update_date')
+          this.updateDate,
+      @JsonKey(name: 'kategori_id')
+          this.kategoriId,
+      @JsonKey(name: 'customer_type_id', includeIfNull: true)
+          this.customerTypeId,
+      @JsonKey(name: 'internal_code')
+          this.internalCode,
+      @JsonKey(name: 'kategori_code')
+          this.kategoriCode,
+      @JsonKey(name: 'kategori')
+          this.kategori,
+      @JsonKey(name: 'kat_picture')
+          this.katPicture,
+      @JsonKey(name: 'item_name')
+          this.itemName,
+      @JsonKey(name: 'description')
+          this.description,
+      @JsonKey(name: 'item_price')
+          this.itemPrice,
+      @JsonKey(name: 'new_price')
+          this.newPrice,
+      @JsonKey(name: 'itm_price_fmt')
+          this.itmPriceFmt,
+      @JsonKey(name: 'is_fixed_price')
+          this.isFixedPrice,
+      @JsonKey(name: 'qty')
+          this.qty,
+      @JsonKey(name: 'unit_code')
+          this.unitCode,
+      @JsonKey(name: 'tax_code')
+          this.taxCode,
+      @JsonKey(name: 'pic')
+          this.pic,
+      @JsonKey(name: 'display_store')
+          this.displayStore,
+      @JsonKey(name: 'weight')
+          this.weight,
+      @JsonKey(name: 'in_order')
+          this.inOrder,
+      @JsonKey(name: 'discount', includeIfNull: true)
+          this.discount = 0,
+      @JsonKey(name: 'is_percentage')
+          this.isPercentage = true,
+      @JsonKey(name: 'isChecked')
+          this.isChecked = false,
+      @JsonKey(name: 'total_buy')
+          this.totalBuy = 0});
 
   factory _$_ProductDataModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProductDataModelFromJson(json);
@@ -566,6 +712,9 @@ class _$_ProductDataModel implements _ProductDataModel {
   @JsonKey(name: 'kategori_id')
   final String? kategoriId;
   @override
+  @JsonKey(name: 'customer_type_id', includeIfNull: true)
+  final String? customerTypeId;
+  @override
   @JsonKey(name: 'internal_code')
   final String? internalCode;
   @override
@@ -586,6 +735,9 @@ class _$_ProductDataModel implements _ProductDataModel {
   @override
   @JsonKey(name: 'item_price')
   final String? itemPrice;
+  @override
+  @JsonKey(name: 'new_price')
+  final String? newPrice;
   @override
   @JsonKey(name: 'itm_price_fmt')
   final String? itmPriceFmt;
@@ -628,7 +780,7 @@ class _$_ProductDataModel implements _ProductDataModel {
 
   @override
   String toString() {
-    return 'ProductDataModel(itemId: $itemId, itemCode: $itemCode, barcode: $barcode, itemSku: $itemSku, updateDate: $updateDate, kategoriId: $kategoriId, internalCode: $internalCode, kategoriCode: $kategoriCode, kategori: $kategori, katPicture: $katPicture, itemName: $itemName, description: $description, itemPrice: $itemPrice, itmPriceFmt: $itmPriceFmt, isFixedPrice: $isFixedPrice, qty: $qty, unitCode: $unitCode, taxCode: $taxCode, pic: $pic, displayStore: $displayStore, weight: $weight, inOrder: $inOrder, discount: $discount, isPercentage: $isPercentage, isChecked: $isChecked, totalBuy: $totalBuy)';
+    return 'ProductDataModel(itemId: $itemId, itemCode: $itemCode, barcode: $barcode, itemSku: $itemSku, updateDate: $updateDate, kategoriId: $kategoriId, customerTypeId: $customerTypeId, internalCode: $internalCode, kategoriCode: $kategoriCode, kategori: $kategori, katPicture: $katPicture, itemName: $itemName, description: $description, itemPrice: $itemPrice, newPrice: $newPrice, itmPriceFmt: $itmPriceFmt, isFixedPrice: $isFixedPrice, qty: $qty, unitCode: $unitCode, taxCode: $taxCode, pic: $pic, displayStore: $displayStore, weight: $weight, inOrder: $inOrder, discount: $discount, isPercentage: $isPercentage, isChecked: $isChecked, totalBuy: $totalBuy)';
   }
 
   @override
@@ -652,6 +804,9 @@ class _$_ProductDataModel implements _ProductDataModel {
             (identical(other.kategoriId, kategoriId) ||
                 const DeepCollectionEquality()
                     .equals(other.kategoriId, kategoriId)) &&
+            (identical(other.customerTypeId, customerTypeId) ||
+                const DeepCollectionEquality()
+                    .equals(other.customerTypeId, customerTypeId)) &&
             (identical(other.internalCode, internalCode) ||
                 const DeepCollectionEquality()
                     .equals(other.internalCode, internalCode)) &&
@@ -673,6 +828,9 @@ class _$_ProductDataModel implements _ProductDataModel {
             (identical(other.itemPrice, itemPrice) ||
                 const DeepCollectionEquality()
                     .equals(other.itemPrice, itemPrice)) &&
+            (identical(other.newPrice, newPrice) ||
+                const DeepCollectionEquality()
+                    .equals(other.newPrice, newPrice)) &&
             (identical(other.itmPriceFmt, itmPriceFmt) ||
                 const DeepCollectionEquality()
                     .equals(other.itmPriceFmt, itmPriceFmt)) &&
@@ -695,13 +853,9 @@ class _$_ProductDataModel implements _ProductDataModel {
             (identical(other.weight, weight) ||
                 const DeepCollectionEquality().equals(other.weight, weight)) &&
             (identical(other.inOrder, inOrder) ||
-                const DeepCollectionEquality()
-                    .equals(other.inOrder, inOrder)) &&
-            (identical(other.discount, discount) ||
-                const DeepCollectionEquality()
-                    .equals(other.discount, discount)) &&
-            (identical(other.isPercentage, isPercentage) ||
-                const DeepCollectionEquality().equals(other.isPercentage, isPercentage)) &&
+                const DeepCollectionEquality().equals(other.inOrder, inOrder)) &&
+            (identical(other.discount, discount) || const DeepCollectionEquality().equals(other.discount, discount)) &&
+            (identical(other.isPercentage, isPercentage) || const DeepCollectionEquality().equals(other.isPercentage, isPercentage)) &&
             (identical(other.isChecked, isChecked) || const DeepCollectionEquality().equals(other.isChecked, isChecked)) &&
             (identical(other.totalBuy, totalBuy) || const DeepCollectionEquality().equals(other.totalBuy, totalBuy)));
   }
@@ -715,6 +869,7 @@ class _$_ProductDataModel implements _ProductDataModel {
       const DeepCollectionEquality().hash(itemSku) ^
       const DeepCollectionEquality().hash(updateDate) ^
       const DeepCollectionEquality().hash(kategoriId) ^
+      const DeepCollectionEquality().hash(customerTypeId) ^
       const DeepCollectionEquality().hash(internalCode) ^
       const DeepCollectionEquality().hash(kategoriCode) ^
       const DeepCollectionEquality().hash(kategori) ^
@@ -722,6 +877,7 @@ class _$_ProductDataModel implements _ProductDataModel {
       const DeepCollectionEquality().hash(itemName) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(itemPrice) ^
+      const DeepCollectionEquality().hash(newPrice) ^
       const DeepCollectionEquality().hash(itmPriceFmt) ^
       const DeepCollectionEquality().hash(isFixedPrice) ^
       const DeepCollectionEquality().hash(qty) ^
@@ -749,32 +905,62 @@ class _$_ProductDataModel implements _ProductDataModel {
 
 abstract class _ProductDataModel implements ProductDataModel {
   factory _ProductDataModel(
-      {@JsonKey(name: 'item_id') String? itemId,
-      @JsonKey(name: 'item_code') String? itemCode,
-      @JsonKey(name: 'barcode') String? barcode,
-      @JsonKey(name: 'item_sku') String? itemSku,
-      @JsonKey(name: 'update_date') String? updateDate,
-      @JsonKey(name: 'kategori_id') String? kategoriId,
-      @JsonKey(name: 'internal_code') String? internalCode,
-      @JsonKey(name: 'kategori_code') String? kategoriCode,
-      @JsonKey(name: 'kategori') String? kategori,
-      @JsonKey(name: 'kat_picture') String? katPicture,
-      @JsonKey(name: 'item_name') String? itemName,
-      @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'item_price') String? itemPrice,
-      @JsonKey(name: 'itm_price_fmt') String? itmPriceFmt,
-      @JsonKey(name: 'is_fixed_price') String? isFixedPrice,
-      @JsonKey(name: 'qty') String? qty,
-      @JsonKey(name: 'unit_code') String? unitCode,
-      @JsonKey(name: 'tax_code') String? taxCode,
-      @JsonKey(name: 'pic') String? pic,
-      @JsonKey(name: 'display_store') String? displayStore,
-      @JsonKey(name: 'weight') String? weight,
-      @JsonKey(name: 'in_order') String? inOrder,
-      @JsonKey(name: 'discount', includeIfNull: true) double? discount,
-      @JsonKey(name: 'is_percentage') bool? isPercentage,
-      @JsonKey(name: 'isChecked') bool? isChecked,
-      @JsonKey(name: 'total_buy') int totalBuy}) = _$_ProductDataModel;
+      {@JsonKey(name: 'item_id')
+          String? itemId,
+      @JsonKey(name: 'item_code')
+          String? itemCode,
+      @JsonKey(name: 'barcode')
+          String? barcode,
+      @JsonKey(name: 'item_sku')
+          String? itemSku,
+      @JsonKey(name: 'update_date')
+          String? updateDate,
+      @JsonKey(name: 'kategori_id')
+          String? kategoriId,
+      @JsonKey(name: 'customer_type_id', includeIfNull: true)
+          String? customerTypeId,
+      @JsonKey(name: 'internal_code')
+          String? internalCode,
+      @JsonKey(name: 'kategori_code')
+          String? kategoriCode,
+      @JsonKey(name: 'kategori')
+          String? kategori,
+      @JsonKey(name: 'kat_picture')
+          String? katPicture,
+      @JsonKey(name: 'item_name')
+          String? itemName,
+      @JsonKey(name: 'description')
+          String? description,
+      @JsonKey(name: 'item_price')
+          String? itemPrice,
+      @JsonKey(name: 'new_price')
+          String? newPrice,
+      @JsonKey(name: 'itm_price_fmt')
+          String? itmPriceFmt,
+      @JsonKey(name: 'is_fixed_price')
+          String? isFixedPrice,
+      @JsonKey(name: 'qty')
+          String? qty,
+      @JsonKey(name: 'unit_code')
+          String? unitCode,
+      @JsonKey(name: 'tax_code')
+          String? taxCode,
+      @JsonKey(name: 'pic')
+          String? pic,
+      @JsonKey(name: 'display_store')
+          String? displayStore,
+      @JsonKey(name: 'weight')
+          String? weight,
+      @JsonKey(name: 'in_order')
+          String? inOrder,
+      @JsonKey(name: 'discount', includeIfNull: true)
+          double? discount,
+      @JsonKey(name: 'is_percentage')
+          bool? isPercentage,
+      @JsonKey(name: 'isChecked')
+          bool? isChecked,
+      @JsonKey(name: 'total_buy')
+          int totalBuy}) = _$_ProductDataModel;
 
   factory _ProductDataModel.fromJson(Map<String, dynamic> json) =
       _$_ProductDataModel.fromJson;
@@ -798,6 +984,9 @@ abstract class _ProductDataModel implements ProductDataModel {
   @JsonKey(name: 'kategori_id')
   String? get kategoriId => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'customer_type_id', includeIfNull: true)
+  String? get customerTypeId => throw _privateConstructorUsedError;
+  @override
   @JsonKey(name: 'internal_code')
   String? get internalCode => throw _privateConstructorUsedError;
   @override
@@ -818,6 +1007,9 @@ abstract class _ProductDataModel implements ProductDataModel {
   @override
   @JsonKey(name: 'item_price')
   String? get itemPrice => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'new_price')
+  String? get newPrice => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'itm_price_fmt')
   String? get itmPriceFmt => throw _privateConstructorUsedError;

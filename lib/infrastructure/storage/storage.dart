@@ -100,6 +100,14 @@ class PrefStorage {
     }
   }
 
+  Future<void> setImageBaseUrl(String url) async {
+    try {
+      await box.write('iamge-base-url', url);
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
   Future<void> setTransactionType(String trans) async {
     try {
       await box.write('transactionType', trans);
@@ -127,6 +135,15 @@ class PrefStorage {
   String getStoreName() {
     try {
       final _store = box.read('store-name');
+      return _store;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  String getImageBaseUrl() {
+    try {
+      final _store = box.read('iamge-base-url');
       return _store;
     } catch (e) {
       throw Exception(e);

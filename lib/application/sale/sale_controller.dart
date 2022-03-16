@@ -74,7 +74,7 @@ class SaleController extends GetxController {
   }
 
   String get getSetStatus => this._saleStatus.value;
-  //PAYMENT TYPE
+  //PAYMENT TYPEf
   void setPaymentType(PaymentType data) {
     this._paymentType.value = data;
   }
@@ -132,37 +132,34 @@ class SaleController extends GetxController {
     //find data
     var _currItem =
         _cartListItem.firstWhere((element) => element.itemId == item.itemId);
-    //Find index
-    int _index = _cartListItem.indexOf(_currItem);
 
     if ((_currItem.totalBuy + 1) > double.parse(_currItem.qty!)) {
       return left("Stock tidak cukup");
     } else {
-      //Add quantity
-      var _updatedData = _currItem.copyWith(totalBuy: _currItem.totalBuy + 1);
-      //Update quantity
-      _cartListItem.removeAt(_index);
-      _cartListItem.insert(_index, _updatedData);
+      _cartListItem[_cartListItem
+              .indexWhere((element) => element.itemId == item.itemId)] =
+          item.copyWith(totalBuy: _currItem.totalBuy + 1);
 
       return right(unit);
     }
   }
 
+  void addCustomQty(ProductDataModel item, int newQty) {
+    _cartListItem[_cartListItem
+            .indexWhere((element) => element.itemId == item.itemId)] =
+        item.copyWith(totalBuy: newQty);
+  }
+
   Either<String, Unit> decreaseBuyQty(ProductDataModel item) {
-    //find data
     var _currItem =
         _cartListItem.firstWhere((element) => element.itemId == item.itemId);
-    //Find index
-    int _index = _cartListItem.indexOf(_currItem);
 
     if ((_currItem.totalBuy - 1) < 1) {
       return left("Data Tidak boleh kosong");
     } else {
-      //Add quantity
-      var _updatedData = _currItem.copyWith(totalBuy: _currItem.totalBuy - 1);
-      //Update quantity
-      _cartListItem.removeAt(_index);
-      _cartListItem.insert(_index, _updatedData);
+      _cartListItem[_cartListItem
+              .indexWhere((element) => element.itemId == item.itemId)] =
+          item.copyWith(totalBuy: _currItem.totalBuy - 1);
 
       return right(unit);
     }
@@ -230,7 +227,21 @@ class SaleController extends GetxController {
   }
 
   void addItemToCart(ProductDataModel item) {
-    _cartListItem.add(item);
+    print("Insert COde");
+    _cartListItem.add(item.copyWith(itemPrice: checkRealPrice(item)));
+  }
+
+  String? checkRealPrice(ProductDataModel originalItem) {
+    var _cust = getSelectedCustomer;
+    if (_cust.customerTypeId == null ||
+        _cust.customerTypeId!.isEmpty ||
+        _cust.customerTypeId != originalItem.customerTypeId) {
+      return originalItem.itemPrice;
+    }
+    if (_cust.customerTypeId == originalItem.customerTypeId) {
+      return originalItem.newPrice;
+    }
+    return originalItem.itemPrice;
   }
 
   void updateItemFromCart(ProductDataModel newItem) {
@@ -327,7 +338,7 @@ class SaleController extends GetxController {
           addBuyQty(_afterDiscount);
         } catch (e) {
           var _afterDiscount = checkDiscountForItem(element);
-          _cartListItem.add(_afterDiscount.copyWith(totalBuy: 1));
+          _cartListItem.add(_afterDiscount.copyWith(totalBuy: 1,itemPrice: checkRealPrice(_afterDiscount)));
         }
       }
     });

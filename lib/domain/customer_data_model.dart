@@ -34,6 +34,8 @@ class CustomerDataModel with _$CustomerDataModel {
     @Default("")
     @JsonKey(name: 'default_term_id', includeIfNull: true)
         String? defaultTermId,
+    @JsonKey(name: 'customer_type_id', includeIfNull: true)
+        String? customerTypeId,
   }) = _CustomerDataModel;
 
   factory CustomerDataModel.fromJson(Map<String, dynamic> json) =>

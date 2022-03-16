@@ -45,7 +45,9 @@ class _$CustomerDataModelTearOff {
       @JsonKey(name: 'default_type_id', includeIfNull: true)
           String? defaultTypeId = "",
       @JsonKey(name: 'default_term_id', includeIfNull: true)
-          String? defaultTermId = ""}) {
+          String? defaultTermId = "",
+      @JsonKey(name: 'customer_type_id', includeIfNull: true)
+          String? customerTypeId}) {
     return _CustomerDataModel(
       sId: sId,
       customerId: customerId,
@@ -59,6 +61,7 @@ class _$CustomerDataModelTearOff {
       pointReward: pointReward,
       defaultTypeId: defaultTypeId,
       defaultTermId: defaultTermId,
+      customerTypeId: customerTypeId,
     );
   }
 
@@ -96,6 +99,8 @@ mixin _$CustomerDataModel {
   String? get defaultTypeId => throw _privateConstructorUsedError;
   @JsonKey(name: 'default_term_id', includeIfNull: true)
   String? get defaultTermId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'customer_type_id', includeIfNull: true)
+  String? get customerTypeId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -132,7 +137,9 @@ abstract class $CustomerDataModelCopyWith<$Res> {
       @JsonKey(name: 'default_type_id', includeIfNull: true)
           String? defaultTypeId,
       @JsonKey(name: 'default_term_id', includeIfNull: true)
-          String? defaultTermId});
+          String? defaultTermId,
+      @JsonKey(name: 'customer_type_id', includeIfNull: true)
+          String? customerTypeId});
 }
 
 /// @nodoc
@@ -158,6 +165,7 @@ class _$CustomerDataModelCopyWithImpl<$Res>
     Object? pointReward = freezed,
     Object? defaultTypeId = freezed,
     Object? defaultTermId = freezed,
+    Object? customerTypeId = freezed,
   }) {
     return _then(_value.copyWith(
       sId: sId == freezed
@@ -208,6 +216,10 @@ class _$CustomerDataModelCopyWithImpl<$Res>
           ? _value.defaultTermId
           : defaultTermId // ignore: cast_nullable_to_non_nullable
               as String?,
+      customerTypeId: customerTypeId == freezed
+          ? _value.customerTypeId
+          : customerTypeId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -243,7 +255,9 @@ abstract class _$CustomerDataModelCopyWith<$Res>
       @JsonKey(name: 'default_type_id', includeIfNull: true)
           String? defaultTypeId,
       @JsonKey(name: 'default_term_id', includeIfNull: true)
-          String? defaultTermId});
+          String? defaultTermId,
+      @JsonKey(name: 'customer_type_id', includeIfNull: true)
+          String? customerTypeId});
 }
 
 /// @nodoc
@@ -271,6 +285,7 @@ class __$CustomerDataModelCopyWithImpl<$Res>
     Object? pointReward = freezed,
     Object? defaultTypeId = freezed,
     Object? defaultTermId = freezed,
+    Object? customerTypeId = freezed,
   }) {
     return _then(_CustomerDataModel(
       sId: sId == freezed
@@ -321,6 +336,10 @@ class __$CustomerDataModelCopyWithImpl<$Res>
           ? _value.defaultTermId
           : defaultTermId // ignore: cast_nullable_to_non_nullable
               as String?,
+      customerTypeId: customerTypeId == freezed
+          ? _value.customerTypeId
+          : customerTypeId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -352,7 +371,9 @@ class _$_CustomerDataModel implements _CustomerDataModel {
       @JsonKey(name: 'default_type_id', includeIfNull: true)
           this.defaultTypeId = "",
       @JsonKey(name: 'default_term_id', includeIfNull: true)
-          this.defaultTermId = ""});
+          this.defaultTermId = "",
+      @JsonKey(name: 'customer_type_id', includeIfNull: true)
+          this.customerTypeId});
 
   factory _$_CustomerDataModel.fromJson(Map<String, dynamic> json) =>
       _$$_CustomerDataModelFromJson(json);
@@ -393,10 +414,13 @@ class _$_CustomerDataModel implements _CustomerDataModel {
   @override
   @JsonKey(name: 'default_term_id', includeIfNull: true)
   final String? defaultTermId;
+  @override
+  @JsonKey(name: 'customer_type_id', includeIfNull: true)
+  final String? customerTypeId;
 
   @override
   String toString() {
-    return 'CustomerDataModel(sId: $sId, customerId: $customerId, customerCode: $customerCode, customerName: $customerName, defaultLocationId: $defaultLocationId, phone1: $phone1, address: $address, isDefault: $isDefault, code: $code, pointReward: $pointReward, defaultTypeId: $defaultTypeId, defaultTermId: $defaultTermId)';
+    return 'CustomerDataModel(sId: $sId, customerId: $customerId, customerCode: $customerCode, customerName: $customerName, defaultLocationId: $defaultLocationId, phone1: $phone1, address: $address, isDefault: $isDefault, code: $code, pointReward: $pointReward, defaultTypeId: $defaultTypeId, defaultTermId: $defaultTermId, customerTypeId: $customerTypeId)';
   }
 
   @override
@@ -435,7 +459,10 @@ class _$_CustomerDataModel implements _CustomerDataModel {
                     .equals(other.defaultTypeId, defaultTypeId)) &&
             (identical(other.defaultTermId, defaultTermId) ||
                 const DeepCollectionEquality()
-                    .equals(other.defaultTermId, defaultTermId)));
+                    .equals(other.defaultTermId, defaultTermId)) &&
+            (identical(other.customerTypeId, customerTypeId) ||
+                const DeepCollectionEquality()
+                    .equals(other.customerTypeId, customerTypeId)));
   }
 
   @override
@@ -452,7 +479,8 @@ class _$_CustomerDataModel implements _CustomerDataModel {
       const DeepCollectionEquality().hash(code) ^
       const DeepCollectionEquality().hash(pointReward) ^
       const DeepCollectionEquality().hash(defaultTypeId) ^
-      const DeepCollectionEquality().hash(defaultTermId);
+      const DeepCollectionEquality().hash(defaultTermId) ^
+      const DeepCollectionEquality().hash(customerTypeId);
 
   @JsonKey(ignore: true)
   @override
@@ -490,7 +518,9 @@ abstract class _CustomerDataModel implements CustomerDataModel {
       @JsonKey(name: 'default_type_id', includeIfNull: true)
           String? defaultTypeId,
       @JsonKey(name: 'default_term_id', includeIfNull: true)
-          String? defaultTermId}) = _$_CustomerDataModel;
+          String? defaultTermId,
+      @JsonKey(name: 'customer_type_id', includeIfNull: true)
+          String? customerTypeId}) = _$_CustomerDataModel;
 
   factory _CustomerDataModel.fromJson(Map<String, dynamic> json) =
       _$_CustomerDataModel.fromJson;
@@ -531,6 +561,9 @@ abstract class _CustomerDataModel implements CustomerDataModel {
   @override
   @JsonKey(name: 'default_term_id', includeIfNull: true)
   String? get defaultTermId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'customer_type_id', includeIfNull: true)
+  String? get customerTypeId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CustomerDataModelCopyWith<_CustomerDataModel> get copyWith =>

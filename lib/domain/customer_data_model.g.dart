@@ -20,6 +20,7 @@ _$_CustomerDataModel _$$_CustomerDataModelFromJson(Map<String, dynamic> json) =>
       pointReward: json['point_reward'] as String? ?? "",
       defaultTypeId: json['default_type_id'] as String? ?? "",
       defaultTermId: json['default_term_id'] as String? ?? "",
+      customerTypeId: json['customer_type_id'] as String?,
     );
 
 Map<String, dynamic> _$$_CustomerDataModelToJson(
@@ -37,4 +38,5 @@ Map<String, dynamic> _$$_CustomerDataModelToJson(
       'point_reward': instance.pointReward,
       'default_type_id': instance.defaultTypeId,
       'default_term_id': instance.defaultTermId,
+      'customer_type_id': instance.customerTypeId,
     };

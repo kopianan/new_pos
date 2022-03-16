@@ -12,6 +12,8 @@ class ProductDataModel with _$ProductDataModel {
     @JsonKey(name: 'item_sku') String? itemSku,
     @JsonKey(name: 'update_date') String? updateDate,
     @JsonKey(name: 'kategori_id') String? kategoriId,
+    @JsonKey(name: 'customer_type_id', includeIfNull: true)
+        String? customerTypeId,
     @JsonKey(name: 'internal_code') String? internalCode,
     @JsonKey(name: 'kategori_code') String? kategoriCode,
     @JsonKey(name: 'kategori') String? kategori,
@@ -19,6 +21,7 @@ class ProductDataModel with _$ProductDataModel {
     @JsonKey(name: 'item_name') String? itemName,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'item_price') String? itemPrice,
+    @JsonKey(name: 'new_price') String? newPrice,
     @JsonKey(name: 'itm_price_fmt') String? itmPriceFmt,
     @JsonKey(name: 'is_fixed_price') String? isFixedPrice,
     @JsonKey(name: 'qty') String? qty,
