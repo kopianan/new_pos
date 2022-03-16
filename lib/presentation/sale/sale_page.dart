@@ -199,32 +199,6 @@ class _SalePageState extends State<SalePage> {
                           _saleController.removeItemFromCart(_list[index]);
                         },
                         item: _list[index],
-                        // onAdd: () {
-                        //   _saleController.addBuyQty(_list[index]).fold(
-                        //     (l) {
-                        //       Get.showSnackbar(
-                        //         GetSnackBar(
-                        //           message: l,
-                        //           duration: Duration(seconds: 1),
-                        //         ),
-                        //       );
-                        //     },
-                        //     (r) => print("Sukses"),
-                        //   );
-                        // },
-                        // onDecrease: () {
-                        //   _saleController.decreaseBuyQty(_list[index]).fold(
-                        //     (l) {
-                        //       Get.showSnackbar(
-                        //         GetBar(
-                        //           message: l,
-                        //           duration: Duration(seconds: 1),
-                        //         ),
-                        //       );
-                        //     },
-                        //     (r) => print("Sukses"),
-                        //   );
-                        // },
                       );
                     },
                     childCount: _saleController.getCartList.length,
