@@ -24,6 +24,7 @@ import 'package:pos/infrastructure/function/global_function.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 
 class SaleController extends GetxController {
+  final _remark = "".obs;
   RxList<CustomerDataModel> _userList = <CustomerDataModel>[].obs;
   RxList<ProductDataModel> _productList = <ProductDataModel>[].obs;
   final _selectedCustomer = CustomerDataModel().obs;
@@ -41,8 +42,29 @@ class SaleController extends GetxController {
   Rx<PaymentType> _paymentType = PaymentType().obs;
   RxList<DiscountDataModel> _customrDiscountList = <DiscountDataModel>[].obs;
   RxString _saleStatus = describeEnum(TransStatus.PROCCESS).obs;
+  RxBool _buyUnit = false.obs;
+
+  ///Is max unit artinya unit yang dibeli dalam bentuk dus, lusin dll
+  void setBuyUnit(bool isMaxUnit) {
+    _buyUnit.value = isMaxUnit;
+  }
+
+  bool get getBuyUnit => _buyUnit.value;
+
+  final _customPaymentTerm = 'cash'.obs;
+  void setCustomPayment(String status) {
+    _customPaymentTerm.value = status;
+  }
+
+  String get getCustompayment => _customPaymentTerm.value;
+
   //SETUP EMPTY SALE DATA
   PrefStorage _box = PrefStorage();
+  void setRemark(String remark) {
+    _remark.value = remark;
+  }
+
+  String get getRemark => _remark.value;
 
   void setupNewData() {
     _isEditable.value = false;
@@ -313,32 +335,40 @@ class SaleController extends GetxController {
   }
 
   void onSaveSelectList() {
-    var _fakeData = _productList;
-    _selectedListItem.forEach((element) {
-      //get item code from selected item
-      var _itemId = element.itemId;
-      //get original data from full LIST
-      var _lastElement =
-          _fakeData.firstWhere((realData) => realData.itemId == _itemId);
-      var _index = _fakeData.indexOf(_lastElement);
+    // var _fakeData = _productList;
 
-      _fakeData.removeAt(_index);
-      _fakeData.insert(_index, element);
-      //add checked item to cart List
-    });
+    // _selectedListItem.forEach((element) {
+    //   //get item code from selected item
+    //   var _itemId = element.itemId;
+    //   //get original data from full LIST
+    //   var _lastElement =
+    //       _fakeData.firstWhere((realData) => realData.itemId == _itemId);
+    //   var _index = _fakeData.indexOf(_lastElement);
+
+    //   _fakeData.removeAt(_index);
+    //   _fakeData.insert(_index, element);
+    //   //add checked item to cart List
+    // });
 
     _selectedListItem.forEach((element) {
       if (element.isChecked!) {
         //check exist data on cart
         // _cartListItem.add(element.copyWith(totalBuy: 1));
+        var _selectedUnit = element.unitCode;
+        if (_buyUnit == true) {
+          _selectedUnit = element.purchaseUnitCode!;
+        }
         try {
-          var _item =
-              _cartListItem.firstWhere((data) => data.itemId == element.itemId);
           var _afterDiscount = checkDiscountForItem(element);
           addBuyQty(_afterDiscount);
         } catch (e) {
           var _afterDiscount = checkDiscountForItem(element);
-          _cartListItem.add(_afterDiscount.copyWith(totalBuy: 1,itemPrice: checkRealPrice(_afterDiscount)));
+          _cartListItem.add(
+            _afterDiscount.copyWith(
+                totalBuy: 1,
+                itemPrice: checkRealPrice(_afterDiscount),
+                selectedUnit: _selectedUnit),
+          );
         }
       }
     });
@@ -398,7 +428,7 @@ class SaleController extends GetxController {
       transDt: CustomDate.convertDateSales(DateTime.now()),
       customer: getSelectedCustomer.customerId,
       createBy: PrefStorage().getUserLogin().userName,
-      remark: "remark",
+      remark: getRemark,
       pmtterm: getPaymentTerm.paymentTermId,
       pmttype: getPaymentType.paymentTypeId,
       details: _itemList,

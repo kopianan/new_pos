@@ -49,7 +49,7 @@ class _DashboardPageState extends State<DashboardPage> {
             Row(
               children: [
                 Text(
-                  "Lihat data transaksi",
+                  "Lihat transaksi",
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,

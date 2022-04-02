@@ -1,16 +1,22 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:pos/domain/product_data_model.dart';
 
 class ProductListItem extends StatelessWidget {
   ProductListItem(
-      {Key? key, this.onTap, required this.item, required this.customerTypeId});
+      {Key? key,
+      this.onTap,
+      required this.item,
+      required this.customerTypeId,
+      required this.isConversion});
 
   final ProductDataModel item;
   final String customerTypeId;
   final Function? onTap;
+  final bool isConversion;
   final _formatter =
       NumberFormat.currency(locale: "id_ID", symbol: "Rp ", decimalDigits: 0);
   @override
@@ -34,13 +40,11 @@ class ProductListItem extends StatelessWidget {
             children: [
               Text(
                 _formatter.format(
-                  double.parse((checkPrice(customerTypeId, item.customerTypeId))
-                      ? item.newPrice!
-                      : item.itemPrice!),
+                  calculateConversion(item),
                 ),
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
-              Text("Stok : " + double.parse(item.qty!).toStringAsFixed(0)),
+              Text("Stok : ${calculateMax(item)}"),
               Text(
                 _formatter.format(double.parse(
                     (checkPrice(customerTypeId, item.customerTypeId))
@@ -60,6 +64,45 @@ class ProductListItem extends StatelessWidget {
         )
       ],
     );
+  }
+
+  double calculateConversion(ProductDataModel dataModel) {
+    double usePrice = 0;
+    double unitConversion = 0;
+
+    try {
+      unitConversion = double.parse(dataModel.unitConversion!);
+    } on Exception catch (e) {
+      unitConversion = 1;
+    }
+
+    if (checkPrice(customerTypeId, item.customerTypeId)) {
+      usePrice = double.parse(dataModel.newPrice!);
+    } else {
+      usePrice = double.parse(dataModel.itemPrice!);
+    }
+
+    if (isConversion) {
+      return (usePrice * unitConversion);
+    }
+
+    return usePrice;
+  }
+
+  String calculateMax(ProductDataModel item) {
+    double _stock = 0;
+    String unit = '';
+    if (!isConversion) {
+      _stock = double.parse(item.qty!);
+      unit = item.unitCode!;
+    } else {
+      var _unit = double.parse(item.unitConversion!);
+      var _total = double.parse(item.qty!);
+      var _totalUnit = _total / _unit;
+      _stock = _totalUnit;
+      unit = item.purchaseUnitCode!;
+    }
+    return _stock.toString() + " " + unit;
   }
 
   bool checkPrice(String? cTypeId, String? iTypeId) {

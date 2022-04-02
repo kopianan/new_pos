@@ -123,6 +123,13 @@ class PrefStorage {
       throw Exception(e);
     }
   }
+  Future<void> setMultiUnit(bool multiUnit) async {
+    try {
+      await box.write('multiunit', multiUnit);
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 
   Future<void> saveStoreName(String store) async {
     try {
@@ -258,6 +265,14 @@ class PrefStorage {
     try {
       final _editable = box.read('editable');
       return _editable;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+  bool getMultiUnit() {
+    try {
+      final _multiUnit = box.read('multiunit');
+      return _multiUnit;
     } catch (e) {
       throw Exception(e);
     }

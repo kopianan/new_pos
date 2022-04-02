@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/config/constants_data.dart';
@@ -31,6 +32,30 @@ class _ProductCartItemState extends State<ProductCartItem> {
   final _totalController = TextEditingController();
 
   final saleController = Get.put(SaleController());
+  String? selectedUnit = null;
+  String? selectedUnitCode = null;
+  Map<String, dynamic> unitList = {};
+  void setupUnit(ProductDataModel item) {
+    if (item.unitCode == item.purchaseUnitCode) {
+      unitList = {'unit_code': item.unitCode};
+    } else {
+      unitList = {
+        'unit_code': item.unitCode,
+        'purch_unit_code': item.purchaseUnitCode
+      };
+    }
+
+    selectedUnit = item.unitCode;
+    selectedUnitCode = 'unit_code';
+  }
+
+  bool? isConversion = false;
+  @override
+  void initState() {
+    isConversion = GetStorage().read('multiunit');
+    setupUnit(widget.item);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,72 +82,109 @@ class _ProductCartItemState extends State<ProductCartItem> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              leading: InkWell(
-                onTap: () {
-                  if ((_sale.getSetStatus !=
-                          describeEnum(TransStatus.PROCCESS) &&
-                      _sale.getSetStatus !=
-                          describeEnum(TransStatus.PENDING))) {
-                  } else {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return Dialog(
-                          insetPadding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Container(
-                              padding: EdgeInsets.all(10),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  TextFormField(
-                                    controller: _totalController,
-                                    keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
-                                      label: Text("Total Beli"),
-                                      hintText: double.parse(
-                                              widget.item.qty.toString())
-                                          .toStringAsFixed(0),
-                                      border: OutlineInputBorder(),
-                                    ),
-                                  ),
-                                  SizedBox(height: 20),
-                                  Container(
-                                    height: 45,
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        onConfirmNewStock(_totalController.text,
-                                            widget.item.qty!);
-                                      },
-                                      child: Text(
-                                        "Confirm",
-                                        style: TextStyle(fontSize: 15),
+              leading: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      if ((_sale.getSetStatus !=
+                              describeEnum(TransStatus.PROCCESS) &&
+                          _sale.getSetStatus !=
+                              describeEnum(TransStatus.PENDING))) {
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              insetPadding:
+                                  EdgeInsets.symmetric(horizontal: 20),
+                              child: Container(
+                                  padding: EdgeInsets.all(10),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      TextFormField(
+                                        controller: _totalController,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          label: Text("Total Beli"),
+                                          hintText: calculateMax(widget.item,
+                                                  selectedUnitCode!)
+                                              .toStringAsFixed(0),
+                                          border: OutlineInputBorder(),
+                                        ),
                                       ),
-                                    ),
-                                  )
-                                ],
-                              )),
+                                      SizedBox(height: 20),
+                                      Container(
+                                        height: 45,
+                                        width: double.infinity,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            onConfirmNewStock(
+                                                _totalController.text,
+                                                widget.item,
+                                                selectedUnitCode!);
+                                            Get.back();
+                                          },
+                                          child: Text(
+                                            "Confirm",
+                                            style: TextStyle(fontSize: 15),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  )),
+                            );
+                          },
                         );
-                      },
-                    );
-                  }
-                },
-                child: Column(
-                  children: [
-                    Text(
-                      widget.item.totalBuy.toString(),
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                      }
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 3),
+                      alignment: Alignment.center,
+                      width: 50,
+                      color: Colors.grey[200],
+                      child: Text(
+                        calculateCurrentTotalQty(
+                            widget.item, selectedUnitCode!),
+                        // widget.item.totalBuy.toString(),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    Container(
-                        width: 20,
-                        child: Divider(
-                          thickness: 2,
-                        ))
-                  ],
-                ),
+                  ),
+                  Spacer(),
+                  ((_sale.getSetStatus != describeEnum(TransStatus.PROCCESS) &&
+                          _sale.getSetStatus !=
+                              describeEnum(TransStatus.PENDING)))
+                      ? SizedBox()
+                      : Visibility(
+                          visible: isConversion!,
+                          child: DropdownButton<String>(
+                            isDense: true,
+                            value: selectedUnit,
+                            items: unitList.entries
+                                .map((e) => DropdownMenuItem<String>(
+                                      child: Text(e.value),
+                                      value: e.value,
+                                    ))
+                                .toList(),
+                            onChanged: (e) {
+                              setState(() {
+                                selectedUnit = e;
+                                selectedUnitCode = unitList.keys
+                                    .firstWhere((data) => unitList[data] == e);
+
+                                onConfirmNewStock(
+                                    "1", widget.item, selectedUnitCode!);
+                              });
+                            },
+                          ),
+                        ),
+                ],
               ),
               subtitle: InkWell(
                 onTap: () {
@@ -137,8 +199,8 @@ class _ProductCartItemState extends State<ProductCartItem> {
                   children: [
                     (_sale.getSetStatus != describeEnum(TransStatus.PROCCESS))
                         ? SizedBox()
-                        : Text("Stok : " +
-                            double.parse(widget.item.qty!).toStringAsFixed(0)),
+                        : Text(calculateConversion(
+                            widget.item, selectedUnitCode!)),
                     Spacer(),
                     (widget.item.pic!.isNotEmpty)
                         ? IconButton(
@@ -245,22 +307,80 @@ class _ProductCartItemState extends State<ProductCartItem> {
     );
   }
 
-  void onConfirmNewStock(String newQuantyty, String previouseQty) {
+  String calculateConversion(ProductDataModel dataModel, String unit) {
+    String _stock = '';
+    if (unit == 'unit_code') {
+      _stock =
+          "${double.parse(dataModel.qty!).toStringAsFixed(0)}  ${dataModel.unitCode}";
+    } else {
+      var _unit = double.parse(dataModel.unitConversion!);
+      var _total = double.parse(dataModel.qty!);
+      var _totalUnit = _total / _unit;
+      _stock =
+          "${_totalUnit.toStringAsFixed(2)}  ${dataModel.purchaseUnitCode}";
+    }
+    return _stock;
+  }
+
+  String calculateCurrentTotalQty(ProductDataModel dataModel, String unit) {
+    double _totalBuy = 0;
+    if (unit == 'unit_code') {
+      _totalBuy = double.parse(dataModel.totalBuy.toString());
+    } else {
+      var _unit = double.parse(dataModel.unitConversion!);
+      var _total = double.parse(dataModel.totalBuy.toString());
+      _totalBuy = _total / _unit;
+    }
+    return _totalBuy.toStringAsFixed(0);
+  }
+
+  double calculateMax(ProductDataModel dataModel, String unit) {
+    double _stock = 0;
+    if (unit == 'unit_code') {
+      _stock = double.parse(dataModel.qty!);
+    } else {
+      var _unit = double.parse(dataModel.unitConversion!);
+      var _total = double.parse(dataModel.qty!);
+      var _totalUnit = _total / _unit;
+      _stock = _totalUnit;
+    }
+    return _stock;
+  }
+
+  void onConfirmNewStock(
+      String newQuantyty, ProductDataModel item, String unit) {
     var _text = double.parse(newQuantyty);
     if (_text == 0) {
       Get.showSnackbar(getSnackbar(
         "Item tidak boleh kosong",
         Colors.red,
       ));
-    } else if (_text > double.parse(previouseQty)) {
+    } else if (_text > double.parse(item.qty!)) {
       Get.showSnackbar(getSnackbar(
         "Stok tidak cukup",
         Colors.red,
       ));
     } else {
-      saleController.addCustomQty(
-          widget.item, int.parse(double.parse(newQuantyty).toStringAsFixed(0)));
-      Get.back();
+      //check the total :
+      if (unit == 'unit_code') {
+        saleController.addCustomQty(
+            item, int.parse(double.parse(newQuantyty).toStringAsFixed(0)));
+      } else {
+        var _max = calculateMax(item, unit);
+        if (_text > _max) {
+          print("Show snackboar");
+          Get.showSnackbar(
+            getSnackbar(
+              "Stok tidak cukup",
+              Colors.red,
+            ),
+          );
+        } else {
+          var _qt =
+              double.parse(newQuantyty) * double.parse(item.unitConversion!);
+          saleController.addCustomQty(item, int.parse(_qt.toStringAsFixed(0)));
+        }
+      }
     }
   }
 

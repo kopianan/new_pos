@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +15,6 @@ import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/presentation/progress/transaction_progress_page.dart';
 import 'package:pos/presentation/sale/add_item_page.dart';
 import 'package:pos/presentation/sale/choose_customer_page.dart';
-import 'package:pos/presentation/sale/item_edit_page.dart';
 import 'package:pos/presentation/sale/widget/product_cart_item.dart';
 import 'package:pos/presentation/widgets/widget_collection.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -33,6 +31,7 @@ class SalePage extends StatefulWidget {
 
 class _SalePageState extends State<SalePage> {
   final _saleController = Get.find<SaleController>();
+  TextEditingController _remark = TextEditingController();
 
   CustomData _customData = CustomData();
   PrefStorage _box = PrefStorage();
@@ -40,6 +39,7 @@ class _SalePageState extends State<SalePage> {
   @override
   void initState() {
     checkStatus();
+    _remark.clear();
     super.initState();
   }
 
@@ -220,6 +220,69 @@ class _SalePageState extends State<SalePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Remark",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Spacer(),
+                  IconButton(
+                      onPressed: () {
+                        _remark.text = _saleController.getRemark;
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              insetPadding:
+                                  EdgeInsets.symmetric(horizontal: 20),
+                              child: Container(
+                                  padding: EdgeInsets.all(10),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      TextFormField(
+                                        textAlignVertical:
+                                            TextAlignVertical.top,
+                                        controller: _remark,
+                                        minLines: 4,
+                                        maxLines: 4,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          label: Text("Remark"),
+                                          border: OutlineInputBorder(),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      Container(
+                                        height: 45,
+                                        width: double.infinity,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            _saleController
+                                                .setRemark(_remark.text);
+                                            Get.back();
+                                          },
+                                          child: Text(
+                                            "Confirm",
+                                            style: TextStyle(fontSize: 15),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  )),
+                            );
+                          },
+                        );
+                      },
+                      icon: Icon(Icons.edit))
+                ],
+              ),
               SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -520,137 +583,178 @@ class _SalePageState extends State<SalePage> {
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.bold)),
                       Expanded(
-                          flex: 3,
-                          child: InkWell(
-                            onTap: (_saleController.getSetStatus !=
-                                    describeEnum(TransStatus.PROCCESS))
-                                ? null
-                                : () async {
-                                    if (_saleController.getSelectedCustomer !=
-                                        CustomerDataModel()) {
-                                      Get.dialog(
-                                        AlertDialog(
-                                          title: Text("Peringatan !!!"),
-                                          content: Text(
-                                              "Mengganti customer akan menghapus data sebelumnya "),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () async {
-                                                Get.back();
-                                                //Remove all data Product
-
-                                                _saleController.setCartList([]);
-                                                _saleController
-                                                    .setCustomerDiscountList(
-                                                        []);
-                                                _saleController
-                                                    .setSelectedCustomer(
-                                                        CustomerDataModel());
-                                                _saleController
-                                                    .setSelectedList([]);
-                                                var _selectedUser =
-                                                    await Get.toNamed(
-                                                        ChooseCustomerPage.TAG);
-
-                                                _saleBloc.getCustomerDiscount(
-                                                    _selectedUser);
+                        flex: 3,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Obx(
+                              () => Expanded(
+                                child: (_saleController.getSelectedCustomer ==
+                                        CustomerDataModel())
+                                    ? InkWell(
+                                        onTap: (_saleController.getSetStatus !=
+                                                describeEnum(
+                                                    TransStatus.PROCCESS))
+                                            ? null
+                                            : () async {
+                                                await chooseCustomer();
                                               },
-                                              child: Text(
-                                                "OK",
-                                                style: TextStyle(
-                                                    color: Colors.blue),
-                                              ),
+                                        child: Text(
+                                          "Pilih Customer / Tap Disini",
+                                          overflow: TextOverflow.clip,
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.red,
+                                              fontWeight: FontWeight.bold),
+                                        ))
+                                    : InkWell(
+                                        onTap: () {
+                                          changePaymentTypeAndTerm();
+                                        },
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              _saleController
+                                                  .getSelectedCustomer
+                                                  .customerName!,
+                                              overflow: TextOverflow.clip,
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold),
                                             ),
-                                            TextButton(
-                                              onPressed: () {
-                                                Get.back();
-                                              },
-                                              child: Text(
-                                                "Batal",
-                                                style: TextStyle(
-                                                    color: Colors.red),
-                                              ),
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  (_saleController
+                                                              .getPaymentTerm ==
+                                                          PaymentTerm())
+                                                      ? "Pilih Customer"
+                                                      : _saleController
+                                                          .getPaymentTerm
+                                                          .paymentTermCode!,
+                                                ),
+                                                Text(" / "),
+                                                Text(
+                                                  (_saleController
+                                                              .getPaymentType ==
+                                                          PaymentTerm())
+                                                      ? "Pilih Customer"
+                                                      : _saleController
+                                                          .getPaymentType
+                                                          .paymentTypeCode!,
+                                                )
+                                              ],
                                             )
                                           ],
                                         ),
-                                      );
-                                    } else {
-                                      var _selectedUser = await Get.toNamed(
-                                          ChooseCustomerPage.TAG);
-
-                                      _saleBloc
-                                          .getCustomerDiscount(_selectedUser);
-                                    }
-                                  },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Obx(
-                                  () => Expanded(
-                                    child: (_saleController
-                                                .getSelectedCustomer ==
-                                            CustomerDataModel())
-                                        ? Text(
-                                            "Pilih Customer / Tap Disini",
-                                            overflow: TextOverflow.clip,
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.red,
-                                                fontWeight: FontWeight.bold),
-                                          )
-                                        : Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                _saleController
-                                                    .getSelectedCustomer
-                                                    .customerName!,
-                                                overflow: TextOverflow.clip,
-                                                style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    (_saleController
-                                                                .getPaymentTerm ==
-                                                            PaymentTerm())
-                                                        ? "Pilih Customer"
-                                                        : _saleController
-                                                            .getPaymentTerm
-                                                            .paymentTermCode!,
-                                                  ),
-                                                  Text(" / "),
-                                                  Text(
-                                                    (_saleController
-                                                                .getPaymentType ==
-                                                            PaymentTerm())
-                                                        ? "Pilih Customer"
-                                                        : _saleController
-                                                            .getPaymentType
-                                                            .paymentTypeCode!,
-                                                  )
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                  ),
-                                ),
-                                Icon(Icons.find_in_page_outlined, size: 30)
-                              ],
+                                      ),
+                              ),
                             ),
-                          )),
+                            Icon(Icons.find_in_page_outlined, size: 30)
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
               ],
             )),
       ],
+    );
+  }
+
+  Future<void> chooseCustomer() async {
+    if (_saleController.getSelectedCustomer != CustomerDataModel()) {
+      Get.dialog(
+        AlertDialog(
+          title: Text("Peringatan !!!"),
+          content: Text("Mengganti customer akan menghapus data sebelumnya "),
+          actions: [
+            TextButton(
+              onPressed: () async {
+                Get.back();
+                //Remove all data Product
+
+                _saleController.setCartList([]);
+                _saleController.setCustomerDiscountList([]);
+                _saleController.setSelectedCustomer(CustomerDataModel());
+                _saleController.setSelectedList([]);
+                var _selectedUser = await Get.toNamed(ChooseCustomerPage.TAG);
+
+                _saleBloc.getCustomerDiscount(_selectedUser);
+              },
+              child: Text(
+                "OK",
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text(
+                "Batal",
+                style: TextStyle(color: Colors.red),
+              ),
+            )
+          ],
+        ),
+      );
+    } else {
+      var _selectedUser = await Get.toNamed(ChooseCustomerPage.TAG);
+
+      _saleBloc.getCustomerDiscount(_selectedUser);
+    }
+  }
+
+  void changePaymentTypeAndTerm() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return GetX<SaleController>(
+          builder: (controller) => AlertDialog(
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Get.back(); 
+                  },
+                  child: Text("Simpan"),
+                ),
+              ],
+              title: Text("Ganti Payment Term dan Payment Type"),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  RadioListTile<String>(
+                    title: Text("Cash"),
+                    value: "cash",
+                    groupValue: controller.getCustompayment,
+                    onChanged: (e) {
+                      controller.setCustomPayment(e!);
+                      controller.setPaymentTerm(ConstantsData.cashPaymentTerm);
+                      controller.setPaymentType(ConstantsData.cashPaymentType);
+                    },
+                  ),
+                  RadioListTile<String>(
+                    title: Text("Credit"),
+                    value: "credit",
+                    groupValue: controller.getCustompayment,
+                    onChanged: (e) {
+                      controller.setCustomPayment(e!);
+                      controller
+                          .setPaymentTerm(ConstantsData.creditPaymentTerm);
+                      controller
+                          .setPaymentType(ConstantsData.creditPaymentType);
+                    },
+                  ),
+                ],
+              )),
+        );
+      },
     );
   }
 }

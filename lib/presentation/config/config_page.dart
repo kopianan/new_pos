@@ -16,6 +16,7 @@ class ConfigPage extends StatefulWidget {
 class _ConfigPageState extends State<ConfigPage> {
   String selectedTType = "SO";
   bool editable = false;
+  bool multiUnit = false;
   final _url =
       TextEditingController(text: 'http://vipcloud.erp.web.id:8081/store/');
   final _imageUrl =
@@ -32,6 +33,11 @@ class _ConfigPageState extends State<ConfigPage> {
   void selectEditable(bool value) {
     setState(() {
       editable = value;
+    });
+  }
+  void selectMultiUnit(bool value) {
+    setState(() {
+      multiUnit = value;
     });
   }
 
@@ -210,6 +216,43 @@ class _ConfigPageState extends State<ConfigPage> {
                       ],
                     ),
                     const SizedBox(height: 25),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("Multiunit",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 7),
+                        Card(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          margin: EdgeInsets.zero,
+                          child: Column(
+                            children: [
+                              RadioListTile<bool>(
+                                title: const Text("Single Unit"),
+                                value: true,
+                                groupValue: multiUnit,
+                                onChanged: (e) {
+                                  selectMultiUnit(e!);
+                                },
+                              ),
+                              const Divider(height: 0),
+                              RadioListTile<bool>(
+                                title: const Text("Multi Unit"),
+                                value: false,
+                                groupValue: multiUnit,
+                                onChanged: (e) {
+                                  selectMultiUnit(e!);
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 25),
                     PosDefaultButton(
                       text: "Save",
                       onPressed: () async {
@@ -224,6 +267,7 @@ class _ConfigPageState extends State<ConfigPage> {
                             await _storage.setTransactionType(selectedTType);
                             await _storage.saveStoreName(_storeName.text);
                             await _storage.setEditable(editable);
+                            await _storage.setMultiUnit(editable);
                             Get.back(closeOverlays: true);
                             await showDefaultSnackbar(context,
                                 message: "Berhasil menyimpan config");

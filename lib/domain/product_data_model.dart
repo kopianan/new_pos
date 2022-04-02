@@ -10,6 +10,10 @@ class ProductDataModel with _$ProductDataModel {
     @JsonKey(name: 'item_code') String? itemCode,
     @JsonKey(name: 'barcode') String? barcode,
     @JsonKey(name: 'item_sku') String? itemSku,
+    @JsonKey(name: 'purch_unit_code', includeIfNull: true, defaultValue: "")
+        String? purchaseUnitCode,
+    @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "")
+        String? unitConversion,
     @JsonKey(name: 'update_date') String? updateDate,
     @JsonKey(name: 'kategori_id') String? kategoriId,
     @JsonKey(name: 'customer_type_id', includeIfNull: true)
@@ -25,12 +29,14 @@ class ProductDataModel with _$ProductDataModel {
     @JsonKey(name: 'itm_price_fmt') String? itmPriceFmt,
     @JsonKey(name: 'is_fixed_price') String? isFixedPrice,
     @JsonKey(name: 'qty') String? qty,
-    @JsonKey(name: 'unit_code') String? unitCode,
+    @JsonKey(name: 'unit_code', includeIfNull: true, defaultValue: "")
+        String? unitCode,
     @JsonKey(name: 'tax_code') String? taxCode,
     @JsonKey(name: 'pic') String? pic,
     @JsonKey(name: 'display_store') String? displayStore,
     @JsonKey(name: 'weight') String? weight,
     @JsonKey(name: 'in_order') String? inOrder,
+    String? selectedUnit,
     @Default(0)
     @JsonKey(name: 'discount', includeIfNull: true)
         double? discount,

@@ -132,15 +132,18 @@ class _ItemEditPageState extends State<ItemEditPage> {
                       if (double.parse(_discount.text) == 0) {
                         _isPercent = true;
                       }
-
                       var _updatedItem = _currentItem.copyWith(
-                        itemPrice: _newPrice.text.toString(),
-                        itmPriceFmt: _newPrice.text.toString(),
+                        itemPrice: (_newPrice.text == "")
+                            ? _currentItem.itemPrice
+                            : "0",
+                        itmPriceFmt: (_newPrice.text == "")
+                            ? _currentItem.itmPriceFmt
+                            : "0",
                         discount: double.parse(_discount.text),
                         isPercentage: _isPercent,
                       );
                       _saleController.updateItemFromCart(_updatedItem);
-                      Get.back(); 
+                      Get.back();
                     },
                     child: Text("Simpan"),
                   ))
