@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
@@ -5,7 +6,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:pos/application/sale/sale_controller.dart';
 import 'package:pos/domain/product_data_model.dart';
-import 'package:collection/collection.dart';
 import 'package:pos/infrastructure/function/custom_snackbar.dart';
 import 'package:pos/presentation/sale/widget/choose_multi_item.dart';
 import 'package:pos/presentation/scan/qr_scan_page.dart';
@@ -273,6 +273,7 @@ class _AddItemPageState extends State<AddItemPage> {
                       item: _currItem,
                       onTap: () {
                         //check the item unit
+                        print("Add item here");
 
                         if (_filteredList[_currentItemSku]!.length == 1) {
                           onSingleItemClicked(_currentItemSku!);

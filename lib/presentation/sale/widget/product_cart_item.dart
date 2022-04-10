@@ -39,14 +39,21 @@ class _ProductCartItemState extends State<ProductCartItem> {
     if (item.unitCode == item.purchaseUnitCode) {
       unitList = {'unit_code': item.unitCode};
     } else {
+      //fill the selected unit code
+      if (item.unitCode == item.selectedUnit) {
+        selectedUnitCode = 'unit_code';
+      } else {
+        selectedUnitCode = 'purch_unit_code';
+      }
       unitList = {
         'unit_code': item.unitCode,
         'purch_unit_code': item.purchaseUnitCode
       };
     }
 
-    selectedUnit = item.unitCode;
-    selectedUnitCode = 'unit_code';
+    selectedUnit = item.selectedUnit;
+
+    setState(() {});
   }
 
   bool? isConversion = false;
@@ -109,8 +116,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
                                         keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
                                           label: Text("Total Beli"),
-                                          hintText: calculateMax(widget.item,
-                                                  selectedUnitCode!)
+                                          hintText: calculateMax(widget.item)
                                               .toStringAsFixed(0),
                                           border: OutlineInputBorder(),
                                         ),
@@ -146,8 +152,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
                       width: 50,
                       color: Colors.grey[200],
                       child: Text(
-                        calculateCurrentTotalQty(
-                            widget.item, selectedUnitCode!),
+                        calculateCurrentTotalQty(widget.item),
                         // widget.item.totalBuy.toString(),
                         style: TextStyle(
                           fontSize: 16,
@@ -168,16 +173,28 @@ class _ProductCartItemState extends State<ProductCartItem> {
                             value: selectedUnit,
                             items: unitList.entries
                                 .map((e) => DropdownMenuItem<String>(
-                                      child: Text(e.value),
-                                      value: e.value,
-                                    ))
+                                    child: Text(e.value), value: e.value))
                                 .toList(),
                             onChanged: (e) {
+                              var _priceAfterDiscount =
+                                  saleController.checkRealPrice(widget.item)!;
+                              var _price = saleController.initialPrice(
+                                widget.item,
+                                _priceAfterDiscount,
+                                e!,
+                              );
+                              // price
+                              //change selected unit
+                              saleController.updateItemFromCart(
+                                widget.item.copyWith(
+                                    selectedUnit: e,
+                                    itemPrice: _price,
+                                    totalBuy: 1),
+                              );
                               setState(() {
                                 selectedUnit = e;
                                 selectedUnitCode = unitList.keys
                                     .firstWhere((data) => unitList[data] == e);
-
                                 onConfirmNewStock(
                                     "1", widget.item, selectedUnitCode!);
                               });
@@ -247,8 +264,10 @@ class _ProductCartItemState extends State<ProductCartItem> {
                   children: [
                     Text(
                       NumberFormat.currency(symbol: "Rp.", decimalDigits: 0)
-                          .format(double.parse(widget.item.itemPrice!) *
-                              widget.item.totalBuy),
+                          .format(
+                        double.parse(widget.item.itemPrice!) *
+                            widget.item.totalBuy,
+                      ),
                       style: TextStyle(fontSize: 17),
                     ),
                     (widget.item.discount == null)
@@ -309,7 +328,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
 
   String calculateConversion(ProductDataModel dataModel, String unit) {
     String _stock = '';
-    if (unit == 'unit_code') {
+    if (unit == dataModel) {
       _stock =
           "${double.parse(dataModel.qty!).toStringAsFixed(0)}  ${dataModel.unitCode}";
     } else {
@@ -322,9 +341,9 @@ class _ProductCartItemState extends State<ProductCartItem> {
     return _stock;
   }
 
-  String calculateCurrentTotalQty(ProductDataModel dataModel, String unit) {
+  String calculateCurrentTotalQty(ProductDataModel dataModel) {
     double _totalBuy = 0;
-    if (unit == 'unit_code') {
+    if (dataModel.selectedUnit == 'unit_code') {
       _totalBuy = double.parse(dataModel.totalBuy.toString());
     } else {
       var _unit = double.parse(dataModel.unitConversion!);
@@ -334,9 +353,9 @@ class _ProductCartItemState extends State<ProductCartItem> {
     return _totalBuy.toStringAsFixed(0);
   }
 
-  double calculateMax(ProductDataModel dataModel, String unit) {
+  double calculateMax(ProductDataModel dataModel) {
     double _stock = 0;
-    if (unit == 'unit_code') {
+    if (dataModel.selectedUnit == 'unit_code') {
       _stock = double.parse(dataModel.qty!);
     } else {
       var _unit = double.parse(dataModel.unitConversion!);
@@ -348,7 +367,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
   }
 
   void onConfirmNewStock(
-      String newQuantyty, ProductDataModel item, String unit) {
+      String newQuantyty, ProductDataModel item, String selectedUnitCode) {
     var _text = double.parse(newQuantyty);
     if (_text == 0) {
       Get.showSnackbar(getSnackbar(
@@ -362,11 +381,11 @@ class _ProductCartItemState extends State<ProductCartItem> {
       ));
     } else {
       //check the total :
-      if (unit == 'unit_code') {
+      if (selectedUnitCode == 'unit_code') {
         saleController.addCustomQty(
             item, int.parse(double.parse(newQuantyty).toStringAsFixed(0)));
       } else {
-        var _max = calculateMax(item, unit);
+        var _max = calculateMax(item);
         if (_text > _max) {
           print("Show snackboar");
           Get.showSnackbar(

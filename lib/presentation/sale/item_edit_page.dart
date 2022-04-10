@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:pos/infrastructure/function/global_function.dart';
 
 import '../../application/sale/sale_controller.dart';
 import '../../domain/product_data_model.dart';
@@ -133,12 +131,10 @@ class _ItemEditPageState extends State<ItemEditPage> {
                         _isPercent = true;
                       }
                       var _updatedItem = _currentItem.copyWith(
-                        itemPrice: (_newPrice.text == "")
-                            ? _currentItem.itemPrice
-                            : "0",
-                        itmPriceFmt: (_newPrice.text == "")
-                            ? _currentItem.itmPriceFmt
-                            : "0",
+                        itemPrice:
+                            (_newPrice.text == "") ? "0" : _newPrice.text,
+                        itmPriceFmt:
+                            (_newPrice.text == "") ? "0" : _newPrice.text,
                         discount: double.parse(_discount.text),
                         isPercentage: _isPercent,
                       );

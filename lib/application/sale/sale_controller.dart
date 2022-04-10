@@ -1,12 +1,9 @@
 import 'dart:convert';
-import 'dart:developer';
 
-import 'package:collection/src/iterable_extensions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:pos/application/sale/sale_function.dart';
 import 'package:pos/config/constants_data.dart';
 import 'package:pos/domain/customer_data_model.dart';
@@ -150,7 +147,9 @@ class SaleController extends GetxController {
     this._cartListItem.assignAll(list);
   }
 
-  Either<String, Unit> addBuyQty(ProductDataModel item) {
+  Either<String, Unit> addBuyQty(
+    ProductDataModel item,
+  ) {
     //find data
     var _currItem =
         _cartListItem.firstWhere((element) => element.itemId == item.itemId);
@@ -360,20 +359,41 @@ class SaleController extends GetxController {
         }
         try {
           var _afterDiscount = checkDiscountForItem(element);
-          addBuyQty(_afterDiscount);
+          addBuyQty(_afterDiscount.copyWith(
+            selectedUnit: _selectedUnit,
+            itemPrice: initialPrice(
+                element, checkRealPrice(_afterDiscount)!, _selectedUnit!),
+          ));
         } catch (e) {
           var _afterDiscount = checkDiscountForItem(element);
           _cartListItem.add(
             _afterDiscount.copyWith(
-                totalBuy: 1,
-                itemPrice: checkRealPrice(_afterDiscount),
-                selectedUnit: _selectedUnit),
+              totalBuy: 1,
+              itemPrice: initialPrice(
+                  element, checkRealPrice(_afterDiscount)!, _selectedUnit!),
+              selectedUnit: _selectedUnit,
+            ),
           );
         }
       }
     });
 
     _selectedListItem.clear();
+  }
+
+  String initialPrice(
+    ProductDataModel dataModel,
+    String priceAfterDiscount,
+    String selectedUnit,
+  ) {
+    if (selectedUnit == dataModel.unitCode) {
+      return priceAfterDiscount;
+    } else {
+      var _unit = double.parse(dataModel.unitConversion!);
+      var _total = double.parse(priceAfterDiscount) * _unit;
+
+      return _total.toString();
+    }
   }
 
   List<ProductDataModel> get getSElectedList => this._selectedListItem;
