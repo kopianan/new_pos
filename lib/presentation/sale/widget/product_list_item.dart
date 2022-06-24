@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:pos/domain/product_data_model.dart';
 
@@ -46,10 +43,7 @@ class ProductListItem extends StatelessWidget {
               ),
               Text("Stok : ${calculateMax(item)}"),
               Text(
-                _formatter.format(double.parse(
-                    (checkPrice(customerTypeId, item.customerTypeId))
-                        ? item.itemPrice!
-                        : item.newPrice!)),
+                _formatter.format(calculateConversionHargaCoret(item)),
                 style: TextStyle(
                   fontSize: 12,
                   decoration: TextDecoration.lineThrough,
@@ -80,6 +74,29 @@ class ProductListItem extends StatelessWidget {
       usePrice = double.parse(dataModel.newPrice!);
     } else {
       usePrice = double.parse(dataModel.itemPrice!);
+    }
+
+    if (isConversion) {
+      return (usePrice * unitConversion);
+    }
+
+    return usePrice;
+  }
+
+  double calculateConversionHargaCoret(ProductDataModel dataModel) {
+    double usePrice = 0;
+    double unitConversion = 0;
+
+    try {
+      unitConversion = double.parse(dataModel.unitConversion!);
+    } on Exception catch (e) {
+      unitConversion = 1;
+    }
+
+    if (checkPrice(customerTypeId, item.customerTypeId)) {
+      usePrice = double.parse(dataModel.itemPrice!);
+    } else {
+      usePrice = double.parse(dataModel.newPrice!);
     }
 
     if (isConversion) {

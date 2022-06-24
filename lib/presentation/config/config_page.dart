@@ -263,6 +263,7 @@ class _ConfigPageState extends State<ConfigPage> {
                           try {
                             await _storage
                                 .setImageBaseUrl(_imageUrl.text.trim());
+                                print(_url);
                             await _storage.setBaseUrl(_url.text.trim());
                             await _storage.setTransactionType(selectedTType);
                             await _storage.saveStoreName(_storeName.text);

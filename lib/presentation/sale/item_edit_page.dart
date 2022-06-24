@@ -120,6 +120,7 @@ class _ItemEditPageState extends State<ItemEditPage> {
                   height: 45,
                   child: ElevatedButton(
                     onPressed: () {
+                      print(" New Price " + _newPrice.text);
                       var _isPercent = false;
 
                       if (_defaultValue == 'rp') {
@@ -131,10 +132,12 @@ class _ItemEditPageState extends State<ItemEditPage> {
                         _isPercent = true;
                       }
                       var _updatedItem = _currentItem.copyWith(
-                        itemPrice:
-                            (_newPrice.text == "") ? "0" : _newPrice.text,
-                        itmPriceFmt:
-                            (_newPrice.text == "") ? "0" : _newPrice.text,
+                        itemPrice: (_newPrice.text != "")
+                            ? _newPrice.text
+                            : _currentItem.itemPrice,
+                        itmPriceFmt: (_newPrice.text != "")
+                            ? _newPrice.text
+                            : _currentItem.itmPriceFmt,
                         discount: double.parse(_discount.text),
                         isPercentage: _isPercent,
                       );

@@ -23,6 +23,9 @@ class AuthRepository extends IAuth {
         box.getBaseUrl() + 'weblayer/template/api,SPGApps.vm?cmd=1',
         queryParameters: {'key': box.getToken},
       );
+    print(box.getToken); 
+    print(response.toString()); 
+      print(box.getBaseUrl());
 
       List<dynamic> _data = json.decode(response.data);
 

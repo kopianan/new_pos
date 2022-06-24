@@ -224,14 +224,23 @@ class _SalePageState extends State<SalePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Remark",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Spacer(),
+                  Obx(() {
+                    return Expanded(
+                      // flex: 1,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Text(
+                          (_saleController.getRemark == "")
+                              ? "Remark"
+                              : _saleController.getRemark,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
                   IconButton(
                       onPressed: () {
                         _remark.text = _saleController.getRemark;
@@ -654,7 +663,13 @@ class _SalePageState extends State<SalePage> {
                                       ),
                               ),
                             ),
-                            Icon(Icons.find_in_page_outlined, size: 30)
+                            InkWell(
+                              onTap: () async => await chooseCustomer(),
+                              child: Icon(
+                                Icons.find_in_page_outlined,
+                                size: 30,
+                              ),
+                            )
                           ],
                         ),
                       )
@@ -720,7 +735,7 @@ class _SalePageState extends State<SalePage> {
               actions: [
                 TextButton(
                   onPressed: () {
-                    Get.back(); 
+                    Get.back();
                   },
                   child: Text("Simpan"),
                 ),

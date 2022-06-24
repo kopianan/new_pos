@@ -5,7 +5,6 @@ import 'package:pos/application/auth/auth_cubit.dart';
 import 'package:pos/domain/location/location_data_model.dart';
 import 'package:pos/domain/payment_term.dart';
 import 'package:pos/domain/sale/payment_type.dart';
-import 'package:pos/infrastructure/function/custom_snackbar.dart';
 import 'package:pos/infrastructure/storage/storage.dart';
 import 'package:pos/injectable.dart';
 import 'package:pos/presentation/widgets/custom_dropdown.dart';
@@ -57,6 +56,8 @@ class _LocationPageState extends State<LocationPage> {
                   checkData();
                 },
                 onGetLocation: (e) {
+                  print("get location"); 
+                  print(e);
                   _allUsers.assignAll(e.locations);
                 },
               );

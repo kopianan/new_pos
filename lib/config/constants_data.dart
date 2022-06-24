@@ -20,7 +20,7 @@ class ConstantsData {
   );
 
   static var creditPaymentTerm = PaymentTerm(
-    paymentTermCode: "CREDIT",
+    paymentTermCode: "30 Hari",
     paymentTermId: "147123480480300066380",
     description: "Credit",
   );
