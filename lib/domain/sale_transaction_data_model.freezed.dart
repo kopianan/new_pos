@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'sale_transaction_data_model.dart';
@@ -11,47 +12,12 @@ part of 'sale_transaction_data_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SaleTransactionDataModel _$SaleTransactionDataModelFromJson(
     Map<String, dynamic> json) {
   return _SaleTransactionDataModel.fromJson(json);
 }
-
-/// @nodoc
-class _$SaleTransactionDataModelTearOff {
-  const _$SaleTransactionDataModelTearOff();
-
-  _SaleTransactionDataModel call(
-      {required String transactionNumber,
-      required LocationDataModel selectedLocation,
-      required DateTime date,
-      required String total,
-      required CustomerDataModel selectedCustomer,
-      required PaymentTerm paymentTerm,
-      required PaymentType paymentType,
-      required String status,
-      required List<ProductDataModel> listProduct}) {
-    return _SaleTransactionDataModel(
-      transactionNumber: transactionNumber,
-      selectedLocation: selectedLocation,
-      date: date,
-      total: total,
-      selectedCustomer: selectedCustomer,
-      paymentTerm: paymentTerm,
-      paymentType: paymentType,
-      status: status,
-      listProduct: listProduct,
-    );
-  }
-
-  SaleTransactionDataModel fromJson(Map<String, Object> json) {
-    return SaleTransactionDataModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $SaleTransactionDataModel = _$SaleTransactionDataModelTearOff();
 
 /// @nodoc
 mixin _$SaleTransactionDataModel {
@@ -184,11 +150,12 @@ class _$SaleTransactionDataModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SaleTransactionDataModelCopyWith<$Res>
+abstract class _$$_SaleTransactionDataModelCopyWith<$Res>
     implements $SaleTransactionDataModelCopyWith<$Res> {
-  factory _$SaleTransactionDataModelCopyWith(_SaleTransactionDataModel value,
-          $Res Function(_SaleTransactionDataModel) then) =
-      __$SaleTransactionDataModelCopyWithImpl<$Res>;
+  factory _$$_SaleTransactionDataModelCopyWith(
+          _$_SaleTransactionDataModel value,
+          $Res Function(_$_SaleTransactionDataModel) then) =
+      __$$_SaleTransactionDataModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String transactionNumber,
@@ -212,16 +179,16 @@ abstract class _$SaleTransactionDataModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SaleTransactionDataModelCopyWithImpl<$Res>
+class __$$_SaleTransactionDataModelCopyWithImpl<$Res>
     extends _$SaleTransactionDataModelCopyWithImpl<$Res>
-    implements _$SaleTransactionDataModelCopyWith<$Res> {
-  __$SaleTransactionDataModelCopyWithImpl(_SaleTransactionDataModel _value,
-      $Res Function(_SaleTransactionDataModel) _then)
-      : super(_value, (v) => _then(v as _SaleTransactionDataModel));
+    implements _$$_SaleTransactionDataModelCopyWith<$Res> {
+  __$$_SaleTransactionDataModelCopyWithImpl(_$_SaleTransactionDataModel _value,
+      $Res Function(_$_SaleTransactionDataModel) _then)
+      : super(_value, (v) => _then(v as _$_SaleTransactionDataModel));
 
   @override
-  _SaleTransactionDataModel get _value =>
-      super._value as _SaleTransactionDataModel;
+  _$_SaleTransactionDataModel get _value =>
+      super._value as _$_SaleTransactionDataModel;
 
   @override
   $Res call({
@@ -235,7 +202,7 @@ class __$SaleTransactionDataModelCopyWithImpl<$Res>
     Object? status = freezed,
     Object? listProduct = freezed,
   }) {
-    return _then(_SaleTransactionDataModel(
+    return _then(_$_SaleTransactionDataModel(
       transactionNumber: transactionNumber == freezed
           ? _value.transactionNumber
           : transactionNumber // ignore: cast_nullable_to_non_nullable
@@ -269,7 +236,7 @@ class __$SaleTransactionDataModelCopyWithImpl<$Res>
           : status // ignore: cast_nullable_to_non_nullable
               as String,
       listProduct: listProduct == freezed
-          ? _value.listProduct
+          ? _value._listProduct
           : listProduct // ignore: cast_nullable_to_non_nullable
               as List<ProductDataModel>,
     ));
@@ -288,7 +255,8 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
       required this.paymentTerm,
       required this.paymentType,
       required this.status,
-      required this.listProduct});
+      required final List<ProductDataModel> listProduct})
+      : _listProduct = listProduct;
 
   factory _$_SaleTransactionDataModel.fromJson(Map<String, dynamic> json) =>
       _$$_SaleTransactionDataModelFromJson(json);
@@ -309,8 +277,12 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
   final PaymentType paymentType;
   @override
   final String status;
+  final List<ProductDataModel> _listProduct;
   @override
-  final List<ProductDataModel> listProduct;
+  List<ProductDataModel> get listProduct {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProduct);
+  }
 
   @override
   String toString() {
@@ -320,94 +292,89 @@ class _$_SaleTransactionDataModel implements _SaleTransactionDataModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SaleTransactionDataModel &&
-            (identical(other.transactionNumber, transactionNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.transactionNumber, transactionNumber)) &&
-            (identical(other.selectedLocation, selectedLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectedLocation, selectedLocation)) &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.total, total) ||
-                const DeepCollectionEquality().equals(other.total, total)) &&
-            (identical(other.selectedCustomer, selectedCustomer) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectedCustomer, selectedCustomer)) &&
-            (identical(other.paymentTerm, paymentTerm) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentTerm, paymentTerm)) &&
-            (identical(other.paymentType, paymentType) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentType, paymentType)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
-            (identical(other.listProduct, listProduct) ||
-                const DeepCollectionEquality()
-                    .equals(other.listProduct, listProduct)));
+        (other.runtimeType == runtimeType &&
+            other is _$_SaleTransactionDataModel &&
+            const DeepCollectionEquality()
+                .equals(other.transactionNumber, transactionNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedLocation, selectedLocation) &&
+            const DeepCollectionEquality().equals(other.date, date) &&
+            const DeepCollectionEquality().equals(other.total, total) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedCustomer, selectedCustomer) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentTerm, paymentTerm) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentType, paymentType) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality()
+                .equals(other._listProduct, _listProduct));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(transactionNumber) ^
-      const DeepCollectionEquality().hash(selectedLocation) ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(total) ^
-      const DeepCollectionEquality().hash(selectedCustomer) ^
-      const DeepCollectionEquality().hash(paymentTerm) ^
-      const DeepCollectionEquality().hash(paymentType) ^
-      const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(listProduct);
 
   @JsonKey(ignore: true)
   @override
-  _$SaleTransactionDataModelCopyWith<_SaleTransactionDataModel> get copyWith =>
-      __$SaleTransactionDataModelCopyWithImpl<_SaleTransactionDataModel>(
-          this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(transactionNumber),
+      const DeepCollectionEquality().hash(selectedLocation),
+      const DeepCollectionEquality().hash(date),
+      const DeepCollectionEquality().hash(total),
+      const DeepCollectionEquality().hash(selectedCustomer),
+      const DeepCollectionEquality().hash(paymentTerm),
+      const DeepCollectionEquality().hash(paymentType),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(_listProduct));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SaleTransactionDataModelCopyWith<_$_SaleTransactionDataModel>
+      get copyWith => __$$_SaleTransactionDataModelCopyWithImpl<
+          _$_SaleTransactionDataModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SaleTransactionDataModelToJson(this);
+    return _$$_SaleTransactionDataModelToJson(
+      this,
+    );
   }
 }
 
 abstract class _SaleTransactionDataModel implements SaleTransactionDataModel {
   factory _SaleTransactionDataModel(
-          {required String transactionNumber,
-          required LocationDataModel selectedLocation,
-          required DateTime date,
-          required String total,
-          required CustomerDataModel selectedCustomer,
-          required PaymentTerm paymentTerm,
-          required PaymentType paymentType,
-          required String status,
-          required List<ProductDataModel> listProduct}) =
+          {required final String transactionNumber,
+          required final LocationDataModel selectedLocation,
+          required final DateTime date,
+          required final String total,
+          required final CustomerDataModel selectedCustomer,
+          required final PaymentTerm paymentTerm,
+          required final PaymentType paymentType,
+          required final String status,
+          required final List<ProductDataModel> listProduct}) =
       _$_SaleTransactionDataModel;
 
   factory _SaleTransactionDataModel.fromJson(Map<String, dynamic> json) =
       _$_SaleTransactionDataModel.fromJson;
 
   @override
-  String get transactionNumber => throw _privateConstructorUsedError;
+  String get transactionNumber;
   @override
-  LocationDataModel get selectedLocation => throw _privateConstructorUsedError;
+  LocationDataModel get selectedLocation;
   @override
-  DateTime get date => throw _privateConstructorUsedError;
+  DateTime get date;
   @override
-  String get total => throw _privateConstructorUsedError;
+  String get total;
   @override
-  CustomerDataModel get selectedCustomer => throw _privateConstructorUsedError;
+  CustomerDataModel get selectedCustomer;
   @override
-  PaymentTerm get paymentTerm => throw _privateConstructorUsedError;
+  PaymentTerm get paymentTerm;
   @override
-  PaymentType get paymentType => throw _privateConstructorUsedError;
+  PaymentType get paymentType;
   @override
-  String get status => throw _privateConstructorUsedError;
+  String get status;
   @override
-  List<ProductDataModel> get listProduct => throw _privateConstructorUsedError;
+  List<ProductDataModel> get listProduct;
   @override
   @JsonKey(ignore: true)
-  _$SaleTransactionDataModelCopyWith<_SaleTransactionDataModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SaleTransactionDataModelCopyWith<_$_SaleTransactionDataModel>
+      get copyWith => throw _privateConstructorUsedError;
 }

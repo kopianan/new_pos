@@ -7,11 +7,11 @@ class ProductListItem extends StatelessWidget {
       {Key? key,
       this.onTap,
       required this.item,
-      required this.customerTypeId,
+      this.customerTypeId,
       required this.isConversion});
 
   final ProductDataModel item;
-  final String customerTypeId;
+  final String? customerTypeId;
   final Function? onTap;
   final bool isConversion;
   final _formatter =
@@ -42,13 +42,15 @@ class ProductListItem extends StatelessWidget {
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
               Text("Stok : ${calculateMax(item)}"),
-              Text(
-                _formatter.format(calculateConversionHargaCoret(item)),
-                style: TextStyle(
-                  fontSize: 12,
-                  decoration: TextDecoration.lineThrough,
-                ),
-              ),
+              (item.newPrice == null || item.newPrice == "0")
+                  ? SizedBox()
+                  : Text(
+                      _formatter.format(calculateConversionHargaCoret(item)),
+                      style: TextStyle(
+                        fontSize: 12,
+                        decoration: TextDecoration.lineThrough,
+                      ),
+                    ),
             ],
           ),
         ),
@@ -119,6 +121,10 @@ class ProductListItem extends StatelessWidget {
       _stock = _totalUnit;
       unit = item.purchaseUnitCode!;
     }
+    if (_stock % 1 == 0) {
+      return _stock.toStringAsFixed(0) + " " + unit;
+    }
+
     return _stock.toString() + " " + unit;
   }
 

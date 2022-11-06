@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'sale_cubit.dart';
@@ -11,69 +12,7 @@ part of 'sale_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SaleStateTearOff {
-  const _$SaleStateTearOff();
-
-  _Initial initial() {
-    return const _Initial();
-  }
-
-  _IsLoading isLoading() {
-    return const _IsLoading();
-  }
-
-  _IsLoadingDiscount isLoadingDiscount() {
-    return const _IsLoadingDiscount();
-  }
-
-  _IsError isError(String error) {
-    return _IsError(
-      error,
-    );
-  }
-
-  _OnGetAllProducts onGetAllProducts(List<ProductDataModel> list) {
-    return _OnGetAllProducts(
-      list,
-    );
-  }
-
-  _OnGetSaleDetail onGetSaleDetail(String id) {
-    return _OnGetSaleDetail(
-      id,
-    );
-  }
-
-  _OnGetCustomerDiscount onGetCustomerDiscount(List<DiscountDataModel> list) {
-    return _OnGetCustomerDiscount(
-      list,
-    );
-  }
-
-  _OnGetCustomer onGetCustomer(List<CustomerDataModel>? list) {
-    return _OnGetCustomer(
-      list,
-    );
-  }
-
-  _OnCreateTransactionSuccess onCreateTransactionSuccess(String message) {
-    return _OnCreateTransactionSuccess(
-      message,
-    );
-  }
-
-  _OnConfirmPaymentSuccess onConfirmPaymentSuccess(String saleData) {
-    return _OnConfirmPaymentSuccess(
-      saleData,
-    );
-  }
-}
-
-/// @nodoc
-const $SaleState = _$SaleStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SaleState {
@@ -187,19 +126,20 @@ class _$SaleStateCopyWithImpl<$Res> implements $SaleStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$$_InitialCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$SaleStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class __$$_InitialCopyWithImpl<$Res> extends _$SaleStateCopyWithImpl<$Res>
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, (v) => _then(v as _$_Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _$_Initial get _value => super._value as _$_Initial;
 }
 
 /// @nodoc
@@ -214,7 +154,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -342,20 +283,21 @@ abstract class _Initial implements SaleState {
 }
 
 /// @nodoc
-abstract class _$IsLoadingCopyWith<$Res> {
-  factory _$IsLoadingCopyWith(
-          _IsLoading value, $Res Function(_IsLoading) then) =
-      __$IsLoadingCopyWithImpl<$Res>;
+abstract class _$$_IsLoadingCopyWith<$Res> {
+  factory _$$_IsLoadingCopyWith(
+          _$_IsLoading value, $Res Function(_$_IsLoading) then) =
+      __$$_IsLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$IsLoadingCopyWithImpl<$Res> extends _$SaleStateCopyWithImpl<$Res>
-    implements _$IsLoadingCopyWith<$Res> {
-  __$IsLoadingCopyWithImpl(_IsLoading _value, $Res Function(_IsLoading) _then)
-      : super(_value, (v) => _then(v as _IsLoading));
+class __$$_IsLoadingCopyWithImpl<$Res> extends _$SaleStateCopyWithImpl<$Res>
+    implements _$$_IsLoadingCopyWith<$Res> {
+  __$$_IsLoadingCopyWithImpl(
+      _$_IsLoading _value, $Res Function(_$_IsLoading) _then)
+      : super(_value, (v) => _then(v as _$_IsLoading));
 
   @override
-  _IsLoading get _value => super._value as _IsLoading;
+  _$_IsLoading get _value => super._value as _$_IsLoading;
 }
 
 /// @nodoc
@@ -370,7 +312,8 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _IsLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_IsLoading);
   }
 
   @override
@@ -498,22 +441,22 @@ abstract class _IsLoading implements SaleState {
 }
 
 /// @nodoc
-abstract class _$IsLoadingDiscountCopyWith<$Res> {
-  factory _$IsLoadingDiscountCopyWith(
-          _IsLoadingDiscount value, $Res Function(_IsLoadingDiscount) then) =
-      __$IsLoadingDiscountCopyWithImpl<$Res>;
+abstract class _$$_IsLoadingDiscountCopyWith<$Res> {
+  factory _$$_IsLoadingDiscountCopyWith(_$_IsLoadingDiscount value,
+          $Res Function(_$_IsLoadingDiscount) then) =
+      __$$_IsLoadingDiscountCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$IsLoadingDiscountCopyWithImpl<$Res>
+class __$$_IsLoadingDiscountCopyWithImpl<$Res>
     extends _$SaleStateCopyWithImpl<$Res>
-    implements _$IsLoadingDiscountCopyWith<$Res> {
-  __$IsLoadingDiscountCopyWithImpl(
-      _IsLoadingDiscount _value, $Res Function(_IsLoadingDiscount) _then)
-      : super(_value, (v) => _then(v as _IsLoadingDiscount));
+    implements _$$_IsLoadingDiscountCopyWith<$Res> {
+  __$$_IsLoadingDiscountCopyWithImpl(
+      _$_IsLoadingDiscount _value, $Res Function(_$_IsLoadingDiscount) _then)
+      : super(_value, (v) => _then(v as _$_IsLoadingDiscount));
 
   @override
-  _IsLoadingDiscount get _value => super._value as _IsLoadingDiscount;
+  _$_IsLoadingDiscount get _value => super._value as _$_IsLoadingDiscount;
 }
 
 /// @nodoc
@@ -528,7 +471,8 @@ class _$_IsLoadingDiscount implements _IsLoadingDiscount {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _IsLoadingDiscount);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_IsLoadingDiscount);
   }
 
   @override
@@ -656,26 +600,27 @@ abstract class _IsLoadingDiscount implements SaleState {
 }
 
 /// @nodoc
-abstract class _$IsErrorCopyWith<$Res> {
-  factory _$IsErrorCopyWith(_IsError value, $Res Function(_IsError) then) =
-      __$IsErrorCopyWithImpl<$Res>;
+abstract class _$$_IsErrorCopyWith<$Res> {
+  factory _$$_IsErrorCopyWith(
+          _$_IsError value, $Res Function(_$_IsError) then) =
+      __$$_IsErrorCopyWithImpl<$Res>;
   $Res call({String error});
 }
 
 /// @nodoc
-class __$IsErrorCopyWithImpl<$Res> extends _$SaleStateCopyWithImpl<$Res>
-    implements _$IsErrorCopyWith<$Res> {
-  __$IsErrorCopyWithImpl(_IsError _value, $Res Function(_IsError) _then)
-      : super(_value, (v) => _then(v as _IsError));
+class __$$_IsErrorCopyWithImpl<$Res> extends _$SaleStateCopyWithImpl<$Res>
+    implements _$$_IsErrorCopyWith<$Res> {
+  __$$_IsErrorCopyWithImpl(_$_IsError _value, $Res Function(_$_IsError) _then)
+      : super(_value, (v) => _then(v as _$_IsError));
 
   @override
-  _IsError get _value => super._value as _IsError;
+  _$_IsError get _value => super._value as _$_IsError;
 
   @override
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_IsError(
+    return _then(_$_IsError(
       error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -700,19 +645,19 @@ class _$_IsError implements _IsError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _IsError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is _$_IsError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
-  _$IsErrorCopyWith<_IsError> get copyWith =>
-      __$IsErrorCopyWithImpl<_IsError>(this, _$identity);
+  _$$_IsErrorCopyWith<_$_IsError> get copyWith =>
+      __$$_IsErrorCopyWithImpl<_$_IsError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -832,40 +777,40 @@ class _$_IsError implements _IsError {
 }
 
 abstract class _IsError implements SaleState {
-  const factory _IsError(String error) = _$_IsError;
+  const factory _IsError(final String error) = _$_IsError;
 
-  String get error => throw _privateConstructorUsedError;
+  String get error;
   @JsonKey(ignore: true)
-  _$IsErrorCopyWith<_IsError> get copyWith =>
+  _$$_IsErrorCopyWith<_$_IsError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnGetAllProductsCopyWith<$Res> {
-  factory _$OnGetAllProductsCopyWith(
-          _OnGetAllProducts value, $Res Function(_OnGetAllProducts) then) =
-      __$OnGetAllProductsCopyWithImpl<$Res>;
+abstract class _$$_OnGetAllProductsCopyWith<$Res> {
+  factory _$$_OnGetAllProductsCopyWith(
+          _$_OnGetAllProducts value, $Res Function(_$_OnGetAllProducts) then) =
+      __$$_OnGetAllProductsCopyWithImpl<$Res>;
   $Res call({List<ProductDataModel> list});
 }
 
 /// @nodoc
-class __$OnGetAllProductsCopyWithImpl<$Res>
+class __$$_OnGetAllProductsCopyWithImpl<$Res>
     extends _$SaleStateCopyWithImpl<$Res>
-    implements _$OnGetAllProductsCopyWith<$Res> {
-  __$OnGetAllProductsCopyWithImpl(
-      _OnGetAllProducts _value, $Res Function(_OnGetAllProducts) _then)
-      : super(_value, (v) => _then(v as _OnGetAllProducts));
+    implements _$$_OnGetAllProductsCopyWith<$Res> {
+  __$$_OnGetAllProductsCopyWithImpl(
+      _$_OnGetAllProducts _value, $Res Function(_$_OnGetAllProducts) _then)
+      : super(_value, (v) => _then(v as _$_OnGetAllProducts));
 
   @override
-  _OnGetAllProducts get _value => super._value as _OnGetAllProducts;
+  _$_OnGetAllProducts get _value => super._value as _$_OnGetAllProducts;
 
   @override
   $Res call({
     Object? list = freezed,
   }) {
-    return _then(_OnGetAllProducts(
+    return _then(_$_OnGetAllProducts(
       list == freezed
-          ? _value.list
+          ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
               as List<ProductDataModel>,
     ));
@@ -875,10 +820,14 @@ class __$OnGetAllProductsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnGetAllProducts implements _OnGetAllProducts {
-  const _$_OnGetAllProducts(this.list);
+  const _$_OnGetAllProducts(final List<ProductDataModel> list) : _list = list;
 
+  final List<ProductDataModel> _list;
   @override
-  final List<ProductDataModel> list;
+  List<ProductDataModel> get list {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_list);
+  }
 
   @override
   String toString() {
@@ -888,19 +837,19 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnGetAllProducts &&
-            (identical(other.list, list) ||
-                const DeepCollectionEquality().equals(other.list, list)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnGetAllProducts &&
+            const DeepCollectionEquality().equals(other._list, _list));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(list);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
 
   @JsonKey(ignore: true)
   @override
-  _$OnGetAllProductsCopyWith<_OnGetAllProducts> get copyWith =>
-      __$OnGetAllProductsCopyWithImpl<_OnGetAllProducts>(this, _$identity);
+  _$$_OnGetAllProductsCopyWith<_$_OnGetAllProducts> get copyWith =>
+      __$$_OnGetAllProductsCopyWithImpl<_$_OnGetAllProducts>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1020,38 +969,39 @@ class _$_OnGetAllProducts implements _OnGetAllProducts {
 }
 
 abstract class _OnGetAllProducts implements SaleState {
-  const factory _OnGetAllProducts(List<ProductDataModel> list) =
+  const factory _OnGetAllProducts(final List<ProductDataModel> list) =
       _$_OnGetAllProducts;
 
-  List<ProductDataModel> get list => throw _privateConstructorUsedError;
+  List<ProductDataModel> get list;
   @JsonKey(ignore: true)
-  _$OnGetAllProductsCopyWith<_OnGetAllProducts> get copyWith =>
+  _$$_OnGetAllProductsCopyWith<_$_OnGetAllProducts> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnGetSaleDetailCopyWith<$Res> {
-  factory _$OnGetSaleDetailCopyWith(
-          _OnGetSaleDetail value, $Res Function(_OnGetSaleDetail) then) =
-      __$OnGetSaleDetailCopyWithImpl<$Res>;
+abstract class _$$_OnGetSaleDetailCopyWith<$Res> {
+  factory _$$_OnGetSaleDetailCopyWith(
+          _$_OnGetSaleDetail value, $Res Function(_$_OnGetSaleDetail) then) =
+      __$$_OnGetSaleDetailCopyWithImpl<$Res>;
   $Res call({String id});
 }
 
 /// @nodoc
-class __$OnGetSaleDetailCopyWithImpl<$Res> extends _$SaleStateCopyWithImpl<$Res>
-    implements _$OnGetSaleDetailCopyWith<$Res> {
-  __$OnGetSaleDetailCopyWithImpl(
-      _OnGetSaleDetail _value, $Res Function(_OnGetSaleDetail) _then)
-      : super(_value, (v) => _then(v as _OnGetSaleDetail));
+class __$$_OnGetSaleDetailCopyWithImpl<$Res>
+    extends _$SaleStateCopyWithImpl<$Res>
+    implements _$$_OnGetSaleDetailCopyWith<$Res> {
+  __$$_OnGetSaleDetailCopyWithImpl(
+      _$_OnGetSaleDetail _value, $Res Function(_$_OnGetSaleDetail) _then)
+      : super(_value, (v) => _then(v as _$_OnGetSaleDetail));
 
   @override
-  _OnGetSaleDetail get _value => super._value as _OnGetSaleDetail;
+  _$_OnGetSaleDetail get _value => super._value as _$_OnGetSaleDetail;
 
   @override
   $Res call({
     Object? id = freezed,
   }) {
-    return _then(_OnGetSaleDetail(
+    return _then(_$_OnGetSaleDetail(
       id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -1076,19 +1026,19 @@ class _$_OnGetSaleDetail implements _OnGetSaleDetail {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnGetSaleDetail &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnGetSaleDetail &&
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
-  _$OnGetSaleDetailCopyWith<_OnGetSaleDetail> get copyWith =>
-      __$OnGetSaleDetailCopyWithImpl<_OnGetSaleDetail>(this, _$identity);
+  _$$_OnGetSaleDetailCopyWith<_$_OnGetSaleDetail> get copyWith =>
+      __$$_OnGetSaleDetailCopyWithImpl<_$_OnGetSaleDetail>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1208,40 +1158,41 @@ class _$_OnGetSaleDetail implements _OnGetSaleDetail {
 }
 
 abstract class _OnGetSaleDetail implements SaleState {
-  const factory _OnGetSaleDetail(String id) = _$_OnGetSaleDetail;
+  const factory _OnGetSaleDetail(final String id) = _$_OnGetSaleDetail;
 
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @JsonKey(ignore: true)
-  _$OnGetSaleDetailCopyWith<_OnGetSaleDetail> get copyWith =>
+  _$$_OnGetSaleDetailCopyWith<_$_OnGetSaleDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnGetCustomerDiscountCopyWith<$Res> {
-  factory _$OnGetCustomerDiscountCopyWith(_OnGetCustomerDiscount value,
-          $Res Function(_OnGetCustomerDiscount) then) =
-      __$OnGetCustomerDiscountCopyWithImpl<$Res>;
+abstract class _$$_OnGetCustomerDiscountCopyWith<$Res> {
+  factory _$$_OnGetCustomerDiscountCopyWith(_$_OnGetCustomerDiscount value,
+          $Res Function(_$_OnGetCustomerDiscount) then) =
+      __$$_OnGetCustomerDiscountCopyWithImpl<$Res>;
   $Res call({List<DiscountDataModel> list});
 }
 
 /// @nodoc
-class __$OnGetCustomerDiscountCopyWithImpl<$Res>
+class __$$_OnGetCustomerDiscountCopyWithImpl<$Res>
     extends _$SaleStateCopyWithImpl<$Res>
-    implements _$OnGetCustomerDiscountCopyWith<$Res> {
-  __$OnGetCustomerDiscountCopyWithImpl(_OnGetCustomerDiscount _value,
-      $Res Function(_OnGetCustomerDiscount) _then)
-      : super(_value, (v) => _then(v as _OnGetCustomerDiscount));
+    implements _$$_OnGetCustomerDiscountCopyWith<$Res> {
+  __$$_OnGetCustomerDiscountCopyWithImpl(_$_OnGetCustomerDiscount _value,
+      $Res Function(_$_OnGetCustomerDiscount) _then)
+      : super(_value, (v) => _then(v as _$_OnGetCustomerDiscount));
 
   @override
-  _OnGetCustomerDiscount get _value => super._value as _OnGetCustomerDiscount;
+  _$_OnGetCustomerDiscount get _value =>
+      super._value as _$_OnGetCustomerDiscount;
 
   @override
   $Res call({
     Object? list = freezed,
   }) {
-    return _then(_OnGetCustomerDiscount(
+    return _then(_$_OnGetCustomerDiscount(
       list == freezed
-          ? _value.list
+          ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
               as List<DiscountDataModel>,
     ));
@@ -1251,10 +1202,15 @@ class __$OnGetCustomerDiscountCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
-  const _$_OnGetCustomerDiscount(this.list);
+  const _$_OnGetCustomerDiscount(final List<DiscountDataModel> list)
+      : _list = list;
 
+  final List<DiscountDataModel> _list;
   @override
-  final List<DiscountDataModel> list;
+  List<DiscountDataModel> get list {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_list);
+  }
 
   @override
   String toString() {
@@ -1264,19 +1220,19 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnGetCustomerDiscount &&
-            (identical(other.list, list) ||
-                const DeepCollectionEquality().equals(other.list, list)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnGetCustomerDiscount &&
+            const DeepCollectionEquality().equals(other._list, _list));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(list);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
 
   @JsonKey(ignore: true)
   @override
-  _$OnGetCustomerDiscountCopyWith<_OnGetCustomerDiscount> get copyWith =>
-      __$OnGetCustomerDiscountCopyWithImpl<_OnGetCustomerDiscount>(
+  _$$_OnGetCustomerDiscountCopyWith<_$_OnGetCustomerDiscount> get copyWith =>
+      __$$_OnGetCustomerDiscountCopyWithImpl<_$_OnGetCustomerDiscount>(
           this, _$identity);
 
   @override
@@ -1397,40 +1353,40 @@ class _$_OnGetCustomerDiscount implements _OnGetCustomerDiscount {
 }
 
 abstract class _OnGetCustomerDiscount implements SaleState {
-  const factory _OnGetCustomerDiscount(List<DiscountDataModel> list) =
+  const factory _OnGetCustomerDiscount(final List<DiscountDataModel> list) =
       _$_OnGetCustomerDiscount;
 
-  List<DiscountDataModel> get list => throw _privateConstructorUsedError;
+  List<DiscountDataModel> get list;
   @JsonKey(ignore: true)
-  _$OnGetCustomerDiscountCopyWith<_OnGetCustomerDiscount> get copyWith =>
+  _$$_OnGetCustomerDiscountCopyWith<_$_OnGetCustomerDiscount> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnGetCustomerCopyWith<$Res> {
-  factory _$OnGetCustomerCopyWith(
-          _OnGetCustomer value, $Res Function(_OnGetCustomer) then) =
-      __$OnGetCustomerCopyWithImpl<$Res>;
+abstract class _$$_OnGetCustomerCopyWith<$Res> {
+  factory _$$_OnGetCustomerCopyWith(
+          _$_OnGetCustomer value, $Res Function(_$_OnGetCustomer) then) =
+      __$$_OnGetCustomerCopyWithImpl<$Res>;
   $Res call({List<CustomerDataModel>? list});
 }
 
 /// @nodoc
-class __$OnGetCustomerCopyWithImpl<$Res> extends _$SaleStateCopyWithImpl<$Res>
-    implements _$OnGetCustomerCopyWith<$Res> {
-  __$OnGetCustomerCopyWithImpl(
-      _OnGetCustomer _value, $Res Function(_OnGetCustomer) _then)
-      : super(_value, (v) => _then(v as _OnGetCustomer));
+class __$$_OnGetCustomerCopyWithImpl<$Res> extends _$SaleStateCopyWithImpl<$Res>
+    implements _$$_OnGetCustomerCopyWith<$Res> {
+  __$$_OnGetCustomerCopyWithImpl(
+      _$_OnGetCustomer _value, $Res Function(_$_OnGetCustomer) _then)
+      : super(_value, (v) => _then(v as _$_OnGetCustomer));
 
   @override
-  _OnGetCustomer get _value => super._value as _OnGetCustomer;
+  _$_OnGetCustomer get _value => super._value as _$_OnGetCustomer;
 
   @override
   $Res call({
     Object? list = freezed,
   }) {
-    return _then(_OnGetCustomer(
+    return _then(_$_OnGetCustomer(
       list == freezed
-          ? _value.list
+          ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
               as List<CustomerDataModel>?,
     ));
@@ -1440,10 +1396,16 @@ class __$OnGetCustomerCopyWithImpl<$Res> extends _$SaleStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnGetCustomer implements _OnGetCustomer {
-  const _$_OnGetCustomer(this.list);
+  const _$_OnGetCustomer(final List<CustomerDataModel>? list) : _list = list;
 
+  final List<CustomerDataModel>? _list;
   @override
-  final List<CustomerDataModel>? list;
+  List<CustomerDataModel>? get list {
+    final value = _list;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -1453,19 +1415,19 @@ class _$_OnGetCustomer implements _OnGetCustomer {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnGetCustomer &&
-            (identical(other.list, list) ||
-                const DeepCollectionEquality().equals(other.list, list)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnGetCustomer &&
+            const DeepCollectionEquality().equals(other._list, _list));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(list);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
 
   @JsonKey(ignore: true)
   @override
-  _$OnGetCustomerCopyWith<_OnGetCustomer> get copyWith =>
-      __$OnGetCustomerCopyWithImpl<_OnGetCustomer>(this, _$identity);
+  _$$_OnGetCustomerCopyWith<_$_OnGetCustomer> get copyWith =>
+      __$$_OnGetCustomerCopyWithImpl<_$_OnGetCustomer>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1585,41 +1547,42 @@ class _$_OnGetCustomer implements _OnGetCustomer {
 }
 
 abstract class _OnGetCustomer implements SaleState {
-  const factory _OnGetCustomer(List<CustomerDataModel>? list) =
+  const factory _OnGetCustomer(final List<CustomerDataModel>? list) =
       _$_OnGetCustomer;
 
-  List<CustomerDataModel>? get list => throw _privateConstructorUsedError;
+  List<CustomerDataModel>? get list;
   @JsonKey(ignore: true)
-  _$OnGetCustomerCopyWith<_OnGetCustomer> get copyWith =>
+  _$$_OnGetCustomerCopyWith<_$_OnGetCustomer> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnCreateTransactionSuccessCopyWith<$Res> {
-  factory _$OnCreateTransactionSuccessCopyWith(
-          _OnCreateTransactionSuccess value,
-          $Res Function(_OnCreateTransactionSuccess) then) =
-      __$OnCreateTransactionSuccessCopyWithImpl<$Res>;
+abstract class _$$_OnCreateTransactionSuccessCopyWith<$Res> {
+  factory _$$_OnCreateTransactionSuccessCopyWith(
+          _$_OnCreateTransactionSuccess value,
+          $Res Function(_$_OnCreateTransactionSuccess) then) =
+      __$$_OnCreateTransactionSuccessCopyWithImpl<$Res>;
   $Res call({String message});
 }
 
 /// @nodoc
-class __$OnCreateTransactionSuccessCopyWithImpl<$Res>
+class __$$_OnCreateTransactionSuccessCopyWithImpl<$Res>
     extends _$SaleStateCopyWithImpl<$Res>
-    implements _$OnCreateTransactionSuccessCopyWith<$Res> {
-  __$OnCreateTransactionSuccessCopyWithImpl(_OnCreateTransactionSuccess _value,
-      $Res Function(_OnCreateTransactionSuccess) _then)
-      : super(_value, (v) => _then(v as _OnCreateTransactionSuccess));
+    implements _$$_OnCreateTransactionSuccessCopyWith<$Res> {
+  __$$_OnCreateTransactionSuccessCopyWithImpl(
+      _$_OnCreateTransactionSuccess _value,
+      $Res Function(_$_OnCreateTransactionSuccess) _then)
+      : super(_value, (v) => _then(v as _$_OnCreateTransactionSuccess));
 
   @override
-  _OnCreateTransactionSuccess get _value =>
-      super._value as _OnCreateTransactionSuccess;
+  _$_OnCreateTransactionSuccess get _value =>
+      super._value as _$_OnCreateTransactionSuccess;
 
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_OnCreateTransactionSuccess(
+    return _then(_$_OnCreateTransactionSuccess(
       message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1644,20 +1607,20 @@ class _$_OnCreateTransactionSuccess implements _OnCreateTransactionSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnCreateTransactionSuccess &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnCreateTransactionSuccess &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
-  _$OnCreateTransactionSuccessCopyWith<_OnCreateTransactionSuccess>
-      get copyWith => __$OnCreateTransactionSuccessCopyWithImpl<
-          _OnCreateTransactionSuccess>(this, _$identity);
+  _$$_OnCreateTransactionSuccessCopyWith<_$_OnCreateTransactionSuccess>
+      get copyWith => __$$_OnCreateTransactionSuccessCopyWithImpl<
+          _$_OnCreateTransactionSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1777,40 +1740,40 @@ class _$_OnCreateTransactionSuccess implements _OnCreateTransactionSuccess {
 }
 
 abstract class _OnCreateTransactionSuccess implements SaleState {
-  const factory _OnCreateTransactionSuccess(String message) =
+  const factory _OnCreateTransactionSuccess(final String message) =
       _$_OnCreateTransactionSuccess;
 
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @JsonKey(ignore: true)
-  _$OnCreateTransactionSuccessCopyWith<_OnCreateTransactionSuccess>
+  _$$_OnCreateTransactionSuccessCopyWith<_$_OnCreateTransactionSuccess>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnConfirmPaymentSuccessCopyWith<$Res> {
-  factory _$OnConfirmPaymentSuccessCopyWith(_OnConfirmPaymentSuccess value,
-          $Res Function(_OnConfirmPaymentSuccess) then) =
-      __$OnConfirmPaymentSuccessCopyWithImpl<$Res>;
+abstract class _$$_OnConfirmPaymentSuccessCopyWith<$Res> {
+  factory _$$_OnConfirmPaymentSuccessCopyWith(_$_OnConfirmPaymentSuccess value,
+          $Res Function(_$_OnConfirmPaymentSuccess) then) =
+      __$$_OnConfirmPaymentSuccessCopyWithImpl<$Res>;
   $Res call({String saleData});
 }
 
 /// @nodoc
-class __$OnConfirmPaymentSuccessCopyWithImpl<$Res>
+class __$$_OnConfirmPaymentSuccessCopyWithImpl<$Res>
     extends _$SaleStateCopyWithImpl<$Res>
-    implements _$OnConfirmPaymentSuccessCopyWith<$Res> {
-  __$OnConfirmPaymentSuccessCopyWithImpl(_OnConfirmPaymentSuccess _value,
-      $Res Function(_OnConfirmPaymentSuccess) _then)
-      : super(_value, (v) => _then(v as _OnConfirmPaymentSuccess));
+    implements _$$_OnConfirmPaymentSuccessCopyWith<$Res> {
+  __$$_OnConfirmPaymentSuccessCopyWithImpl(_$_OnConfirmPaymentSuccess _value,
+      $Res Function(_$_OnConfirmPaymentSuccess) _then)
+      : super(_value, (v) => _then(v as _$_OnConfirmPaymentSuccess));
 
   @override
-  _OnConfirmPaymentSuccess get _value =>
-      super._value as _OnConfirmPaymentSuccess;
+  _$_OnConfirmPaymentSuccess get _value =>
+      super._value as _$_OnConfirmPaymentSuccess;
 
   @override
   $Res call({
     Object? saleData = freezed,
   }) {
-    return _then(_OnConfirmPaymentSuccess(
+    return _then(_$_OnConfirmPaymentSuccess(
       saleData == freezed
           ? _value.saleData
           : saleData // ignore: cast_nullable_to_non_nullable
@@ -1835,21 +1798,21 @@ class _$_OnConfirmPaymentSuccess implements _OnConfirmPaymentSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnConfirmPaymentSuccess &&
-            (identical(other.saleData, saleData) ||
-                const DeepCollectionEquality()
-                    .equals(other.saleData, saleData)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnConfirmPaymentSuccess &&
+            const DeepCollectionEquality().equals(other.saleData, saleData));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(saleData);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(saleData));
 
   @JsonKey(ignore: true)
   @override
-  _$OnConfirmPaymentSuccessCopyWith<_OnConfirmPaymentSuccess> get copyWith =>
-      __$OnConfirmPaymentSuccessCopyWithImpl<_OnConfirmPaymentSuccess>(
-          this, _$identity);
+  _$$_OnConfirmPaymentSuccessCopyWith<_$_OnConfirmPaymentSuccess>
+      get copyWith =>
+          __$$_OnConfirmPaymentSuccessCopyWithImpl<_$_OnConfirmPaymentSuccess>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1969,11 +1932,11 @@ class _$_OnConfirmPaymentSuccess implements _OnConfirmPaymentSuccess {
 }
 
 abstract class _OnConfirmPaymentSuccess implements SaleState {
-  const factory _OnConfirmPaymentSuccess(String saleData) =
+  const factory _OnConfirmPaymentSuccess(final String saleData) =
       _$_OnConfirmPaymentSuccess;
 
-  String get saleData => throw _privateConstructorUsedError;
+  String get saleData;
   @JsonKey(ignore: true)
-  _$OnConfirmPaymentSuccessCopyWith<_OnConfirmPaymentSuccess> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_OnConfirmPaymentSuccessCopyWith<_$_OnConfirmPaymentSuccess>
+      get copyWith => throw _privateConstructorUsedError;
 }

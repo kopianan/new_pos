@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -94,6 +95,7 @@ class SaleRepository extends ISale {
     Response response;
 
     FormData formData = FormData.fromMap({"docs": json.encode(sale)});
+
     try {
       response = await dio.post(
           box.getBaseUrl() +

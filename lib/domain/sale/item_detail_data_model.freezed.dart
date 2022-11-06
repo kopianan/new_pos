@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'item_detail_data_model.dart';
@@ -11,44 +12,11 @@ part of 'item_detail_data_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ItemDetailDataModel _$ItemDetailDataModelFromJson(Map<String, dynamic> json) {
   return _ItemDetailDataModel.fromJson(json);
 }
-
-/// @nodoc
-class _$ItemDetailDataModelTearOff {
-  const _$ItemDetailDataModelTearOff();
-
-  _ItemDetailDataModel call(
-      {@JsonKey(name: "item_code") String? itemCode,
-      @JsonKey(name: "item_id") String? itemId,
-      @JsonKey(name: "item_name") required String itemName,
-      @JsonKey(name: "qty") String? qty,
-      @JsonKey(name: "unit") String? unit,
-      @JsonKey(name: "price") String? price,
-      @JsonKey(name: "tax") String? tax,
-      @JsonKey(name: "discount") String? discount}) {
-    return _ItemDetailDataModel(
-      itemCode: itemCode,
-      itemId: itemId,
-      itemName: itemName,
-      qty: qty,
-      unit: unit,
-      price: price,
-      tax: tax,
-      discount: discount,
-    );
-  }
-
-  ItemDetailDataModel fromJson(Map<String, Object> json) {
-    return ItemDetailDataModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ItemDetailDataModel = _$ItemDetailDataModelTearOff();
 
 /// @nodoc
 mixin _$ItemDetailDataModel {
@@ -149,11 +117,11 @@ class _$ItemDetailDataModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ItemDetailDataModelCopyWith<$Res>
+abstract class _$$_ItemDetailDataModelCopyWith<$Res>
     implements $ItemDetailDataModelCopyWith<$Res> {
-  factory _$ItemDetailDataModelCopyWith(_ItemDetailDataModel value,
-          $Res Function(_ItemDetailDataModel) then) =
-      __$ItemDetailDataModelCopyWithImpl<$Res>;
+  factory _$$_ItemDetailDataModelCopyWith(_$_ItemDetailDataModel value,
+          $Res Function(_$_ItemDetailDataModel) then) =
+      __$$_ItemDetailDataModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: "item_code") String? itemCode,
@@ -167,15 +135,15 @@ abstract class _$ItemDetailDataModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ItemDetailDataModelCopyWithImpl<$Res>
+class __$$_ItemDetailDataModelCopyWithImpl<$Res>
     extends _$ItemDetailDataModelCopyWithImpl<$Res>
-    implements _$ItemDetailDataModelCopyWith<$Res> {
-  __$ItemDetailDataModelCopyWithImpl(
-      _ItemDetailDataModel _value, $Res Function(_ItemDetailDataModel) _then)
-      : super(_value, (v) => _then(v as _ItemDetailDataModel));
+    implements _$$_ItemDetailDataModelCopyWith<$Res> {
+  __$$_ItemDetailDataModelCopyWithImpl(_$_ItemDetailDataModel _value,
+      $Res Function(_$_ItemDetailDataModel) _then)
+      : super(_value, (v) => _then(v as _$_ItemDetailDataModel));
 
   @override
-  _ItemDetailDataModel get _value => super._value as _ItemDetailDataModel;
+  _$_ItemDetailDataModel get _value => super._value as _$_ItemDetailDataModel;
 
   @override
   $Res call({
@@ -188,7 +156,7 @@ class __$ItemDetailDataModelCopyWithImpl<$Res>
     Object? tax = freezed,
     Object? discount = freezed,
   }) {
-    return _then(_ItemDetailDataModel(
+    return _then(_$_ItemDetailDataModel(
       itemCode: itemCode == freezed
           ? _value.itemCode
           : itemCode // ignore: cast_nullable_to_non_nullable
@@ -274,92 +242,86 @@ class _$_ItemDetailDataModel implements _ItemDetailDataModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ItemDetailDataModel &&
-            (identical(other.itemCode, itemCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.itemCode, itemCode)) &&
-            (identical(other.itemId, itemId) ||
-                const DeepCollectionEquality().equals(other.itemId, itemId)) &&
-            (identical(other.itemName, itemName) ||
-                const DeepCollectionEquality()
-                    .equals(other.itemName, itemName)) &&
-            (identical(other.qty, qty) ||
-                const DeepCollectionEquality().equals(other.qty, qty)) &&
-            (identical(other.unit, unit) ||
-                const DeepCollectionEquality().equals(other.unit, unit)) &&
-            (identical(other.price, price) ||
-                const DeepCollectionEquality().equals(other.price, price)) &&
-            (identical(other.tax, tax) ||
-                const DeepCollectionEquality().equals(other.tax, tax)) &&
-            (identical(other.discount, discount) ||
-                const DeepCollectionEquality()
-                    .equals(other.discount, discount)));
+        (other.runtimeType == runtimeType &&
+            other is _$_ItemDetailDataModel &&
+            const DeepCollectionEquality().equals(other.itemCode, itemCode) &&
+            const DeepCollectionEquality().equals(other.itemId, itemId) &&
+            const DeepCollectionEquality().equals(other.itemName, itemName) &&
+            const DeepCollectionEquality().equals(other.qty, qty) &&
+            const DeepCollectionEquality().equals(other.unit, unit) &&
+            const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality().equals(other.tax, tax) &&
+            const DeepCollectionEquality().equals(other.discount, discount));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(itemCode) ^
-      const DeepCollectionEquality().hash(itemId) ^
-      const DeepCollectionEquality().hash(itemName) ^
-      const DeepCollectionEquality().hash(qty) ^
-      const DeepCollectionEquality().hash(unit) ^
-      const DeepCollectionEquality().hash(price) ^
-      const DeepCollectionEquality().hash(tax) ^
-      const DeepCollectionEquality().hash(discount);
 
   @JsonKey(ignore: true)
   @override
-  _$ItemDetailDataModelCopyWith<_ItemDetailDataModel> get copyWith =>
-      __$ItemDetailDataModelCopyWithImpl<_ItemDetailDataModel>(
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(itemCode),
+      const DeepCollectionEquality().hash(itemId),
+      const DeepCollectionEquality().hash(itemName),
+      const DeepCollectionEquality().hash(qty),
+      const DeepCollectionEquality().hash(unit),
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(tax),
+      const DeepCollectionEquality().hash(discount));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ItemDetailDataModelCopyWith<_$_ItemDetailDataModel> get copyWith =>
+      __$$_ItemDetailDataModelCopyWithImpl<_$_ItemDetailDataModel>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ItemDetailDataModelToJson(this);
+    return _$$_ItemDetailDataModelToJson(
+      this,
+    );
   }
 }
 
 abstract class _ItemDetailDataModel implements ItemDetailDataModel {
   factory _ItemDetailDataModel(
-      {@JsonKey(name: "item_code") String? itemCode,
-      @JsonKey(name: "item_id") String? itemId,
-      @JsonKey(name: "item_name") required String itemName,
-      @JsonKey(name: "qty") String? qty,
-      @JsonKey(name: "unit") String? unit,
-      @JsonKey(name: "price") String? price,
-      @JsonKey(name: "tax") String? tax,
-      @JsonKey(name: "discount") String? discount}) = _$_ItemDetailDataModel;
+          {@JsonKey(name: "item_code") final String? itemCode,
+          @JsonKey(name: "item_id") final String? itemId,
+          @JsonKey(name: "item_name") required final String itemName,
+          @JsonKey(name: "qty") final String? qty,
+          @JsonKey(name: "unit") final String? unit,
+          @JsonKey(name: "price") final String? price,
+          @JsonKey(name: "tax") final String? tax,
+          @JsonKey(name: "discount") final String? discount}) =
+      _$_ItemDetailDataModel;
 
   factory _ItemDetailDataModel.fromJson(Map<String, dynamic> json) =
       _$_ItemDetailDataModel.fromJson;
 
   @override
   @JsonKey(name: "item_code")
-  String? get itemCode => throw _privateConstructorUsedError;
+  String? get itemCode;
   @override
   @JsonKey(name: "item_id")
-  String? get itemId => throw _privateConstructorUsedError;
+  String? get itemId;
   @override
   @JsonKey(name: "item_name")
-  String get itemName => throw _privateConstructorUsedError;
+  String get itemName;
   @override
   @JsonKey(name: "qty")
-  String? get qty => throw _privateConstructorUsedError;
+  String? get qty;
   @override
   @JsonKey(name: "unit")
-  String? get unit => throw _privateConstructorUsedError;
+  String? get unit;
   @override
   @JsonKey(name: "price")
-  String? get price => throw _privateConstructorUsedError;
+  String? get price;
   @override
   @JsonKey(name: "tax")
-  String? get tax => throw _privateConstructorUsedError;
+  String? get tax;
   @override
   @JsonKey(name: "discount")
-  String? get discount => throw _privateConstructorUsedError;
+  String? get discount;
   @override
   @JsonKey(ignore: true)
-  _$ItemDetailDataModelCopyWith<_ItemDetailDataModel> get copyWith =>
+  _$$_ItemDetailDataModelCopyWith<_$_ItemDetailDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

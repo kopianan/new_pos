@@ -238,8 +238,11 @@ class SaleController extends GetxController {
         if (element.isPercentage == true) {
           _finalTotal += _subTotal - ((element.discount! / 100.0) * _subTotal);
         } else {
-          if (element.discount! != 0)
+          if (element.discount! != 0) {
             _finalTotal += _subTotal - ((element.discount!) * element.totalBuy);
+          } else {
+            _finalTotal +=_subTotal;
+          }
         }
       },
     );

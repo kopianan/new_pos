@@ -40,7 +40,8 @@ class _ChooseMultiItemState extends State<ChooseMultiItem> {
                   children: [
                     Text(
                       "Pilih Item",
-                      style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                     Spacer(),
                     TextButton(
@@ -50,7 +51,8 @@ class _ChooseMultiItemState extends State<ChooseMultiItem> {
                       },
                       child: Text(
                         "SIMPAN",
-                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                     )
                   ],
@@ -59,7 +61,7 @@ class _ChooseMultiItemState extends State<ChooseMultiItem> {
               Divider(height: 5),
               Obx(
                 () => Expanded(
-                  child: ListView.builder( 
+                  child: ListView.builder(
                     shrinkWrap: true,
                     itemCount: _saleController.getSElectedList.length,
                     itemBuilder: (context, index) {
@@ -69,8 +71,10 @@ class _ChooseMultiItemState extends State<ChooseMultiItem> {
                           _saleController.updateSelectedList(
                               _saleController.getSElectedList[index], value!);
                         },
-                        title:
-                            Text(_saleController.getSElectedList[index].itemName!),
+                        subtitle: Text(
+                            "STOK : ${setStock(_saleController.getSElectedList[index].qty!)}"),
+                        title: Text(
+                            _saleController.getSElectedList[index].itemName!),
                       );
                     },
                   ),
@@ -81,5 +85,15 @@ class _ChooseMultiItemState extends State<ChooseMultiItem> {
         ),
       ),
     );
+  }
+
+  String setStock(String qty) {
+    String total = "0";
+    try {
+      total = double.parse(qty).toStringAsFixed(0);
+    } catch (e) {
+      total = "0";
+    }
+    return total;
   }
 }

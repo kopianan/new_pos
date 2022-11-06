@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -42,25 +44,27 @@ class _LocationPageState extends State<LocationPage> {
           child: BlocConsumer<AuthCubit, AuthState>(
             listener: (context, state) {
               state.maybeMap(
-                orElse: () {},
-                onGetPaymentTerm: (e) {
-                  print("Payment Term");
-                  paymentTerm.addAll(e.paymentTermList);
-                  _box.savePaymentTerm(paymentTerm);
-                  checkData();
-                },
-                onGetPaymentType: (e) {
-                  print("Payment Type");
-                  paymentType.addAll(e.paymentTypeList);
-                  _box.savePaymentType(paymentType);
-                  checkData();
-                },
-                onGetLocation: (e) {
-                  print("get location"); 
-                  print(e);
-                  _allUsers.assignAll(e.locations);
-                },
-              );
+                  orElse: () {},
+                  onGetPaymentTerm: (e) {
+                    print("Payment Term");
+                    paymentTerm.addAll(e.paymentTermList);
+                    _box.savePaymentTerm(paymentTerm);
+                    checkData();
+                  },
+                  onGetPaymentType: (e) {
+                    print("Payment Type");
+                    paymentType.addAll(e.paymentTypeList);
+                    _box.savePaymentType(paymentType);
+                    checkData();
+                  },
+                  onGetLocation: (e) {
+                    print("get location");
+                    print(e);
+                    _allUsers.assignAll(e.locations);
+                  },
+                  onError: (e) {
+                    log(e.errorMessage);
+                  });
             },
             builder: (context, state) {
               return Container(
@@ -80,9 +84,10 @@ class _LocationPageState extends State<LocationPage> {
                     return Center(
                       child: Column(
                         children: [
-                          Text(
-                              "Something Wrong\nSilahkan kembali ke halaman sebelumnya dan masuk lagi",
-                              textAlign: TextAlign.center)
+                          // Text(
+                          //     "Something Wrong\nSilahkan kembali ke halaman sebelumnya dan masuk lagi",
+                          //     textAlign: TextAlign.center)
+                          Text(e.errorMessage, textAlign: TextAlign.center)
                         ],
                       ),
                     );
@@ -93,6 +98,7 @@ class _LocationPageState extends State<LocationPage> {
                     );
                   },
                   onGetLocation: (e) {
+                    print(e); 
                     return defaultView(context);
                   },
                 ),

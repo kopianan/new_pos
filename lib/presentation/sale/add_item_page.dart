@@ -22,7 +22,6 @@ class AddItemPage extends StatefulWidget {
 }
 
 class _AddItemPageState extends State<AddItemPage> {
-  final _saleController = Get.find<SaleController>();
   GFBottomSheetController bottomController = GFBottomSheetController();
   late Map<String?, List<ProductDataModel>> _filteredList;
   late Map<String?, List<ProductDataModel>> _temporary;
@@ -30,6 +29,8 @@ class _AddItemPageState extends State<AddItemPage> {
   TextEditingController _item = TextEditingController();
   bool? visibility = false;
   bool? isMultiUnit = false;
+  final _saleController = Get.find<SaleController>();
+  final searchController = TextEditingController();
   @override
   void initState() {
     isMultiUnit = GetStorage().read('multiunit');
@@ -146,151 +147,151 @@ class _AddItemPageState extends State<AddItemPage> {
                 ],
                 borderRadius: BorderRadius.circular(10),
               ),
-              // child: TextFormField(
-              //   onFieldSubmitted: (e) {
+              child: TextFormField(
+                controller: searchController,
+                onFieldSubmitted: (e) {
+                  var _list = _saleController.getProductList;
+                  var _newFilter = _list.where((element) => element.itemName!
+                      .toLowerCase()
+                      .contains(e.toLowerCase()));
 
-              //     var _list = _saleController.getProductList;
-              //     var _newFilter = _list.where((element) => element.itemName!
-              //         .toLowerCase()
-              //         .contains(e.toLowerCase()));
+                  var _data = _newFilter
+                      .toSet()
+                      .groupListsBy((element) => element.itemSku);
+                  _filteredList = _data;
+                  visibility = _data.length == 0 ? false : true;
 
-              //     var _data = _newFilter
-              //         .toSet()
-              //         .groupListsBy((element) => element.itemSku);
-              //     _filteredList = _data;
-              //     visibility = _data.length == 0 ? false : true;
-              //     print("Test");
-              //     setState(() {});
-              //   },
-              //   autofocus: false,
-              //   decoration: InputDecoration(
-              //       prefixIcon: IconButton(
-              //         onPressed: () async {
-              //           await onScanButton();
-              //         },
-              //         icon: Icon(
-              //           Icons.qr_code,
-              //         ),
-              //       ),
-              //       suffixIcon: IconButton(
-              //           onPressed: () {
-              //             setState(() {
-              //               _item.text = "";
-              //               keyboard = true;
-              //               _filteredList = _temporary;
-              //             });
-              //           },
-              //           icon: Icon(Icons.close)),
-              //       contentPadding: const EdgeInsets.symmetric(
-              //           horizontal: 20, vertical: 10),
-              //       hintText: "Cari Product",
-              //       filled: true,
-              //       fillColor: Colors.white,
-              //       border: OutlineInputBorder(
-              //         borderSide: BorderSide.none,
-              //         borderRadius: BorderRadius.circular(10),
-              //       )),
-              // ),
-
-              child: TypeAheadField<ProductDataModel>(
-                animationDuration: Duration.zero,
-                hideKeyboard: keyboard,
-                hideSuggestionsOnKeyboardHide: true,
-                textFieldConfiguration: TextFieldConfiguration(
-                  controller: _item,
-                  onTap: () {
-                    setState(() {
-                      keyboard = false;
-                    });
-                  },
-                  autofocus: false,
-                  decoration: InputDecoration(
-                      prefixIcon: IconButton(
-                        onPressed: () async {
-                          await onScanButton();
+                  setState(() {});
+                },
+                autofocus: false,
+                decoration: InputDecoration(
+                    prefixIcon: IconButton(
+                      onPressed: () async {
+                        await onScanButton();
+                      },
+                      icon: Icon(
+                        Icons.qr_code,
+                      ),
+                    ),
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          searchController.clear();
+                          setState(() {
+                            _item.text = "";
+                            keyboard = true;
+                            _filteredList = _temporary;
+                          });
                         },
-                        icon: Icon(
-                          Icons.qr_code,
-                        ),
-                      ),
-                      suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _item.text = "";
-                              keyboard = true;
-                            });
-                          },
-                          icon: Icon(Icons.close)),
-                      contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      hintText: "Cari Product",
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(10),
-                      )),
-                ),
-                suggestionsCallback: (pattern) {
-                  return _saleController.getProductList
-                      .where((element) =>
-                          element.itemCode!.contains(pattern) ||
-                          element.itemName!
-                              .toLowerCase()
-                              .contains(pattern.toLowerCase()))
-                      .toList();
-                },
-                itemBuilder: (context, val) {
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ListTile(
-                        title: Text(val.itemName.toString()),
-                      ),
-                      const Divider()
-                    ],
-                  );
-                },
-                onSuggestionSelected: (suggestion) {
-                  onSingleItemClicked(suggestion.itemSku!);
-                  // _saleController.setSelectedCustomer(suggestion);
-                  // Get.back(closeOverlays: true);
-                },
+                        icon: Icon(Icons.close)),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    hintText: "Cari Product",
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(10),
+                    )),
               ),
+
+              // child: TypeAheadField<ProductDataModel>(
+              //   animationDuration: Duration.zero,
+              //   hideKeyboard: keyboard,
+              //   hideSuggestionsOnKeyboardHide: true,
+              //   textFieldConfiguration: TextFieldConfiguration(
+              //     controller: _item,
+              //     onTap: () {
+              //       setState(() {
+              //         keyboard = false;
+              //       });
+              //     },
+              //     autofocus: false,
+              //     decoration: InputDecoration(
+              //         prefixIcon: IconButton(
+              //           onPressed: () async {
+              //             await onScanButton();
+              //           },
+              //           icon: Icon(
+              //             Icons.qr_code,
+              //           ),
+              //         ),
+              //         suffixIcon: IconButton(
+              //             onPressed: () {
+              //               setState(() {
+              //                 _item.text = "";
+              //                 keyboard = true;
+              //               });
+              //             },
+              //             icon: Icon(Icons.close)),
+              //         contentPadding: const EdgeInsets.symmetric(
+              //             horizontal: 20, vertical: 10),
+              //         hintText: "Cari Product",
+              //         filled: true,
+              //         fillColor: Colors.white,
+              //         border: OutlineInputBorder(
+              //           borderSide: BorderSide.none,
+              //           borderRadius: BorderRadius.circular(10),
+              //         )),
+              //   ),
+              //   suggestionsCallback: (pattern) {
+              //     return _saleController.getProductList
+              //         .where((element) =>
+              //             element.itemCode!.contains(pattern) ||
+              //             element.itemName!
+              //                 .toLowerCase()
+              //                 .contains(pattern.toLowerCase()))
+              //         .toList();
+              //   },
+              //   itemBuilder: (context, val) {
+              //     return Column(
+              //       mainAxisSize: MainAxisSize.min,
+              //       children: [
+              //         ListTile(
+              //           title: Text(val.itemName.toString()),
+              //         ),
+              //         const Divider()
+              //       ],
+              //     );
+              //   },
+              //   onSuggestionSelected: (suggestion) {
+              //     onSingleItemClicked(suggestion.itemSku!);
+              //     // _saleController.setSelectedCustomer(suggestion);
+              //     // Get.back(closeOverlays: true);
+              //   },
+              // ),
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: _filteredList.keys.length,
-                itemBuilder: (context, index) {
-                  var _currentItemSku = _filteredList.keys.toList()[index];
-                  var _currItem = _saleController.getProductList.firstWhere(
-                      (element) => element.itemSku == _currentItemSku);
-                  return Obx(
-                    () => ProductListItem(
-                      isConversion: _saleController.getBuyUnit,
-                      customerTypeId:
-                          _saleController.getSelectedCustomer.customerTypeId!,
-                      item: _currItem,
-                      onTap: () {
-                        //check the item unit
-                        print("Add item here");
+                child: ListView.builder(
+              itemCount: _filteredList.keys.length,
+              itemBuilder: (context, index) {
+                var _currentItemSku = _filteredList.keys.toList()[index];
+                var _currItem = _saleController.getProductList.firstWhere(
+                    (element) => element.itemSku == _currentItemSku);
 
-                        if (_filteredList[_currentItemSku]!.length == 1) {
-                          onSingleItemClicked(_currentItemSku!);
-                        } else {
-                          Get.to(
-                              ChooseMultiItem(
-                                  filteredList: _filteredList,
-                                  sku: _currentItemSku!),
-                              fullscreenDialog: true);
-                          // onListClick(context, _currentItemSku!);
-                        }
-                      },
-                    ),
-                  );
-                },
-              ),
-            ),
+                return ProductListItem(
+                  isConversion: _saleController.getBuyUnit,
+                  // customerTypeId: "",
+                  customerTypeId:
+                      _saleController.getSelectedCustomer.customerTypeId ?? "",
+                  item: _currItem,
+                  onTap: () {
+                    //check the item unit
+                    print("Add item here");
+
+                    if (_filteredList[_currentItemSku]!.length == 1) {
+                      onSingleItemClicked(_currentItemSku!);
+                    } else {
+                      Get.to(
+                          ChooseMultiItem(
+                              filteredList: _filteredList,
+                              sku: _currentItemSku!),
+                          fullscreenDialog: true);
+                      // onListClick(context, _currentItemSku!);
+                    }
+                  },
+                );
+              },
+            )),
           ],
         ),
       ),

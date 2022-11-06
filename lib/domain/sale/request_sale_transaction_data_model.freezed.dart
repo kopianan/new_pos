@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'request_sale_transaction_data_model.dart';
@@ -11,50 +12,12 @@ part of 'request_sale_transaction_data_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 RequestSaleTransactionDataModel _$RequestSaleTransactionDataModelFromJson(
     Map<String, dynamic> json) {
   return _RequestSaleTransactionDataModel.fromJson(json);
 }
-
-/// @nodoc
-class _$RequestSaleTransactionDataModelTearOff {
-  const _$RequestSaleTransactionDataModelTearOff();
-
-  _RequestSaleTransactionDataModel call(
-      {@JsonKey(name: "trans_no") String? transNo,
-      @JsonKey(name: "trans_type") String? transType,
-      @JsonKey(name: "location") String? location,
-      @JsonKey(name: "trans_dt") String? transDt,
-      @JsonKey(name: "customer") String? customer,
-      @JsonKey(name: "create_by") String? createBy,
-      @JsonKey(name: "remark") String? remark,
-      @JsonKey(name: "pmttype") String? pmttype,
-      @JsonKey(name: "pmtterm") String? pmtterm,
-      List<ItemDetailDataModel>? details}) {
-    return _RequestSaleTransactionDataModel(
-      transNo: transNo,
-      transType: transType,
-      location: location,
-      transDt: transDt,
-      customer: customer,
-      createBy: createBy,
-      remark: remark,
-      pmttype: pmttype,
-      pmtterm: pmtterm,
-      details: details,
-    );
-  }
-
-  RequestSaleTransactionDataModel fromJson(Map<String, Object> json) {
-    return RequestSaleTransactionDataModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $RequestSaleTransactionDataModel =
-    _$RequestSaleTransactionDataModelTearOff();
 
 /// @nodoc
 mixin _$RequestSaleTransactionDataModel {
@@ -171,12 +134,12 @@ class _$RequestSaleTransactionDataModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RequestSaleTransactionDataModelCopyWith<$Res>
+abstract class _$$_RequestSaleTransactionDataModelCopyWith<$Res>
     implements $RequestSaleTransactionDataModelCopyWith<$Res> {
-  factory _$RequestSaleTransactionDataModelCopyWith(
-          _RequestSaleTransactionDataModel value,
-          $Res Function(_RequestSaleTransactionDataModel) then) =
-      __$RequestSaleTransactionDataModelCopyWithImpl<$Res>;
+  factory _$$_RequestSaleTransactionDataModelCopyWith(
+          _$_RequestSaleTransactionDataModel value,
+          $Res Function(_$_RequestSaleTransactionDataModel) then) =
+      __$$_RequestSaleTransactionDataModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: "trans_no") String? transNo,
@@ -192,17 +155,17 @@ abstract class _$RequestSaleTransactionDataModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RequestSaleTransactionDataModelCopyWithImpl<$Res>
+class __$$_RequestSaleTransactionDataModelCopyWithImpl<$Res>
     extends _$RequestSaleTransactionDataModelCopyWithImpl<$Res>
-    implements _$RequestSaleTransactionDataModelCopyWith<$Res> {
-  __$RequestSaleTransactionDataModelCopyWithImpl(
-      _RequestSaleTransactionDataModel _value,
-      $Res Function(_RequestSaleTransactionDataModel) _then)
-      : super(_value, (v) => _then(v as _RequestSaleTransactionDataModel));
+    implements _$$_RequestSaleTransactionDataModelCopyWith<$Res> {
+  __$$_RequestSaleTransactionDataModelCopyWithImpl(
+      _$_RequestSaleTransactionDataModel _value,
+      $Res Function(_$_RequestSaleTransactionDataModel) _then)
+      : super(_value, (v) => _then(v as _$_RequestSaleTransactionDataModel));
 
   @override
-  _RequestSaleTransactionDataModel get _value =>
-      super._value as _RequestSaleTransactionDataModel;
+  _$_RequestSaleTransactionDataModel get _value =>
+      super._value as _$_RequestSaleTransactionDataModel;
 
   @override
   $Res call({
@@ -217,7 +180,7 @@ class __$RequestSaleTransactionDataModelCopyWithImpl<$Res>
     Object? pmtterm = freezed,
     Object? details = freezed,
   }) {
-    return _then(_RequestSaleTransactionDataModel(
+    return _then(_$_RequestSaleTransactionDataModel(
       transNo: transNo == freezed
           ? _value.transNo
           : transNo // ignore: cast_nullable_to_non_nullable
@@ -255,7 +218,7 @@ class __$RequestSaleTransactionDataModelCopyWithImpl<$Res>
           : pmtterm // ignore: cast_nullable_to_non_nullable
               as String?,
       details: details == freezed
-          ? _value.details
+          ? _value._details
           : details // ignore: cast_nullable_to_non_nullable
               as List<ItemDetailDataModel>?,
     ));
@@ -276,7 +239,8 @@ class _$_RequestSaleTransactionDataModel
       @JsonKey(name: "remark") this.remark,
       @JsonKey(name: "pmttype") this.pmttype,
       @JsonKey(name: "pmtterm") this.pmtterm,
-      this.details});
+      final List<ItemDetailDataModel>? details})
+      : _details = details;
 
   factory _$_RequestSaleTransactionDataModel.fromJson(
           Map<String, dynamic> json) =>
@@ -309,8 +273,14 @@ class _$_RequestSaleTransactionDataModel
   @override
   @JsonKey(name: "pmtterm")
   final String? pmtterm;
+  final List<ItemDetailDataModel>? _details;
   @override
-  final List<ItemDetailDataModel>? details;
+  List<ItemDetailDataModel>? get details {
+    final value = _details;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -320,111 +290,100 @@ class _$_RequestSaleTransactionDataModel
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _RequestSaleTransactionDataModel &&
-            (identical(other.transNo, transNo) ||
-                const DeepCollectionEquality()
-                    .equals(other.transNo, transNo)) &&
-            (identical(other.transType, transType) ||
-                const DeepCollectionEquality()
-                    .equals(other.transType, transType)) &&
-            (identical(other.location, location) ||
-                const DeepCollectionEquality()
-                    .equals(other.location, location)) &&
-            (identical(other.transDt, transDt) ||
-                const DeepCollectionEquality()
-                    .equals(other.transDt, transDt)) &&
-            (identical(other.customer, customer) ||
-                const DeepCollectionEquality()
-                    .equals(other.customer, customer)) &&
-            (identical(other.createBy, createBy) ||
-                const DeepCollectionEquality()
-                    .equals(other.createBy, createBy)) &&
-            (identical(other.remark, remark) ||
-                const DeepCollectionEquality().equals(other.remark, remark)) &&
-            (identical(other.pmttype, pmttype) ||
-                const DeepCollectionEquality()
-                    .equals(other.pmttype, pmttype)) &&
-            (identical(other.pmtterm, pmtterm) ||
-                const DeepCollectionEquality()
-                    .equals(other.pmtterm, pmtterm)) &&
-            (identical(other.details, details) ||
-                const DeepCollectionEquality().equals(other.details, details)));
+        (other.runtimeType == runtimeType &&
+            other is _$_RequestSaleTransactionDataModel &&
+            const DeepCollectionEquality().equals(other.transNo, transNo) &&
+            const DeepCollectionEquality().equals(other.transType, transType) &&
+            const DeepCollectionEquality().equals(other.location, location) &&
+            const DeepCollectionEquality().equals(other.transDt, transDt) &&
+            const DeepCollectionEquality().equals(other.customer, customer) &&
+            const DeepCollectionEquality().equals(other.createBy, createBy) &&
+            const DeepCollectionEquality().equals(other.remark, remark) &&
+            const DeepCollectionEquality().equals(other.pmttype, pmttype) &&
+            const DeepCollectionEquality().equals(other.pmtterm, pmtterm) &&
+            const DeepCollectionEquality().equals(other._details, _details));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(transNo) ^
-      const DeepCollectionEquality().hash(transType) ^
-      const DeepCollectionEquality().hash(location) ^
-      const DeepCollectionEquality().hash(transDt) ^
-      const DeepCollectionEquality().hash(customer) ^
-      const DeepCollectionEquality().hash(createBy) ^
-      const DeepCollectionEquality().hash(remark) ^
-      const DeepCollectionEquality().hash(pmttype) ^
-      const DeepCollectionEquality().hash(pmtterm) ^
-      const DeepCollectionEquality().hash(details);
 
   @JsonKey(ignore: true)
   @override
-  _$RequestSaleTransactionDataModelCopyWith<_RequestSaleTransactionDataModel>
-      get copyWith => __$RequestSaleTransactionDataModelCopyWithImpl<
-          _RequestSaleTransactionDataModel>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(transNo),
+      const DeepCollectionEquality().hash(transType),
+      const DeepCollectionEquality().hash(location),
+      const DeepCollectionEquality().hash(transDt),
+      const DeepCollectionEquality().hash(customer),
+      const DeepCollectionEquality().hash(createBy),
+      const DeepCollectionEquality().hash(remark),
+      const DeepCollectionEquality().hash(pmttype),
+      const DeepCollectionEquality().hash(pmtterm),
+      const DeepCollectionEquality().hash(_details));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_RequestSaleTransactionDataModelCopyWith<
+          _$_RequestSaleTransactionDataModel>
+      get copyWith => __$$_RequestSaleTransactionDataModelCopyWithImpl<
+          _$_RequestSaleTransactionDataModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RequestSaleTransactionDataModelToJson(this);
+    return _$$_RequestSaleTransactionDataModelToJson(
+      this,
+    );
   }
 }
 
 abstract class _RequestSaleTransactionDataModel
     implements RequestSaleTransactionDataModel {
   factory _RequestSaleTransactionDataModel(
-      {@JsonKey(name: "trans_no") String? transNo,
-      @JsonKey(name: "trans_type") String? transType,
-      @JsonKey(name: "location") String? location,
-      @JsonKey(name: "trans_dt") String? transDt,
-      @JsonKey(name: "customer") String? customer,
-      @JsonKey(name: "create_by") String? createBy,
-      @JsonKey(name: "remark") String? remark,
-      @JsonKey(name: "pmttype") String? pmttype,
-      @JsonKey(name: "pmtterm") String? pmtterm,
-      List<ItemDetailDataModel>? details}) = _$_RequestSaleTransactionDataModel;
+          {@JsonKey(name: "trans_no") final String? transNo,
+          @JsonKey(name: "trans_type") final String? transType,
+          @JsonKey(name: "location") final String? location,
+          @JsonKey(name: "trans_dt") final String? transDt,
+          @JsonKey(name: "customer") final String? customer,
+          @JsonKey(name: "create_by") final String? createBy,
+          @JsonKey(name: "remark") final String? remark,
+          @JsonKey(name: "pmttype") final String? pmttype,
+          @JsonKey(name: "pmtterm") final String? pmtterm,
+          final List<ItemDetailDataModel>? details}) =
+      _$_RequestSaleTransactionDataModel;
 
   factory _RequestSaleTransactionDataModel.fromJson(Map<String, dynamic> json) =
       _$_RequestSaleTransactionDataModel.fromJson;
 
   @override
   @JsonKey(name: "trans_no")
-  String? get transNo => throw _privateConstructorUsedError;
+  String? get transNo;
   @override
   @JsonKey(name: "trans_type")
-  String? get transType => throw _privateConstructorUsedError;
+  String? get transType;
   @override
   @JsonKey(name: "location")
-  String? get location => throw _privateConstructorUsedError;
+  String? get location;
   @override
   @JsonKey(name: "trans_dt")
-  String? get transDt => throw _privateConstructorUsedError;
+  String? get transDt;
   @override
   @JsonKey(name: "customer")
-  String? get customer => throw _privateConstructorUsedError;
+  String? get customer;
   @override
   @JsonKey(name: "create_by")
-  String? get createBy => throw _privateConstructorUsedError;
+  String? get createBy;
   @override
   @JsonKey(name: "remark")
-  String? get remark => throw _privateConstructorUsedError;
+  String? get remark;
   @override
   @JsonKey(name: "pmttype")
-  String? get pmttype => throw _privateConstructorUsedError;
+  String? get pmttype;
   @override
   @JsonKey(name: "pmtterm")
-  String? get pmtterm => throw _privateConstructorUsedError;
+  String? get pmtterm;
   @override
-  List<ItemDetailDataModel>? get details => throw _privateConstructorUsedError;
+  List<ItemDetailDataModel>? get details;
   @override
   @JsonKey(ignore: true)
-  _$RequestSaleTransactionDataModelCopyWith<_RequestSaleTransactionDataModel>
+  _$$_RequestSaleTransactionDataModelCopyWith<
+          _$_RequestSaleTransactionDataModel>
       get copyWith => throw _privateConstructorUsedError;
 }

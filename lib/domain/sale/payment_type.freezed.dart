@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'payment_type.dart';
@@ -11,36 +12,11 @@ part of 'payment_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PaymentType _$PaymentTypeFromJson(Map<String, dynamic> json) {
   return _PaymentType.fromJson(json);
 }
-
-/// @nodoc
-class _$PaymentTypeTearOff {
-  const _$PaymentTypeTearOff();
-
-  _PaymentType call(
-      {@JsonKey(name: 'payment_type_id') String? paymentTypeId,
-      @JsonKey(name: 'payment_type_code') String? paymentTypeCode,
-      @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'is_credit') String? isCredit}) {
-    return _PaymentType(
-      paymentTypeId: paymentTypeId,
-      paymentTypeCode: paymentTypeCode,
-      description: description,
-      isCredit: isCredit,
-    );
-  }
-
-  PaymentType fromJson(Map<String, Object> json) {
-    return PaymentType.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PaymentType = _$PaymentTypeTearOff();
 
 /// @nodoc
 mixin _$PaymentType {
@@ -108,11 +84,11 @@ class _$PaymentTypeCopyWithImpl<$Res> implements $PaymentTypeCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PaymentTypeCopyWith<$Res>
+abstract class _$$_PaymentTypeCopyWith<$Res>
     implements $PaymentTypeCopyWith<$Res> {
-  factory _$PaymentTypeCopyWith(
-          _PaymentType value, $Res Function(_PaymentType) then) =
-      __$PaymentTypeCopyWithImpl<$Res>;
+  factory _$$_PaymentTypeCopyWith(
+          _$_PaymentType value, $Res Function(_$_PaymentType) then) =
+      __$$_PaymentTypeCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'payment_type_id') String? paymentTypeId,
@@ -122,14 +98,14 @@ abstract class _$PaymentTypeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PaymentTypeCopyWithImpl<$Res> extends _$PaymentTypeCopyWithImpl<$Res>
-    implements _$PaymentTypeCopyWith<$Res> {
-  __$PaymentTypeCopyWithImpl(
-      _PaymentType _value, $Res Function(_PaymentType) _then)
-      : super(_value, (v) => _then(v as _PaymentType));
+class __$$_PaymentTypeCopyWithImpl<$Res> extends _$PaymentTypeCopyWithImpl<$Res>
+    implements _$$_PaymentTypeCopyWith<$Res> {
+  __$$_PaymentTypeCopyWithImpl(
+      _$_PaymentType _value, $Res Function(_$_PaymentType) _then)
+      : super(_value, (v) => _then(v as _$_PaymentType));
 
   @override
-  _PaymentType get _value => super._value as _PaymentType;
+  _$_PaymentType get _value => super._value as _$_PaymentType;
 
   @override
   $Res call({
@@ -138,7 +114,7 @@ class __$PaymentTypeCopyWithImpl<$Res> extends _$PaymentTypeCopyWithImpl<$Res>
     Object? description = freezed,
     Object? isCredit = freezed,
   }) {
-    return _then(_PaymentType(
+    return _then(_$_PaymentType(
       paymentTypeId: paymentTypeId == freezed
           ? _value.paymentTypeId
           : paymentTypeId // ignore: cast_nullable_to_non_nullable
@@ -192,64 +168,63 @@ class _$_PaymentType implements _PaymentType {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentType &&
-            (identical(other.paymentTypeId, paymentTypeId) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentTypeId, paymentTypeId)) &&
-            (identical(other.paymentTypeCode, paymentTypeCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentTypeCode, paymentTypeCode)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.isCredit, isCredit) ||
-                const DeepCollectionEquality()
-                    .equals(other.isCredit, isCredit)));
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentType &&
+            const DeepCollectionEquality()
+                .equals(other.paymentTypeId, paymentTypeId) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentTypeCode, paymentTypeCode) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.isCredit, isCredit));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(paymentTypeId) ^
-      const DeepCollectionEquality().hash(paymentTypeCode) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(isCredit);
 
   @JsonKey(ignore: true)
   @override
-  _$PaymentTypeCopyWith<_PaymentType> get copyWith =>
-      __$PaymentTypeCopyWithImpl<_PaymentType>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(paymentTypeId),
+      const DeepCollectionEquality().hash(paymentTypeCode),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(isCredit));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentTypeCopyWith<_$_PaymentType> get copyWith =>
+      __$$_PaymentTypeCopyWithImpl<_$_PaymentType>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentTypeToJson(this);
+    return _$$_PaymentTypeToJson(
+      this,
+    );
   }
 }
 
 abstract class _PaymentType implements PaymentType {
   factory _PaymentType(
-      {@JsonKey(name: 'payment_type_id') String? paymentTypeId,
-      @JsonKey(name: 'payment_type_code') String? paymentTypeCode,
-      @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'is_credit') String? isCredit}) = _$_PaymentType;
+      {@JsonKey(name: 'payment_type_id') final String? paymentTypeId,
+      @JsonKey(name: 'payment_type_code') final String? paymentTypeCode,
+      @JsonKey(name: 'description') final String? description,
+      @JsonKey(name: 'is_credit') final String? isCredit}) = _$_PaymentType;
 
   factory _PaymentType.fromJson(Map<String, dynamic> json) =
       _$_PaymentType.fromJson;
 
   @override
   @JsonKey(name: 'payment_type_id')
-  String? get paymentTypeId => throw _privateConstructorUsedError;
+  String? get paymentTypeId;
   @override
   @JsonKey(name: 'payment_type_code')
-  String? get paymentTypeCode => throw _privateConstructorUsedError;
+  String? get paymentTypeCode;
   @override
   @JsonKey(name: 'description')
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
   @JsonKey(name: 'is_credit')
-  String? get isCredit => throw _privateConstructorUsedError;
+  String? get isCredit;
   @override
   @JsonKey(ignore: true)
-  _$PaymentTypeCopyWith<_PaymentType> get copyWith =>
+  _$$_PaymentTypeCopyWith<_$_PaymentType> get copyWith =>
       throw _privateConstructorUsedError;
 }

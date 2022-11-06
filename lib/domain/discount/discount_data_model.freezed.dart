@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'discount_data_model.dart';
@@ -11,40 +12,11 @@ part of 'discount_data_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 DiscountDataModel _$DiscountDataModelFromJson(Map<String, dynamic> json) {
   return _DiscountDataModel.fromJson(json);
 }
-
-/// @nodoc
-class _$DiscountDataModelTearOff {
-  const _$DiscountDataModelTearOff();
-
-  _DiscountDataModel call(
-      {@JsonKey(name: "customer_code") String? customerCode,
-      @JsonKey(name: "customer_name") String? customerName,
-      @JsonKey(name: "customer_type_id") String? customertypeId,
-      @JsonKey(name: "event_discount") String? eventDiscount,
-      @JsonKey(name: "kategori_id") String? kategoriId,
-      @JsonKey(name: "event_end_date") String? eventEndDate}) {
-    return _DiscountDataModel(
-      customerCode: customerCode,
-      customerName: customerName,
-      customertypeId: customertypeId,
-      eventDiscount: eventDiscount,
-      kategoriId: kategoriId,
-      eventEndDate: eventEndDate,
-    );
-  }
-
-  DiscountDataModel fromJson(Map<String, Object> json) {
-    return DiscountDataModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DiscountDataModel = _$DiscountDataModelTearOff();
 
 /// @nodoc
 mixin _$DiscountDataModel {
@@ -129,11 +101,11 @@ class _$DiscountDataModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DiscountDataModelCopyWith<$Res>
+abstract class _$$_DiscountDataModelCopyWith<$Res>
     implements $DiscountDataModelCopyWith<$Res> {
-  factory _$DiscountDataModelCopyWith(
-          _DiscountDataModel value, $Res Function(_DiscountDataModel) then) =
-      __$DiscountDataModelCopyWithImpl<$Res>;
+  factory _$$_DiscountDataModelCopyWith(_$_DiscountDataModel value,
+          $Res Function(_$_DiscountDataModel) then) =
+      __$$_DiscountDataModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: "customer_code") String? customerCode,
@@ -145,15 +117,15 @@ abstract class _$DiscountDataModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DiscountDataModelCopyWithImpl<$Res>
+class __$$_DiscountDataModelCopyWithImpl<$Res>
     extends _$DiscountDataModelCopyWithImpl<$Res>
-    implements _$DiscountDataModelCopyWith<$Res> {
-  __$DiscountDataModelCopyWithImpl(
-      _DiscountDataModel _value, $Res Function(_DiscountDataModel) _then)
-      : super(_value, (v) => _then(v as _DiscountDataModel));
+    implements _$$_DiscountDataModelCopyWith<$Res> {
+  __$$_DiscountDataModelCopyWithImpl(
+      _$_DiscountDataModel _value, $Res Function(_$_DiscountDataModel) _then)
+      : super(_value, (v) => _then(v as _$_DiscountDataModel));
 
   @override
-  _DiscountDataModel get _value => super._value as _DiscountDataModel;
+  _$_DiscountDataModel get _value => super._value as _$_DiscountDataModel;
 
   @override
   $Res call({
@@ -164,7 +136,7 @@ class __$DiscountDataModelCopyWithImpl<$Res>
     Object? kategoriId = freezed,
     Object? eventEndDate = freezed,
   }) {
-    return _then(_DiscountDataModel(
+    return _then(_$_DiscountDataModel(
       customerCode: customerCode == freezed
           ? _value.customerCode
           : customerCode // ignore: cast_nullable_to_non_nullable
@@ -234,56 +206,55 @@ class _$_DiscountDataModel implements _DiscountDataModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DiscountDataModel &&
-            (identical(other.customerCode, customerCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerCode, customerCode)) &&
-            (identical(other.customerName, customerName) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerName, customerName)) &&
-            (identical(other.customertypeId, customertypeId) ||
-                const DeepCollectionEquality()
-                    .equals(other.customertypeId, customertypeId)) &&
-            (identical(other.eventDiscount, eventDiscount) ||
-                const DeepCollectionEquality()
-                    .equals(other.eventDiscount, eventDiscount)) &&
-            (identical(other.kategoriId, kategoriId) ||
-                const DeepCollectionEquality()
-                    .equals(other.kategoriId, kategoriId)) &&
-            (identical(other.eventEndDate, eventEndDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.eventEndDate, eventEndDate)));
+        (other.runtimeType == runtimeType &&
+            other is _$_DiscountDataModel &&
+            const DeepCollectionEquality()
+                .equals(other.customerCode, customerCode) &&
+            const DeepCollectionEquality()
+                .equals(other.customerName, customerName) &&
+            const DeepCollectionEquality()
+                .equals(other.customertypeId, customertypeId) &&
+            const DeepCollectionEquality()
+                .equals(other.eventDiscount, eventDiscount) &&
+            const DeepCollectionEquality()
+                .equals(other.kategoriId, kategoriId) &&
+            const DeepCollectionEquality()
+                .equals(other.eventEndDate, eventEndDate));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(customerCode) ^
-      const DeepCollectionEquality().hash(customerName) ^
-      const DeepCollectionEquality().hash(customertypeId) ^
-      const DeepCollectionEquality().hash(eventDiscount) ^
-      const DeepCollectionEquality().hash(kategoriId) ^
-      const DeepCollectionEquality().hash(eventEndDate);
 
   @JsonKey(ignore: true)
   @override
-  _$DiscountDataModelCopyWith<_DiscountDataModel> get copyWith =>
-      __$DiscountDataModelCopyWithImpl<_DiscountDataModel>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(customerCode),
+      const DeepCollectionEquality().hash(customerName),
+      const DeepCollectionEquality().hash(customertypeId),
+      const DeepCollectionEquality().hash(eventDiscount),
+      const DeepCollectionEquality().hash(kategoriId),
+      const DeepCollectionEquality().hash(eventEndDate));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_DiscountDataModelCopyWith<_$_DiscountDataModel> get copyWith =>
+      __$$_DiscountDataModelCopyWithImpl<_$_DiscountDataModel>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DiscountDataModelToJson(this);
+    return _$$_DiscountDataModelToJson(
+      this,
+    );
   }
 }
 
 abstract class _DiscountDataModel implements DiscountDataModel {
   factory _DiscountDataModel(
-          {@JsonKey(name: "customer_code") String? customerCode,
-          @JsonKey(name: "customer_name") String? customerName,
-          @JsonKey(name: "customer_type_id") String? customertypeId,
-          @JsonKey(name: "event_discount") String? eventDiscount,
-          @JsonKey(name: "kategori_id") String? kategoriId,
-          @JsonKey(name: "event_end_date") String? eventEndDate}) =
+          {@JsonKey(name: "customer_code") final String? customerCode,
+          @JsonKey(name: "customer_name") final String? customerName,
+          @JsonKey(name: "customer_type_id") final String? customertypeId,
+          @JsonKey(name: "event_discount") final String? eventDiscount,
+          @JsonKey(name: "kategori_id") final String? kategoriId,
+          @JsonKey(name: "event_end_date") final String? eventEndDate}) =
       _$_DiscountDataModel;
 
   factory _DiscountDataModel.fromJson(Map<String, dynamic> json) =
@@ -291,24 +262,24 @@ abstract class _DiscountDataModel implements DiscountDataModel {
 
   @override
   @JsonKey(name: "customer_code")
-  String? get customerCode => throw _privateConstructorUsedError;
+  String? get customerCode;
   @override
   @JsonKey(name: "customer_name")
-  String? get customerName => throw _privateConstructorUsedError;
+  String? get customerName;
   @override
   @JsonKey(name: "customer_type_id")
-  String? get customertypeId => throw _privateConstructorUsedError;
+  String? get customertypeId;
   @override
   @JsonKey(name: "event_discount")
-  String? get eventDiscount => throw _privateConstructorUsedError;
+  String? get eventDiscount;
   @override
   @JsonKey(name: "kategori_id")
-  String? get kategoriId => throw _privateConstructorUsedError;
+  String? get kategoriId;
   @override
   @JsonKey(name: "event_end_date")
-  String? get eventEndDate => throw _privateConstructorUsedError;
+  String? get eventEndDate;
   @override
   @JsonKey(ignore: true)
-  _$DiscountDataModelCopyWith<_DiscountDataModel> get copyWith =>
+  _$$_DiscountDataModelCopyWith<_$_DiscountDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

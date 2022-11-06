@@ -153,7 +153,6 @@ class _ProductCartItemState extends State<ProductCartItem> {
                       color: Colors.grey[200],
                       child: Text(
                         calculateCurrentTotalQty(widget.item),
-                        // widget.item.totalBuy.toString(),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -270,12 +269,12 @@ class _ProductCartItemState extends State<ProductCartItem> {
                       ),
                       style: TextStyle(fontSize: 17),
                     ),
-                    (widget.item.discount == null)
+                    (widget.item.discount == null || widget.item.discount == 0)
                         ? SizedBox()
                         : Text(
                             (widget.item.isPercentage == true)
                                 ? 'Discount ${widget.item.discount!.toStringAsFixed(0)} %'
-                                : 'Discount ${widget.item.discount!.toStringAsFixed(0)}',
+                                : 'Discount ${formatDiscount(widget.item.discount!)}',
                             style: TextStyle(
                                 color: Colors.green,
                                 fontWeight: FontWeight.bold,
@@ -326,6 +325,16 @@ class _ProductCartItemState extends State<ProductCartItem> {
     );
   }
 
+  String formatDiscount(double disc) {
+    try {
+      final _discount =
+          NumberFormat.currency(symbol: "Rp.", decimalDigits: 0).format(disc);
+      return _discount;
+    } catch (e) {
+      return disc.toString();
+    }
+  }
+
   String calculateConversion(ProductDataModel dataModel, String unit) {
     String _stock = '';
     if (unit == dataModel) {
@@ -335,8 +344,14 @@ class _ProductCartItemState extends State<ProductCartItem> {
       var _unit = double.parse(dataModel.unitConversion!);
       var _total = double.parse(dataModel.qty!);
       var _totalUnit = _total / _unit;
-      _stock =
-          "${_totalUnit.toStringAsFixed(2)}  ${dataModel.purchaseUnitCode}";
+
+      if (_totalUnit % 1 == 0) {
+        _stock =
+            "${_totalUnit.toStringAsFixed(0)}  ${dataModel.purchaseUnitCode}";
+      } else {
+        _stock =
+            "${_totalUnit.toStringAsFixed(2)}  ${dataModel.purchaseUnitCode}";
+      }
     }
     return _stock;
   }
@@ -349,6 +364,10 @@ class _ProductCartItemState extends State<ProductCartItem> {
       var _unit = double.parse(dataModel.unitConversion!);
       var _total = double.parse(dataModel.totalBuy.toString());
       _totalBuy = _total / _unit;
+    }
+
+    if (_totalBuy % 1 == 0) {
+      return _totalBuy.toStringAsFixed(0);
     }
     return _totalBuy.toStringAsFixed(0);
   }

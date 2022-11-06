@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'product_data_model.dart';
@@ -11,120 +12,11 @@ part of 'product_data_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ProductDataModel _$ProductDataModelFromJson(Map<String, dynamic> json) {
   return _ProductDataModel.fromJson(json);
 }
-
-/// @nodoc
-class _$ProductDataModelTearOff {
-  const _$ProductDataModelTearOff();
-
-  _ProductDataModel call(
-      {@JsonKey(name: 'item_id')
-          String? itemId,
-      @JsonKey(name: 'item_code')
-          String? itemCode,
-      @JsonKey(name: 'barcode')
-          String? barcode,
-      @JsonKey(name: 'item_sku')
-          String? itemSku,
-      @JsonKey(name: 'purch_unit_code', includeIfNull: true, defaultValue: "")
-          String? purchaseUnitCode,
-      @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "")
-          String? unitConversion,
-      @JsonKey(name: 'update_date')
-          String? updateDate,
-      @JsonKey(name: 'kategori_id')
-          String? kategoriId,
-      @JsonKey(name: 'customer_type_id', includeIfNull: true)
-          String? customerTypeId,
-      @JsonKey(name: 'internal_code')
-          String? internalCode,
-      @JsonKey(name: 'kategori_code')
-          String? kategoriCode,
-      @JsonKey(name: 'kategori')
-          String? kategori,
-      @JsonKey(name: 'kat_picture')
-          String? katPicture,
-      @JsonKey(name: 'item_name')
-          String? itemName,
-      @JsonKey(name: 'description')
-          String? description,
-      @JsonKey(name: 'item_price')
-          String? itemPrice,
-      @JsonKey(name: 'new_price')
-          String? newPrice,
-      @JsonKey(name: 'itm_price_fmt')
-          String? itmPriceFmt,
-      @JsonKey(name: 'is_fixed_price')
-          String? isFixedPrice,
-      @JsonKey(name: 'qty')
-          String? qty,
-      @JsonKey(name: 'unit_code', includeIfNull: true, defaultValue: "")
-          String? unitCode,
-      @JsonKey(name: 'tax_code')
-          String? taxCode,
-      @JsonKey(name: 'pic')
-          String? pic,
-      @JsonKey(name: 'display_store')
-          String? displayStore,
-      @JsonKey(name: 'weight')
-          String? weight,
-      @JsonKey(name: 'in_order')
-          String? inOrder,
-      String? selectedUnit,
-      @JsonKey(name: 'discount', includeIfNull: true)
-          double? discount = 0,
-      @JsonKey(name: 'is_percentage')
-          bool? isPercentage = true,
-      @JsonKey(name: 'isChecked')
-          bool? isChecked = false,
-      @JsonKey(name: 'total_buy')
-          int totalBuy = 0}) {
-    return _ProductDataModel(
-      itemId: itemId,
-      itemCode: itemCode,
-      barcode: barcode,
-      itemSku: itemSku,
-      purchaseUnitCode: purchaseUnitCode,
-      unitConversion: unitConversion,
-      updateDate: updateDate,
-      kategoriId: kategoriId,
-      customerTypeId: customerTypeId,
-      internalCode: internalCode,
-      kategoriCode: kategoriCode,
-      kategori: kategori,
-      katPicture: katPicture,
-      itemName: itemName,
-      description: description,
-      itemPrice: itemPrice,
-      newPrice: newPrice,
-      itmPriceFmt: itmPriceFmt,
-      isFixedPrice: isFixedPrice,
-      qty: qty,
-      unitCode: unitCode,
-      taxCode: taxCode,
-      pic: pic,
-      displayStore: displayStore,
-      weight: weight,
-      inOrder: inOrder,
-      selectedUnit: selectedUnit,
-      discount: discount,
-      isPercentage: isPercentage,
-      isChecked: isChecked,
-      totalBuy: totalBuy,
-    );
-  }
-
-  ProductDataModel fromJson(Map<String, Object> json) {
-    return ProductDataModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ProductDataModel = _$ProductDataModelTearOff();
 
 /// @nodoc
 mixin _$ProductDataModel {
@@ -138,7 +30,7 @@ mixin _$ProductDataModel {
   String? get itemSku => throw _privateConstructorUsedError;
   @JsonKey(name: 'purch_unit_code', includeIfNull: true, defaultValue: "")
   String? get purchaseUnitCode => throw _privateConstructorUsedError;
-  @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "")
+  @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "1")
   String? get unitConversion => throw _privateConstructorUsedError;
   @JsonKey(name: 'update_date')
   String? get updateDate => throw _privateConstructorUsedError;
@@ -160,7 +52,7 @@ mixin _$ProductDataModel {
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'item_price')
   String? get itemPrice => throw _privateConstructorUsedError;
-  @JsonKey(name: 'new_price')
+  @JsonKey(name: 'new_price', defaultValue: "0")
   String? get newPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'itm_price_fmt')
   String? get itmPriceFmt => throw _privateConstructorUsedError;
@@ -212,7 +104,7 @@ abstract class $ProductDataModelCopyWith<$Res> {
           String? itemSku,
       @JsonKey(name: 'purch_unit_code', includeIfNull: true, defaultValue: "")
           String? purchaseUnitCode,
-      @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "")
+      @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "1")
           String? unitConversion,
       @JsonKey(name: 'update_date')
           String? updateDate,
@@ -234,7 +126,7 @@ abstract class $ProductDataModelCopyWith<$Res> {
           String? description,
       @JsonKey(name: 'item_price')
           String? itemPrice,
-      @JsonKey(name: 'new_price')
+      @JsonKey(name: 'new_price', defaultValue: "0")
           String? newPrice,
       @JsonKey(name: 'itm_price_fmt')
           String? itmPriceFmt,
@@ -438,11 +330,11 @@ class _$ProductDataModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProductDataModelCopyWith<$Res>
+abstract class _$$_ProductDataModelCopyWith<$Res>
     implements $ProductDataModelCopyWith<$Res> {
-  factory _$ProductDataModelCopyWith(
-          _ProductDataModel value, $Res Function(_ProductDataModel) then) =
-      __$ProductDataModelCopyWithImpl<$Res>;
+  factory _$$_ProductDataModelCopyWith(
+          _$_ProductDataModel value, $Res Function(_$_ProductDataModel) then) =
+      __$$_ProductDataModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'item_id')
@@ -455,7 +347,7 @@ abstract class _$ProductDataModelCopyWith<$Res>
           String? itemSku,
       @JsonKey(name: 'purch_unit_code', includeIfNull: true, defaultValue: "")
           String? purchaseUnitCode,
-      @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "")
+      @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "1")
           String? unitConversion,
       @JsonKey(name: 'update_date')
           String? updateDate,
@@ -477,7 +369,7 @@ abstract class _$ProductDataModelCopyWith<$Res>
           String? description,
       @JsonKey(name: 'item_price')
           String? itemPrice,
-      @JsonKey(name: 'new_price')
+      @JsonKey(name: 'new_price', defaultValue: "0")
           String? newPrice,
       @JsonKey(name: 'itm_price_fmt')
           String? itmPriceFmt,
@@ -509,15 +401,15 @@ abstract class _$ProductDataModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ProductDataModelCopyWithImpl<$Res>
+class __$$_ProductDataModelCopyWithImpl<$Res>
     extends _$ProductDataModelCopyWithImpl<$Res>
-    implements _$ProductDataModelCopyWith<$Res> {
-  __$ProductDataModelCopyWithImpl(
-      _ProductDataModel _value, $Res Function(_ProductDataModel) _then)
-      : super(_value, (v) => _then(v as _ProductDataModel));
+    implements _$$_ProductDataModelCopyWith<$Res> {
+  __$$_ProductDataModelCopyWithImpl(
+      _$_ProductDataModel _value, $Res Function(_$_ProductDataModel) _then)
+      : super(_value, (v) => _then(v as _$_ProductDataModel));
 
   @override
-  _ProductDataModel get _value => super._value as _ProductDataModel;
+  _$_ProductDataModel get _value => super._value as _$_ProductDataModel;
 
   @override
   $Res call({
@@ -553,7 +445,7 @@ class __$ProductDataModelCopyWithImpl<$Res>
     Object? isChecked = freezed,
     Object? totalBuy = freezed,
   }) {
-    return _then(_ProductDataModel(
+    return _then(_$_ProductDataModel(
       itemId: itemId == freezed
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
@@ -696,7 +588,7 @@ class _$_ProductDataModel implements _ProductDataModel {
           this.itemSku,
       @JsonKey(name: 'purch_unit_code', includeIfNull: true, defaultValue: "")
           this.purchaseUnitCode,
-      @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "")
+      @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "1")
           this.unitConversion,
       @JsonKey(name: 'update_date')
           this.updateDate,
@@ -718,7 +610,7 @@ class _$_ProductDataModel implements _ProductDataModel {
           this.description,
       @JsonKey(name: 'item_price')
           this.itemPrice,
-      @JsonKey(name: 'new_price')
+      @JsonKey(name: 'new_price', defaultValue: "0")
           this.newPrice,
       @JsonKey(name: 'itm_price_fmt')
           this.itmPriceFmt,
@@ -767,7 +659,7 @@ class _$_ProductDataModel implements _ProductDataModel {
   @JsonKey(name: 'purch_unit_code', includeIfNull: true, defaultValue: "")
   final String? purchaseUnitCode;
   @override
-  @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "")
+  @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "1")
   final String? unitConversion;
   @override
   @JsonKey(name: 'update_date')
@@ -800,7 +692,7 @@ class _$_ProductDataModel implements _ProductDataModel {
   @JsonKey(name: 'item_price')
   final String? itemPrice;
   @override
-  @JsonKey(name: 'new_price')
+  @JsonKey(name: 'new_price', defaultValue: "0")
   final String? newPrice;
   @override
   @JsonKey(name: 'itm_price_fmt')
@@ -852,290 +744,266 @@ class _$_ProductDataModel implements _ProductDataModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ProductDataModel &&
-            (identical(other.itemId, itemId) ||
-                const DeepCollectionEquality().equals(other.itemId, itemId)) &&
-            (identical(other.itemCode, itemCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.itemCode, itemCode)) &&
-            (identical(other.barcode, barcode) ||
-                const DeepCollectionEquality()
-                    .equals(other.barcode, barcode)) &&
-            (identical(other.itemSku, itemSku) ||
-                const DeepCollectionEquality()
-                    .equals(other.itemSku, itemSku)) &&
-            (identical(other.purchaseUnitCode, purchaseUnitCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.purchaseUnitCode, purchaseUnitCode)) &&
-            (identical(other.unitConversion, unitConversion) ||
-                const DeepCollectionEquality()
-                    .equals(other.unitConversion, unitConversion)) &&
-            (identical(other.updateDate, updateDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.updateDate, updateDate)) &&
-            (identical(other.kategoriId, kategoriId) ||
-                const DeepCollectionEquality()
-                    .equals(other.kategoriId, kategoriId)) &&
-            (identical(other.customerTypeId, customerTypeId) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerTypeId, customerTypeId)) &&
-            (identical(other.internalCode, internalCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.internalCode, internalCode)) &&
-            (identical(other.kategoriCode, kategoriCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.kategoriCode, kategoriCode)) &&
-            (identical(other.kategori, kategori) ||
-                const DeepCollectionEquality()
-                    .equals(other.kategori, kategori)) &&
-            (identical(other.katPicture, katPicture) ||
-                const DeepCollectionEquality()
-                    .equals(other.katPicture, katPicture)) &&
-            (identical(other.itemName, itemName) ||
-                const DeepCollectionEquality()
-                    .equals(other.itemName, itemName)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.itemPrice, itemPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.itemPrice, itemPrice)) &&
-            (identical(other.newPrice, newPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.newPrice, newPrice)) &&
-            (identical(other.itmPriceFmt, itmPriceFmt) ||
-                const DeepCollectionEquality()
-                    .equals(other.itmPriceFmt, itmPriceFmt)) &&
-            (identical(other.isFixedPrice, isFixedPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.isFixedPrice, isFixedPrice)) &&
-            (identical(other.qty, qty) ||
-                const DeepCollectionEquality().equals(other.qty, qty)) &&
-            (identical(other.unitCode, unitCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.unitCode, unitCode)) &&
-            (identical(other.taxCode, taxCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.taxCode, taxCode)) &&
-            (identical(other.pic, pic) ||
-                const DeepCollectionEquality().equals(other.pic, pic)) &&
-            (identical(other.displayStore, displayStore) || const DeepCollectionEquality().equals(other.displayStore, displayStore)) &&
-            (identical(other.weight, weight) || const DeepCollectionEquality().equals(other.weight, weight)) &&
-            (identical(other.inOrder, inOrder) || const DeepCollectionEquality().equals(other.inOrder, inOrder)) &&
-            (identical(other.selectedUnit, selectedUnit) || const DeepCollectionEquality().equals(other.selectedUnit, selectedUnit)) &&
-            (identical(other.discount, discount) || const DeepCollectionEquality().equals(other.discount, discount)) &&
-            (identical(other.isPercentage, isPercentage) || const DeepCollectionEquality().equals(other.isPercentage, isPercentage)) &&
-            (identical(other.isChecked, isChecked) || const DeepCollectionEquality().equals(other.isChecked, isChecked)) &&
-            (identical(other.totalBuy, totalBuy) || const DeepCollectionEquality().equals(other.totalBuy, totalBuy)));
+        (other.runtimeType == runtimeType &&
+            other is _$_ProductDataModel &&
+            const DeepCollectionEquality().equals(other.itemId, itemId) &&
+            const DeepCollectionEquality().equals(other.itemCode, itemCode) &&
+            const DeepCollectionEquality().equals(other.barcode, barcode) &&
+            const DeepCollectionEquality().equals(other.itemSku, itemSku) &&
+            const DeepCollectionEquality()
+                .equals(other.purchaseUnitCode, purchaseUnitCode) &&
+            const DeepCollectionEquality()
+                .equals(other.unitConversion, unitConversion) &&
+            const DeepCollectionEquality()
+                .equals(other.updateDate, updateDate) &&
+            const DeepCollectionEquality()
+                .equals(other.kategoriId, kategoriId) &&
+            const DeepCollectionEquality()
+                .equals(other.customerTypeId, customerTypeId) &&
+            const DeepCollectionEquality()
+                .equals(other.internalCode, internalCode) &&
+            const DeepCollectionEquality()
+                .equals(other.kategoriCode, kategoriCode) &&
+            const DeepCollectionEquality().equals(other.kategori, kategori) &&
+            const DeepCollectionEquality()
+                .equals(other.katPicture, katPicture) &&
+            const DeepCollectionEquality().equals(other.itemName, itemName) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.itemPrice, itemPrice) &&
+            const DeepCollectionEquality().equals(other.newPrice, newPrice) &&
+            const DeepCollectionEquality()
+                .equals(other.itmPriceFmt, itmPriceFmt) &&
+            const DeepCollectionEquality()
+                .equals(other.isFixedPrice, isFixedPrice) &&
+            const DeepCollectionEquality().equals(other.qty, qty) &&
+            const DeepCollectionEquality().equals(other.unitCode, unitCode) &&
+            const DeepCollectionEquality().equals(other.taxCode, taxCode) &&
+            const DeepCollectionEquality().equals(other.pic, pic) &&
+            const DeepCollectionEquality()
+                .equals(other.displayStore, displayStore) &&
+            const DeepCollectionEquality().equals(other.weight, weight) &&
+            const DeepCollectionEquality().equals(other.inOrder, inOrder) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedUnit, selectedUnit) &&
+            const DeepCollectionEquality().equals(other.discount, discount) &&
+            const DeepCollectionEquality()
+                .equals(other.isPercentage, isPercentage) &&
+            const DeepCollectionEquality().equals(other.isChecked, isChecked) &&
+            const DeepCollectionEquality().equals(other.totalBuy, totalBuy));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(itemId) ^
-      const DeepCollectionEquality().hash(itemCode) ^
-      const DeepCollectionEquality().hash(barcode) ^
-      const DeepCollectionEquality().hash(itemSku) ^
-      const DeepCollectionEquality().hash(purchaseUnitCode) ^
-      const DeepCollectionEquality().hash(unitConversion) ^
-      const DeepCollectionEquality().hash(updateDate) ^
-      const DeepCollectionEquality().hash(kategoriId) ^
-      const DeepCollectionEquality().hash(customerTypeId) ^
-      const DeepCollectionEquality().hash(internalCode) ^
-      const DeepCollectionEquality().hash(kategoriCode) ^
-      const DeepCollectionEquality().hash(kategori) ^
-      const DeepCollectionEquality().hash(katPicture) ^
-      const DeepCollectionEquality().hash(itemName) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(itemPrice) ^
-      const DeepCollectionEquality().hash(newPrice) ^
-      const DeepCollectionEquality().hash(itmPriceFmt) ^
-      const DeepCollectionEquality().hash(isFixedPrice) ^
-      const DeepCollectionEquality().hash(qty) ^
-      const DeepCollectionEquality().hash(unitCode) ^
-      const DeepCollectionEquality().hash(taxCode) ^
-      const DeepCollectionEquality().hash(pic) ^
-      const DeepCollectionEquality().hash(displayStore) ^
-      const DeepCollectionEquality().hash(weight) ^
-      const DeepCollectionEquality().hash(inOrder) ^
-      const DeepCollectionEquality().hash(selectedUnit) ^
-      const DeepCollectionEquality().hash(discount) ^
-      const DeepCollectionEquality().hash(isPercentage) ^
-      const DeepCollectionEquality().hash(isChecked) ^
-      const DeepCollectionEquality().hash(totalBuy);
 
   @JsonKey(ignore: true)
   @override
-  _$ProductDataModelCopyWith<_ProductDataModel> get copyWith =>
-      __$ProductDataModelCopyWithImpl<_ProductDataModel>(this, _$identity);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(itemId),
+        const DeepCollectionEquality().hash(itemCode),
+        const DeepCollectionEquality().hash(barcode),
+        const DeepCollectionEquality().hash(itemSku),
+        const DeepCollectionEquality().hash(purchaseUnitCode),
+        const DeepCollectionEquality().hash(unitConversion),
+        const DeepCollectionEquality().hash(updateDate),
+        const DeepCollectionEquality().hash(kategoriId),
+        const DeepCollectionEquality().hash(customerTypeId),
+        const DeepCollectionEquality().hash(internalCode),
+        const DeepCollectionEquality().hash(kategoriCode),
+        const DeepCollectionEquality().hash(kategori),
+        const DeepCollectionEquality().hash(katPicture),
+        const DeepCollectionEquality().hash(itemName),
+        const DeepCollectionEquality().hash(description),
+        const DeepCollectionEquality().hash(itemPrice),
+        const DeepCollectionEquality().hash(newPrice),
+        const DeepCollectionEquality().hash(itmPriceFmt),
+        const DeepCollectionEquality().hash(isFixedPrice),
+        const DeepCollectionEquality().hash(qty),
+        const DeepCollectionEquality().hash(unitCode),
+        const DeepCollectionEquality().hash(taxCode),
+        const DeepCollectionEquality().hash(pic),
+        const DeepCollectionEquality().hash(displayStore),
+        const DeepCollectionEquality().hash(weight),
+        const DeepCollectionEquality().hash(inOrder),
+        const DeepCollectionEquality().hash(selectedUnit),
+        const DeepCollectionEquality().hash(discount),
+        const DeepCollectionEquality().hash(isPercentage),
+        const DeepCollectionEquality().hash(isChecked),
+        const DeepCollectionEquality().hash(totalBuy)
+      ]);
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ProductDataModelCopyWith<_$_ProductDataModel> get copyWith =>
+      __$$_ProductDataModelCopyWithImpl<_$_ProductDataModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductDataModelToJson(this);
+    return _$$_ProductDataModelToJson(
+      this,
+    );
   }
 }
 
 abstract class _ProductDataModel implements ProductDataModel {
   factory _ProductDataModel(
       {@JsonKey(name: 'item_id')
-          String? itemId,
+          final String? itemId,
       @JsonKey(name: 'item_code')
-          String? itemCode,
+          final String? itemCode,
       @JsonKey(name: 'barcode')
-          String? barcode,
+          final String? barcode,
       @JsonKey(name: 'item_sku')
-          String? itemSku,
+          final String? itemSku,
       @JsonKey(name: 'purch_unit_code', includeIfNull: true, defaultValue: "")
-          String? purchaseUnitCode,
-      @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "")
-          String? unitConversion,
+          final String? purchaseUnitCode,
+      @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "1")
+          final String? unitConversion,
       @JsonKey(name: 'update_date')
-          String? updateDate,
+          final String? updateDate,
       @JsonKey(name: 'kategori_id')
-          String? kategoriId,
+          final String? kategoriId,
       @JsonKey(name: 'customer_type_id', includeIfNull: true)
-          String? customerTypeId,
+          final String? customerTypeId,
       @JsonKey(name: 'internal_code')
-          String? internalCode,
+          final String? internalCode,
       @JsonKey(name: 'kategori_code')
-          String? kategoriCode,
+          final String? kategoriCode,
       @JsonKey(name: 'kategori')
-          String? kategori,
+          final String? kategori,
       @JsonKey(name: 'kat_picture')
-          String? katPicture,
+          final String? katPicture,
       @JsonKey(name: 'item_name')
-          String? itemName,
+          final String? itemName,
       @JsonKey(name: 'description')
-          String? description,
+          final String? description,
       @JsonKey(name: 'item_price')
-          String? itemPrice,
-      @JsonKey(name: 'new_price')
-          String? newPrice,
+          final String? itemPrice,
+      @JsonKey(name: 'new_price', defaultValue: "0")
+          final String? newPrice,
       @JsonKey(name: 'itm_price_fmt')
-          String? itmPriceFmt,
+          final String? itmPriceFmt,
       @JsonKey(name: 'is_fixed_price')
-          String? isFixedPrice,
+          final String? isFixedPrice,
       @JsonKey(name: 'qty')
-          String? qty,
+          final String? qty,
       @JsonKey(name: 'unit_code', includeIfNull: true, defaultValue: "")
-          String? unitCode,
+          final String? unitCode,
       @JsonKey(name: 'tax_code')
-          String? taxCode,
+          final String? taxCode,
       @JsonKey(name: 'pic')
-          String? pic,
+          final String? pic,
       @JsonKey(name: 'display_store')
-          String? displayStore,
+          final String? displayStore,
       @JsonKey(name: 'weight')
-          String? weight,
+          final String? weight,
       @JsonKey(name: 'in_order')
-          String? inOrder,
-      String? selectedUnit,
+          final String? inOrder,
+      final String? selectedUnit,
       @JsonKey(name: 'discount', includeIfNull: true)
-          double? discount,
+          final double? discount,
       @JsonKey(name: 'is_percentage')
-          bool? isPercentage,
+          final bool? isPercentage,
       @JsonKey(name: 'isChecked')
-          bool? isChecked,
+          final bool? isChecked,
       @JsonKey(name: 'total_buy')
-          int totalBuy}) = _$_ProductDataModel;
+          final int totalBuy}) = _$_ProductDataModel;
 
   factory _ProductDataModel.fromJson(Map<String, dynamic> json) =
       _$_ProductDataModel.fromJson;
 
   @override
   @JsonKey(name: 'item_id')
-  String? get itemId => throw _privateConstructorUsedError;
+  String? get itemId;
   @override
   @JsonKey(name: 'item_code')
-  String? get itemCode => throw _privateConstructorUsedError;
+  String? get itemCode;
   @override
   @JsonKey(name: 'barcode')
-  String? get barcode => throw _privateConstructorUsedError;
+  String? get barcode;
   @override
   @JsonKey(name: 'item_sku')
-  String? get itemSku => throw _privateConstructorUsedError;
+  String? get itemSku;
   @override
   @JsonKey(name: 'purch_unit_code', includeIfNull: true, defaultValue: "")
-  String? get purchaseUnitCode => throw _privateConstructorUsedError;
+  String? get purchaseUnitCode;
   @override
-  @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "")
-  String? get unitConversion => throw _privateConstructorUsedError;
+  @JsonKey(name: 'unit_conversion', includeIfNull: true, defaultValue: "1")
+  String? get unitConversion;
   @override
   @JsonKey(name: 'update_date')
-  String? get updateDate => throw _privateConstructorUsedError;
+  String? get updateDate;
   @override
   @JsonKey(name: 'kategori_id')
-  String? get kategoriId => throw _privateConstructorUsedError;
+  String? get kategoriId;
   @override
   @JsonKey(name: 'customer_type_id', includeIfNull: true)
-  String? get customerTypeId => throw _privateConstructorUsedError;
+  String? get customerTypeId;
   @override
   @JsonKey(name: 'internal_code')
-  String? get internalCode => throw _privateConstructorUsedError;
+  String? get internalCode;
   @override
   @JsonKey(name: 'kategori_code')
-  String? get kategoriCode => throw _privateConstructorUsedError;
+  String? get kategoriCode;
   @override
   @JsonKey(name: 'kategori')
-  String? get kategori => throw _privateConstructorUsedError;
+  String? get kategori;
   @override
   @JsonKey(name: 'kat_picture')
-  String? get katPicture => throw _privateConstructorUsedError;
+  String? get katPicture;
   @override
   @JsonKey(name: 'item_name')
-  String? get itemName => throw _privateConstructorUsedError;
+  String? get itemName;
   @override
   @JsonKey(name: 'description')
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
   @JsonKey(name: 'item_price')
-  String? get itemPrice => throw _privateConstructorUsedError;
+  String? get itemPrice;
   @override
-  @JsonKey(name: 'new_price')
-  String? get newPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'new_price', defaultValue: "0")
+  String? get newPrice;
   @override
   @JsonKey(name: 'itm_price_fmt')
-  String? get itmPriceFmt => throw _privateConstructorUsedError;
+  String? get itmPriceFmt;
   @override
   @JsonKey(name: 'is_fixed_price')
-  String? get isFixedPrice => throw _privateConstructorUsedError;
+  String? get isFixedPrice;
   @override
   @JsonKey(name: 'qty')
-  String? get qty => throw _privateConstructorUsedError;
+  String? get qty;
   @override
   @JsonKey(name: 'unit_code', includeIfNull: true, defaultValue: "")
-  String? get unitCode => throw _privateConstructorUsedError;
+  String? get unitCode;
   @override
   @JsonKey(name: 'tax_code')
-  String? get taxCode => throw _privateConstructorUsedError;
+  String? get taxCode;
   @override
   @JsonKey(name: 'pic')
-  String? get pic => throw _privateConstructorUsedError;
+  String? get pic;
   @override
   @JsonKey(name: 'display_store')
-  String? get displayStore => throw _privateConstructorUsedError;
+  String? get displayStore;
   @override
   @JsonKey(name: 'weight')
-  String? get weight => throw _privateConstructorUsedError;
+  String? get weight;
   @override
   @JsonKey(name: 'in_order')
-  String? get inOrder => throw _privateConstructorUsedError;
+  String? get inOrder;
   @override
-  String? get selectedUnit => throw _privateConstructorUsedError;
+  String? get selectedUnit;
   @override
   @JsonKey(name: 'discount', includeIfNull: true)
-  double? get discount => throw _privateConstructorUsedError;
+  double? get discount;
   @override
   @JsonKey(name: 'is_percentage')
-  bool? get isPercentage => throw _privateConstructorUsedError;
+  bool? get isPercentage;
   @override
   @JsonKey(name: 'isChecked')
-  bool? get isChecked => throw _privateConstructorUsedError;
+  bool? get isChecked;
   @override
   @JsonKey(name: 'total_buy')
-  int get totalBuy => throw _privateConstructorUsedError;
+  int get totalBuy;
   @override
   @JsonKey(ignore: true)
-  _$ProductDataModelCopyWith<_ProductDataModel> get copyWith =>
+  _$$_ProductDataModelCopyWith<_$_ProductDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

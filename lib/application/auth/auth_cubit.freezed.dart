@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'auth_cubit.dart';
@@ -11,59 +12,7 @@ part of 'auth_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AuthStateTearOff {
-  const _$AuthStateTearOff();
-
-  _Initial initial() {
-    return const _Initial();
-  }
-
-  _OnLoading onLoading() {
-    return const _OnLoading();
-  }
-
-  _OnError onError(String errorMessage) {
-    return _OnError(
-      errorMessage,
-    );
-  }
-
-  _OnGetLocation onGetLocation(List<LocationDataModel> locations) {
-    return _OnGetLocation(
-      locations,
-    );
-  }
-
-  _OnValidateLocation onValidateLocation(List<String> location) {
-    return _OnValidateLocation(
-      location,
-    );
-  }
-
-  _OnGetPaymentTerm onGetPaymentTerm(List<PaymentTerm> paymentTermList) {
-    return _OnGetPaymentTerm(
-      paymentTermList,
-    );
-  }
-
-  _OnGetPaymentType onGetPaymentType(List<PaymentType> paymentTypeList) {
-    return _OnGetPaymentType(
-      paymentTypeList,
-    );
-  }
-
-  _OnAuthenticate onAuthenticate(LocationDataModel user) {
-    return _OnAuthenticate(
-      user,
-    );
-  }
-}
-
-/// @nodoc
-const $AuthState = _$AuthStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AuthState {
@@ -161,19 +110,20 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$$_InitialCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class __$$_InitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, (v) => _then(v as _$_Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _$_Initial get _value => super._value as _$_Initial;
 }
 
 /// @nodoc
@@ -188,7 +138,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -300,20 +251,21 @@ abstract class _Initial implements AuthState {
 }
 
 /// @nodoc
-abstract class _$OnLoadingCopyWith<$Res> {
-  factory _$OnLoadingCopyWith(
-          _OnLoading value, $Res Function(_OnLoading) then) =
-      __$OnLoadingCopyWithImpl<$Res>;
+abstract class _$$_OnLoadingCopyWith<$Res> {
+  factory _$$_OnLoadingCopyWith(
+          _$_OnLoading value, $Res Function(_$_OnLoading) then) =
+      __$$_OnLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$OnLoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements _$OnLoadingCopyWith<$Res> {
-  __$OnLoadingCopyWithImpl(_OnLoading _value, $Res Function(_OnLoading) _then)
-      : super(_value, (v) => _then(v as _OnLoading));
+class __$$_OnLoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$_OnLoadingCopyWith<$Res> {
+  __$$_OnLoadingCopyWithImpl(
+      _$_OnLoading _value, $Res Function(_$_OnLoading) _then)
+      : super(_value, (v) => _then(v as _$_OnLoading));
 
   @override
-  _OnLoading get _value => super._value as _OnLoading;
+  _$_OnLoading get _value => super._value as _$_OnLoading;
 }
 
 /// @nodoc
@@ -328,7 +280,8 @@ class _$_OnLoading implements _OnLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _OnLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_OnLoading);
   }
 
   @override
@@ -440,26 +393,27 @@ abstract class _OnLoading implements AuthState {
 }
 
 /// @nodoc
-abstract class _$OnErrorCopyWith<$Res> {
-  factory _$OnErrorCopyWith(_OnError value, $Res Function(_OnError) then) =
-      __$OnErrorCopyWithImpl<$Res>;
+abstract class _$$_OnErrorCopyWith<$Res> {
+  factory _$$_OnErrorCopyWith(
+          _$_OnError value, $Res Function(_$_OnError) then) =
+      __$$_OnErrorCopyWithImpl<$Res>;
   $Res call({String errorMessage});
 }
 
 /// @nodoc
-class __$OnErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements _$OnErrorCopyWith<$Res> {
-  __$OnErrorCopyWithImpl(_OnError _value, $Res Function(_OnError) _then)
-      : super(_value, (v) => _then(v as _OnError));
+class __$$_OnErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$_OnErrorCopyWith<$Res> {
+  __$$_OnErrorCopyWithImpl(_$_OnError _value, $Res Function(_$_OnError) _then)
+      : super(_value, (v) => _then(v as _$_OnError));
 
   @override
-  _OnError get _value => super._value as _OnError;
+  _$_OnError get _value => super._value as _$_OnError;
 
   @override
   $Res call({
     Object? errorMessage = freezed,
   }) {
-    return _then(_OnError(
+    return _then(_$_OnError(
       errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -484,20 +438,20 @@ class _$_OnError implements _OnError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnError &&
-            (identical(other.errorMessage, errorMessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.errorMessage, errorMessage)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnError &&
+            const DeepCollectionEquality()
+                .equals(other.errorMessage, errorMessage));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(errorMessage));
 
   @JsonKey(ignore: true)
   @override
-  _$OnErrorCopyWith<_OnError> get copyWith =>
-      __$OnErrorCopyWithImpl<_OnError>(this, _$identity);
+  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
+      __$$_OnErrorCopyWithImpl<_$_OnError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -601,39 +555,39 @@ class _$_OnError implements _OnError {
 }
 
 abstract class _OnError implements AuthState {
-  const factory _OnError(String errorMessage) = _$_OnError;
+  const factory _OnError(final String errorMessage) = _$_OnError;
 
-  String get errorMessage => throw _privateConstructorUsedError;
+  String get errorMessage;
   @JsonKey(ignore: true)
-  _$OnErrorCopyWith<_OnError> get copyWith =>
+  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnGetLocationCopyWith<$Res> {
-  factory _$OnGetLocationCopyWith(
-          _OnGetLocation value, $Res Function(_OnGetLocation) then) =
-      __$OnGetLocationCopyWithImpl<$Res>;
+abstract class _$$_OnGetLocationCopyWith<$Res> {
+  factory _$$_OnGetLocationCopyWith(
+          _$_OnGetLocation value, $Res Function(_$_OnGetLocation) then) =
+      __$$_OnGetLocationCopyWithImpl<$Res>;
   $Res call({List<LocationDataModel> locations});
 }
 
 /// @nodoc
-class __$OnGetLocationCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements _$OnGetLocationCopyWith<$Res> {
-  __$OnGetLocationCopyWithImpl(
-      _OnGetLocation _value, $Res Function(_OnGetLocation) _then)
-      : super(_value, (v) => _then(v as _OnGetLocation));
+class __$$_OnGetLocationCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$_OnGetLocationCopyWith<$Res> {
+  __$$_OnGetLocationCopyWithImpl(
+      _$_OnGetLocation _value, $Res Function(_$_OnGetLocation) _then)
+      : super(_value, (v) => _then(v as _$_OnGetLocation));
 
   @override
-  _OnGetLocation get _value => super._value as _OnGetLocation;
+  _$_OnGetLocation get _value => super._value as _$_OnGetLocation;
 
   @override
   $Res call({
     Object? locations = freezed,
   }) {
-    return _then(_OnGetLocation(
+    return _then(_$_OnGetLocation(
       locations == freezed
-          ? _value.locations
+          ? _value._locations
           : locations // ignore: cast_nullable_to_non_nullable
               as List<LocationDataModel>,
     ));
@@ -643,10 +597,15 @@ class __$OnGetLocationCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnGetLocation implements _OnGetLocation {
-  const _$_OnGetLocation(this.locations);
+  const _$_OnGetLocation(final List<LocationDataModel> locations)
+      : _locations = locations;
 
+  final List<LocationDataModel> _locations;
   @override
-  final List<LocationDataModel> locations;
+  List<LocationDataModel> get locations {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_locations);
+  }
 
   @override
   String toString() {
@@ -656,20 +615,20 @@ class _$_OnGetLocation implements _OnGetLocation {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnGetLocation &&
-            (identical(other.locations, locations) ||
-                const DeepCollectionEquality()
-                    .equals(other.locations, locations)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnGetLocation &&
+            const DeepCollectionEquality()
+                .equals(other._locations, _locations));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(locations);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_locations));
 
   @JsonKey(ignore: true)
   @override
-  _$OnGetLocationCopyWith<_OnGetLocation> get copyWith =>
-      __$OnGetLocationCopyWithImpl<_OnGetLocation>(this, _$identity);
+  _$$_OnGetLocationCopyWith<_$_OnGetLocation> get copyWith =>
+      __$$_OnGetLocationCopyWithImpl<_$_OnGetLocation>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -773,41 +732,41 @@ class _$_OnGetLocation implements _OnGetLocation {
 }
 
 abstract class _OnGetLocation implements AuthState {
-  const factory _OnGetLocation(List<LocationDataModel> locations) =
+  const factory _OnGetLocation(final List<LocationDataModel> locations) =
       _$_OnGetLocation;
 
-  List<LocationDataModel> get locations => throw _privateConstructorUsedError;
+  List<LocationDataModel> get locations;
   @JsonKey(ignore: true)
-  _$OnGetLocationCopyWith<_OnGetLocation> get copyWith =>
+  _$$_OnGetLocationCopyWith<_$_OnGetLocation> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnValidateLocationCopyWith<$Res> {
-  factory _$OnValidateLocationCopyWith(
-          _OnValidateLocation value, $Res Function(_OnValidateLocation) then) =
-      __$OnValidateLocationCopyWithImpl<$Res>;
+abstract class _$$_OnValidateLocationCopyWith<$Res> {
+  factory _$$_OnValidateLocationCopyWith(_$_OnValidateLocation value,
+          $Res Function(_$_OnValidateLocation) then) =
+      __$$_OnValidateLocationCopyWithImpl<$Res>;
   $Res call({List<String> location});
 }
 
 /// @nodoc
-class __$OnValidateLocationCopyWithImpl<$Res>
+class __$$_OnValidateLocationCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res>
-    implements _$OnValidateLocationCopyWith<$Res> {
-  __$OnValidateLocationCopyWithImpl(
-      _OnValidateLocation _value, $Res Function(_OnValidateLocation) _then)
-      : super(_value, (v) => _then(v as _OnValidateLocation));
+    implements _$$_OnValidateLocationCopyWith<$Res> {
+  __$$_OnValidateLocationCopyWithImpl(
+      _$_OnValidateLocation _value, $Res Function(_$_OnValidateLocation) _then)
+      : super(_value, (v) => _then(v as _$_OnValidateLocation));
 
   @override
-  _OnValidateLocation get _value => super._value as _OnValidateLocation;
+  _$_OnValidateLocation get _value => super._value as _$_OnValidateLocation;
 
   @override
   $Res call({
     Object? location = freezed,
   }) {
-    return _then(_OnValidateLocation(
+    return _then(_$_OnValidateLocation(
       location == freezed
-          ? _value.location
+          ? _value._location
           : location // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
@@ -817,10 +776,15 @@ class __$OnValidateLocationCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnValidateLocation implements _OnValidateLocation {
-  const _$_OnValidateLocation(this.location);
+  const _$_OnValidateLocation(final List<String> location)
+      : _location = location;
 
+  final List<String> _location;
   @override
-  final List<String> location;
+  List<String> get location {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_location);
+  }
 
   @override
   String toString() {
@@ -830,20 +794,20 @@ class _$_OnValidateLocation implements _OnValidateLocation {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnValidateLocation &&
-            (identical(other.location, location) ||
-                const DeepCollectionEquality()
-                    .equals(other.location, location)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnValidateLocation &&
+            const DeepCollectionEquality().equals(other._location, _location));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(location);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_location));
 
   @JsonKey(ignore: true)
   @override
-  _$OnValidateLocationCopyWith<_OnValidateLocation> get copyWith =>
-      __$OnValidateLocationCopyWithImpl<_OnValidateLocation>(this, _$identity);
+  _$$_OnValidateLocationCopyWith<_$_OnValidateLocation> get copyWith =>
+      __$$_OnValidateLocationCopyWithImpl<_$_OnValidateLocation>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -947,41 +911,41 @@ class _$_OnValidateLocation implements _OnValidateLocation {
 }
 
 abstract class _OnValidateLocation implements AuthState {
-  const factory _OnValidateLocation(List<String> location) =
+  const factory _OnValidateLocation(final List<String> location) =
       _$_OnValidateLocation;
 
-  List<String> get location => throw _privateConstructorUsedError;
+  List<String> get location;
   @JsonKey(ignore: true)
-  _$OnValidateLocationCopyWith<_OnValidateLocation> get copyWith =>
+  _$$_OnValidateLocationCopyWith<_$_OnValidateLocation> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnGetPaymentTermCopyWith<$Res> {
-  factory _$OnGetPaymentTermCopyWith(
-          _OnGetPaymentTerm value, $Res Function(_OnGetPaymentTerm) then) =
-      __$OnGetPaymentTermCopyWithImpl<$Res>;
+abstract class _$$_OnGetPaymentTermCopyWith<$Res> {
+  factory _$$_OnGetPaymentTermCopyWith(
+          _$_OnGetPaymentTerm value, $Res Function(_$_OnGetPaymentTerm) then) =
+      __$$_OnGetPaymentTermCopyWithImpl<$Res>;
   $Res call({List<PaymentTerm> paymentTermList});
 }
 
 /// @nodoc
-class __$OnGetPaymentTermCopyWithImpl<$Res>
+class __$$_OnGetPaymentTermCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res>
-    implements _$OnGetPaymentTermCopyWith<$Res> {
-  __$OnGetPaymentTermCopyWithImpl(
-      _OnGetPaymentTerm _value, $Res Function(_OnGetPaymentTerm) _then)
-      : super(_value, (v) => _then(v as _OnGetPaymentTerm));
+    implements _$$_OnGetPaymentTermCopyWith<$Res> {
+  __$$_OnGetPaymentTermCopyWithImpl(
+      _$_OnGetPaymentTerm _value, $Res Function(_$_OnGetPaymentTerm) _then)
+      : super(_value, (v) => _then(v as _$_OnGetPaymentTerm));
 
   @override
-  _OnGetPaymentTerm get _value => super._value as _OnGetPaymentTerm;
+  _$_OnGetPaymentTerm get _value => super._value as _$_OnGetPaymentTerm;
 
   @override
   $Res call({
     Object? paymentTermList = freezed,
   }) {
-    return _then(_OnGetPaymentTerm(
+    return _then(_$_OnGetPaymentTerm(
       paymentTermList == freezed
-          ? _value.paymentTermList
+          ? _value._paymentTermList
           : paymentTermList // ignore: cast_nullable_to_non_nullable
               as List<PaymentTerm>,
     ));
@@ -991,10 +955,15 @@ class __$OnGetPaymentTermCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnGetPaymentTerm implements _OnGetPaymentTerm {
-  const _$_OnGetPaymentTerm(this.paymentTermList);
+  const _$_OnGetPaymentTerm(final List<PaymentTerm> paymentTermList)
+      : _paymentTermList = paymentTermList;
 
+  final List<PaymentTerm> _paymentTermList;
   @override
-  final List<PaymentTerm> paymentTermList;
+  List<PaymentTerm> get paymentTermList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_paymentTermList);
+  }
 
   @override
   String toString() {
@@ -1004,21 +973,20 @@ class _$_OnGetPaymentTerm implements _OnGetPaymentTerm {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnGetPaymentTerm &&
-            (identical(other.paymentTermList, paymentTermList) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentTermList, paymentTermList)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnGetPaymentTerm &&
+            const DeepCollectionEquality()
+                .equals(other._paymentTermList, _paymentTermList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(paymentTermList);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_paymentTermList));
 
   @JsonKey(ignore: true)
   @override
-  _$OnGetPaymentTermCopyWith<_OnGetPaymentTerm> get copyWith =>
-      __$OnGetPaymentTermCopyWithImpl<_OnGetPaymentTerm>(this, _$identity);
+  _$$_OnGetPaymentTermCopyWith<_$_OnGetPaymentTerm> get copyWith =>
+      __$$_OnGetPaymentTermCopyWithImpl<_$_OnGetPaymentTerm>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1122,41 +1090,41 @@ class _$_OnGetPaymentTerm implements _OnGetPaymentTerm {
 }
 
 abstract class _OnGetPaymentTerm implements AuthState {
-  const factory _OnGetPaymentTerm(List<PaymentTerm> paymentTermList) =
+  const factory _OnGetPaymentTerm(final List<PaymentTerm> paymentTermList) =
       _$_OnGetPaymentTerm;
 
-  List<PaymentTerm> get paymentTermList => throw _privateConstructorUsedError;
+  List<PaymentTerm> get paymentTermList;
   @JsonKey(ignore: true)
-  _$OnGetPaymentTermCopyWith<_OnGetPaymentTerm> get copyWith =>
+  _$$_OnGetPaymentTermCopyWith<_$_OnGetPaymentTerm> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnGetPaymentTypeCopyWith<$Res> {
-  factory _$OnGetPaymentTypeCopyWith(
-          _OnGetPaymentType value, $Res Function(_OnGetPaymentType) then) =
-      __$OnGetPaymentTypeCopyWithImpl<$Res>;
+abstract class _$$_OnGetPaymentTypeCopyWith<$Res> {
+  factory _$$_OnGetPaymentTypeCopyWith(
+          _$_OnGetPaymentType value, $Res Function(_$_OnGetPaymentType) then) =
+      __$$_OnGetPaymentTypeCopyWithImpl<$Res>;
   $Res call({List<PaymentType> paymentTypeList});
 }
 
 /// @nodoc
-class __$OnGetPaymentTypeCopyWithImpl<$Res>
+class __$$_OnGetPaymentTypeCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res>
-    implements _$OnGetPaymentTypeCopyWith<$Res> {
-  __$OnGetPaymentTypeCopyWithImpl(
-      _OnGetPaymentType _value, $Res Function(_OnGetPaymentType) _then)
-      : super(_value, (v) => _then(v as _OnGetPaymentType));
+    implements _$$_OnGetPaymentTypeCopyWith<$Res> {
+  __$$_OnGetPaymentTypeCopyWithImpl(
+      _$_OnGetPaymentType _value, $Res Function(_$_OnGetPaymentType) _then)
+      : super(_value, (v) => _then(v as _$_OnGetPaymentType));
 
   @override
-  _OnGetPaymentType get _value => super._value as _OnGetPaymentType;
+  _$_OnGetPaymentType get _value => super._value as _$_OnGetPaymentType;
 
   @override
   $Res call({
     Object? paymentTypeList = freezed,
   }) {
-    return _then(_OnGetPaymentType(
+    return _then(_$_OnGetPaymentType(
       paymentTypeList == freezed
-          ? _value.paymentTypeList
+          ? _value._paymentTypeList
           : paymentTypeList // ignore: cast_nullable_to_non_nullable
               as List<PaymentType>,
     ));
@@ -1166,10 +1134,15 @@ class __$OnGetPaymentTypeCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnGetPaymentType implements _OnGetPaymentType {
-  const _$_OnGetPaymentType(this.paymentTypeList);
+  const _$_OnGetPaymentType(final List<PaymentType> paymentTypeList)
+      : _paymentTypeList = paymentTypeList;
 
+  final List<PaymentType> _paymentTypeList;
   @override
-  final List<PaymentType> paymentTypeList;
+  List<PaymentType> get paymentTypeList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_paymentTypeList);
+  }
 
   @override
   String toString() {
@@ -1179,21 +1152,20 @@ class _$_OnGetPaymentType implements _OnGetPaymentType {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnGetPaymentType &&
-            (identical(other.paymentTypeList, paymentTypeList) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentTypeList, paymentTypeList)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnGetPaymentType &&
+            const DeepCollectionEquality()
+                .equals(other._paymentTypeList, _paymentTypeList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(paymentTypeList);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_paymentTypeList));
 
   @JsonKey(ignore: true)
   @override
-  _$OnGetPaymentTypeCopyWith<_OnGetPaymentType> get copyWith =>
-      __$OnGetPaymentTypeCopyWithImpl<_OnGetPaymentType>(this, _$identity);
+  _$$_OnGetPaymentTypeCopyWith<_$_OnGetPaymentType> get copyWith =>
+      __$$_OnGetPaymentTypeCopyWithImpl<_$_OnGetPaymentType>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1297,40 +1269,41 @@ class _$_OnGetPaymentType implements _OnGetPaymentType {
 }
 
 abstract class _OnGetPaymentType implements AuthState {
-  const factory _OnGetPaymentType(List<PaymentType> paymentTypeList) =
+  const factory _OnGetPaymentType(final List<PaymentType> paymentTypeList) =
       _$_OnGetPaymentType;
 
-  List<PaymentType> get paymentTypeList => throw _privateConstructorUsedError;
+  List<PaymentType> get paymentTypeList;
   @JsonKey(ignore: true)
-  _$OnGetPaymentTypeCopyWith<_OnGetPaymentType> get copyWith =>
+  _$$_OnGetPaymentTypeCopyWith<_$_OnGetPaymentType> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnAuthenticateCopyWith<$Res> {
-  factory _$OnAuthenticateCopyWith(
-          _OnAuthenticate value, $Res Function(_OnAuthenticate) then) =
-      __$OnAuthenticateCopyWithImpl<$Res>;
+abstract class _$$_OnAuthenticateCopyWith<$Res> {
+  factory _$$_OnAuthenticateCopyWith(
+          _$_OnAuthenticate value, $Res Function(_$_OnAuthenticate) then) =
+      __$$_OnAuthenticateCopyWithImpl<$Res>;
   $Res call({LocationDataModel user});
 
   $LocationDataModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
-class __$OnAuthenticateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements _$OnAuthenticateCopyWith<$Res> {
-  __$OnAuthenticateCopyWithImpl(
-      _OnAuthenticate _value, $Res Function(_OnAuthenticate) _then)
-      : super(_value, (v) => _then(v as _OnAuthenticate));
+class __$$_OnAuthenticateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$_OnAuthenticateCopyWith<$Res> {
+  __$$_OnAuthenticateCopyWithImpl(
+      _$_OnAuthenticate _value, $Res Function(_$_OnAuthenticate) _then)
+      : super(_value, (v) => _then(v as _$_OnAuthenticate));
 
   @override
-  _OnAuthenticate get _value => super._value as _OnAuthenticate;
+  _$_OnAuthenticate get _value => super._value as _$_OnAuthenticate;
 
   @override
   $Res call({
     Object? user = freezed,
   }) {
-    return _then(_OnAuthenticate(
+    return _then(_$_OnAuthenticate(
       user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -1362,19 +1335,19 @@ class _$_OnAuthenticate implements _OnAuthenticate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnAuthenticate &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)));
+        (other.runtimeType == runtimeType &&
+            other is _$_OnAuthenticate &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
-  _$OnAuthenticateCopyWith<_OnAuthenticate> get copyWith =>
-      __$OnAuthenticateCopyWithImpl<_OnAuthenticate>(this, _$identity);
+  _$$_OnAuthenticateCopyWith<_$_OnAuthenticate> get copyWith =>
+      __$$_OnAuthenticateCopyWithImpl<_$_OnAuthenticate>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1478,10 +1451,11 @@ class _$_OnAuthenticate implements _OnAuthenticate {
 }
 
 abstract class _OnAuthenticate implements AuthState {
-  const factory _OnAuthenticate(LocationDataModel user) = _$_OnAuthenticate;
+  const factory _OnAuthenticate(final LocationDataModel user) =
+      _$_OnAuthenticate;
 
-  LocationDataModel get user => throw _privateConstructorUsedError;
+  LocationDataModel get user;
   @JsonKey(ignore: true)
-  _$OnAuthenticateCopyWith<_OnAuthenticate> get copyWith =>
+  _$$_OnAuthenticateCopyWith<_$_OnAuthenticate> get copyWith =>
       throw _privateConstructorUsedError;
 }

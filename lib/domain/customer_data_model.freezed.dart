@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'customer_data_model.dart';
@@ -11,67 +12,11 @@ part of 'customer_data_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CustomerDataModel _$CustomerDataModelFromJson(Map<String, dynamic> json) {
   return _CustomerDataModel.fromJson(json);
 }
-
-/// @nodoc
-class _$CustomerDataModelTearOff {
-  const _$CustomerDataModelTearOff();
-
-  _CustomerDataModel call(
-      {@JsonKey(name: '_id', includeIfNull: true)
-          String? sId = "",
-      @JsonKey(name: 'customer_id', includeIfNull: true)
-          String? customerId = "",
-      @JsonKey(name: 'customer_code', includeIfNull: true)
-          String? customerCode = "",
-      @JsonKey(name: 'customer_name', includeIfNull: true)
-          String? customerName = "",
-      @JsonKey(name: 'default_location_id', includeIfNull: true)
-          String? defaultLocationId = "",
-      @JsonKey(name: 'phone1', includeIfNull: true)
-          String? phone1 = "",
-      @JsonKey(name: 'address', includeIfNull: true)
-          String? address = "",
-      @JsonKey(name: 'is_default', includeIfNull: true)
-          String? isDefault = "",
-      @JsonKey(name: 'code', includeIfNull: true)
-          String? code = "",
-      @JsonKey(name: 'point_reward', includeIfNull: true)
-          String? pointReward = "",
-      @JsonKey(name: 'default_type_id', includeIfNull: true)
-          String? defaultTypeId = "",
-      @JsonKey(name: 'default_term_id', includeIfNull: true)
-          String? defaultTermId = "",
-      @JsonKey(name: 'customer_type_id', includeIfNull: true)
-          String? customerTypeId}) {
-    return _CustomerDataModel(
-      sId: sId,
-      customerId: customerId,
-      customerCode: customerCode,
-      customerName: customerName,
-      defaultLocationId: defaultLocationId,
-      phone1: phone1,
-      address: address,
-      isDefault: isDefault,
-      code: code,
-      pointReward: pointReward,
-      defaultTypeId: defaultTypeId,
-      defaultTermId: defaultTermId,
-      customerTypeId: customerTypeId,
-    );
-  }
-
-  CustomerDataModel fromJson(Map<String, Object> json) {
-    return CustomerDataModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CustomerDataModel = _$CustomerDataModelTearOff();
 
 /// @nodoc
 mixin _$CustomerDataModel {
@@ -225,11 +170,11 @@ class _$CustomerDataModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CustomerDataModelCopyWith<$Res>
+abstract class _$$_CustomerDataModelCopyWith<$Res>
     implements $CustomerDataModelCopyWith<$Res> {
-  factory _$CustomerDataModelCopyWith(
-          _CustomerDataModel value, $Res Function(_CustomerDataModel) then) =
-      __$CustomerDataModelCopyWithImpl<$Res>;
+  factory _$$_CustomerDataModelCopyWith(_$_CustomerDataModel value,
+          $Res Function(_$_CustomerDataModel) then) =
+      __$$_CustomerDataModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: '_id', includeIfNull: true)
@@ -261,15 +206,15 @@ abstract class _$CustomerDataModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CustomerDataModelCopyWithImpl<$Res>
+class __$$_CustomerDataModelCopyWithImpl<$Res>
     extends _$CustomerDataModelCopyWithImpl<$Res>
-    implements _$CustomerDataModelCopyWith<$Res> {
-  __$CustomerDataModelCopyWithImpl(
-      _CustomerDataModel _value, $Res Function(_CustomerDataModel) _then)
-      : super(_value, (v) => _then(v as _CustomerDataModel));
+    implements _$$_CustomerDataModelCopyWith<$Res> {
+  __$$_CustomerDataModelCopyWithImpl(
+      _$_CustomerDataModel _value, $Res Function(_$_CustomerDataModel) _then)
+      : super(_value, (v) => _then(v as _$_CustomerDataModel));
 
   @override
-  _CustomerDataModel get _value => super._value as _CustomerDataModel;
+  _$_CustomerDataModel get _value => super._value as _$_CustomerDataModel;
 
   @override
   $Res call({
@@ -287,7 +232,7 @@ class __$CustomerDataModelCopyWithImpl<$Res>
     Object? defaultTermId = freezed,
     Object? customerTypeId = freezed,
   }) {
-    return _then(_CustomerDataModel(
+    return _then(_$_CustomerDataModel(
       sId: sId == freezed
           ? _value.sId
           : sId // ignore: cast_nullable_to_non_nullable
@@ -426,146 +371,136 @@ class _$_CustomerDataModel implements _CustomerDataModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CustomerDataModel &&
-            (identical(other.sId, sId) ||
-                const DeepCollectionEquality().equals(other.sId, sId)) &&
-            (identical(other.customerId, customerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerId, customerId)) &&
-            (identical(other.customerCode, customerCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerCode, customerCode)) &&
-            (identical(other.customerName, customerName) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerName, customerName)) &&
-            (identical(other.defaultLocationId, defaultLocationId) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultLocationId, defaultLocationId)) &&
-            (identical(other.phone1, phone1) ||
-                const DeepCollectionEquality().equals(other.phone1, phone1)) &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
-            (identical(other.isDefault, isDefault) ||
-                const DeepCollectionEquality()
-                    .equals(other.isDefault, isDefault)) &&
-            (identical(other.code, code) ||
-                const DeepCollectionEquality().equals(other.code, code)) &&
-            (identical(other.pointReward, pointReward) ||
-                const DeepCollectionEquality()
-                    .equals(other.pointReward, pointReward)) &&
-            (identical(other.defaultTypeId, defaultTypeId) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultTypeId, defaultTypeId)) &&
-            (identical(other.defaultTermId, defaultTermId) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultTermId, defaultTermId)) &&
-            (identical(other.customerTypeId, customerTypeId) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerTypeId, customerTypeId)));
+        (other.runtimeType == runtimeType &&
+            other is _$_CustomerDataModel &&
+            const DeepCollectionEquality().equals(other.sId, sId) &&
+            const DeepCollectionEquality()
+                .equals(other.customerId, customerId) &&
+            const DeepCollectionEquality()
+                .equals(other.customerCode, customerCode) &&
+            const DeepCollectionEquality()
+                .equals(other.customerName, customerName) &&
+            const DeepCollectionEquality()
+                .equals(other.defaultLocationId, defaultLocationId) &&
+            const DeepCollectionEquality().equals(other.phone1, phone1) &&
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality().equals(other.isDefault, isDefault) &&
+            const DeepCollectionEquality().equals(other.code, code) &&
+            const DeepCollectionEquality()
+                .equals(other.pointReward, pointReward) &&
+            const DeepCollectionEquality()
+                .equals(other.defaultTypeId, defaultTypeId) &&
+            const DeepCollectionEquality()
+                .equals(other.defaultTermId, defaultTermId) &&
+            const DeepCollectionEquality()
+                .equals(other.customerTypeId, customerTypeId));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(sId) ^
-      const DeepCollectionEquality().hash(customerId) ^
-      const DeepCollectionEquality().hash(customerCode) ^
-      const DeepCollectionEquality().hash(customerName) ^
-      const DeepCollectionEquality().hash(defaultLocationId) ^
-      const DeepCollectionEquality().hash(phone1) ^
-      const DeepCollectionEquality().hash(address) ^
-      const DeepCollectionEquality().hash(isDefault) ^
-      const DeepCollectionEquality().hash(code) ^
-      const DeepCollectionEquality().hash(pointReward) ^
-      const DeepCollectionEquality().hash(defaultTypeId) ^
-      const DeepCollectionEquality().hash(defaultTermId) ^
-      const DeepCollectionEquality().hash(customerTypeId);
 
   @JsonKey(ignore: true)
   @override
-  _$CustomerDataModelCopyWith<_CustomerDataModel> get copyWith =>
-      __$CustomerDataModelCopyWithImpl<_CustomerDataModel>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(sId),
+      const DeepCollectionEquality().hash(customerId),
+      const DeepCollectionEquality().hash(customerCode),
+      const DeepCollectionEquality().hash(customerName),
+      const DeepCollectionEquality().hash(defaultLocationId),
+      const DeepCollectionEquality().hash(phone1),
+      const DeepCollectionEquality().hash(address),
+      const DeepCollectionEquality().hash(isDefault),
+      const DeepCollectionEquality().hash(code),
+      const DeepCollectionEquality().hash(pointReward),
+      const DeepCollectionEquality().hash(defaultTypeId),
+      const DeepCollectionEquality().hash(defaultTermId),
+      const DeepCollectionEquality().hash(customerTypeId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_CustomerDataModelCopyWith<_$_CustomerDataModel> get copyWith =>
+      __$$_CustomerDataModelCopyWithImpl<_$_CustomerDataModel>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CustomerDataModelToJson(this);
+    return _$$_CustomerDataModelToJson(
+      this,
+    );
   }
 }
 
 abstract class _CustomerDataModel implements CustomerDataModel {
   factory _CustomerDataModel(
       {@JsonKey(name: '_id', includeIfNull: true)
-          String? sId,
+          final String? sId,
       @JsonKey(name: 'customer_id', includeIfNull: true)
-          String? customerId,
+          final String? customerId,
       @JsonKey(name: 'customer_code', includeIfNull: true)
-          String? customerCode,
+          final String? customerCode,
       @JsonKey(name: 'customer_name', includeIfNull: true)
-          String? customerName,
+          final String? customerName,
       @JsonKey(name: 'default_location_id', includeIfNull: true)
-          String? defaultLocationId,
+          final String? defaultLocationId,
       @JsonKey(name: 'phone1', includeIfNull: true)
-          String? phone1,
+          final String? phone1,
       @JsonKey(name: 'address', includeIfNull: true)
-          String? address,
+          final String? address,
       @JsonKey(name: 'is_default', includeIfNull: true)
-          String? isDefault,
+          final String? isDefault,
       @JsonKey(name: 'code', includeIfNull: true)
-          String? code,
+          final String? code,
       @JsonKey(name: 'point_reward', includeIfNull: true)
-          String? pointReward,
+          final String? pointReward,
       @JsonKey(name: 'default_type_id', includeIfNull: true)
-          String? defaultTypeId,
+          final String? defaultTypeId,
       @JsonKey(name: 'default_term_id', includeIfNull: true)
-          String? defaultTermId,
+          final String? defaultTermId,
       @JsonKey(name: 'customer_type_id', includeIfNull: true)
-          String? customerTypeId}) = _$_CustomerDataModel;
+          final String? customerTypeId}) = _$_CustomerDataModel;
 
   factory _CustomerDataModel.fromJson(Map<String, dynamic> json) =
       _$_CustomerDataModel.fromJson;
 
   @override
   @JsonKey(name: '_id', includeIfNull: true)
-  String? get sId => throw _privateConstructorUsedError;
+  String? get sId;
   @override
   @JsonKey(name: 'customer_id', includeIfNull: true)
-  String? get customerId => throw _privateConstructorUsedError;
+  String? get customerId;
   @override
   @JsonKey(name: 'customer_code', includeIfNull: true)
-  String? get customerCode => throw _privateConstructorUsedError;
+  String? get customerCode;
   @override
   @JsonKey(name: 'customer_name', includeIfNull: true)
-  String? get customerName => throw _privateConstructorUsedError;
+  String? get customerName;
   @override
   @JsonKey(name: 'default_location_id', includeIfNull: true)
-  String? get defaultLocationId => throw _privateConstructorUsedError;
+  String? get defaultLocationId;
   @override
   @JsonKey(name: 'phone1', includeIfNull: true)
-  String? get phone1 => throw _privateConstructorUsedError;
+  String? get phone1;
   @override
   @JsonKey(name: 'address', includeIfNull: true)
-  String? get address => throw _privateConstructorUsedError;
+  String? get address;
   @override
   @JsonKey(name: 'is_default', includeIfNull: true)
-  String? get isDefault => throw _privateConstructorUsedError;
+  String? get isDefault;
   @override
   @JsonKey(name: 'code', includeIfNull: true)
-  String? get code => throw _privateConstructorUsedError;
+  String? get code;
   @override
   @JsonKey(name: 'point_reward', includeIfNull: true)
-  String? get pointReward => throw _privateConstructorUsedError;
+  String? get pointReward;
   @override
   @JsonKey(name: 'default_type_id', includeIfNull: true)
-  String? get defaultTypeId => throw _privateConstructorUsedError;
+  String? get defaultTypeId;
   @override
   @JsonKey(name: 'default_term_id', includeIfNull: true)
-  String? get defaultTermId => throw _privateConstructorUsedError;
+  String? get defaultTermId;
   @override
   @JsonKey(name: 'customer_type_id', includeIfNull: true)
-  String? get customerTypeId => throw _privateConstructorUsedError;
+  String? get customerTypeId;
   @override
   @JsonKey(ignore: true)
-  _$CustomerDataModelCopyWith<_CustomerDataModel> get copyWith =>
+  _$$_CustomerDataModelCopyWith<_$_CustomerDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

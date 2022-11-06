@@ -113,7 +113,7 @@ class _ConfigPageState extends State<ConfigPage> {
                                 },
                                 hintText: "Base Image Url",
                                 controller: _imageUrl,
-                                label: "URL",
+                                label: "Picture URL",
                               ),
                               const Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 10.0),

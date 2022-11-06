@@ -246,6 +246,7 @@ class PrefStorage {
   String getBaseUrl() {
     try {
       final _url = box.read('baseUrl');
+      print(_url);
       return _url;
     } catch (e) {
       throw Exception(e);

@@ -23,8 +23,8 @@ class AuthRepository extends IAuth {
         box.getBaseUrl() + 'weblayer/template/api,SPGApps.vm?cmd=1',
         queryParameters: {'key': box.getToken},
       );
-    print(box.getToken); 
-    print(response.toString()); 
+      print(box.getToken);
+      print(response.toString());
       print(box.getBaseUrl());
 
       List<dynamic> _data = json.decode(response.data);
@@ -33,7 +33,7 @@ class AuthRepository extends IAuth {
           _data.map((e) => LocationDataModel.fromJson(e)).toList();
       return right(_listLocation);
     } on DioError catch (e) {
-      return left(e.toString());
+      return left(e.response!.data.toString());
     } catch (e) {
       return left(e.toString());
     }
