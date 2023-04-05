@@ -313,10 +313,13 @@ class _AddItemPageState extends State<AddItemPage> {
       //find data on list
 
       try {
-        _saleController.getProductList
-            .firstWhere((element) => element.itemCode == code);
-
-        showDefaultSnackbar(context, message: "Data Ditambahkan");
+        final result = _saleController.getProductList
+            .firstWhere((element) => element.barcode == code);
+        print("FINISH");
+        if (result.itemSku != null) {
+          onSingleItemClicked(result.itemSku ?? '');
+          showDefaultSnackbar(context, message: "Data Ditambahkan");
+        }
       } catch (e) {
         showDefaultSnackbar(context, message: "Item tidak ditemukan");
       }

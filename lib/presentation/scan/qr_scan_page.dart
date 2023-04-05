@@ -30,12 +30,16 @@ class _QrScanPageState extends State<QrScanPage> {
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen(
-      (scanData) {
+      (scanData) async {
+        print(scanData);
         result = scanData;
-        controller.pauseCamera();
+        await controller.pauseCamera();
+
         Get.back(result: result!.code, closeOverlays: true);
       },
-      onDone: () {},
+      onDone: () {
+        print("DONE");
+      },
     );
   }
 
@@ -55,7 +59,6 @@ class _QrScanPageState extends State<QrScanPage> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        
         children: <Widget>[
           Expanded(
             child: QRView(

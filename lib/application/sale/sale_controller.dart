@@ -479,7 +479,7 @@ class SaleController extends GetxController {
         transactionNumber: getTransactionNumber,
         listProduct: getCartList,
         status: status,
-        total: convertNumber(calculateSubTotal()));
+        total: convertNumber(calculateFinalTotal()));
     var _savedList = _box.getSavedTransactionDarta();
 
     //check the data if there is duplicate just update
