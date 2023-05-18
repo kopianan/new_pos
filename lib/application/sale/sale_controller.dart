@@ -217,7 +217,7 @@ class SaleController extends GetxController {
               (element.discount! / 100.0);
         } else {
           if (element.discount! != 0)
-            _grandDiscount.value += ((element.discount!) * element.totalBuy);
+            _grandDiscount.value += ((element.discount!));
         }
       },
     );
@@ -239,9 +239,9 @@ class SaleController extends GetxController {
           _finalTotal += _subTotal - ((element.discount! / 100.0) * _subTotal);
         } else {
           if (element.discount! != 0) {
-            _finalTotal += _subTotal - ((element.discount!) * element.totalBuy);
+            _finalTotal += _subTotal - ((element.discount!));
           } else {
-            _finalTotal +=_subTotal;
+            _finalTotal += _subTotal;
           }
         }
       },
