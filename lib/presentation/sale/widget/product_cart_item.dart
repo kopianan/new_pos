@@ -273,7 +273,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
                         ? SizedBox()
                         : Text(
                             (widget.item.isPercentage == true)
-                                ? 'Discount ${widget.item.discount!.toStringAsFixed(0)} %'
+                                ? 'Discount ${widget.item.discount!.toStringAsFixed(2)} %'
                                 : 'Discount ${formatDiscount(widget.item.discount!)}',
                             style: TextStyle(
                                 color: Colors.green,

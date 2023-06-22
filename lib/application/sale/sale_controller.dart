@@ -217,7 +217,7 @@ class SaleController extends GetxController {
               (element.discount! / 100.0);
         } else {
           if (element.discount! != 0)
-            _grandDiscount.value += ((element.discount!));
+            _grandDiscount.value += ((element.discount!) * element.totalBuy);
         }
       },
     );
@@ -239,7 +239,7 @@ class SaleController extends GetxController {
           _finalTotal += _subTotal - ((element.discount! / 100.0) * _subTotal);
         } else {
           if (element.discount! != 0) {
-            _finalTotal += _subTotal - ((element.discount!));
+            _finalTotal += _subTotal - ((element.discount!) * element.totalBuy);
           } else {
             _finalTotal += _subTotal;
           }
@@ -429,9 +429,13 @@ class SaleController extends GetxController {
       var _discount = "";
 
       if (element.isPercentage!) {
-        _discount = element.discount.toString() + "%";
+        final disc = element.discount ?? 0;
+
+        _discount = (disc).toDouble().toString() + "%";
       } else {
-        _discount = element.discount.toString();
+        final disc = element.discount ?? 0;
+
+        _discount = (element.totalBuy * disc).toString();
       }
 
       var _singleItem = ItemDetailDataModel(
