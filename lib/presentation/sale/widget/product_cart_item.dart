@@ -116,8 +116,8 @@ class _ProductCartItemState extends State<ProductCartItem> {
                                         keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
                                           label: Text("Total Beli"),
-                                          hintText: calculateMax(widget.item)
-                                              .toStringAsFixed(0),
+                                          hintText:
+                                              "${calculateMax(widget.item).toStringAsFixed(0)} (available stock)",
                                           border: OutlineInputBorder(),
                                         ),
                                       ),
